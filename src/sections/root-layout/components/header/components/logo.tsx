@@ -1,5 +1,5 @@
 import { FaSprayCan } from "react-icons/fa";
-import { bebas } from "../ui/fonts";
+import { bebas } from "../../../../../ui/fonts";
 
 const Logo = () => {
   return (

@@ -1,7 +1,7 @@
-import Logo from "./Logo";
-import Search from "./Search";
-import User from "./User";
-import LittleCar from "./LittleCar";
+import Logo from "./components/logo";
+import LittleCar from "./components/littleCar";
+import Search from "./components/search";
+import User from "./components/user";
 
 const Header = () => {
   return (
