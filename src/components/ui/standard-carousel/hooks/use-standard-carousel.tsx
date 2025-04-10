@@ -1,5 +1,6 @@
-import { useBreakpoint } from "@/hooks/screen/useBreakpoint"
-import React, { useEffect, useState } from "react"
+
+import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
+import { useEffect, useState } from "react"
 
 interface Props {
     cantElements: number

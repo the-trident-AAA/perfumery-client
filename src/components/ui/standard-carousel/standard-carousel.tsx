@@ -1,13 +1,10 @@
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-} from "@/components/ui/carousel"
+
 import { cn } from "@/src/lib/utils/utils"
 import Autoplay from "embla-carousel-autoplay"
 import React, { useContext } from "react"
 import { StandardCarouselContext } from "./context/standard-carousel-context"
 import useStandardCarousel from "./hooks/use-standard-carousel"
+import { Carousel, CarouselContent, CarouselItem } from "../carousel"
 
 interface Props<T> {
     items: T[]
