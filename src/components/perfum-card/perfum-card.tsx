@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function PerfurmCard({
-  perfum: {id,brand, name, description, price, image },
+  perfum: {id ,brand, name, description, price, image },
 }: Props) {
 	return (
 		<div className="w-full max-w-xs bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
