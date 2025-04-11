@@ -20,7 +20,7 @@ const sales = [
   },
   {
     id: "2",
-    brand: 'Christian Dior',
+    brand: 'Dior',
     name: 'Sauvage',
     description: 'Una de las mejores fragancias que podrás encontrar sin duda alguna',
     price: 90,
