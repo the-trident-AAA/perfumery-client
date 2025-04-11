@@ -3,11 +3,12 @@ import Image from "next/image"
 //import { Heart } from "lucide-react"
 
 export interface Perfum {
-	brand: string
-	name: string
-	description: string
-	price: number
-	image: string
+  id: string;
+  brand: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
 }
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export default function PerfurmCard({
-	perfum: { brand, name, description, price, image },
+  perfum: {id,brand, name, description, price, image },
 }: Props) {
 	return (
 		<div className="w-full max-w-xs bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
@@ -41,12 +42,10 @@ export default function PerfurmCard({
 					<p className="text-sm text-blue-900">{description}</p>
 				</div>
 
-				<div className="pt-4 pb-2">
-					<p className="text-xl font-semibold">
-						{price.toFixed(2)} €
-					</p>
-				</div>
-			</div>
+        <div className="pt-4 pb-2">
+          <p className="text-xl font-semibold">{price.toFixed(2)} $</p>
+        </div>
+      </div>
 
 			<div className="border-t border-gray-200">
 				<button className="w-full py-3 text-center text-pink-600 font-medium hover:bg-pink-50 transition-colors">
