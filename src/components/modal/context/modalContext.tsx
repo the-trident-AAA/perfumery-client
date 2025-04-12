@@ -1,14 +1,15 @@
 "use client"
-
 import React, { createContext } from "react"
 import useModal from "../hooks/useModal"
+import { InfoModal } from "../types/modalTypes"
 
 interface Props {
-	currentModal: string[]
-	handleOpenModal: (modalName: string) => void
+	currentModal: InfoModal[]
+	handleOpenModal: (infoModal: InfoModal) => void
 	handleCloseModal: (modalName: string) => void
 	onOpenChange: (modalName: string) => void
 	isModalOpen: (modalName: string) => boolean
+	getInfoModal: (modalName: string) => InfoModal | undefined
 }
 
 const defaultProps: Props = {
@@ -25,6 +26,9 @@ const defaultProps: Props = {
 	isModalOpen: () => {
 		throw new Error("isModalOpen no está definido.")
 	},
+	getInfoModal: () => {
+		throw new Error("getInfoModal no está definido.")
+	},
 }
 
 export const ModalContext = createContext<Props>(defaultProps)
@@ -36,6 +40,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 		handleCloseModal,
 		onOpenChange,
 		isModalOpen,
+		getInfoModal,
 	} = useModal()
 
 	return (
@@ -46,6 +51,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 				handleOpenModal,
 				onOpenChange,
 				isModalOpen,
+				getInfoModal,
 			}}
 		>
 			{children}

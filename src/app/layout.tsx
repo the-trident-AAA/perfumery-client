@@ -4,6 +4,9 @@ import { roboto } from "../ui/fonts"
 import Header from "../sections/root-layout/components/header/header"
 import Footer from "@/src/sections/root-layout/components/footer/footer"
 import { ModalProvider } from "@/src/components/modal/context/modalContext"
+import Modal from "@/src/components/modal/modal"
+import { modalTypes } from "@/src/components/modal/types/modalTypes"
+import PerfumDetailsContainer from "@/src/sections/perfums/perfum-details/perfum-details-container/perfum-details-container"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -16,6 +19,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							{children}
 						</div>
 						<Footer />
+						<Modal formPath={modalTypes.perfumDetailsModal.name}>
+							<PerfumDetailsContainer />
+						</Modal>
 					</main>
 				</ModalProvider>
 			</body>
