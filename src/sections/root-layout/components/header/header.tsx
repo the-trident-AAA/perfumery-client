@@ -5,7 +5,7 @@ import HeaderSearch from "@/src/sections/root-layout/components/header/component
 
 const Header = () => {
 	return (
-		<header className="bg-slate-800 text-white sticky top-0 z-50 shadow-md">
+		<header className="bg-primary text-white sticky top-0 z-50 shadow-md">
 			<div className="container mx-auto py-4 px-6">
 				<div className="flex items-center justify-between h-16">
 					{/* Logo - alineado a la izquierda */}

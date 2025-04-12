@@ -36,7 +36,7 @@ export default function HomeBannerSection({ title, image, url }: Props) {
 						{title}
 					</h1>
 					<Link className="w-fit" href={url}>
-						<Button className="hover:bg-primary transform rounded-xl bg-primary text-black font-medium transition duration-300 ease-in-out hover:scale-105 sm:px-16 sm:py-8 sm:text-xl">
+						<Button className="hover:bg-primary transform rounded-xl bg-secondary text-white font-medium transition duration-300 ease-in-out hover:scale-105 sm:px-16 sm:py-8 sm:text-xl">
 							ver más....
 						</Button>
 					</Link>
