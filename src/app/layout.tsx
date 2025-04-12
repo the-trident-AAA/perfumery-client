@@ -10,7 +10,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 			<body className={`${roboto.className} antialiased`}>
 				<main className="flex min-h-screen flex-col">
 					<Header />
-					<div className="container mx-auto mt-5">{children}</div>
+					<div className="container mx-auto mt-5 px-3">
+						{children}
+					</div>
 					<Footer />
 				</main>
 			</body>
