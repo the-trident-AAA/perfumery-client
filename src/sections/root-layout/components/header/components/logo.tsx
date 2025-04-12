@@ -6,8 +6,8 @@ const Logo = () => {
 		<div
 			className={`${bebas.className} flex flex-row items-center leading-none text-white ml-[-20px]`}
 		>
-			<FaSprayCan className="h-20 w-20 rotate-0" />
-			<p className="text-[30px] ml-3">Perfumería Aliux</p>
+			<FaSprayCan className="size-12 xs:size-16 sm:size-20 rotate-0" />
+			<p className="text-xl sm:text-[30px] ml-3">Perfumería Aliux</p>
 		</div>
 	)
 }
