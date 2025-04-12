@@ -43,21 +43,19 @@ export default function Modal({
 				}`}
 			>
 				<DialogHeader>
-					{title && (
-						<DialogTitle
-							className={`flex ${
-								titleCenter ? "justify-center" : "justify-start"
-							} ${
-								titleSize === "medium"
-									? "text-md"
-									: titleSize === "big"
-										? "text-2xl"
-										: "text-sm"
-							}`}
-						>
-							{title}
-						</DialogTitle>
-					)}
+					<DialogTitle
+						className={`flex ${
+							titleCenter ? "justify-center" : "justify-start"
+						} ${
+							titleSize === "medium"
+								? "text-md"
+								: titleSize === "big"
+									? "text-2xl"
+									: "text-sm"
+						}`}
+					>
+						{title || ""}
+					</DialogTitle>
 				</DialogHeader>
 				{children}
 			</DialogContent>

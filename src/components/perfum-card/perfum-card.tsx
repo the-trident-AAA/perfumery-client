@@ -1,5 +1,9 @@
+"use client"
+import { ModalContext } from "@/src/components/modal/context/modalContext"
+import { modalTypes } from "@/src/components/modal/types/modalTypes"
 //import { useState } from "react"
 import Image from "next/image"
+import { useContext } from "react"
 //import { Heart } from "lucide-react"
 
 export interface Perfum {
@@ -18,8 +22,18 @@ interface Props {
 export default function PerfurmCard({
 	perfum: { id, brand, name, description, price, image },
 }: Props) {
+	const { handleOpenModal } = useContext(ModalContext)
+	const onDetails = () => {
+		handleOpenModal({
+			name: modalTypes.perfumDetailsModal.name,
+			entity: id,
+		})
+	}
 	return (
-		<div className="w-full max-w-xs bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+		<div
+			className="w-full max-w-xs bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100"
+			onClick={onDetails}
+		>
 			<div className="relative">
 				<Image
 					className="aspect-square object-cover"
