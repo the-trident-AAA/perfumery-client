@@ -13,11 +13,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 		<html>
 			<body className={`${roboto.className} antialiased`}>
 				<ModalProvider>
-					<main className="flex min-h-screen flex-col">
+					<main className="flex min-h-screen flex-col gap-8">
 						<Header />
-						<div className="container mx-auto mt-5 px-3">
-							{children}
-						</div>
+						<div className="container mx-auto px-3">{children}</div>
 						<Footer />
 						<Modal
 							formPath={modalTypes.perfumDetailsModal.name}
