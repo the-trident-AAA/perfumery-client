@@ -78,7 +78,7 @@ export default function HomeOffers() {
 					items={offers}
 					dimension="100vw"
 					className="pl-4"
-					itemsStyles="xs:basis-1/2 lg:basis-1/3"
+					itemsStyles="sm:basis-1/2 lg:basis-1/3"
 					renderCard={item => <OfferCard offer={item} />}
 				/>
 			</StandardCarouselProvider>
