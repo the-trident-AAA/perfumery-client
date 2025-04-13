@@ -19,7 +19,10 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							{children}
 						</div>
 						<Footer />
-						<Modal formPath={modalTypes.perfumDetailsModal.name}>
+						<Modal
+							formPath={modalTypes.perfumDetailsModal.name}
+							maxWidth="max-w-5xl"
+						>
 							<PerfumDetailsContainer />
 						</Modal>
 					</main>
