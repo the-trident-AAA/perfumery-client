@@ -34,7 +34,7 @@ export default function PerfumDetailsPanel({
 	}
 
 	return (
-		<div className="max-w-6xl mx-auto p-4">
+		<div className="mx-auto p-4">
 			<div className="grid md:grid-cols-2 gap-8">
 				{/* Product Image */}
 				<div className="flex justify-center">
