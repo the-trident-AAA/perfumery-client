@@ -1,6 +1,7 @@
 import React from "react"
 import HomeBanner from "@/src/sections/home/components/home-banner/home-banner"
 import HomePromotionsCarousel from "@/src/sections/home/components/home-promotions-carousel/home-promotions-carousel"
+import HomePerfumeGroups from "@/src/sections/home/components/home-perfume-groups/home-perfume-groups"
 
 const data = [
 	{
@@ -83,6 +84,7 @@ export default function HomeContainer() {
 			<HomeBanner />
 			<HomePromotionsCarousel title="Perfumes en Oferta" data={data} />
 			<HomePromotionsCarousel title="Perfumes más Vendidos" data={data} />
+			<HomePerfumeGroups />
 		</div>
 	)
 }
