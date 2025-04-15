@@ -35,8 +35,10 @@ export default function LoginForm() {
 			</div>
 
 			<div className="pt-4 px-5">
-				<div className="flex items-center justify-center gap-2">
-					<UserCircle2Icon className="w-8 h-8 sm:w-12 sm:h-12 text-blue-600 hover:text-blue-700 transition-colors" />
+				<div className="pt-4 px-5">
+					<h2 className="text-xl font-semibold text-center">
+						Iniciar Sesión
+					</h2>
 				</div>
 			</div>
 
