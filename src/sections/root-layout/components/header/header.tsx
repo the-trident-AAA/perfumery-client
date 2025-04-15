@@ -2,6 +2,7 @@ import Logo from "./components/logo"
 import LittleCar from "./components/littleCar"
 import User from "./components/user"
 import HeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/header-search"
+import LoginButton from "@/src/sections/root-layout/components/header/components/login-button/login-button"
 
 const Header = () => {
 	return (
@@ -22,6 +23,7 @@ const Header = () => {
 					<div className="flex items-center space-x-4">
 						<User />
 						<LittleCar />
+						<LoginButton />
 					</div>
 				</div>
 			</div>
