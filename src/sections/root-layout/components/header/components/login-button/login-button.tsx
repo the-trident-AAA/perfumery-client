@@ -8,7 +8,7 @@ export default function LoginButton() {
 	const { handleOpenModal } = useContext(ModalContext)
 	return (
 		<Button
-			className="bg-green-800 hover:bg-amber-100"
+			className="text-xs sm:text-base"
 			onClick={() => {
 				handleOpenModal({ name: modalTypes.loginModal.name })
 			}}
