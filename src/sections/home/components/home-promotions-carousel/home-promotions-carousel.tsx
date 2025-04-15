@@ -19,6 +19,8 @@ export default function HomePromotionsCarousel({ title, data }: Props) {
 					dimension="100vw"
 					className="pl-4"
 					itemsStyles="basis-1/2 sm:basis-1/3 md:basis-1/3 lg:basis-1/4"
+					withArrows
+					arrowsPosition="outside"
 					renderCard={item => <PerfurmCard perfum={item} />}
 				/>
 			</StandardCarouselProvider>

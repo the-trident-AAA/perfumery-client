@@ -3,7 +3,13 @@ import Autoplay from "embla-carousel-autoplay"
 import React, { useContext } from "react"
 import { StandardCarouselContext } from "./context/standard-carousel-context"
 import useStandardCarousel from "./hooks/use-standard-carousel"
-import { Carousel, CarouselContent, CarouselItem } from "../carousel"
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselPrevious,
+	CarouselNext,
+} from "../carousel"
 
 interface Props<T> {
 	items: T[]
@@ -16,6 +22,9 @@ interface Props<T> {
 	renderCard: (item: T) => React.ReactNode
 	className?: string
 	loop?: boolean
+	withArrows?: boolean
+	arrowsPosition?: "inside" | "outside"
+	arrowsClassName?: string
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
@@ -29,6 +38,9 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	variantProgressBar = "onCarouselItem",
 	autoPlay = false,
 	loop = false,
+	withArrows = false,
+	arrowsPosition = "inside",
+	arrowsClassName = "",
 }: Props<T>) {
 	const { isCentered } = useStandardCarousel({
 		cantElements: items.length,
@@ -43,7 +55,8 @@ export default function StandardCarousel<T extends { id: number | string }>({
 		: undefined
 
 	return (
-		<div className="relative w-full">
+		<div className="relative w-full group">
+			{" "}
 			<Carousel
 				plugins={plugins}
 				setApi={setApi}
@@ -54,6 +67,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				style={{
 					maxWidth: dimension,
 				}}
+				className="relative"
 			>
 				<CarouselContent
 					className={
@@ -74,6 +88,28 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						</CarouselItem>
 					))}
 				</CarouselContent>
+				{withArrows && (
+					<>
+						<CarouselPrevious
+							className={cn(
+								"absolute left-2 h-8 w-8 rounded-full",
+								arrowsPosition === "inside"
+									? "top-1/2 -translate-y-1/2"
+									: "-left-6 top-1/2 -translate-y-1/2 -translate-x-1/2",
+								arrowsClassName,
+							)}
+						/>
+						<CarouselNext
+							className={cn(
+								"absolute right-2 h-8 w-8 rounded-full",
+								arrowsPosition === "inside"
+									? "top-1/2 -translate-y-1/2"
+									: "-right-9 2xl:right-0 top-1/2 -translate-y-1/2 translate-x-1/2",
+								arrowsClassName,
+							)}
+						/>
+					</>
+				)}
 			</Carousel>
 			{withProgressBar && (
 				<div
