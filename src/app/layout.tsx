@@ -7,6 +7,7 @@ import { ModalProvider } from "@/src/components/modal/context/modalContext"
 import Modal from "@/src/components/modal/modal"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import PerfumDetailsContainer from "@/src/sections/perfums/perfum-details/perfum-details-container/perfum-details-container"
+import LoginPanel from "@/src/components/login-panel/login-panel"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -22,6 +23,12 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							maxWidth="max-w-5xl"
 						>
 							<PerfumDetailsContainer />
+						</Modal>
+						<Modal
+							formPath={modalTypes.loginModal.name}
+							maxWidth="max-w-3xl"
+						>
+							<LoginPanel />
 						</Modal>
 					</main>
 				</ModalProvider>

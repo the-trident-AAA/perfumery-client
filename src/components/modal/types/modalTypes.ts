@@ -10,11 +10,16 @@ export interface SectionModal {
 }
 export interface ModalTypes {
 	perfumDetailsModal: SectionModal
+	loginModal: SectionModal
 }
 
 export const modalTypes: ModalTypes = {
 	perfumDetailsModal: {
 		name: "perfumDetailsModal",
 		title: "Detalles del Perfume",
+	},
+	loginModal: {
+		name: "loginModal",
+		title: "Inicie Sesión",
 	},
 }
