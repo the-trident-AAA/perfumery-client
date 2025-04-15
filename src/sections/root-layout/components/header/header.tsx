@@ -2,11 +2,12 @@ import Logo from "./components/logo"
 import LittleCar from "./components/littleCar"
 import User from "./components/user"
 import HeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/header-search"
+import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
 
 const Header = () => {
 	return (
-		<header className="bg-primary text-white sticky top-0 z-50 shadow-md">
-			<div className="container mx-auto py-4 px-6">
+		<header className="bg-primary sticky top-0 z-50 shadow-md flex flex-col">
+			<div className="text-white container mx-auto py-4 px-6">
 				<div className="flex items-center justify-between h-16">
 					{/* Logo - alineado a la izquierda */}
 					<div className="flex-shrink-0 flex items-center">
@@ -24,6 +25,9 @@ const Header = () => {
 						<User />
 					</div>
 				</div>
+			</div>
+			<div className="bg-white">
+				<HeaderNavigationMenu />
 			</div>
 		</header>
 	)
