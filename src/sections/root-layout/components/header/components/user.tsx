@@ -1,17 +1,36 @@
 "use client"
 
+import { Button } from "@/src/components/ui/button"
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/src/components/ui/popover"
+import LoginButton from "@/src/sections/root-layout/components/header/components/login-button/login-button"
 import { UserCircleIcon } from "lucide-react"
 import React from "react"
 
 const User = () => {
 	return (
-		<button
-			className="flex items-center justify-center rounded-full bg-transparent hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-			onClick={() => console.log("User button clicked")}
-			aria-label="User menu"
-		>
-			<UserCircleIcon className="size-8 sm:size-12 text-white" />
-		</button>
+		<Popover>
+			<PopoverTrigger asChild>
+				<button
+					className="flex items-center justify-center rounded-full bg-transparent hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					onClick={() => console.log("User button clicked")}
+					aria-label="User menu"
+				>
+					<UserCircleIcon className="size-8 sm:size-12 text-white" />
+				</button>
+			</PopoverTrigger>
+			<PopoverContent className="w-full">
+				<div className="flex flex-col gap-1">
+					<LoginButton />
+					<Button className="text-xs sm:text-base">
+						Registrarse
+					</Button>
+				</div>
+			</PopoverContent>
+		</Popover>
 	)
 }
 
