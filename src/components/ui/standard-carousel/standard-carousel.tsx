@@ -95,7 +95,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 								"absolute left-2 h-8 w-8 rounded-full",
 								arrowsPosition === "inside"
 									? "top-1/2 -translate-y-1/2"
-									: "-left-6 top-1/2 -translate-y-1/2 -translate-x-1/2",
+									: "-left-10 top-1/2 -translate-y-1/2 -translate-x-1/2",
 								arrowsClassName,
 							)}
 						/>

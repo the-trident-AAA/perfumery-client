@@ -17,7 +17,6 @@ export default function HomePromotionsCarousel({ title, data }: Props) {
 				<StandardCarousel
 					items={data}
 					dimension="100vw"
-					className="pl-4"
 					itemsStyles="basis-1/2 sm:basis-1/3 md:basis-1/3 lg:basis-1/4"
 					withArrows
 					arrowsPosition="outside"
