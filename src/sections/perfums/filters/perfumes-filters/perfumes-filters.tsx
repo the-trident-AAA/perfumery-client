@@ -4,9 +4,7 @@ import { Input } from "@/src/components/ui/input"
 
 export default function PerfumesFilters() {
 	return (
-		<aside className="w-full p-6 border-r min-h-screen">
-			<h2 className="text-xl font-semibold mb-6">Filters</h2>
-
+		<div>
 			{/* Perfumes Section */}
 			<div className="mb-8">
 				<h3 className="text-sm text-muted-foreground mb-3">Products</h3>
@@ -50,6 +48,6 @@ export default function PerfumesFilters() {
 					</label>
 				</div>
 			</div>
-		</aside>
+		</div>
 	)
 }

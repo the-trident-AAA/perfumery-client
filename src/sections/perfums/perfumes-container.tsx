@@ -1,5 +1,6 @@
 import PerfurmCard from "@/src/components/perfum-card/perfum-card"
-import PerfumesFilters from "@/src/sections/perfums/filters/perfumes-filters"
+import PerfumesFiltersContainer from "@/src/sections/perfums/filters/perfumes-filters-container/perfumes-filters-container"
+import PerfumesFilters from "@/src/sections/perfums/filters/perfumes-filters/perfumes-filters"
 import React from "react"
 
 const data = [
@@ -79,10 +80,8 @@ const data = [
 
 export default function PerfumesContainer() {
 	return (
-		<div className="flex justify-center gap-6">
-			<div className="hidden lg:flex max-w-[300px]">
-				<PerfumesFilters />
-			</div>
+		<div className="flex flex-col lg:flex-row justify-center gap-6">
+			<PerfumesFiltersContainer />
 			<div className="flex flex-col gap-2">
 				<p className="text-lg sm:text-3xl font-semibold mb-6 text-gray-800">
 					Perfumes de la Tienda
