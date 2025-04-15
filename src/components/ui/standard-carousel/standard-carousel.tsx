@@ -89,7 +89,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 					))}
 				</CarouselContent>
 				{withArrows && (
-					<>
+					<div className="hidden sm:flex">
 						<CarouselPrevious
 							className={cn(
 								"absolute left-2 h-8 w-8 rounded-full",
@@ -108,7 +108,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 								arrowsClassName,
 							)}
 						/>
-					</>
+					</div>
 				)}
 			</Carousel>
 			{withProgressBar && (
