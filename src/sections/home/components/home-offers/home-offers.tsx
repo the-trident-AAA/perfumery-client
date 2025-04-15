@@ -77,7 +77,7 @@ export default function HomeOffers() {
 				<StandardCarousel
 					items={offers}
 					dimension="100vw"
-					itemsStyles="sm:basis-1/2 lg:basis-1/3"
+					itemsStyles="2xs:basis-1/2 lg:basis-1/3"
 					withArrows
 					arrowsPosition="outside"
 					renderCard={item => <OfferCard offer={item} />}

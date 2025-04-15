@@ -16,7 +16,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 				<ModalProvider>
 					<main className="flex min-h-screen flex-col gap-8">
 						<Header />
-						<div className="container mx-auto px-3">{children}</div>
+						<div className="md:container md:mx-auto px-3">
+							{children}
+						</div>
 						<Footer />
 						<Modal
 							formPath={modalTypes.perfumDetailsModal.name}
