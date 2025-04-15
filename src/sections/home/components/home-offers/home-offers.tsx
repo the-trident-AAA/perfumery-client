@@ -80,6 +80,7 @@ export default function HomeOffers() {
 					itemsStyles="2xs:basis-1/2 lg:basis-1/3"
 					withArrows
 					arrowsPosition="outside"
+					arrowsLocation="bottom"
 					renderCard={item => <OfferCard offer={item} />}
 				/>
 			</StandardCarouselProvider>

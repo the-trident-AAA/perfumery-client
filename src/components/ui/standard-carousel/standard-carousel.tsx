@@ -24,6 +24,7 @@ interface Props<T> {
 	loop?: boolean
 	withArrows?: boolean
 	arrowsPosition?: "inside" | "outside"
+	arrowsLocation?: "normal" | "bottom"
 	arrowsClassName?: string
 }
 
@@ -40,6 +41,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	loop = false,
 	withArrows = false,
 	arrowsPosition = "inside",
+	arrowsLocation = "normal",
 	arrowsClassName = "",
 }: Props<T>) {
 	const { isCentered } = useStandardCarousel({
@@ -56,7 +58,6 @@ export default function StandardCarousel<T extends { id: number | string }>({
 
 	return (
 		<div className="relative w-full group">
-			{" "}
 			<Carousel
 				plugins={plugins}
 				setApi={setApi}
@@ -78,6 +79,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 										? "justify-center"
 										: "justify-start",
 									className,
+									arrowsLocation === "bottom" ? "pb-12" : "",
 								)
 							: ""
 					}
@@ -88,7 +90,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						</CarouselItem>
 					))}
 				</CarouselContent>
-				{withArrows && (
+				{withArrows && arrowsLocation === "normal" && (
 					<div className="hidden sm:flex">
 						<CarouselPrevious
 							className={cn(
@@ -105,6 +107,22 @@ export default function StandardCarousel<T extends { id: number | string }>({
 								arrowsPosition === "inside"
 									? "top-1/2 -translate-y-1/2"
 									: "-right-9 2xl:right-0 top-1/2 -translate-y-1/2 translate-x-1/2",
+								arrowsClassName,
+							)}
+						/>
+					</div>
+				)}
+				{withArrows && arrowsLocation === "bottom" && (
+					<div className="absolute bottom-2 left-0 w-full justify-between px-2 z-10">
+						<CarouselPrevious
+							className={cn(
+								"2xs:h-12 2xs:w-12 rounded-full left-[36%] 2xs:left-[38%] sm:left-[42%] lg:left-[45%] 2xl:left-[43%]",
+								arrowsClassName,
+							)}
+						/>
+						<CarouselNext
+							className={cn(
+								"2xs:h-12 2xs:w-12 rounded-full right-[36%] 2xs:right-[38%] sm:right-[42%] lg:right-[45%] 2xl:right-[48%]",
 								arrowsClassName,
 							)}
 						/>
