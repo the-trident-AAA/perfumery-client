@@ -2,11 +2,21 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { login } from "@/src/lib/services/auth"
 
+interface CredentialsType {
+	email: string
+	password: string
+}
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
 	providers: [
 		Credentials({
+			credentials: {
+				email: { label: "Email", type: "email" },
+				password: { label: "Password", type: "password" },
+			},
 			async authorize(credentials) {
-				return login(credentials)
+				const { email, password } = credentials as CredentialsType
+				return login({ email, password })
 			},
 		}),
 	],
@@ -17,12 +27,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	callbacks: {
 		async jwt({ token, user }) {
 			if (user) {
-				token.accessToken = (<any>user).accessToken
+				token.accessToken = (user as any).accessToken
 			}
 			return token
 		},
 		async session({ session, token }) {
-			;(<any>session).accessToken = token.accessToken
+			;(session as any).accessToken = token.accessToken
 			return session
 		},
 	},
