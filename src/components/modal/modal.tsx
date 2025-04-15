@@ -32,7 +32,7 @@ export default function Modal({
 			onOpenChange={(state: boolean) => onOpenChange(formPath)}
 		>
 			<DialogContent
-				className={`w-full pl-2 pr-2 xs:p-4  ${
+				className={`w-full max-h-screen pl-2 pr-2 xs:p-4 flex flex-col  ${
 					!maxWidth
 						? wide === "normal"
 							? "sm:max-w-lg"
@@ -57,7 +57,7 @@ export default function Modal({
 						{title || ""}
 					</DialogTitle>
 				</DialogHeader>
-				{children}
+				<div className="flex-1 overflow-auto">{children}</div>
 			</DialogContent>
 		</Dialog>
 	)
