@@ -8,6 +8,7 @@ import Modal from "@/src/components/modal/modal"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import PerfumDetailsContainer from "@/src/sections/perfums/perfum-details/perfum-details-container/perfum-details-container"
 import LoginPanel from "@/src/components/login-panel/login-panel"
+import RegistrationPanel from "@/src/components/registration-panel/registration-panel"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -31,6 +32,12 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							maxWidth="max-w-sm"
 						>
 							<LoginPanel />
+						</Modal>
+						<Modal
+							formPath={modalTypes.registrationModal.name}
+							maxWidth="max-w-xl"
+						>
+							<RegistrationPanel />
 						</Modal>
 					</main>
 				</ModalProvider>
