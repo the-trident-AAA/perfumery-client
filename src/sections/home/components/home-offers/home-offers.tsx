@@ -77,7 +77,6 @@ export default function HomeOffers() {
 				<StandardCarousel
 					items={offers}
 					dimension="100vw"
-					className="pl-4"
 					itemsStyles="sm:basis-1/2 lg:basis-1/3"
 					withArrows
 					arrowsPosition="outside"
