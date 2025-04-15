@@ -32,7 +32,7 @@ export const navigationItems: NavigationItem[] = [
 			},
 			{
 				label: "Diseñador",
-				path: paths.perfumes({ group: "diseñador" }).root,
+				path: paths.perfumes({ group: "1" }).root,
 				icon: (
 					<ShoppingCartIcon
 						color="black"
@@ -42,7 +42,7 @@ export const navigationItems: NavigationItem[] = [
 			},
 			{
 				label: "Árabe",
-				path: paths.perfumes({ group: "arabe" }).root,
+				path: paths.perfumes({ group: "2" }).root,
 				icon: (
 					<ShoppingCartIcon
 						color="black"
@@ -52,7 +52,7 @@ export const navigationItems: NavigationItem[] = [
 			},
 			{
 				label: "Nicho",
-				path: paths.perfumes({ group: "nicho" }).root,
+				path: paths.perfumes({ group: "3" }).root,
 				icon: (
 					<ShoppingCartIcon
 						color="black"
@@ -62,7 +62,7 @@ export const navigationItems: NavigationItem[] = [
 			},
 			{
 				label: "Nacional",
-				path: paths.perfumes({ group: "nacional" }).root,
+				path: paths.perfumes({ group: "4" }).root,
 				icon: (
 					<ShoppingCartIcon
 						color="black"
