@@ -7,6 +7,7 @@ import {
 	PopoverTrigger,
 } from "@/src/components/ui/popover"
 import LoginButton from "@/src/sections/root-layout/components/header/components/login-button/login-button"
+import RegistrationButton from "@/src/sections/root-layout/components/header/components/registration-button/registration-button"
 import { UserCircleIcon } from "lucide-react"
 import React from "react"
 
@@ -25,9 +26,7 @@ const User = () => {
 			<PopoverContent className="w-full">
 				<div className="flex flex-col gap-1">
 					<LoginButton />
-					<Button className="text-xs sm:text-base">
-						Registrarse
-					</Button>
+					<RegistrationButton />
 				</div>
 			</PopoverContent>
 		</Popover>

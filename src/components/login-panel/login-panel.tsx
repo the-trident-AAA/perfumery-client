@@ -1,13 +1,16 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { UserCircle2Icon } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
+import { ModalContext } from "@/src/components/modal/context/modalContext"
+import { modalTypes } from "@/src/components/modal/types/modalTypes"
 
 export default function LoginForm() {
+	const { handleOpenModal } = useContext(ModalContext)
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
 	const router = useRouter()
@@ -84,7 +87,11 @@ export default function LoginForm() {
 					<Button
 						variant="default"
 						className="h-7 bg-pink-500 hover:bg-pink-600 px-3 py-1 text-xs font-medium"
-						onClick={() => router.push("/register")}
+						onClick={() => {
+							handleOpenModal({
+								name: modalTypes.registrationModal.name,
+							})
+						}}
 					>
 						Crear
 					</Button>
