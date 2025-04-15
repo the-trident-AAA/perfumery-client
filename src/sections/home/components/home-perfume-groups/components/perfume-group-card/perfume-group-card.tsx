@@ -2,21 +2,21 @@
 import React, { ReactNode } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { paths } from "@/src/lib/routes/paths"
 
 interface PerfumeGroup {
+	id: number
 	name: string
 	image: string
 	icon?: ReactNode
 }
 interface Props {
 	perfumeGroup: PerfumeGroup
-	href: string
 	w?: string
 }
 
 export default function PerfumeGroupCard({
-	perfumeGroup: { name, image, icon },
-	href,
+	perfumeGroup: { id, name, image, icon },
 	w = "w-full",
 }: Props) {
 	return (
@@ -32,7 +32,10 @@ export default function PerfumeGroupCard({
 				w
 			}
 		>
-			<Link href={href} className="group">
+			<Link
+				href={paths.perfumes({ group: id.toString() }).root}
+				className="group"
+			>
 				<div
 					className="absolute inset-0 bg-cover bg-center z-0"
 					style={{ backgroundImage: `url(${image})` }}
