@@ -1,14 +1,16 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { UserCircle2Icon } from "lucide-react"
+import { Button } from "@/src/components/ui/button"
 
 export default function LoginForm() {
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
+	const router = useRouter()
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
@@ -59,32 +61,34 @@ export default function LoginForm() {
 								className="w-full px-3 py-2 border border-green-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
 							/>
 						</div>
-						<button
+						<Button
 							type="submit"
-							className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+							className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2"
 						>
 							Iniciar Sesión
-						</button>
+						</Button>
 					</form>
 				</div>
 
 				<div className="flex flex-col items-center space-y-3 p-5 pt-0 pb-5">
-					<a
-						href="/forgot-password"
-						className="text-xs text-gray-500 hover:text-gray-700"
+					<Button
+						variant="link"
+						className="text-xs text-gray-500 hover:text-gray-700 p-0 h-auto"
+						onClick={() => router.push("/forgot-password")}
 					>
 						Olvidó su contraseña?
-					</a>
+					</Button>
 					<div className="flex items-center space-x-2">
 						<span className="text-xs text-gray-500">
 							No tiene una cuenta?
 						</span>
-						<a
-							href="/register"
-							className="h-7 bg-pink-500 text-white hover:bg-pink-600 px-3 py-1 rounded-md text-xs font-medium"
+						<Button
+							variant="default"
+							className="h-7 bg-pink-500 hover:bg-pink-600 px-3 py-1 text-xs font-medium"
+							onClick={() => router.push("/register")}
 						>
 							Crear
-						</a>
+						</Button>
 					</div>
 				</div>
 			</div>
