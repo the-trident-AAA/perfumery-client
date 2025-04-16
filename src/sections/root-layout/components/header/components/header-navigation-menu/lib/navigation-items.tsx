@@ -21,16 +21,6 @@ export const navigationItems: NavigationItem[] = [
 		icon: <ShoppingCartIcon color="black" className="size-4 sm:size-6" />,
 		childrens: [
 			{
-				label: "Todos los Aromas",
-				path: paths.perfumes().root,
-				icon: (
-					<ShoppingCartIcon
-						color="black"
-						className="size-4 sm:size-6"
-					/>
-				),
-			},
-			{
 				label: "Diseñador",
 				path: paths.perfumes({ group: "1" }).root,
 				icon: (
