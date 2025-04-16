@@ -27,7 +27,7 @@ jobs:
             rm -f .env &&
             echo 'API_URL=${{ secrets.API_URL }}' > .env &&
             echo 'AUTH_SECRET=${{ secrets.AUTH_SECRET }}' >> .env &&
-            git pull origin main && 
+            git pull origin develop && 
             docker-compose down &&
             docker-compose pull && 
             docker-compose up -d --build
