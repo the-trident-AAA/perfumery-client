@@ -1,0 +1,22 @@
+services:
+  perfumery-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: perfumery-client
+    ports:
+      - "8000:8000"
+    environment:
+      - API_URL=${API_URL:-http://localhost:3000}
+      - AUTH_SECRET=${AUTH_SECRET:-kagkhasghdgakjdghakghdkajgdkjasgdkagsdjgasjgdasdkgajdgaks}
+      - NODE_ENV=production
+    restart: unless-stopped
+    volumes:
+      - ./public:/app/public
+      - ./.next:/app/.next
+    networks:
+      - perfumery-client-network
+
+networks:
+  perfumery-client-network:
+    driver: bridge
