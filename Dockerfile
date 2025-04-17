@@ -1,32 +1,42 @@
-# Stage 1: Builder - Instala dependencias y construye la aplicación
-FROM node:20.11-alpine AS builder
+FROM node:20.11-alpine AS base
+
+FROM base AS deps
+
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
-# Copiar los archivos de configuración de paquetes primero para aprovechar la caché de Docker
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+COPY package.json package-lock.json ./
 
-# Instalar las dependencias usando el gestor de paquetes preferido (aquí usamos npm como ejemplo)
-RUN npm install --frozen-lockfile
+RUN  npm ci
 
-# Copiar el resto de los archivos del proyecto
+FROM base AS builder
+
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+
 COPY . .
 
-# Construir la aplicación
 RUN npm run build
 
-# Stage 2: Runner - Solo lo necesario para producción
-FROM node:20.11-alpine AS runner
+FROM base AS runner
+
 WORKDIR /app
 
-# No necesitamos el paquete npm en producción
-ENV NODE_ENV production
-RUN npm install --global pm2
+ENV NODE_ENV=production
 
-# Copiar los archivos necesarios del builder
+RUN addgroup -g 1001 -S nodejs
+
+RUN adduser -S nextjs -u 1001
+
 COPY --from=builder /app/public ./public
+
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
 
 EXPOSE 8000
 
