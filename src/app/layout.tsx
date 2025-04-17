@@ -35,7 +35,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 						</Modal>
 						<Modal
 							formPath={modalTypes.registrationModal.name}
-							maxWidth="max-w-xl"
+							maxWidth="max-w-6xl"
 						>
 							<RegistrationPanel />
 						</Modal>

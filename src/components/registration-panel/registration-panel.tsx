@@ -1,12 +1,11 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/src/components/ui/button"
-import { Checkbox } from "@/src/components/ui/checkbox"
 import { Input } from "@/src/components/ui/input"
 import { Label } from "@/src/components/ui/label"
+import Image from "next/image"
 
 export default function RegisterForm() {
 	const [formData, setFormData] = useState({
@@ -27,15 +26,19 @@ export default function RegisterForm() {
 	}
 
 	return (
-		<div className="flex h-screen w-full overflow-hidden">
+		<div className="flex w-full justify-center items-center overflow-auto">
 			{/* Lado izquierdo con la imagen */}
-			<div className="relative hidden md:block md:w-1/2">
-				<div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-pink-500 opacity-10 z-10" />
-				<img
-					src="/images/place-holder.jpg"
-					alt=""
-					className="h-full w-full object-cover"
+			<div className="relative hidden h-full md:block md:w-1/2">
+				<div className="absolute inset-0 bg-gradient-to-br max-h-[200px] from-orange-500 to-pink-500 opacity-10 z-10" />
+
+				<Image
+					className="aspect-square object-cover"
+					src={"/images/place-holder.jpg"}
+					alt={"place-holder"}
+					width={800}
+					height={1000}
 				/>
+
 				<div className="absolute inset-0 flex flex-col justify-center p-12 z-20">
 					<h1 className="text-6xl font-bold text-white mb-2">
 						Hello
