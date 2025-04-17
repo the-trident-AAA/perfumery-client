@@ -30,5 +30,8 @@ COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 8000
 
+ENV PORT 8083
 
-CMD ["node", "server.js", "--hostname", "0.0.0.0", "--port", "8000"]
+ENV HOSTNAME 0.0.0.0
+
+CMD ["node", "server.js"]
