@@ -1,5 +1,5 @@
 # Stage 1: Builder - Instala dependencias y construye la aplicación
-FROM node:20.11-alpine AS base
+FROM node:20.11-alpine AS builder
 
 WORKDIR /app
 
