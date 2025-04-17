@@ -11,9 +11,6 @@ services:
       - AUTH_SECRET=${AUTH_SECRET:-kagkhasghdgakjdghakghdkajgdkjasgdkagsdjgasjgdasdkgajdgaks}
       - NODE_ENV=production
     restart: unless-stopped
-    volumes:
-      - ./public:/app/public
-      - ./.next:/app/.next
     networks:
       - perfumery-client-network
 
