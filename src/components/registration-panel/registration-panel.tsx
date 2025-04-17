@@ -27,7 +27,6 @@ export default function RegisterForm() {
 
 	return (
 		<div className="flex w-full justify-center items-center overflow-auto">
-			{/* Lado izquierdo con la imagen */}
 			<div className="relative hidden h-full md:block md:w-1/2">
 				<div className="absolute inset-0 bg-gradient-to-br max-h-[200px] from-orange-500 to-pink-500 opacity-10 z-10" />
 
@@ -52,7 +51,6 @@ export default function RegisterForm() {
 				</div>
 			</div>
 
-			{/* Lado derecho con el formulario */}
 			<div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-white">
 				<div className="w-full max-w-md">
 					<div className="mb-8">
