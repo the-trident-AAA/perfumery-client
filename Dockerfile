@@ -30,5 +30,5 @@ COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 8000
 
-# Usa PM2 para manejar el proceso de Node.js
-CMD ["pm2-runtime", "server.js"]
+
+CMD ["node", "server.js", "--hostname", "0.0.0.0", "--port", "8000"]
