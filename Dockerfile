@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Runner - Solo lo necesario para producción
-FROM node:18-alpine AS runner
+FROM node:20.11-alpine AS runner
 WORKDIR /app
 
 # No necesitamos el paquete npm en producción
@@ -30,7 +30,7 @@ COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 8000
 
-ENV PORT 8083
+ENV PORT 8080
 
 ENV HOSTNAME 0.0.0.0
 
