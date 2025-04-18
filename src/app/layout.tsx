@@ -10,6 +10,7 @@ import PerfumDetailsContainer from "@/src/sections/perfums/perfum-details/perfum
 import LoginPanel from "@/src/components/login-panel/login-panel"
 import RegistrationPanel from "@/src/components/registration-panel/registration-panel"
 import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
+import EditProfileForm from "@/src/sections/profile/edit-profile-form/edit-profile-form"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -45,6 +46,12 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							maxWidth="max-w-6xl"
 						>
 							<ShopCartContent />
+						</Modal>
+						<Modal
+							formPath={modalTypes.editProfileModal.name}
+							maxWidth="max-w-3xl"
+						>
+							<EditProfileForm />
 						</Modal>
 					</main>
 				</ModalProvider>
