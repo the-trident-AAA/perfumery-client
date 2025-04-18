@@ -1,16 +1,9 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { User } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
-import {
-	Card,
-	CardContent,
-	CardHeader,
-	CardTitle,
-} from "@/src/components/ui/card"
 import { Input } from "@/src/components/ui/input"
 
 export default function ProfileEdit() {
@@ -24,16 +17,16 @@ export default function ProfileEdit() {
 	}
 
 	return (
-		<Card className="w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-md">
-			<CardHeader className="flex flex-col items-center justify-center pt-4 bg-gradient-to-b from-green-50 to-white">
+		<div className="w-full mx-auto overflow-hidden bg-white mt-1">
+			<div className="flex flex-col items-center justify-center pt-4 bg-gradient-to-b from-green-50 to-white">
 				<div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-blue-100">
 					<User className="w-8 h-8 text-blue-500" />
 				</div>
-				<CardTitle className="text-xl font-semibold text-center text-gray-800">
+				<div className="text-xl font-semibold text-center text-gray-800">
 					Editar Perfil
-				</CardTitle>
-			</CardHeader>
-			<CardContent className="p-6 ">
+				</div>
+			</div>
+			<div className="p-6 ">
 				<form onSubmit={handleSubmit} className="space-y-4">
 					<div className="space-y-2">
 						<label
@@ -98,7 +91,7 @@ export default function ProfileEdit() {
 						Editar
 					</Button>
 				</form>
-			</CardContent>
-		</Card>
+			</div>
+		</div>
 	)
 }

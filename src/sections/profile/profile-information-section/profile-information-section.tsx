@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 import { Button } from "@/src/components/ui/button"
+import EditProfileButton from "@/src/sections/profile/profile-information-section/edit-profile-button/edit-profile-button"
 
 interface Props {}
 
@@ -17,12 +18,7 @@ export default function ProfileInformationSection() {
 
 			<p className="text-gray-500 text-sm mt-1 mb-6">andyP02@gmail.com</p>
 
-			<Button
-				className="w-full py-3 px-4
-          transition-colors rounded-md text-lg font-medium"
-			>
-				Editar Perfil
-			</Button>
+			<EditProfileButton />
 		</div>
 	)
 }
