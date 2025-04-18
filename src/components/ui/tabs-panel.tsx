@@ -22,7 +22,7 @@ export type TabsType = {
 	component?: ReactNode
 }
 
-const TabPanel = ({
+const TabsPanel = ({
 	currentTab,
 	onSelectTab,
 	tabs,
@@ -80,7 +80,7 @@ function TabsContainer({ tabs }: TabContainerProps) {
 
 	return (
 		<div className="w-full">
-			<TabPanel
+			<TabsPanel
 				currentTab={tabValue}
 				tabs={tabs}
 				onSelectTab={setTabValue}
@@ -94,4 +94,4 @@ function TabsContainer({ tabs }: TabContainerProps) {
 	)
 }
 
-export { TabPanel, TabItem, TabsContainer }
+export { TabsPanel, TabItem, TabsContainer }
