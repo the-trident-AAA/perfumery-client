@@ -22,7 +22,7 @@ const LittleCar = () => {
 					<ShoppingCartIcon className="size-8 sm:size-12 text-white" />
 				</button>
 			</PopoverTrigger>
-			<PopoverContent className="w-full">
+			<PopoverContent className="w-full max-h-screen overflow-auto">
 				<ShopCartContent />
 			</PopoverContent>
 		</Popover>
