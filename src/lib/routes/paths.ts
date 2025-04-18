@@ -5,6 +5,7 @@ interface Path {
 interface ApplicationPath {
 	home: Path
 	perfumes: (query?: Record<string, string>) => Path
+	profile: Path
 }
 
 function buildQueryString(query: Record<string, string> = {}): string {
@@ -22,5 +23,8 @@ export const paths: ApplicationPath = {
 		return {
 			root: queryString ? `${basePath}?${queryString}` : basePath,
 		}
+	},
+	profile: {
+		root: "/profile",
 	},
 } as const

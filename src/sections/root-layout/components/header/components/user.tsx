@@ -8,9 +8,11 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/src/components/ui/popover"
+import { paths } from "@/src/lib/routes/paths"
 import LoginButton from "@/src/sections/root-layout/components/header/components/login-button/login-button"
 import RegistrationButton from "@/src/sections/root-layout/components/header/components/registration-button/registration-button"
 import { UserCircleIcon } from "lucide-react"
+import Link from "next/link"
 import React, { useContext } from "react"
 
 const User = () => {
@@ -39,6 +41,7 @@ const User = () => {
 					>
 						Editar Perfil del Usuario
 					</Button>
+					<Link href={paths.profile.root}>Ver Pérfil</Link>
 				</div>
 			</PopoverContent>
 		</Popover>
