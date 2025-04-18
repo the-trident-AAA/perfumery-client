@@ -1,3 +1,4 @@
+import OrdersList from "@/src/sections/orders/orders-list/orders-list"
 import React from "react"
 
 export default function OrdersContent() {
@@ -10,7 +11,7 @@ export default function OrdersContent() {
 				</p>
 			</div>
 
-			<div className="grid grid-cols-1">Pedido 1 Pedido1</div>
+			<OrdersList />
 		</div>
 	)
 }
