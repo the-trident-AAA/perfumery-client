@@ -1,4 +1,6 @@
 import { TabsContainer } from "@/src/components/ui/tabs-panel"
+import OrdersContent from "@/src/sections/orders/orders-content"
+import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
 import React, { useMemo } from "react"
 
 export default function ProfileAdditionalInformation() {
@@ -7,12 +9,12 @@ export default function ProfileAdditionalInformation() {
 			{
 				label: "Pedidos",
 				value: "orders",
-				component: <div className="p-4">Pedidos</div>,
+				component: <OrdersContent />,
 			},
 			{
 				label: "Carrito de Compras",
 				value: "shop-cart",
-				component: <div>Carrito de Compras</div>,
+				component: <ShopCartContent />,
 			},
 		],
 		[],

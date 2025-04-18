@@ -7,7 +7,7 @@ import React from "react"
 
 export default function ShopCartContent() {
 	return (
-		<div className="flex flex-col gap-4 mt-2">
+		<div className="flex flex-col gap-4 mt-2 w-full">
 			<div className="flex  justify-center gap-2">
 				<ShoppingCartIcon className="size-8" />
 				<h1 className="text-2xl font-bold">Tu Carrito</h1>

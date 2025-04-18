@@ -76,13 +76,19 @@ function TabItem(props: TabItemProps) {
 
 interface TabContainerProps {
 	tabs: TabsType[]
+	fullWidth?: boolean
 }
 
-function TabsContainer({ tabs }: TabContainerProps) {
+function TabsContainer({ tabs, fullWidth = true }: TabContainerProps) {
 	const [tabValue, setTabValue] = useState(tabs[0].value)
 
 	return (
-		<TabPanel currentTab={tabValue} tabs={tabs} onSelectTab={setTabValue}>
+		<TabPanel
+			currentTab={tabValue}
+			tabs={tabs}
+			onSelectTab={setTabValue}
+			fullWidth={fullWidth}
+		>
 			{tabs.map(tab => (
 				<TabItem key={tab.value} value={tab.value}>
 					{tab.component}
