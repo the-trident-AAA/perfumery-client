@@ -7,7 +7,7 @@ import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
 import ChangePasswordButton from "@/src/sections/profile/edit-profile-form/change-password-button/change-password-button"
 
-export default function ProfileEdit() {
+export default function EditProfileForm() {
 	const [username, setUsername] = useState("")
 	const [firstName, setFirstName] = useState("")
 	const [lastName, setLastName] = useState("")
