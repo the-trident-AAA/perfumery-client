@@ -6,7 +6,7 @@ import { InfoModal } from "../types/modalTypes"
 interface Props {
 	currentModal: InfoModal[]
 	handleOpenModal: (infoModal: InfoModal) => void
-	handleCloseModal: (modalName: string) => void
+	handleCloseModal: (modalName: string, callOnClose?: boolean) => void
 	onOpenChange: (modalName: string) => void
 	isModalOpen: (modalName: string) => boolean
 	getInfoModal: (modalName: string) => InfoModal | undefined

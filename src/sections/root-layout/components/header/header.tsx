@@ -1,8 +1,9 @@
 import Logo from "./components/logo"
-import LittleCar from "./components/littleCar"
+
 import User from "./components/user"
 import HeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/header-search"
 import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
+import LittleCar from "@/src/sections/root-layout/components/header/components/little-car/little-car"
 
 const Header = () => {
 	return (
