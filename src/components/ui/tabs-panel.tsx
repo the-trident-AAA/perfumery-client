@@ -13,6 +13,7 @@ interface Props {
 	onClickTab?: (tab: TabsType) => void
 	tabs: TabsType[]
 	fullWidth?: boolean
+	children?: ReactNode
 }
 
 export type TabsType = {
@@ -22,12 +23,13 @@ export type TabsType = {
 	component?: ReactNode
 }
 
-const TabsPanel = ({
+const TabPanel = ({
 	currentTab,
 	onSelectTab,
 	tabs,
 	onClickTab,
 	fullWidth,
+	children,
 }: Props) => {
 	const handleValueChange = (value: string) => {
 		onSelectTab?.(value)
@@ -52,6 +54,7 @@ const TabsPanel = ({
 					</TabsTrigger>
 				))}
 			</TabsList>
+			{children}
 		</Tabs>
 	)
 }
@@ -79,19 +82,14 @@ function TabsContainer({ tabs }: TabContainerProps) {
 	const [tabValue, setTabValue] = useState(tabs[0].value)
 
 	return (
-		<div className="w-full">
-			<TabsPanel
-				currentTab={tabValue}
-				tabs={tabs}
-				onSelectTab={setTabValue}
-			/>
+		<TabPanel currentTab={tabValue} tabs={tabs} onSelectTab={setTabValue}>
 			{tabs.map(tab => (
 				<TabItem key={tab.value} value={tab.value}>
 					{tab.component}
 				</TabItem>
 			))}
-		</div>
+		</TabPanel>
 	)
 }
 
-export { TabsPanel, TabItem, TabsContainer }
+export { TabPanel, TabItem, TabsContainer }
