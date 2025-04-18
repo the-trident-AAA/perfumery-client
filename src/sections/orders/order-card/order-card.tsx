@@ -6,6 +6,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/src/components/ui/accordion"
+import { Badge } from "@/src/components/ui/badge"
 import { Card } from "@/src/components/ui/card"
 
 export interface Order {
@@ -16,7 +17,7 @@ export interface Order {
 	perfumeOrder: any[]
 }
 
-/*const getStatusColor = (status: string) => {
+const getStatusColor = (status: string) => {
 	switch (status.toLowerCase()) {
 		case "completado":
 		case "entregado":
@@ -31,7 +32,7 @@ export interface Order {
 		default:
 			return "bg-gray-500"
 	}
-}*/
+}
 
 export default function OrderCard({ order }: { order: Order }) {
 	return (
@@ -44,7 +45,11 @@ export default function OrderCard({ order }: { order: Order }) {
 								<span className="font-semibold text-lg">
 									Pedido #{order.code}
 								</span>
-								{/*<Badge className={`${getStatusColor(order.status)} text-white mt-1`}>{order.status}</Badge> */}
+								<Badge
+									className={`${getStatusColor(order.status)} text-white mt-1`}
+								>
+									{order.status}
+								</Badge>
 							</div>
 							<div className="text-right">
 								<span className="font-bold text-xl">
