@@ -33,18 +33,30 @@ export default function ProfileEdit() {
 					Editar Perfil
 				</CardTitle>
 			</CardHeader>
-			<CardContent className="p-6">
+			<CardContent className="p-6 ">
 				<form onSubmit={handleSubmit} className="space-y-4">
 					<div className="space-y-2">
+						<label
+							htmlFor="username"
+							className="text-sm font-medium text-black pl-4 mb-1 block"
+						>
+							Nombre de usuario*
+						</label>
 						<Input
 							id="username"
-							placeholder="Username"
+							placeholder="Nombre de usuario"
 							value={username}
 							onChange={e => setUsername(e.target.value)}
 							className="w-full px-4 py-2 border rounded-md border-green-200 focus:outline-none focus:ring-2 focus:ring-green-100"
 						/>
 					</div>
 					<div className="space-y-2">
+						<label
+							htmlFor="firstName"
+							className="text-sm font-medium text-black pl-4 mb-1 block"
+						>
+							Nombres*
+						</label>
 						<Input
 							id="firstName"
 							placeholder="Nombres"
@@ -54,6 +66,12 @@ export default function ProfileEdit() {
 						/>
 					</div>
 					<div className="space-y-2">
+						<label
+							htmlFor="lastName"
+							className="text-sm font-medium text-black pl-4 mb-1 block"
+						>
+							Apellidos*
+						</label>
 						<Input
 							id="lastName"
 							placeholder="Apellidos"
