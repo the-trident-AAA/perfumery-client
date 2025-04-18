@@ -1,8 +1,4 @@
 "use client"
-
-import { ModalContext } from "@/src/components/modal/context/modalContext"
-import { modalTypes } from "@/src/components/modal/types/modalTypes"
-import { Button } from "@/src/components/ui/button"
 import {
 	Popover,
 	PopoverContent,
@@ -13,10 +9,9 @@ import LoginButton from "@/src/sections/root-layout/components/header/components
 import RegistrationButton from "@/src/sections/root-layout/components/header/components/registration-button/registration-button"
 import { UserCircleIcon } from "lucide-react"
 import Link from "next/link"
-import React, { useContext } from "react"
+import React from "react"
 
 const User = () => {
-	const { handleOpenModal } = useContext(ModalContext)
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
@@ -32,15 +27,6 @@ const User = () => {
 				<div className="flex flex-col gap-1">
 					<LoginButton />
 					<RegistrationButton />
-					<Button
-						onClick={() => {
-							handleOpenModal({
-								name: modalTypes.editProfileModal.name,
-							})
-						}}
-					>
-						Editar Perfil del Usuario
-					</Button>
 					<Link href={paths.profile.root}>Ver Pérfil</Link>
 				</div>
 			</PopoverContent>

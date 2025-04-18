@@ -49,7 +49,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 						</Modal>
 						<Modal
 							formPath={modalTypes.editProfileModal.name}
-							maxWidth="max-w-3xl"
+							maxWidth="max-w-lg"
 						>
 							<EditProfileForm />
 						</Modal>
