@@ -15,6 +15,7 @@ export interface ModalTypes {
 	loginModal: SectionModal
 	registrationModal: SectionModal
 	shopCartModal: SectionModal
+	editProfileModal: SectionModal
 }
 
 export const modalTypes: ModalTypes = {
@@ -33,5 +34,9 @@ export const modalTypes: ModalTypes = {
 	shopCartModal: {
 		name: "shopCartModal",
 		title: "Carrito de Compras",
+	},
+	editProfileModal: {
+		name: "editProfileModal",
+		title: "Edite su información de Pérfil",
 	},
 }
