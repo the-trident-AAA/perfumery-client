@@ -5,6 +5,7 @@ import { useState } from "react"
 import { User } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
+import ChangePasswordButton from "@/src/sections/profile/edit-profile-form/change-password-button/change-password-button"
 
 export default function ProfileEdit() {
 	const [username, setUsername] = useState("")
@@ -75,13 +76,7 @@ export default function ProfileEdit() {
 					</div>
 
 					<div className="flex justify-center mt-2">
-						<Button
-							variant="link"
-							type="button"
-							className="text-sm text-gray-500 hover:text-blue-600"
-						>
-							¿Desea cambiar contraseña?
-						</Button>
+						<ChangePasswordButton />
 					</div>
 
 					<Button

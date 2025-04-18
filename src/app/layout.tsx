@@ -11,6 +11,7 @@ import LoginPanel from "@/src/components/login-panel/login-panel"
 import RegistrationPanel from "@/src/components/registration-panel/registration-panel"
 import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
 import EditProfileForm from "@/src/sections/profile/edit-profile-form/edit-profile-form"
+import ChangePasswordForm from "@/src/sections/profile/change-password-form/change-password-form"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -52,6 +53,12 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							maxWidth="max-w-lg"
 						>
 							<EditProfileForm />
+						</Modal>
+						<Modal
+							formPath={modalTypes.changePasswordModal.name}
+							maxWidth="max-w-xl"
+						>
+							<ChangePasswordForm />
 						</Modal>
 					</main>
 				</ModalProvider>

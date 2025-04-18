@@ -16,6 +16,7 @@ export interface ModalTypes {
 	registrationModal: SectionModal
 	shopCartModal: SectionModal
 	editProfileModal: SectionModal
+	changePasswordModal: SectionModal
 }
 
 export const modalTypes: ModalTypes = {
@@ -38,5 +39,9 @@ export const modalTypes: ModalTypes = {
 	editProfileModal: {
 		name: "editProfileModal",
 		title: "Edite su información de Pérfil",
+	},
+	changePasswordModal: {
+		name: "changePasswordModal",
+		title: "Cambie su contraseña actual",
 	},
 }
