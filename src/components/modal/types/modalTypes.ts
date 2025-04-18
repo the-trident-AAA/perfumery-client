@@ -3,6 +3,8 @@ export interface InfoModal {
 	// matadata
 	entity?: string // id entity
 	actionInsert?: (element: any) => void
+	onClose?: () => void
+	onOpen?: () => void
 }
 export interface SectionModal {
 	name: string
@@ -12,6 +14,7 @@ export interface ModalTypes {
 	perfumDetailsModal: SectionModal
 	loginModal: SectionModal
 	registrationModal: SectionModal
+	shopCartModal: SectionModal
 }
 
 export const modalTypes: ModalTypes = {
@@ -26,5 +29,9 @@ export const modalTypes: ModalTypes = {
 	registrationModal: {
 		name: "registrationModal",
 		title: "Registro de Usuario",
+	},
+	shopCartModal: {
+		name: "shopCartModal",
+		title: "Carrito de Compras",
 	},
 }

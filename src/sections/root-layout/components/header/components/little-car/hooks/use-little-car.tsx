@@ -1,0 +1,70 @@
+"use client"
+import { ModalContext } from "@/src/components/modal/context/modalContext"
+import { modalTypes } from "@/src/components/modal/types/modalTypes"
+import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
+import { useCallback, useContext, useEffect, useState } from "react"
+
+export default function useLittleCar() {
+	const { handleOpenModal, handleCloseModal } = useContext(ModalContext)
+	const breakpoint = useBreakpoint()
+	const [isPopoverOpen, setIsPopoverOpen] = useState(false)
+	const [isShopCartOpen, setIsShopCartOpen] = useState(false)
+
+	const closeModal = useCallback(() => {
+		setIsShopCartOpen(false)
+	}, [setIsShopCartOpen])
+
+	const handleOnOpenPopover = useCallback(
+		(open: boolean) => {
+			setIsShopCartOpen(open)
+			if (
+				breakpoint === "md" ||
+				breakpoint === "sm" ||
+				breakpoint === "xs"
+			) {
+				if (open) {
+					handleOpenModal({
+						name: modalTypes.shopCartModal.name,
+						onClose: closeModal,
+					})
+				} else {
+					handleCloseModal(modalTypes.shopCartModal.name)
+				}
+			} else {
+				setIsPopoverOpen(open)
+			}
+		},
+		[handleOpenModal, handleCloseModal, setIsPopoverOpen, breakpoint],
+	)
+
+	const resizing = useCallback(() => {
+		if (
+			isShopCartOpen &&
+			(breakpoint === "md" || breakpoint === "sm" || breakpoint === "xs")
+		) {
+			setIsPopoverOpen(false)
+			handleOpenModal({
+				name: modalTypes.shopCartModal.name,
+				onClose: closeModal,
+			})
+		} else if (
+			!(breakpoint === "md" || breakpoint === "sm" || breakpoint === "xs")
+		) {
+			if (isShopCartOpen) {
+				setIsPopoverOpen(true)
+				handleCloseModal(modalTypes.shopCartModal.name, false)
+			}
+		}
+	}, [
+		setIsPopoverOpen,
+		handleCloseModal,
+		isShopCartOpen,
+		breakpoint,
+		closeModal,
+	])
+
+	useEffect(() => {
+		resizing()
+	}, [breakpoint])
+	return { isPopoverOpen, handleOnOpenPopover }
+}

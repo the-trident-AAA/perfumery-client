@@ -9,6 +9,7 @@ import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import PerfumDetailsContainer from "@/src/sections/perfums/perfum-details/perfum-details-container/perfum-details-container"
 import LoginPanel from "@/src/components/login-panel/login-panel"
 import RegistrationPanel from "@/src/components/registration-panel/registration-panel"
+import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -38,6 +39,12 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							maxWidth="max-w-6xl"
 						>
 							<RegistrationPanel />
+						</Modal>
+						<Modal
+							formPath={modalTypes.shopCartModal.name}
+							maxWidth="max-w-6xl"
+						>
+							<ShopCartContent />
 						</Modal>
 					</main>
 				</ModalProvider>
