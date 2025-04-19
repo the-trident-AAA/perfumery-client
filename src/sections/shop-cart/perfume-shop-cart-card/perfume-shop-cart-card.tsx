@@ -5,6 +5,7 @@ import { Minus, Plus } from "lucide-react"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
 import { Perfum } from "@/src/components/perfum-card/perfum-card"
+import QuantityController from "@/src/components/quantity-controller/quantity-controller"
 
 export interface PerfumeCart {
 	id: string
@@ -56,26 +57,7 @@ export default function PerfumeShopCartCard({
 
 						{/* Controles de cantidad */}
 						<div className="flex items-center flex-row gap-1 justify-between mt-3">
-							<div className="flex items-center ">
-								<Button
-									variant="outline"
-									size="icon"
-									className="h-8 w-8"
-									disabled={cant <= 1}
-								>
-									<Minus className="h-4 w-4" />
-								</Button>
-								<span className="w-6 2xs:w-8 text-center">
-									{cant}
-								</span>
-								<Button
-									variant="outline"
-									size="icon"
-									className="h-8 w-8"
-								>
-									<Plus className="h-4 w-4" />
-								</Button>
-							</div>
+							<QuantityController quantity={cant} />
 							<div className="flex flex-col 2xs:flex-row gap-1">
 								<p className="font-medium ">Total: </p>
 								<span className="font-bold text-sm 2xs:text-base">
