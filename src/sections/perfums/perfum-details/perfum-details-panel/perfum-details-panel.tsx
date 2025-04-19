@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Minus, Plus } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
 import type { Perfum } from "@/src/components/perfum-card/perfum-card"
+import QuantityController from "@/src/components/quantity-controller/quantity-controller"
 interface Props {
 	perfum: Perfum
 }
@@ -100,23 +101,7 @@ export default function PerfumDetailsPanel({
 
 					{/* Quantity and Add to Cart */}
 					<div className="flex justify-end items-center space-x-4 mt-6">
-						<div className="flex items-center border rounded">
-							<button
-								className="p-2"
-								onClick={decreaseQuantity}
-								aria-label="Decrease quantity"
-							>
-								<Minus className="h-4 w-4" />
-							</button>
-							<span className="px-4">{quantity}</span>
-							<button
-								className="p-2"
-								onClick={increaseQuantity}
-								aria-label="Increase quantity"
-							>
-								<Plus className="h-4 w-4" />
-							</button>
-						</div>
+						<QuantityController quantity={quantity} />
 						<Button className="bg-rose-600 hover:bg-rose-700 text-white px-8 py-2 rounded">
 							Añadir al carrito
 						</Button>
