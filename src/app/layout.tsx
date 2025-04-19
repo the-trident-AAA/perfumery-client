@@ -46,7 +46,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							formPath={modalTypes.shopCartModal.name}
 							maxWidth="max-w-6xl"
 						>
-							<ShopCartContent />
+							<ShopCartContent variant="modal" />
 						</Modal>
 						<Modal
 							formPath={modalTypes.editProfileModal.name}

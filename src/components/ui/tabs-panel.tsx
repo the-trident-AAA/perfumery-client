@@ -69,7 +69,7 @@ function TabItem(props: TabItemProps) {
 
 	return (
 		<TabsContent value={value} {...other}>
-			<div className="p-6">{children}</div>
+			<div>{children}</div>
 		</TabsContent>
 	)
 }

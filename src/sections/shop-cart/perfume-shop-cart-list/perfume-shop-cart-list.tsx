@@ -48,13 +48,20 @@ const perfurmCarts: PerfumeCart[] = [
 	},
 ]
 
-export default function PerfumeShopCartList() {
+interface Props {
+	variant?: "default" | "modal"
+}
+
+export default function PerfumeShopCartList({ variant = "default" }: Props) {
 	return (
-		<div className="grid grid-cols-1 gap-4 max-h-[500px] 2xs:max-h-[480px] sm:max-h-[620px] overflow-y-auto p-2">
+		<div
+			className={`grid grid-cols-1 gap-4 ${variant === "modal" ? "max-h-[500px] 2xs:max-h-[480px] sm:max-h-[620px]" : ""} overflow-y-auto p-2`}
+		>
 			{perfurmCarts.map(perfumCart => (
 				<PerfumeShopCartCard
 					key={perfumCart.id}
 					perfurmeCart={perfumCart}
+					variant={variant}
 				/>
 			))}
 		</div>

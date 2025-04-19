@@ -15,25 +15,27 @@ export interface PerfumeCart {
 
 interface PerfumeCartProps {
 	perfurmeCart: PerfumeCart
+	variant?: "default" | "modal"
 }
 
 export default function PerfumeShopCartCard({
 	perfurmeCart: { id, perfume, cant, precio },
+	variant = "default",
 }: PerfumeCartProps) {
 	return (
-		<Card className="overflow-hidden border-muted">
-			<CardContent className="p-0">
-				<div className="flex flex-row items-center">
+		<div className=" rounded-2xl border">
+			<div className="p-0">
+				<div className={`flex items-center`}>
 					{/* Imagen del producto */}
-					<div className="relative h-24 w-24 sm:h-32 sm:w-32 flex-shrink-0">
+					<div
+						className={`relative h-28 w-28 2xs:h-32 2xs:w-32 flex-shrink-0`}
+					>
 						<Image
-							src={
-								perfume.image ||
-								"/placeholder.svg?height=128&width=128"
-							}
-							alt={perfume.name}
-							fill
-							className="object-cover"
+							className="aspect-square object-cover"
+							src={perfume.image}
+							alt={"image"}
+							width={400}
+							height={400}
 						/>
 					</div>
 
@@ -43,7 +45,7 @@ export default function PerfumeShopCartCard({
 							<h3 className="font-medium text-base sm:text-lg truncate">
 								{perfume.name}
 							</h3>
-							<p className="font-semibold text-base sm:text-lg">
+							<p className="font-semibold text-sm 2xs:text-base">
 								${precio.toFixed(2)}
 							</p>
 						</div>
@@ -53,8 +55,8 @@ export default function PerfumeShopCartCard({
 						</p>
 
 						{/* Controles de cantidad */}
-						<div className="flex items-center justify-between mt-3">
-							<div className="flex items-center space-x-2">
+						<div className="flex items-center flex-row gap-1 justify-between mt-3">
+							<div className="flex items-center ">
 								<Button
 									variant="outline"
 									size="icon"
@@ -63,7 +65,9 @@ export default function PerfumeShopCartCard({
 								>
 									<Minus className="h-4 w-4" />
 								</Button>
-								<span className="w-8 text-center">{cant}</span>
+								<span className="w-6 2xs:w-8 text-center">
+									{cant}
+								</span>
 								<Button
 									variant="outline"
 									size="icon"
@@ -72,16 +76,16 @@ export default function PerfumeShopCartCard({
 									<Plus className="h-4 w-4" />
 								</Button>
 							</div>
-							<p className="font-medium">
-								Total:{" "}
-								<span className="font-bold">
+							<div className="flex flex-col 2xs:flex-row gap-1">
+								<p className="font-medium ">Total: </p>
+								<span className="font-bold text-sm 2xs:text-base">
 									${(precio * cant).toFixed(2)}
 								</span>
-							</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</CardContent>
-		</Card>
+			</div>
+		</div>
 	)
 }
