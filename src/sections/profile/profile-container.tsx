@@ -4,7 +4,7 @@ import React from "react"
 
 export default function ProfileContainer() {
 	return (
-		<div className="flex flex-col lg:flex-row gap-8 p-2">
+		<div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-2">
 			<ProfileInformationSection />
 			<ProfileAdditionalInformation />
 		</div>
