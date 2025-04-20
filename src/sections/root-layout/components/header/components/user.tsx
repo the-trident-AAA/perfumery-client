@@ -1,4 +1,6 @@
 "use client"
+import NavigationComponent from "@/src/components/navigation-component/navigation-component"
+import { Button } from "@/src/components/ui/button"
 import {
 	Popover,
 	PopoverContent,
@@ -27,7 +29,9 @@ const User = () => {
 				<div className="flex flex-col gap-1">
 					<LoginButton />
 					<RegistrationButton />
-					<Link href={paths.profile.root}>Ver Pérfil</Link>
+					<NavigationComponent href={paths.profile.root}>
+						<Button className="w-full">Ver Pérfil</Button>
+					</NavigationComponent>
 				</div>
 			</PopoverContent>
 		</Popover>
