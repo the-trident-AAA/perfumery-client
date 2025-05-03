@@ -8,6 +8,8 @@ import {
 } from "@/src/components/ui/accordion"
 import { Badge } from "@/src/components/ui/badge"
 import { Card } from "@/src/components/ui/card"
+import { PerfumeOrder } from "@/src/sections/orders/perfume-orders/perfume-order-card/perfume-order-card"
+import PerfumeOrdersList from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list"
 
 export interface Order {
 	id: string
@@ -34,6 +36,51 @@ const getStatusColor = (status: string) => {
 	}
 }
 
+const perfurmesOrder: PerfumeOrder[] = [
+	{
+		id: "1",
+		perfume: {
+			id: "1",
+			brand: "Christian Dior",
+			name: "Sauvage",
+			description:
+				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
+			price: 90,
+			image: "/images/place-holder.jpg",
+		},
+		cant: 2,
+		precio: 200,
+	},
+	{
+		id: "2",
+		perfume: {
+			id: "2",
+			brand: "Christian Dior",
+			name: "Sauvage",
+			description:
+				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
+			price: 90,
+			image: "/images/place-holder.jpg",
+		},
+		cant: 4,
+		precio: 500,
+	},
+	{
+		id: "3",
+		perfume: {
+			id: "3",
+			brand: "Christian Dior",
+			name: "Sauvage",
+			description:
+				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
+			price: 90,
+			image: "/images/place-holder.jpg",
+		},
+		cant: 5,
+		precio: 600,
+	},
+]
+
 export default function OrderCard({ order }: { order: Order }) {
 	return (
 		<Card className="w-full mb-4 overflow-hidden">
@@ -58,33 +105,8 @@ export default function OrderCard({ order }: { order: Order }) {
 							</div>
 						</div>
 					</AccordionTrigger>
-					<AccordionContent className="px-6 pb-4">
-						<div className="border-t pt-4 mt-2">
-							<h3 className="font-medium text-lg mb-3">
-								Perfumes en este pedido
-							</h3>
-							{order.perfumeOrder.length > 0 ? (
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-									{order.perfumeOrder.map(
-										(perfume, index) => (
-											<div
-												key={index}
-												className="bg-muted p-4 rounded-md"
-											>
-												<div className="text-center text-muted-foreground">
-													Tarjeta de perfume #
-													{index + 1}
-												</div>
-											</div>
-										),
-									)}
-								</div>
-							) : (
-								<p className="text-muted-foreground">
-									No hay perfumes en este pedido.
-								</p>
-							)}
-						</div>
+					<AccordionContent className="px-4 2xs:px-6 pb-4">
+						<PerfumeOrdersList perfumesOrder={perfurmesOrder} />
 					</AccordionContent>
 				</AccordionItem>
 			</Accordion>
