@@ -58,7 +58,7 @@ export default function PerfumeShopCartCard({
 						{/* Controles de cantidad */}
 						<div className="flex items-center flex-row gap-1 justify-between mt-3">
 							<QuantityController quantity={cant} />
-							<div className="flex flex-col 2xs:flex-row gap-1">
+							<div className="flex flex-col 2xs:flex-row gap-1 items-center">
 								<p className="font-medium ">Total: </p>
 								<span className="font-bold text-sm 2xs:text-base">
 									${(precio * cant).toFixed(2)}
