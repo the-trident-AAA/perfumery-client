@@ -1,22 +1,17 @@
 "use client"
-import React, { ReactNode } from "react"
+import React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { paths } from "@/src/lib/routes/paths"
+import { PerfumeType } from "@/src/lib/types/perfume-types"
 
-interface PerfumeGroup {
-	id: number
-	name: string
-	image: string
-	icon?: ReactNode
-}
 interface Props {
-	perfumeGroup: PerfumeGroup
+	perfumeGroup: PerfumeType
 	w?: string
 }
 
 export default function PerfumeGroupCard({
-	perfumeGroup: { id, name, image, icon },
+	perfumeGroup: { id, name, image },
 	w = "w-full",
 }: Props) {
 	return (
@@ -38,19 +33,12 @@ export default function PerfumeGroupCard({
 			>
 				<div
 					className="absolute inset-0 bg-cover bg-center z-0"
-					style={{ backgroundImage: `url(${image})` }}
+					style={{
+						backgroundImage: `url(${image || "/images/place-holder.jpg"})`,
+					}}
 				/>
 				<div className="absolute inset-0 bg-gradient-to-b bg-black/40 z-10 transition-opacity duration-500 ease-in-out group-hover:opacity-0" />
 				<div className="relative z-20 flex flex-col items-center justify-center h-64 p-6 text-white">
-					{icon && (
-						<motion.div
-							whileHover={{ rotate: 360 }}
-							transition={{ duration: 0.5 }}
-							className="bg-white text-primary rounded-full p-4 mb-4"
-						>
-							{icon}
-						</motion.div>
-					)}
 					<h3 className="text-xl sm:text-3xl font-bold text-center mb-2">
 						{name}
 					</h3>
