@@ -6,6 +6,8 @@ import { Scent } from "@/src/lib/types/scents"
 export interface Perfume {
 	id: string
 	name: string
+	description: string
+	image?: string
 	brand: string
 	offer: Offer
 	gender: string

@@ -2,7 +2,7 @@
 import SheetFilters from "@/src/components/filters/sheet-filters"
 import SidePanelFilters from "@/src/components/filters/side-panel-filters"
 import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
-import PerfumesFilters from "@/src/sections/perfums/filters/perfumes-filters/perfumes-filters"
+import PerfumesFilters from "@/src/sections/perfumes/filters/perfumes-filters/perfumes-filters"
 import React from "react"
 
 export default function PerfumesFiltersContainer() {
