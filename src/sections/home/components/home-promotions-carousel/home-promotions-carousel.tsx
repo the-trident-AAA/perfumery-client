@@ -1,29 +1,26 @@
 "use client"
-import PerfurmCard, { Perfum } from "@/src/components/perfum-card/perfum-card"
+import PerfurmCard from "@/src/components/perfum-card/perfum-card"
 import { StandardCarouselProvider } from "@/src/components/ui/standard-carousel/context/standard-carousel-context"
 import StandardCarousel from "@/src/components/ui/standard-carousel/standard-carousel"
+import { Perfume } from "@/src/lib/types/perfumes"
 import React from "react"
 
 interface Props {
-	title: string
-	data: Perfum[]
+	data: Perfume[]
 }
 
-export default function HomePromotionsCarousel({ title, data }: Props) {
+export default function HomePromotionsCarousel({ data }: Props) {
 	return (
-		<div className="flex flex-col gap-1">
-			<p className="text-2xl">{title}</p>
-			<StandardCarouselProvider>
-				<StandardCarousel
-					items={data}
-					dimension="100vw"
-					itemsStyles="basis-1/2 sm:basis-1/3 md:basis-1/3 lg:basis-1/4"
-					withArrows
-					arrowsPosition="outside"
-					arrowsLocation="bottom"
-					renderCard={item => <PerfurmCard perfum={item} />}
-				/>
-			</StandardCarouselProvider>
-		</div>
+		<StandardCarouselProvider>
+			<StandardCarousel
+				items={data}
+				dimension="100vw"
+				itemsStyles="basis-1/2 sm:basis-1/3 md:basis-1/3 lg:basis-1/4"
+				withArrows
+				arrowsPosition="outside"
+				arrowsLocation="bottom"
+				renderCard={item => <PerfurmCard perfume={item} />}
+			/>
+		</StandardCarouselProvider>
 	)
 }

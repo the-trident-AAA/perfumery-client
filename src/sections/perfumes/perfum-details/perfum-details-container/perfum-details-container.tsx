@@ -2,7 +2,7 @@
 import { ModalContext } from "@/src/components/modal/context/modalContext"
 import useModal from "@/src/components/modal/hooks/useModal"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
-import PerfumDetailsPanel from "@/src/sections/perfums/perfum-details/perfum-details-panel/perfum-details-panel"
+import PerfumDetailsPanel from "@/src/sections/perfumes/perfum-details/perfum-details-panel/perfum-details-panel"
 import React, { useContext } from "react"
 
 const perfum = {
