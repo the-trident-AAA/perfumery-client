@@ -8,6 +8,7 @@ import {
 } from "@/src/components/ui/accordion"
 import { Badge } from "@/src/components/ui/badge"
 import { Card } from "@/src/components/ui/card"
+import { Gender } from "@/src/lib/types/perfumes"
 import { PerfumeOrder } from "@/src/sections/orders/perfume-orders/perfume-order-card/perfume-order-card"
 import PerfumeOrdersList from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list"
 
@@ -47,6 +48,12 @@ const perfurmesOrder: PerfumeOrder[] = [
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
 			image: "/images/place-holder.jpg",
+			available: true,
+			cant: 0,
+			gender: Gender.FEMALE,
+			liters: 2,
+			perfumeType: "sd",
+			scents: ["a"],
 		},
 		cant: 2,
 		precio: 200,
@@ -61,6 +68,12 @@ const perfurmesOrder: PerfumeOrder[] = [
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
 			image: "/images/place-holder.jpg",
+			available: true,
+			cant: 0,
+			gender: Gender.FEMALE,
+			liters: 2,
+			perfumeType: "sd",
+			scents: ["a"],
 		},
 		cant: 4,
 		precio: 500,
@@ -75,6 +88,12 @@ const perfurmesOrder: PerfumeOrder[] = [
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
 			image: "/images/place-holder.jpg",
+			available: true,
+			cant: 0,
+			gender: Gender.FEMALE,
+			liters: 2,
+			perfumeType: "sd",
+			scents: ["a"],
 		},
 		cant: 5,
 		precio: 600,
