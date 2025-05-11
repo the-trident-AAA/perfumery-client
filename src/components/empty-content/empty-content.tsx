@@ -52,7 +52,7 @@ export default function EmptyContent({
 				</motion.div>
 			</motion.div>
 			<motion.h3
-				className="mt-4 text-primary text-3xl font-bold"
+				className="mt-4 text-primary text-lg sm:text-3xl font-bold"
 				initial={{ opacity: 0, y: 10 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.2 }}
@@ -60,7 +60,7 @@ export default function EmptyContent({
 				{title}
 			</motion.h3>
 			<motion.p
-				className="mt-6 text-xl text-primary"
+				className="mt-6 text-sm sm:text-xl text-primary"
 				initial={{ opacity: 0, y: 10 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3 }}
