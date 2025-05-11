@@ -1,3 +1,4 @@
+import EmptyContent from "@/src/components/empty-content/empty-content"
 import { getPerfumeTypesList } from "@/src/lib/services/perfume-types"
 import PerfumeGroupCard from "@/src/sections/home/components/home-perfume-groups/components/perfume-group-card/perfume-group-card"
 import React from "react"
@@ -8,11 +9,16 @@ export default async function PerfumeGroupsList() {
 		throw new Error("Error fetching perfume types")
 
 	const groups = res.response
-	return (
+	return groups.length > 0 ? (
 		<div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
 			{groups.map((group, index) => (
 				<PerfumeGroupCard key={index} perfumeGroup={group} />
 			))}
 		</div>
+	) : (
+		<EmptyContent
+			title="No hay información de grupos disponibles"
+			description="No se han definido de momento grupos"
+		/>
 	)
 }
