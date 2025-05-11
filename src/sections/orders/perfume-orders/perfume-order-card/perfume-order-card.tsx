@@ -1,12 +1,11 @@
 "use client"
 
 import Image from "next/image"
-import { Perfum } from "@/src/components/perfum-card/perfum-card"
-import QuantityController from "@/src/components/quantity-controller/quantity-controller"
+import { Perfume } from "@/src/lib/types/perfumes"
 
 export interface PerfumeOrder {
 	id: string
-	perfume: Perfum
+	perfume: Perfume
 	cant: number
 	precio: number
 }
@@ -28,7 +27,7 @@ export default function PerfumeOrderCard({
 					>
 						<Image
 							className="aspect-square object-cover"
-							src={perfume.image}
+							src={perfume.image || "images/place-holder.jpg"}
 							alt={"image"}
 							width={400}
 							height={400}

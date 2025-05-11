@@ -1,15 +1,12 @@
 "use client"
 
 import Image from "next/image"
-import { Minus, Plus } from "lucide-react"
-import { Card, CardContent } from "@/src/components/ui/card"
-import { Button } from "@/src/components/ui/button"
-import { Perfum } from "@/src/components/perfum-card/perfum-card"
 import QuantityController from "@/src/components/quantity-controller/quantity-controller"
+import { Perfume } from "@/src/lib/types/perfumes"
 
 export interface PerfumeCart {
 	id: string
-	perfume: Perfum
+	perfume: Perfume
 	cant: number
 	precio: number
 }
@@ -33,7 +30,7 @@ export default function PerfumeShopCartCard({
 					>
 						<Image
 							className="aspect-square object-cover"
-							src={perfume.image}
+							src={perfume.image || "images/place-holder.jpg"}
 							alt={"image"}
 							width={400}
 							height={400}

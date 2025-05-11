@@ -4,14 +4,15 @@ import { useState } from "react"
 import Image from "next/image"
 import { Minus, Plus } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
-import type { Perfum } from "@/src/components/perfum-card/perfum-card"
+
 import QuantityController from "@/src/components/quantity-controller/quantity-controller"
+import { Perfume } from "@/src/lib/types/perfumes"
 interface Props {
-	perfum: Perfum
+	perfume: Perfume
 }
 
 export default function PerfumDetailsPanel({
-	perfum: { id, name, brand, description, image, price },
+	perfume: { id, name, brand, description, image, price },
 }: Props) {
 	const [quantity, setQuantity] = useState(1)
 	const [selectedSize, setSelectedSize] = useState("3.4oz")
