@@ -1,3 +1,4 @@
+"use client"
 import { cn } from "@/src/lib/utils/utils"
 import Autoplay from "embla-carousel-autoplay"
 import React, { useContext } from "react"
