@@ -3,7 +3,7 @@ import { getPerfumesList } from "@/src/lib/services/perfumes"
 import HomePromotionsCarousel from "@/src/sections/home/components/home-promotions-carousel/home-promotions-carousel"
 import React from "react"
 
-export default async function BestSellingProductsCarousel() {
+export default async function BestSellingProductsList() {
 	const res = await getPerfumesList({})
 	if (!res.response || res.error) throw new Error("Error fetching perfumes")
 	const perfumes = res.response

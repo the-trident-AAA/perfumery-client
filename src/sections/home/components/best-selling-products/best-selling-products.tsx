@@ -1,8 +1,8 @@
 import { CardSkeletonGroup } from "@/src/components/card-skeleton-group/card-skeleton-group"
-import BestSellingProductsCarousel from "@/src/sections/home/components/best-selling-products-carousel/best-selling-products-carousel"
+import BestSellingProductsList from "@/src/sections/home/components/best-selling-products/list/best-selling-products-list"
 import React, { Suspense } from "react"
 
-export default async function BestSellingProductsCarouselContainer() {
+export default async function BestSellingProducts() {
 	return (
 		<div className="flex flex-col gap-1">
 			<p className="text-2xl">Productos más Vendidos</p>
@@ -14,7 +14,7 @@ export default async function BestSellingProductsCarouselContainer() {
 					/>
 				}
 			>
-				<BestSellingProductsCarousel />
+				<BestSellingProductsList />
 			</Suspense>
 		</div>
 	)
