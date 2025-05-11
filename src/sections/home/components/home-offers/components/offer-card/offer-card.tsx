@@ -2,23 +2,14 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
-
-export interface Offer {
-	id: number
-	name: string
-	description: string
-	image: string
-	type: string
-	scope: string
-	discount: number
-}
+import { Offer } from "@/src/lib/types/offers"
 
 interface Props {
 	offer: Offer
 }
 
 export default function OfferCard({
-	offer: { id, name, description, image, type, scope, discount },
+	offer: { name, description, image, offerType, scope, discount },
 }: Props) {
 	return (
 		<Card className="w-full max-w-md overflow-hidden rounded-xl shadow-lg">
@@ -46,7 +37,7 @@ export default function OfferCard({
 					<div className="relative h-64 w-full overflow-hidden bg-teal-50">
 						<div className="absolute inset-0 flex items-center justify-center">
 							<Image
-								src="/images/place-holder.jpg"
+								src={image || "/images/place-holder.jpg"}
 								width={600}
 								height={400}
 								alt="Colección de perfumes de lujo"
@@ -80,7 +71,7 @@ export default function OfferCard({
 							<p className="text-sm font-medium">{scope}</p>
 						</div>
 						<div className="bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-sm font-medium">
-							{type}
+							{offerType}
 						</div>
 					</div>
 				</div>
