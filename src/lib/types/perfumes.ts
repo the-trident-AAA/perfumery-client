@@ -9,7 +9,7 @@ export interface Perfume {
 	description: string
 	image?: string
 	brand: string
-	offer?: Offer
+	discountOffer: number
 	gender: string
 	scents: string[]
 	liters: number
