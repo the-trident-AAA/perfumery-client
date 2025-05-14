@@ -27,12 +27,7 @@ export function CardSkeletonGroup({
 	footerHeight = "h-8",
 }: CardSkeletonGroupProps) {
 	return (
-		<div
-			className={cn(
-				"grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
-				containerClassName,
-			)}
-		>
+		<div className={cn("w-full", containerClassName)}>
 			{Array.from({ length: count }).map((_, index) => (
 				<div
 					key={index}
