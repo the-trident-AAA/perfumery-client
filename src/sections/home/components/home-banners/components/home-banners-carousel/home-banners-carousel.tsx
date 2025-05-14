@@ -20,13 +20,7 @@ export default function HomeBannersCarousel({ homeBanners }: Props) {
 				withProgressBar
 				autoPlay
 				loop
-				renderCard={item => (
-					<HomeBannerSection
-						title={item.title}
-						image={item.image || "/images/place-holder.jpg"}
-						url={"/"}
-					/>
-				)}
+				renderCard={item => <HomeBannerSection homeBanner={item} />}
 			/>
 		</StandardCarouselProvider>
 	)
