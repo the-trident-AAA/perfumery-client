@@ -20,6 +20,22 @@ export default function HomeOffersCarousel({ offers }: Props) {
 				arrowsPosition="outside"
 				arrowsLocation="bottom"
 				renderCard={item => <OfferCard offer={item} />}
+				shouldCenter={(breakpoint: string, cantElements: number) => {
+					switch (breakpoint) {
+						case "3xl":
+							return cantElements < 3
+						case "2xl":
+							return cantElements < 3
+						case "xl":
+							return cantElements < 3
+						case "lg":
+							return cantElements < 3
+						case "md":
+							return cantElements < 3
+						default:
+							return cantElements < 2
+					}
+				}}
 			/>
 		</StandardCarouselProvider>
 	)
