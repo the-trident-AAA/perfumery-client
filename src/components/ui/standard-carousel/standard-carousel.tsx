@@ -27,6 +27,7 @@ interface Props<T> {
 	arrowsPosition?: "inside" | "outside"
 	arrowsLocation?: "normal" | "bottom"
 	arrowsClassName?: string
+	shouldCenter?: (breakpoint: string, cantElements: number) => boolean
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
@@ -44,9 +45,11 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	arrowsPosition = "inside",
 	arrowsLocation = "normal",
 	arrowsClassName = "",
+	shouldCenter,
 }: Props<T>) {
 	const { isCentered } = useStandardCarousel({
 		cantElements: items.length,
+		shouldCenter,
 	})
 
 	const { current, count, handleClick, setApi } = useContext(
