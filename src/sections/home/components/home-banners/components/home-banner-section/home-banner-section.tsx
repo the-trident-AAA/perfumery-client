@@ -1,6 +1,7 @@
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { Button } from "@/src/components/ui/button"
 import { HomeBanner } from "@/src/lib/types/home-banners"
+import { homeBannerImagePlaceHolder } from "@/src/sections/home/components/home-banners/lib/image-place-holder"
 import Image from "next/image"
 
 interface Props {
@@ -38,7 +39,7 @@ export default function HomeBannerSection({
 					<div className="order-1 flex justify-center md:order-2">
 						<div className="relative h-64 w-full overflow-hidden rounded-lg md:h-80 lg:h-96">
 							<Image
-								src={image || "/images/place-holder.jpg"}
+								src={image || homeBannerImagePlaceHolder}
 								alt={title}
 								fill
 								className="object-cover"
