@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
 import { Offer } from "@/src/lib/types/offers"
+import { offerImagePlaceHolder } from "@/src/sections/home/components/home-offers/lib/image-place-holder"
 
 interface Props {
 	offer: Offer
@@ -37,7 +38,7 @@ export default function OfferCard({
 					<div className="relative h-64 w-full overflow-hidden bg-teal-50">
 						<div className="absolute inset-0 flex items-center justify-center">
 							<Image
-								src={image || "/images/place-holder.jpg"}
+								src={image || offerImagePlaceHolder}
 								width={600}
 								height={400}
 								alt="Colección de perfumes de lujo"
