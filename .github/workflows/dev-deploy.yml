@@ -28,7 +28,7 @@ jobs:
             echo 'NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}' > .env &&
             echo 'AUTH_SECRET=${{ secrets.AUTH_SECRET }}' >> .env &&
             git pull origin develop && 
-            docker-compose down &&
             docker-compose pull && 
-            docker-compose up -d --build
+            docker-compose build --no-cache && 
+            docker-compose up -d
           "
