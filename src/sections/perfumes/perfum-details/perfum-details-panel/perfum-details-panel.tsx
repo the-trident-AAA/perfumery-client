@@ -7,6 +7,7 @@ import { Button } from "@/src/components/ui/button"
 
 import QuantityController from "@/src/components/quantity-controller/quantity-controller"
 import { Perfume } from "@/src/lib/types/perfumes"
+import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 interface Props {
 	perfume: Perfume
 }
@@ -41,7 +42,7 @@ export default function PerfumDetailsPanel({
 				{/* Product Image */}
 				<div className="flex justify-center">
 					<Image
-						src={image || "/placeholder.svg"}
+						src={image || perfumeImagePlaceHolder}
 						alt={name}
 						width={400}
 						height={400}

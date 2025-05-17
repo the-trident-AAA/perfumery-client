@@ -2,6 +2,7 @@
 import { ModalContext } from "@/src/components/modal/context/modalContext"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import { Perfume } from "@/src/lib/types/perfumes"
+import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 //import { useState } from "react"
 import Image from "next/image"
 import { useContext } from "react"
@@ -11,7 +12,7 @@ interface Props {
 	perfume: Perfume
 }
 
-export default function PerfurmCard({
+export default function PerfurmeCard({
 	perfume: { id, brand, name, description, price, image },
 }: Props) {
 	const { handleOpenModal } = useContext(ModalContext)
@@ -29,7 +30,7 @@ export default function PerfurmCard({
 			<div className="relative">
 				<Image
 					className="aspect-square object-cover"
-					src={image || "/images/place-holder.jpg"}
+					src={image || perfumeImagePlaceHolder}
 					alt={name}
 					width={400}
 					height={400}
