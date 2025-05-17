@@ -12,7 +12,7 @@ export default function OfferCard({
 	offer: { name, description, image, offerType, scope, discount },
 }: Props) {
 	return (
-		<Card className="w-full max-w-md overflow-hidden rounded-xl shadow-lg">
+		<Card className="w-full h-full max-w-md overflow-hidden rounded-xl shadow-lg">
 			{/* Banner superior con gradiente */}
 			<div className="relative h-32 bg-gradient-to-r from-teal-600 to-emerald-400 p-6 text-white">
 				<div className="absolute top-0 left-0 w-full h-full opacity-20">
