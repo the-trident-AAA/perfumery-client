@@ -2,6 +2,7 @@ export interface InfoModal {
 	name: string
 	// matadata
 	entity?: string // id entity
+	elements?: any[]
 	actionInsert?: (element: any) => void
 	onClose?: () => void
 	onOpen?: () => void
