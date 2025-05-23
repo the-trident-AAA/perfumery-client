@@ -1,8 +1,8 @@
 import { auth } from "@/src/auth"
-import { paths } from "@/src/lib/routes/paths"
+import { isProtectedRoute, paths } from "@/src/lib/routes/paths"
 
 export default auth(req => {
-	if (!req.auth && req.nextUrl.pathname !== paths.sign_in.root) {
+	if (!req.auth && isProtectedRoute(req.nextUrl.pathname)) {
 		const newUrl = new URL(paths.sign_in.root, req.nextUrl.origin)
 		return Response.redirect(newUrl)
 	}
