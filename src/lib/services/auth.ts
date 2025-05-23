@@ -1,13 +1,23 @@
 "use server"
 
-import { NEXT_PUBLIC_API_URL } from "@/src/config/env-server"
-import { Credentials, credentialsSchema } from "@/src/lib/types/auth"
+import { signIn as signInAuth } from "@/src/auth"
+import { buildApiResponse } from "@/src/lib/api"
+import { apiRoutes } from "@/src/lib/routes/api-routes/api-routes"
+import { CredentialsDTO } from "@/src/lib/types/auth"
+import { User } from "next-auth"
 
-export async function login(data: Credentials): Promise<any> {
-	const credentials = credentialsSchema.parse(data)
-	const res = await fetch(NEXT_PUBLIC_API_URL + "/auth/sign-in", {
+export async function login(credentials: CredentialsDTO) {
+	const res = await fetch(apiRoutes.auth.login, {
 		method: "POST",
 		body: JSON.stringify(credentials),
 	})
-	return res.json()
+	return buildApiResponse<User>(res)
+}
+
+export async function signIns(credentials: CredentialsDTO) {
+	return signInAuth("credentials", {
+		email: credentials.firstCredential,
+		password: credentials.password,
+		redirect: false,
+	})
 }
