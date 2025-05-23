@@ -14,7 +14,7 @@ export async function login(credentials: CredentialsDTO) {
 	return buildApiResponse<User>(res)
 }
 
-export async function signIns(credentials: CredentialsDTO) {
+export async function signIn(credentials: CredentialsDTO) {
 	return signInAuth("credentials", {
 		email: credentials.firstCredential,
 		password: credentials.password,
