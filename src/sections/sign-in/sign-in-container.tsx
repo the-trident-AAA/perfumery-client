@@ -9,7 +9,7 @@ interface Props {
 
 export default function SignInContainer({ logoText, imageSrc }: Props) {
 	return (
-		<div className="flex w-full h-screen">
+		<div className="flex w-full h-full">
 			{/* Left Side - Form */}
 			<div className="w-full md:w-1/2 flex flex-col p-10">
 				<div className="flex items-center mb-16">
