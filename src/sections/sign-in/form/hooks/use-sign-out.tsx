@@ -16,7 +16,7 @@ export default function useSignOut({ onSignOutAction }: Props) {
 			if (onSignOutAction) onSignOutAction()
 		} catch (error) {
 			console.log(error)
-			setError("Ocurrión un error inesperado")
+			setError("Ocurrió un error inesperado")
 		} finally {
 			setLoading(false)
 		}
