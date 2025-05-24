@@ -8,6 +8,7 @@ import {
 } from "@/src/components/ui/popover"
 import { paths } from "@/src/lib/routes/paths"
 import RegistrationButton from "@/src/sections/root-layout/components/header/components/registration-button/registration-button"
+import SignOutButton from "@/src/sections/root-layout/components/header/components/sign-out-button/sign-out-button"
 import { UserCircleIcon } from "lucide-react"
 import React from "react"
 
@@ -32,6 +33,7 @@ const User = () => {
 					<NavigationComponent href={paths.profile.root}>
 						<Button className="w-full">Ver Pérfil</Button>
 					</NavigationComponent>
+					<SignOutButton />
 				</div>
 			</PopoverContent>
 		</Popover>
