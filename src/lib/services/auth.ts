@@ -1,9 +1,7 @@
 "use server"
-
 import { signIn as signInAuth, signOut as signOutAuth } from "@/src/auth"
 import { buildApiResponse } from "@/src/lib/api"
 import { apiRoutes } from "@/src/lib/routes/api-routes/api-routes"
-import { paths } from "@/src/lib/routes/paths"
 import { CredentialsDTO } from "@/src/lib/types/auth"
 import { User } from "next-auth"
 
@@ -27,5 +25,5 @@ export async function signIn(credentials: CredentialsDTO) {
 }
 
 export async function signOut() {
-	return signOutAuth({ redirectTo: paths.sign_in.root })
+	return signOutAuth({ redirect: false })
 }

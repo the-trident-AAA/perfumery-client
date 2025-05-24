@@ -1,8 +1,7 @@
 "use client"
 import { useCallback, useState } from "react"
 import { Credentials } from "../schemas/credentials-schema"
-import { signIn as signInService } from "@/src/lib/services/auth"
-import { convertCredentialsDTO } from "@/src/lib/types/auth"
+import { signIn as nextAuthSignIn } from "next-auth/react"
 
 interface Props {
 	onSignInAction: () => void
@@ -17,7 +16,11 @@ export default function useSignIn({ onSignInAction }: Props) {
 			try {
 				setLoading(true)
 				setError(null)
-				await signInService(convertCredentialsDTO(credentials))
+				await nextAuthSignIn("credentials", {
+					username: credentials.firstCredential,
+					password: credentials.password,
+					redirect: false,
+				})
 				onSignInAction()
 			} catch (error) {
 				console.log(error)
