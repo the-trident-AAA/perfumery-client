@@ -9,10 +9,15 @@ import { paths } from "@/src/lib/routes/paths"
 import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/src/components/ui/button"
+import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 
 export default function SignInFormContainer() {
 	const router = useRouter()
-	const { signIn, loading: submitLoading } = useSignIn({
+	const {
+		signIn,
+		loading: submitLoading,
+		error,
+	} = useSignIn({
 		onSignInAction: () => {
 			toast.success("Inicio de sessión realizado con éxtio")
 			router.push(paths.home.root)
@@ -32,13 +37,14 @@ export default function SignInFormContainer() {
 
 	return (
 		<FormProvider {...form}>
-			<div className="flex-grow flex flex-col justify-center max-w-md mx-auto w-full">
-				<h1 className="text-3xl font-bold mb-2">
+			<div className="flex-grow flex flex-col gap-4 justify-center max-w-md mx-auto w-full">
+				<h1 className="text-3xl font-bold">
 					Inicia sesión con su cuenta administrativa
 				</h1>
-				<p className="text-gray-500 mb-8">
+				<p className="text-gray-500">
 					Ingrese el correo electrónico asociado a su cuenta
 				</p>
+				{error && <AlertDestructive description={error} />}
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
 					className="w-full flex flex-col gap-6"
