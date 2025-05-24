@@ -3,7 +3,7 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
 interface CredentialsType {
-	email: string
+	username: string
 	password: string
 }
 
@@ -11,25 +11,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	providers: [
 		Credentials({
 			credentials: {
-				email: { label: "Email", type: "email" },
+				username: { label: "Username", type: "string" },
 				password: { label: "Password", type: "password" },
 			},
 			async authorize(credentials) {
-				const { email, password } = credentials as CredentialsType
-				const res = await login({ firstCredential: email, password })
+				const { username, password } = credentials as CredentialsType
+				const res = await login({ username, password })
 
 				if (!res.response || res.error) {
-					return {
-						id: "1",
-						name: "test",
-						email: "test@gmail.com",
-						accessToken: "token",
-					}
+					return null
 				}
 				const user = res.response
 				return {
 					id: user.id,
-					name: user.name,
+					username: user.username,
 					email: user.email,
 					accessToken: user.accessToken,
 				}
