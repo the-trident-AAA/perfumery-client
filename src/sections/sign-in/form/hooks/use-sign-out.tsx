@@ -16,7 +16,7 @@ export default function useSignOut({ onSignOutAction }: Props) {
 			if (onSignOutAction) onSignOutAction()
 		} catch (error) {
 			console.log(error)
-			setError("Las credenciales proporcionadas no son correctas")
+			setError("Ocurrión un error inesperado")
 		} finally {
 			setLoading(false)
 		}
