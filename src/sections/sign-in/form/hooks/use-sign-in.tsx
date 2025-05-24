@@ -16,15 +16,11 @@ export default function useSignIn({ onSignInAction }: Props) {
 			try {
 				setLoading(true)
 				setError(null)
-				const res = await signInService(credentials)
-				console.log(res)
-				if (!res)
-					setError("Las credenciales proporcionadas no son correctas")
-				else {
-					onSignInAction()
-				}
+				await signInService(credentials)
+				onSignInAction()
 			} catch (error) {
 				console.log(error)
+				setError("Las credenciales proporcionadas no son correctas")
 			} finally {
 				setLoading(false)
 			}
