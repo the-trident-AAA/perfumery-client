@@ -1,4 +1,15 @@
+import { Credentials } from "@/src/sections/sign-in/form/schemas/credentials-schema"
+
 export interface CredentialsDTO {
-	firstCredential: string
+	username: string
 	password: string
+}
+
+export const convertCredentialsDTO = (
+	credentials: Credentials,
+): CredentialsDTO => {
+	return {
+		...credentials,
+		username: credentials.firstCredential,
+	}
 }

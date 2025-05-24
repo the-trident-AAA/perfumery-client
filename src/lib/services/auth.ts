@@ -16,7 +16,7 @@ export async function login(credentials: CredentialsDTO) {
 
 export async function signIn(credentials: CredentialsDTO) {
 	return signInAuth("credentials", {
-		email: credentials.firstCredential,
+		username: credentials.username,
 		password: credentials.password,
 		redirect: false,
 	})

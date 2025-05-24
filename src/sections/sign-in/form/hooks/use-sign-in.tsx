@@ -2,6 +2,7 @@
 import { useCallback, useState } from "react"
 import { Credentials } from "../schemas/credentials-schema"
 import { signIn as signInService } from "@/src/lib/services/auth"
+import { convertCredentialsDTO } from "@/src/lib/types/auth"
 
 interface Props {
 	onSignInAction: () => void
@@ -16,7 +17,7 @@ export default function useSignIn({ onSignInAction }: Props) {
 			try {
 				setLoading(true)
 				setError(null)
-				await signInService(credentials)
+				await signInService(convertCredentialsDTO(credentials))
 				onSignInAction()
 			} catch (error) {
 				console.log(error)
