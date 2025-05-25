@@ -10,7 +10,7 @@ export default function SignOutButton() {
 	const currentPath = usePathname()
 	const { signOut, loading } = useSignOut({
 		onSignOutAction: () => {
-			if (isProtectedRoute(currentPath)) router.push(paths.sign_in.root)
+			if (isProtectedRoute(currentPath)) router.push(paths.home.root)
 		},
 	})
 
