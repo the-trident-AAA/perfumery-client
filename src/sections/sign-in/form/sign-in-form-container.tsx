@@ -38,9 +38,7 @@ export default function SignInFormContainer() {
 	return (
 		<FormProvider {...form}>
 			<div className="flex-grow flex flex-col gap-4 justify-center max-w-md mx-auto w-full">
-				<h1 className="text-3xl font-bold">
-					Inicia sesión con su cuenta administrativa
-				</h1>
+				<h1 className="text-3xl font-bold">Inicie sesión</h1>
 				<p className="text-gray-500">
 					Ingrese el correo electrónico asociado a su cuenta
 				</p>
