@@ -1,24 +1,14 @@
-"use client"
-
 import Image from "next/image"
 import QuantityController from "@/src/components/quantity-controller/quantity-controller"
-import { Perfume } from "@/src/lib/types/perfumes"
-
-export interface PerfumeCart {
-	id: string
-	perfume: Perfume
-	cant: number
-	precio: number
-}
+import { ShopCartPerfume } from "@/src/lib/types/shop-cart-perfumes"
 
 interface PerfumeCartProps {
-	perfurmeCart: PerfumeCart
+	perfurmeCart: ShopCartPerfume
 	variant?: "default" | "modal"
 }
 
 export default function PerfumeShopCartCard({
-	perfurmeCart: { id, perfume, cant, precio },
-	variant = "default",
+	perfurmeCart: { perfume, cant },
 }: PerfumeCartProps) {
 	return (
 		<div className=" rounded-2xl border">
@@ -44,7 +34,7 @@ export default function PerfumeShopCartCard({
 								{perfume.name}
 							</h3>
 							<p className="font-semibold text-sm 2xs:text-base">
-								${precio.toFixed(2)}
+								${5}
 							</p>
 						</div>
 
@@ -58,7 +48,7 @@ export default function PerfumeShopCartCard({
 							<div className="flex flex-col 2xs:flex-row gap-1 items-center">
 								<p className="font-medium ">Total: </p>
 								<span className="font-bold text-sm 2xs:text-base">
-									${(precio * cant).toFixed(2)}
+									${(5 * cant).toFixed(2)}
 								</span>
 							</div>
 						</div>

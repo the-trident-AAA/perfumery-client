@@ -22,6 +22,7 @@ export interface Perfume {
 export interface PerfumeDetails {
 	id: string
 	name: string
+	description: string
 	image?: string
 	brand: Brand
 	offer?: Offer
