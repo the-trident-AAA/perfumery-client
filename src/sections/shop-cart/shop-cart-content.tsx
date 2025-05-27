@@ -31,9 +31,15 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 						variant={variant}
 					/>
 					<div className="flex flex-col gap-2 items-center justify-center">
-						<div className="flex justify-between font-semibold gap-2 text-lg">
-							<span>Total</span>
-							<span>$1000</span>
+						<div className="flex justify-between gap-2">
+							<div className="flex justify-between font-semibold gap-2 text-lg">
+								<span>Monto Total</span>
+								<span>{shopCart.totalMount}</span>
+							</div>
+							<div className="flex justify-between font-semibold gap-2 text-lg">
+								<span>Total de Productos</span>
+								<span>{shopCart.totalItems}</span>
+							</div>
 						</div>
 						<div className="flex gap-2">
 							<Button className="bg-primary lg:text-lg">

@@ -8,7 +8,7 @@ interface PerfumeCartProps {
 }
 
 export default function PerfumeShopCartCard({
-	perfurmeCart: { perfume, cant },
+	perfurmeCart: { perfume, cant, price },
 }: PerfumeCartProps) {
 	return (
 		<div className=" rounded-2xl border">
@@ -34,7 +34,7 @@ export default function PerfumeShopCartCard({
 								{perfume.name}
 							</h3>
 							<p className="font-semibold text-sm 2xs:text-base">
-								${5}
+								${perfume.price}
 							</p>
 						</div>
 
@@ -48,7 +48,7 @@ export default function PerfumeShopCartCard({
 							<div className="flex flex-col 2xs:flex-row gap-1 items-center">
 								<p className="font-medium ">Total: </p>
 								<span className="font-bold text-sm 2xs:text-base">
-									${(5 * cant).toFixed(2)}
+									${price}
 								</span>
 							</div>
 						</div>
