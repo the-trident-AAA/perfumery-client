@@ -31,6 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 					username: user.username,
 					email: user.email,
 					accessToken: user.accessToken,
+					shopCartId: user.shopCartId,
 				}
 			},
 		}),
@@ -46,6 +47,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 				token.username = user.username
 				token.email = user.email
 				token.accessToken = user.accessToken
+				token.shopCartId = user.shopCartId
 			}
 			return token
 		},
@@ -54,6 +56,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			session.user.id = token.id as string
 			session.user.username = token.username as string
 			session.user.email = token.email as string
+			session.user.shopCartId = token.shopCartId as string
 			return session
 		},
 	},
