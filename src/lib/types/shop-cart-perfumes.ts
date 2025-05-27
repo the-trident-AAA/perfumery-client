@@ -6,3 +6,17 @@ export interface ShopCartPerfume {
 	cant: number
 	price: number
 }
+
+export interface ShopCartEdit {
+	cant: number
+}
+
+export interface ShopCartEditDTO {
+	cant: number
+}
+
+export const convertShopCartEditDTO = (
+	shopCartEdit: ShopCartEdit,
+): ShopCartEditDTO => {
+	return { ...shopCartEdit }
+}
