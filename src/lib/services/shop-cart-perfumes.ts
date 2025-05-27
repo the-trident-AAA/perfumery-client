@@ -6,8 +6,8 @@ import {
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
 import {
-	ShopCartEditDTO,
 	ShopCartPerfume,
+	ShopCartPerfumeEditDTO,
 } from "@/src/lib/types/shop-cart-perfumes"
 
 export async function getShopCartPerfumeById(id: string) {
@@ -24,7 +24,7 @@ export async function getShopCartPerfumeById(id: string) {
 
 export async function editShopCartPerfume(
 	id: string,
-	shopCartEditDTO: ShopCartEditDTO,
+	shopCartEditDTO: ShopCartPerfumeEditDTO,
 ) {
 	const res = await fetch(
 		apiRoutes.shopCartPerfumes.getById.replace(":id", id),
