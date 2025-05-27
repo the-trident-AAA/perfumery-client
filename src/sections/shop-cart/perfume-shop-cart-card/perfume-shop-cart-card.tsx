@@ -2,6 +2,7 @@ import Image from "next/image"
 import QuantityController from "@/src/components/quantity-controller/quantity-controller"
 import { ShopCartPerfume } from "@/src/lib/types/shop-cart-perfumes"
 import { fCurrency } from "@/src/lib/utils/format-number"
+import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 
 interface PerfumeCartProps {
 	perfurmeCart: ShopCartPerfume
@@ -21,7 +22,7 @@ export default function PerfumeShopCartCard({
 					>
 						<Image
 							className="aspect-square object-cover"
-							src={perfume.image || "images/place-holder.jpg"}
+							src={perfume.image || perfumeImagePlaceHolder}
 							alt={"image"}
 							width={400}
 							height={400}
