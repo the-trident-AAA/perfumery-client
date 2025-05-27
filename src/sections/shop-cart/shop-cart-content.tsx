@@ -71,7 +71,6 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 	const { shopCart, loading, error, fetchShopCart } = useShopCart()
 	const lastValidShopCart = useRef(shopCart)
 
-	// Actualizar la referencia cuando shopCart cambie y sea válido
 	useEffect(() => {
 		if (shopCart && !error) {
 			lastValidShopCart.current = shopCart
