@@ -1,6 +1,7 @@
 "use client"
 import { FetchingDataErrorPanel } from "@/src/components/fetching-data-error-panel/fetching-data-error-panel"
 import { Button } from "@/src/components/ui/button"
+import { fCurrency } from "@/src/lib/utils/format-number"
 import useShopCart from "@/src/sections/shop-cart/hooks/use-shop-cart"
 import PerfumeShopCartList from "@/src/sections/shop-cart/perfume-shop-cart-list/perfume-shop-cart-list"
 
@@ -34,7 +35,7 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 						<div className="flex justify-between gap-2">
 							<div className="flex justify-between font-semibold gap-2 text-lg">
 								<span>Monto Total</span>
-								<span>{shopCart.totalMount}</span>
+								<span>{fCurrency(shopCart.totalMount)}</span>
 							</div>
 							<div className="flex justify-between font-semibold gap-2 text-lg">
 								<span>Total de Productos</span>
