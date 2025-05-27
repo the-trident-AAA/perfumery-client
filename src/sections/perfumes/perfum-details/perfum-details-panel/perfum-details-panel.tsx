@@ -102,12 +102,12 @@ export default function PerfumDetailsPanel({
 					</div>
 
 					{/* Quantity and Add to Cart */}
-					<div className="flex justify-end items-center space-x-4 mt-6">
+					{/*<div className="flex justify-end items-center space-x-4 mt-6">
 						<QuantityController quantity={quantity} />
 						<Button className="bg-rose-600 hover:bg-rose-700 text-white px-8 py-2 rounded">
 							Añadir al carrito
 						</Button>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>
