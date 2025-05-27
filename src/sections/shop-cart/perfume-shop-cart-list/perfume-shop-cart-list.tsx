@@ -5,11 +5,13 @@ import React from "react"
 interface Props {
 	variant?: "default" | "modal"
 	shopCartPerfumes: ShopCartPerfume[]
+	shopCartRefresh: () => Promise<void>
 }
 
 export default function PerfumeShopCartList({
 	shopCartPerfumes,
 	variant = "default",
+	shopCartRefresh,
 }: Props) {
 	return (
 		<div
@@ -18,8 +20,9 @@ export default function PerfumeShopCartList({
 			{shopCartPerfumes.map((shopCartPerfume, index) => (
 				<PerfumeShopCartCard
 					key={index}
-					perfurmeCart={shopCartPerfume}
+					shopCartPerfume={shopCartPerfume}
 					variant={variant}
+					shopCartRefresh={shopCartRefresh}
 				/>
 			))}
 		</div>

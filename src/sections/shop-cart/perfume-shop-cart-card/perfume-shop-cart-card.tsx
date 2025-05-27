@@ -3,15 +3,23 @@ import QuantityController from "@/src/components/quantity-controller/quantity-co
 import { ShopCartPerfume } from "@/src/lib/types/shop-cart-perfumes"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
+import usePerfumeShopCartCard from "@/src/sections/shop-cart/perfume-shop-cart-card/hooks/use-perfume-shop-cart-card"
 
 interface PerfumeCartProps {
-	perfurmeCart: ShopCartPerfume
+	shopCartPerfume: ShopCartPerfume
 	variant?: "default" | "modal"
+	shopCartRefresh: () => Promise<void>
 }
 
 export default function PerfumeShopCartCard({
-	perfurmeCart: { perfume, cant, price },
+	shopCartPerfume,
+	shopCartRefresh,
 }: PerfumeCartProps) {
+	const { loadingEdit, increaseQuantity, decreaseQuantity } =
+		usePerfumeShopCartCard({
+			shopCartPerfume,
+			shopCartRefresh,
+		})
 	return (
 		<div className=" rounded-2xl border">
 			<div className="p-0">
@@ -22,7 +30,10 @@ export default function PerfumeShopCartCard({
 					>
 						<Image
 							className="aspect-square object-cover"
-							src={perfume.image || perfumeImagePlaceHolder}
+							src={
+								shopCartPerfume.perfume.image ||
+								perfumeImagePlaceHolder
+							}
 							alt={"image"}
 							width={400}
 							height={400}
@@ -33,24 +44,29 @@ export default function PerfumeShopCartCard({
 					<div className="flex flex-1 flex-col p-4">
 						<div className="flex flex-col sm:flex-row sm:justify-between">
 							<h3 className="font-medium text-base sm:text-lg truncate">
-								{perfume.name}
+								{shopCartPerfume.perfume.name}
 							</h3>
 							<p className="font-semibold text-sm 2xs:text-base">
-								{fCurrency(perfume.price)}
+								{fCurrency(shopCartPerfume.perfume.price)}
 							</p>
 						</div>
 
 						<p className="text-sm text-muted-foreground line-clamp-2 mt-1">
-							{perfume.description}
+							{shopCartPerfume.perfume.description}
 						</p>
 
 						{/* Controles de cantidad */}
 						<div className="flex items-center flex-row gap-1 justify-between mt-3">
-							<QuantityController quantity={cant} />
+							<QuantityController
+								quantity={shopCartPerfume.cant}
+								actionIncrease={increaseQuantity}
+								actionDecrease={decreaseQuantity}
+								loadingAction={loadingEdit}
+							/>
 							<div className="flex flex-col 2xs:flex-row gap-1 items-center">
 								<p className="font-medium ">Total: </p>
 								<span className="font-bold text-sm 2xs:text-base">
-									{fCurrency(price)}
+									{fCurrency(shopCartPerfume.price)}
 								</span>
 							</div>
 						</div>
