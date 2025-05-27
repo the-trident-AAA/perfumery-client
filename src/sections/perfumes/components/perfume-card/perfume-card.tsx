@@ -24,7 +24,7 @@ export default function PerfurmeCard({
 	}
 	return (
 		<div
-			className="w-full max-w-xs bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100"
+			className="w-full h-full max-w-xs bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100"
 			onClick={onDetails}
 		>
 			<div className="relative">
