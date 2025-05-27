@@ -1,6 +1,7 @@
 import Image from "next/image"
 import QuantityController from "@/src/components/quantity-controller/quantity-controller"
 import { ShopCartPerfume } from "@/src/lib/types/shop-cart-perfumes"
+import { fCurrency } from "@/src/lib/utils/format-number"
 
 interface PerfumeCartProps {
 	perfurmeCart: ShopCartPerfume
@@ -34,7 +35,7 @@ export default function PerfumeShopCartCard({
 								{perfume.name}
 							</h3>
 							<p className="font-semibold text-sm 2xs:text-base">
-								${perfume.price}
+								${fCurrency(perfume.price)}
 							</p>
 						</div>
 
@@ -48,7 +49,7 @@ export default function PerfumeShopCartCard({
 							<div className="flex flex-col 2xs:flex-row gap-1 items-center">
 								<p className="font-medium ">Total: </p>
 								<span className="font-bold text-sm 2xs:text-base">
-									${price}
+									${fCurrency(price)}
 								</span>
 							</div>
 						</div>
