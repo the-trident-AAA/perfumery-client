@@ -1,16 +1,36 @@
 "use server"
+import { auth } from "@/src/auth"
 import { buildApiResponse } from "@/src/lib/api"
 import {
 	apiRoutes,
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
+import { ApiResponse } from "@/src/lib/types/api"
 import { ShopCart } from "@/src/lib/types/shop-cart"
 
-export async function getShopCartById(id: string) {
-	const res = await fetch(apiRoutes.shopCarts.getById.replace(":id", id), {
-		method: "GET",
-		next: { tags: [tagsCacheByRoutes.shopCarts.singleTag] },
-	})
+export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
+	const session = await auth()
+	console.log(session)
+	if (!session)
+		return {
+			error: {
+				name: "Unauthorized",
+				reason: "No está autorizado para usar este recurso",
+				code: "401",
+			},
+			status: 401,
+		}
 
+	const res = await fetch(
+		apiRoutes.shopCarts.getById.replace(
+			":id",
+			session.user.shopCartId as string,
+		),
+		{
+			method: "GET",
+			next: { tags: [tagsCacheByRoutes.shopCarts.singleTag] },
+		},
+	)
+	console.log(res)
 	return await buildApiResponse<ShopCart>(res)
 }
