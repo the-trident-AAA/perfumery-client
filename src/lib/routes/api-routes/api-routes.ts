@@ -26,6 +26,9 @@ export const apiRoutes = {
 		get: `${process.env.NEXT_PUBLIC_API_URL}home-banner`,
 		getById: `${process.env.NEXT_PUBLIC_API_URL}home-banner/:id`,
 	},
+	shopCarts: {
+		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/:id`,
+	},
 } as const
 
 export const tagsCacheByRoutes = {
@@ -52,5 +55,8 @@ export const tagsCacheByRoutes = {
 	homeBanners: {
 		singleTag: "home-banner",
 		multipleTag: "home-banners",
+	},
+	shopCarts: {
+		singleTag: `shop-cart`,
 	},
 } as const
