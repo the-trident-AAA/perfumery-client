@@ -1,6 +1,7 @@
 "use client"
 import { FetchingDataErrorPanel } from "@/src/components/fetching-data-error-panel/fetching-data-error-panel"
 import { Button } from "@/src/components/ui/button"
+import { LoadingSpinner } from "@/src/components/ui/loading-spinner"
 import { ShopCart } from "@/src/lib/types/shop-cart"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import useShopCart from "@/src/sections/shop-cart/hooks/use-shop-cart"
@@ -93,7 +94,9 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 						isDisabled
 					/>
 				) : (
-					"Cargando..."
+					<div className="flex justify-center items-center">
+						<LoadingSpinner size={32} />
+					</div>
 				)
 			) : shopCart && !error ? (
 				<ShopCartContentBody
