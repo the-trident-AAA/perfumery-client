@@ -1,9 +1,7 @@
 import Logo from "./components/logo"
-
-import User from "./components/user"
 import HeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/header-search"
 import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
-import LittleCar from "@/src/sections/root-layout/components/header/components/little-car/little-car"
+import HeaderNavigationOptions from "@/src/sections/root-layout/components/header/components/header-navigation-options/header-navigation-options"
 
 const Header = () => {
 	return (
@@ -21,10 +19,7 @@ const Header = () => {
 					</div>
 
 					{/* Iconos de usuario y carrito - alineados a la derecha */}
-					<div className="flex items-center space-x-4">
-						<LittleCar />
-						<User />
-					</div>
+					<HeaderNavigationOptions />
 				</div>
 			</div>
 			<div className="bg-white">
