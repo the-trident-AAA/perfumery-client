@@ -7,16 +7,16 @@ export interface ShopCartPerfume {
 	price: number
 }
 
-export interface ShopCartEdit {
+export interface ShopCartPerfumeEdit {
 	cant: number
 }
 
-export interface ShopCartEditDTO {
+export interface ShopCartPerfumeEditDTO {
 	cant: number
 }
 
-export const convertShopCartEditDTO = (
-	shopCartEdit: ShopCartEdit,
-): ShopCartEditDTO => {
+export const convertShopCartPerfumeEditDTO = (
+	shopCartEdit: ShopCartPerfumeEdit,
+): ShopCartPerfumeEditDTO => {
 	return { ...shopCartEdit }
 }
