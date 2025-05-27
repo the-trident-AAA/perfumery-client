@@ -36,7 +36,7 @@ export default function PerfumeShopCartCard({
 								{perfume.name}
 							</h3>
 							<p className="font-semibold text-sm 2xs:text-base">
-								${fCurrency(perfume.price)}
+								{fCurrency(perfume.price)}
 							</p>
 						</div>
 
@@ -50,7 +50,7 @@ export default function PerfumeShopCartCard({
 							<div className="flex flex-col 2xs:flex-row gap-1 items-center">
 								<p className="font-medium ">Total: </p>
 								<span className="font-bold text-sm 2xs:text-base">
-									${fCurrency(price)}
+									{fCurrency(price)}
 								</span>
 							</div>
 						</div>
