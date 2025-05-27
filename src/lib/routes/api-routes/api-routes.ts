@@ -29,6 +29,9 @@ export const apiRoutes = {
 	shopCarts: {
 		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/:id`,
 	},
+	shopCartPerfumes: {
+		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart-perfume/:id`,
+	},
 } as const
 
 export const tagsCacheByRoutes = {
@@ -58,5 +61,8 @@ export const tagsCacheByRoutes = {
 	},
 	shopCarts: {
 		singleTag: `shop-cart`,
+	},
+	shopCartPerfumes: {
+		singleTag: `shop-cart-perfume`,
 	},
 } as const
