@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
-import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context"
+import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useCreateShopCartPerfume from "@/src/sections/shop-cart/hooks/use-create-shop-cart-perfume"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"

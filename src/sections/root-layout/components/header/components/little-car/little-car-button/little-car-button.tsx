@@ -1,7 +1,7 @@
 "use client"
 import { Badge } from "@/src/components/ui/badge"
 import { Button } from "@/src/components/ui/button"
-import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context"
+import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import { ShoppingCartIcon } from "lucide-react"
 import React, { useContext } from "react"
 

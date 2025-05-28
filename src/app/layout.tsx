@@ -13,7 +13,7 @@ import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
 import EditProfileForm from "@/src/sections/profile/edit-profile-form/edit-profile-form"
 import ChangePasswordForm from "@/src/sections/profile/change-password-form/change-password-form"
 import { SessionProvider } from "next-auth/react"
-import ShopCartTotalItemsProviderContainer from "@/src/sections/shop-cart/context/shop-cart-total-items-provider-container"
+import ShopCartTotalItemsProviderContainer from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-provider-container"
 import { ToastContainer } from "react-toastify"
 import ClearShopCartModalContainer from "@/src/sections/shop-cart/clear-shop-cart/clear-shop-cart-modal-container"
 

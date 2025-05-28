@@ -3,7 +3,7 @@
 import ConfirmationPanel from "@/src/components/confirmation-panel/confirmation-panel"
 import { ModalContext } from "@/src/components/modal/context/modalContext"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
-import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context"
+import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useClearShopCart from "@/src/sections/shop-cart/hooks/use-clear-shop-cart"
 import { useCallback, useContext } from "react"
 import { toast } from "react-toastify"
