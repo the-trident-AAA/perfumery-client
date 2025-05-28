@@ -6,3 +6,7 @@ export interface ShopCart {
 	totalItems: number
 	totalMount: number
 }
+
+export interface ShopCartTotalItems {
+	totalItems: number
+}
