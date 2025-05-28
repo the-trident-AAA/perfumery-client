@@ -7,14 +7,10 @@ import {
 import { useCallback, useState } from "react"
 
 interface Props {
-	id: string
 	onCreateAction: () => void
 }
 
-export default function useCreateShopCartPerfume({
-	id,
-	onCreateAction,
-}: Props) {
+export default function useCreateShopCartPerfume({ onCreateAction }: Props) {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 
@@ -37,7 +33,7 @@ export default function useCreateShopCartPerfume({
 				setLoading(false)
 			}
 		},
-		[onCreateAction, id],
+		[onCreateAction],
 	)
 	return {
 		loading,
