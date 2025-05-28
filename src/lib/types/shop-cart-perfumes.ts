@@ -7,12 +7,30 @@ export interface ShopCartPerfume {
 	price: number
 }
 
+export interface ShopCartPerfumeCreate {
+	shopCartId: string
+	perfumeId: string
+	cant: number
+}
+
+export interface ShopCartPerfumeCreateDTO {
+	shopCartId: string
+	perfumeId: string
+	cant: number
+}
+
 export interface ShopCartPerfumeEdit {
 	cant: number
 }
 
 export interface ShopCartPerfumeEditDTO {
 	cant: number
+}
+
+export const convertShopCartPerfumeCreateDTO = (
+	shopCartCreate: ShopCartPerfumeCreate,
+): ShopCartPerfumeCreateDTO => {
+	return { ...shopCartCreate }
 }
 
 export const convertShopCartPerfumeEditDTO = (
