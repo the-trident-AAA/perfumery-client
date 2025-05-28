@@ -15,6 +15,7 @@ import ChangePasswordForm from "@/src/sections/profile/change-password-form/chan
 import { SessionProvider } from "next-auth/react"
 import ShopCartTotalItemsProviderContainer from "@/src/sections/shop-cart/context/shop-cart-total-items-provider-container"
 import { ToastContainer } from "react-toastify"
+import ClearShopCartModalContainer from "@/src/sections/shop-cart/clear-shop-cart/clear-shop-cart-modal-container"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -69,6 +70,14 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 									maxWidth="max-w-xl"
 								>
 									<ChangePasswordForm />
+								</Modal>
+								<Modal
+									formPath={
+										modalTypes.clearShopCartModal.name
+									}
+									maxWidth="max-w-xl"
+								>
+									<ClearShopCartModalContainer />
 								</Modal>
 							</main>
 						</ShopCartTotalItemsProviderContainer>
