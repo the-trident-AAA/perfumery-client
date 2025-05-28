@@ -1,6 +1,7 @@
 "use client"
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
+import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useCreateShopCartPerfume from "@/src/sections/shop-cart/hooks/use-create-shop-cart-perfume"
 import { useSession } from "next-auth/react"
@@ -14,9 +15,11 @@ interface Props {
 
 export default function AddShopCartPerfumeButton({ perfumeId }: Props) {
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
+	const { fetchShopCart } = useContext(ShopCartContext)
 	const { createShopCartPerfume, loading } = useCreateShopCartPerfume({
 		onCreateAction: () => {
 			fetchShopCartTotalItems()
+			fetchShopCart()
 			toast.success("Se añadido el perfume seleccionado al carrito", {
 				position: "bottom-center",
 			})

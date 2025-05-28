@@ -5,12 +5,12 @@ import { LoadingSpinner } from "@/src/components/ui/loading-spinner"
 import { ShopCart } from "@/src/lib/types/shop-cart"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import ClearShopCartButton from "@/src/sections/shop-cart/components/clear-shop-cart-button/clear-shop-cart-button"
-import useShopCart from "@/src/sections/shop-cart/hooks/use-shop-cart"
+import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import PerfumeShopCartList from "@/src/sections/shop-cart/perfume-shop-cart-list/perfume-shop-cart-list"
 
 import { ShoppingCart as ShoppingCartIcon } from "lucide-react"
 
-import React, { useEffect, useRef } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 
 interface Props {
 	variant?: "default" | "modal"
@@ -68,7 +68,8 @@ const ShopCartContentBody = ({
 }
 
 export default function ShopCartContent({ variant = "default" }: Props) {
-	const { shopCart, loading, error, fetchShopCart } = useShopCart()
+	const { shopCart, loading, error, fetchShopCart } =
+		useContext(ShopCartContext)
 	const lastValidShopCart = useRef(shopCart)
 
 	useEffect(() => {
