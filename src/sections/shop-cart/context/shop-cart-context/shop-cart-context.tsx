@@ -21,12 +21,7 @@ const defaultProps: Props = {
 
 export const ShopCartContext = createContext<Props>(defaultProps)
 
-export function ShopCartProvider({
-	children,
-}: {
-	children: React.ReactNode
-	shopCartId: string | null
-}) {
+export function ShopCartProvider({ children }: { children: React.ReactNode }) {
 	const { shopCart, loading, error, fetchShopCart } = useShopCart()
 
 	return (
