@@ -22,6 +22,7 @@ export default function ClearShopCartModalContainer() {
 			})
 			if (actionExecute) actionExecute()
 			fetchShopCartTotalItems()
+			onCloseModal()
 		},
 	})
 	const onCloseModal = useCallback(() => {
