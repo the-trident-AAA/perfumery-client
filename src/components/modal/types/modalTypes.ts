@@ -18,6 +18,12 @@ export interface ModalTypes {
 	shopCartModal: SectionModal
 	editProfileModal: SectionModal
 	changePasswordModal: SectionModal
+	clearShopCartModal: SectionModal & {
+		message: string
+		warningMessage: string
+		cancelButtonText: string
+		confirmButtonText: string
+	}
 }
 
 export const modalTypes: ModalTypes = {
@@ -44,5 +50,14 @@ export const modalTypes: ModalTypes = {
 	changePasswordModal: {
 		name: "changePasswordModal",
 		title: "Cambie su contraseña actual",
+	},
+	clearShopCartModal: {
+		name: "clearShopCartModal",
+		title: "Limpieza de Carrito de Compras",
+		message: "¿Está seguro de que desea limpiar su carrito de compras?",
+		warningMessage:
+			"La acción de limpieza del carrito de compras provocará la eliminación de todos los perfumes que se encuentran en el mismo.",
+		cancelButtonText: "Cancelar",
+		confirmButtonText: "Confirmar",
 	},
 }
