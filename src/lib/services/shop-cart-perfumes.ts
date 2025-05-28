@@ -5,6 +5,7 @@ import {
 	apiRoutes,
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
+import { ShopCart } from "@/src/lib/types/shop-cart"
 import {
 	ShopCartPerfume,
 	ShopCartPerfumeCreateDTO,
@@ -70,4 +71,19 @@ export async function deleteShopCartPerfume(id: string) {
 	)
 
 	return await buildApiResponse<ShopCartPerfume>(res)
+}
+
+export async function clearShopCart(shopCartId: string) {
+	const res = await fetch(
+		apiRoutes.shopCartPerfumes.clearShopCart.replace(":id", shopCartId),
+		{
+			method: "DELETE",
+			headers: {
+				Authorization: "Bearer " + "token",
+				"content-type": "application/json",
+			},
+		},
+	)
+
+	return await buildApiResponse<ShopCart>(res)
 }
