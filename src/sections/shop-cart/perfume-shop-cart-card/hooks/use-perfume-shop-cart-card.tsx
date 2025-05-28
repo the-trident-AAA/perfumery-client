@@ -3,7 +3,7 @@ import {
 	ShopCartPerfume,
 	ShopCartPerfumeEdit,
 } from "@/src/lib/types/shop-cart-perfumes"
-import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context"
+import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useDeleteShopCartPerfume from "@/src/sections/shop-cart/hooks/use-delete-shop-cart-perfume"
 import useEditShopCartPerfume from "@/src/sections/shop-cart/hooks/use-edit-shop-cart-perfume"
 import { useCallback, useContext } from "react"
