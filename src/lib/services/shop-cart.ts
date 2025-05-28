@@ -6,7 +6,7 @@ import {
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
 import { ApiResponse } from "@/src/lib/types/api"
-import { ShopCart } from "@/src/lib/types/shop-cart"
+import { ShopCart, ShopCartTotalItems } from "@/src/lib/types/shop-cart"
 
 export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 	const session = await auth()
@@ -33,4 +33,13 @@ export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 	)
 	console.log(res)
 	return await buildApiResponse<ShopCart>(res)
+}
+
+export async function getShopCartTotalItems(id: string) {
+	const res = await fetch(apiRoutes.shopCarts.getById.replace(":id", id), {
+		method: "GET",
+		next: { tags: [tagsCacheByRoutes.shopCarts.singleTag] },
+	})
+
+	return await buildApiResponse<ShopCartTotalItems>(res)
 }
