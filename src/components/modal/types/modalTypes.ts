@@ -1,6 +1,6 @@
 export interface InfoModal {
 	name: string
-	// matadata
+	// metadata
 	entity?: string // id entity
 	elements?: any[]
 	actionInsert?: (element: any) => void
