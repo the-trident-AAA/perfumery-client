@@ -24,7 +24,6 @@ export async function getShopCartPerfumeById(id: string) {
 }
 
 export async function createShopCartPerfume(
-	id: string,
 	shopCartCreateDTO: ShopCartPerfumeCreateDTO,
 ) {
 	const res = await fetch(apiRoutes.shopCartPerfumes.get, {
