@@ -14,6 +14,7 @@ import EditProfileForm from "@/src/sections/profile/edit-profile-form/edit-profi
 import ChangePasswordForm from "@/src/sections/profile/change-password-form/change-password-form"
 import { SessionProvider } from "next-auth/react"
 import ShopCartTotalItemsProviderContainer from "@/src/sections/shop-cart/context/shop-cart-total-items-provider-container"
+import { ToastContainer } from "react-toastify"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -23,6 +24,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 					<ModalProvider>
 						<ShopCartTotalItemsProviderContainer>
 							<main className="flex min-h-screen flex-col gap-8">
+								<ToastContainer />
 								<Header />
 								<div className="md:container md:mx-auto px-3">
 									{children}
