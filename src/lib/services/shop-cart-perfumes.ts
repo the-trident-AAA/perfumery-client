@@ -56,3 +56,18 @@ export async function editShopCartPerfume(
 
 	return await buildApiResponse<ShopCartPerfume>(res)
 }
+
+export async function deleteShopCartPerfume(id: string) {
+	const res = await fetch(
+		apiRoutes.shopCartPerfumes.getById.replace(":id", id),
+		{
+			method: "DELETE",
+			headers: {
+				Authorization: "Bearer " + "token",
+				"content-type": "application/json",
+			},
+		},
+	)
+
+	return await buildApiResponse<ShopCartPerfume>(res)
+}
