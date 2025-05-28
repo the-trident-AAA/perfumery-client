@@ -8,7 +8,7 @@ import useClearShopCart from "@/src/sections/shop-cart/hooks/use-clear-shop-cart
 import { useCallback, useContext } from "react"
 import { toast } from "react-toastify"
 
-export default function clearShopCartModalContainer() {
+export default function ClearShopCartModalContainer() {
 	const { getInfoModal, handleCloseModal } = useContext(ModalContext)
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const infoModal = getInfoModal(modalTypes.clearShopCartModal.name)
