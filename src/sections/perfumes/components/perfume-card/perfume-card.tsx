@@ -2,6 +2,7 @@
 import { ModalContext } from "@/src/components/modal/context/modalContext"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import { Perfume } from "@/src/lib/types/perfumes"
+import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume-card/components/add-shop-cart-perfume-button"
 import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 //import { useState } from "react"
 import Image from "next/image"
@@ -61,9 +62,7 @@ export default function PerfurmeCard({
 			</div>
 
 			<div className="border-t border-gray-200">
-				<button className="w-full py-3 text-sm sm:text-xl text-center text-pink-600 font-medium hover:bg-pink-50 transition-colors">
-					Añadir al carrito
-				</button>
+				<AddShopCartPerfumeButton perfumeId={id} />
 			</div>
 		</div>
 	)
