@@ -30,6 +30,7 @@ export const apiRoutes = {
 		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/:id`,
 	},
 	shopCartPerfumes: {
+		get: `${process.env.NEXT_PUBLIC_API_URL}shop-cart-perfume`,
 		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart-perfume/:id`,
 	},
 } as const
