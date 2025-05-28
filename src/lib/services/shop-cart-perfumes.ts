@@ -7,6 +7,7 @@ import {
 } from "@/src/lib/routes/api-routes/api-routes"
 import {
 	ShopCartPerfume,
+	ShopCartPerfumeCreateDTO,
 	ShopCartPerfumeEditDTO,
 } from "@/src/lib/types/shop-cart-perfumes"
 
@@ -18,6 +19,22 @@ export async function getShopCartPerfumeById(id: string) {
 			next: { tags: [tagsCacheByRoutes.shopCartPerfumes.singleTag] },
 		},
 	)
+
+	return await buildApiResponse<ShopCartPerfume>(res)
+}
+
+export async function createShopCartPerfume(
+	id: string,
+	shopCartCreateDTO: ShopCartPerfumeCreateDTO,
+) {
+	const res = await fetch(apiRoutes.shopCartPerfumes.get, {
+		method: "POST",
+		headers: {
+			Authorization: "Bearer " + "token",
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(shopCartCreateDTO),
+	})
 
 	return await buildApiResponse<ShopCartPerfume>(res)
 }
