@@ -5,6 +5,7 @@ import {
 	apiRoutes,
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
+import { PaginationResponse } from "@/src/lib/types/pagination"
 import { Perfume, PerfumeDetails } from "@/src/lib/types/perfumes"
 import { IQueryable } from "@/src/lib/types/request"
 
@@ -19,7 +20,7 @@ export async function getPerfumesList(params: IQueryable) {
 		next: { tags: [tagsCacheByRoutes.perfumes.multipleTag] },
 	})
 
-	return await buildApiResponse<Perfume[]>(res)
+	return await buildApiResponse<PaginationResponse<Perfume>>(res)
 }
 
 export async function getPerfumeById(id: string) {

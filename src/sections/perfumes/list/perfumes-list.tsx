@@ -8,7 +8,7 @@ export default async function PerfumesList() {
 
 	if (!res.response || res.error) throw new Error("Error fetching perfumes")
 
-	const perfumes = res.response
+	const perfumes = res.response.data
 	return perfumes.length > 0 ? (
 		<div className="grid grid-cols-2 2xs:grid-cols-3 xl:grid-cols-4 gap-6">
 			{perfumes.map(perfume => (

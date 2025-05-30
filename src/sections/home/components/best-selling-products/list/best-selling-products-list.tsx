@@ -6,7 +6,7 @@ import React from "react"
 export default async function BestSellingProductsList() {
 	const res = await getPerfumesList({})
 	if (!res.response || res.error) throw new Error("Error fetching perfumes")
-	const perfumes = res.response
+	const perfumes = res.response.data
 	return perfumes.length > 0 ? (
 		<HomePromotionsCarousel data={perfumes} />
 	) : (
