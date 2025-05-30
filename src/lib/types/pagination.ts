@@ -24,3 +24,15 @@ export type SearchParamsPagination = {
 	status?: string
 	classification?: string
 }
+
+export interface PaginationMeta {
+	total: number
+	page: number
+	limit: number
+	lastPage: number
+}
+
+export interface PaginationResponse<T> {
+	paginationMeta: PaginationMeta
+	data: T[]
+}
