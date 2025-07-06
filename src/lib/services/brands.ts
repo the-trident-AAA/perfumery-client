@@ -6,7 +6,6 @@ import {
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
 import { Brand } from "@/src/lib/types/brands"
-import { Offer } from "@/src/lib/types/offers"
 import { IQueryable } from "@/src/lib/types/request"
 
 export async function getBrandsList(params: IQueryable) {
