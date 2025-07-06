@@ -24,7 +24,7 @@ export default function PerfumesFiltersContainer() {
 	const { offers, loadingData: loadingOffers } = useOffers()
 
 	return (
-		<div className="">
+		<div>
 			{breakpoint === "lg" ||
 			breakpoint === "md" ||
 			breakpoint === "sm" ||
