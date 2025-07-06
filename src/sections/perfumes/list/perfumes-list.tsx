@@ -1,10 +1,15 @@
 import EmptyContent from "@/src/components/empty-content/empty-content"
 import { getPerfumesList } from "@/src/lib/services/perfumes"
+import { SearchParamsPagination } from "@/src/lib/types/pagination"
 import PerfurmeCard from "@/src/sections/perfumes/components/perfume-card/perfume-card"
 import React from "react"
 
-export default async function PerfumesList() {
-	const res = await getPerfumesList({})
+interface Props {
+	searchParams: SearchParamsPagination
+}
+
+export default async function PerfumesList({ searchParams }: Props) {
+	const res = await getPerfumesList(searchParams)
 
 	if (!res.response || res.error) throw new Error("Error fetching perfumes")
 
