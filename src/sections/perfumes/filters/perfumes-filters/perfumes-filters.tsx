@@ -45,7 +45,7 @@ export default function PerfumesFilterss({
 	)
 
 	return (
-		<div className="space-y-6">
+		<div className="flex flex-col gap-4">
 			{/* Search for name */}
 			<SearchInput
 				id="name"
@@ -57,7 +57,7 @@ export default function PerfumesFilterss({
 				}}
 			/>
 			<Separator />
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+			<div className="flex flex-col gap-4">
 				{/* Brand */}
 				<SelectInput
 					label="Marca"
@@ -133,7 +133,7 @@ export default function PerfumesFilterss({
 			</div>
 			<Separator />
 			{/* Available y Offers */}
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<div className="flex flex-col gap-4">
 				{/* Disponibilidad */}
 				<CheckboxInput
 					id="available"
