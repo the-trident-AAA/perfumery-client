@@ -2,6 +2,7 @@ import { Brand } from "@/src/lib/types/brands"
 import { Offer } from "@/src/lib/types/offers"
 import { PerfumeType } from "@/src/lib/types/perfume-types"
 import { Scent } from "@/src/lib/types/scents"
+import { PerfumesFilters } from "@/src/sections/perfumes/filters/hooks/use-perfumes-filters"
 
 export interface Perfume {
 	id: string
@@ -35,6 +36,20 @@ export interface PerfumeDetails {
 	cant: number
 }
 
+export interface PerfumesFiltersDTO {
+	name?: string
+	description?: string
+	brandId?: string
+	gender?: Gender
+	scentsIds?: string[]
+	milliliters?: number
+	perfumeTypeId?: string
+	available?: boolean
+	price?: number
+	cant?: number
+	offerId?: string
+}
+
 export enum Gender {
 	FEMALE = "femenino",
 	MALE = "masculino",
@@ -63,3 +78,14 @@ export const genderMap: Map<
 export const genderMapInverted: Map<string, Gender> = new Map(
 	Array.from(genderMap.entries()).map(([key, value]) => [value.name, key]),
 )
+
+export const convertPerfumesFiltersDTO = (
+	perfumesFilters: PerfumesFilters,
+): PerfumesFiltersDTO => {
+	const { priceRange, millilitersRange, ...rest } = perfumesFilters
+	return {
+		...rest,
+		milliliters: millilitersRange[0] > 0 ? millilitersRange[0] : undefined,
+		price: priceRange[0] > 0 ? priceRange[0] : undefined,
+	}
+}
