@@ -15,6 +15,15 @@ function buildQueryString(query: Record<string, string> = {}): string {
 	return params.toString()
 }
 
+function replaceParamsInPath(
+	path: string,
+	params: Record<string, string> = {},
+): string {
+	return Object.entries(params).reduce((acc, [key, value]) => {
+		return acc.replace(`[${key}]`, value)
+	}, path)
+}
+
 export const paths: ApplicationPath = {
 	home: {
 		root: "/",
@@ -39,19 +48,38 @@ export const paths: ApplicationPath = {
 } as const
 
 export const isProtectedRoute = (route: string): boolean => {
-	const routeWithoutQuery = route.split("?")[0]
+	const [routeWithoutQuery, _] = route.split("?")
 
+	// Primero intentamos hacer match con rutas estáticas
+	for (const key in paths) {
+		const path = paths[key as keyof ApplicationPath]
+
+		if (typeof path !== "function") {
+			if (path.root === routeWithoutQuery) {
+				return path.isProtected
+			}
+		}
+	}
+
+	// Luego intentamos con rutas dinámicas
 	for (const key in paths) {
 		const path = paths[key as keyof ApplicationPath]
 
 		if (typeof path === "function") {
-			const pathObj = path({})
-			if (pathObj.root.split("?")[0] === routeWithoutQuery) {
+			// Obtenemos el path base sin parámetros reemplazados
+			const basePath = path({} as any).root.split("?")[0]
+
+			// Creamos un regex para hacer match con los parámetros
+			const regexPattern =
+				basePath
+					.replace(/\[([^\]]+)\]/g, "([^/]+)")
+					.replace(/\//g, "\\/") + "$"
+
+			const regex = new RegExp(regexPattern)
+
+			if (regex.test(routeWithoutQuery)) {
+				const pathObj = path({} as any)
 				return pathObj.isProtected
-			}
-		} else {
-			if (path.root === routeWithoutQuery) {
-				return path.isProtected
 			}
 		}
 	}
