@@ -1,53 +1,212 @@
-"use client"
+import CheckboxInput from "@/src/components/inputs/checkbox-input/checkbox-input"
+import ListInput from "@/src/components/inputs/list-input/list-input"
+import SearchInput from "@/src/components/inputs/search-input/search-input"
+import SelectInput from "@/src/components/inputs/select-input/select-input"
+import SliderInput from "@/src/components/inputs/slider-input/slider-input"
+import { Separator } from "@/src/components/ui/separator"
+import { Brand } from "@/src/lib/types/brands"
+import { OptionData } from "@/src/lib/types/filters"
+import { Offer } from "@/src/lib/types/offers"
+import { PerfumeType } from "@/src/lib/types/perfume-types"
+import { Gender, genderMap } from "@/src/lib/types/perfumes"
+import { Scent } from "@/src/lib/types/scents"
+import { PerfumesFilters as PerfumesFiltersType } from "@/src/sections/perfumes/filters/hooks/use-perfumes-filters"
+import { useCallback } from "react"
 
-import { Input } from "@/src/components/ui/input"
+interface Props {
+	filters: PerfumesFiltersType
+	handleChangeFilters: (filters: Partial<PerfumesFiltersType>) => void
+	brands: OptionData<Brand>
+	perfumeTypes: OptionData<PerfumeType>
+	scents: OptionData<Scent>
+	offers: OptionData<Offer>
+}
 
-export default function PerfumesFilters() {
+export default function PerfumesFilterss({
+	filters,
+	brands,
+	perfumeTypes,
+	scents,
+	offers,
+	handleChangeFilters,
+}: Props) {
+	const handleScentChange = useCallback(
+		(scentId: string, checked: boolean) => {
+			const currentScents = filters.scentsIds || []
+			const newScents = checked
+				? [...currentScents, scentId]
+				: currentScents.filter(id => id !== scentId)
+
+			handleChangeFilters({
+				scentsIds: newScents.length > 0 ? newScents : undefined,
+			})
+		},
+		[filters, handleChangeFilters],
+	)
+
 	return (
-		<div>
-			{/* Perfumes Section */}
-			<div className="mb-8">
-				<h3 className="text-sm text-muted-foreground mb-3">Products</h3>
-				<div className="space-y-3">
-					<label className="flex items-center space-x-2">
-						<span className="text-sm">Autor</span>
-						<Input placeholder="introduzca autor" />
-					</label>
-				</div>
-			</div>
+		<div className="space-y-6">
+			{/* Search for name */}
+			<SearchInput
+				id="name"
+				label="Buscar por nombre"
+				value={filters.name}
+				placeHolder="Introduzca el nombre del perfume..."
+				onChange={e => {
+					handleChangeFilters({ name: e.target.value || undefined })
+				}}
+			/>
+			<Separator />
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+				{/* Brand */}
+				<SelectInput
+					label="Marca"
+					placeHolder="Seleccione una marca..."
+					value={filters.brandId}
+					onValueChange={value => {
+						handleChangeFilters({ brandId: value || undefined })
+					}}
+					options={brands.data.map(brand => ({
+						value: brand.id,
+						label: brand.name,
+					}))}
+					loading={brands.loading}
+					clearable={{
+						handleClear: () => {
+							handleChangeFilters({ brandId: undefined })
+						},
+					}}
+				/>
 
-			{/* Categories Section */}
-			<div>
-				<h3 className="text-sm text-muted-foreground mb-3">
-					Categories
-				</h3>
-				<div className="space-y-3">
-					<label className="flex items-center space-x-2">
-						X<span className="text-sm">API Management</span>
-					</label>
-					<label className="flex items-center space-x-2">
-						X
-						<span className="text-sm">
-							Content Management System
-						</span>
-					</label>
-					<label className="flex items-center space-x-2">
-						X<span className="text-sm">Data Science</span>
-					</label>
-					<label className="flex items-center space-x-2">
-						X<span className="text-sm">Databases & Storage</span>
-					</label>
-					<label className="flex items-center space-x-2">
-						X<span className="text-sm">Languages & Frameworks</span>
-					</label>
-					<label className="flex items-center space-x-2">
-						X<span className="text-sm">Integration & Delivery</span>
-					</label>
-					<label className="flex items-center space-x-2">
-						X<span className="text-sm">Internet of Things</span>
-					</label>
-				</div>
+				{/* Gender */}
+				<SelectInput
+					label="Género"
+					placeHolder="Seleccione un género..."
+					value={filters.gender}
+					onValueChange={value => {
+						handleChangeFilters({
+							gender: (value as Gender) || undefined,
+						})
+					}}
+					options={[
+						{
+							value: Gender.MALE,
+							label: genderMap.get(Gender.MALE)?.name as string,
+						},
+						{
+							value: Gender.FEMALE,
+							label: genderMap.get(Gender.FEMALE)?.name as string,
+						},
+						{
+							value: Gender.UNISEX,
+							label: genderMap.get(Gender.UNISEX)?.name as string,
+						},
+					]}
+					clearable={{
+						handleClear: () => {
+							handleChangeFilters({ gender: undefined })
+						},
+					}}
+				/>
+
+				{/* PerfumeType */}
+				<SelectInput
+					label="Tipo de Perfume"
+					placeHolder="Seleccione un tipo de perfume..."
+					value={filters.perfumeTypeId}
+					onValueChange={value => {
+						handleChangeFilters({
+							perfumeTypeId: value || undefined,
+						})
+					}}
+					options={perfumeTypes.data.map(perfumeType => ({
+						value: perfumeType.id,
+						label: perfumeType.name,
+					}))}
+					loading={perfumeTypes.loading}
+					clearable={{
+						handleClear: () => {
+							handleChangeFilters({ perfumeTypeId: undefined })
+						},
+					}}
+				/>
 			</div>
+			<Separator />
+			{/* Available y Offers */}
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+				{/* Disponibilidad */}
+				<CheckboxInput
+					id="available"
+					label="Disponibilidad"
+					description="Solo productos disponibles"
+					value={filters.available}
+					onCheckedChange={checked => {
+						handleChangeFilters({
+							available: checked ? true : undefined,
+						})
+					}}
+				/>
+
+				{/* Offers */}
+				<SelectInput
+					label="Oferta"
+					placeHolder="Seleccione una oferta..."
+					value={filters.offerId}
+					onValueChange={value => {
+						handleChangeFilters({ offerId: value || undefined })
+					}}
+					options={offers.data.map(offer => ({
+						value: offer.id,
+						label: offer.name,
+					}))}
+					loading={offers.loading}
+					clearable={{
+						handleClear: () => {
+							handleChangeFilters({ offerId: undefined })
+						},
+					}}
+				/>
+			</div>
+			<Separator />
+			{/* Price and Mililiters */}
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+				{/* Price */}
+				<SliderInput
+					label="Precio"
+					meansure="$"
+					value={filters.priceRange}
+					handleChangeFilters={value => {
+						handleChangeFilters({
+							priceRange: value as [number, number],
+						})
+					}}
+				/>
+
+				{/* Mililiters */}
+				<SliderInput
+					label="Mililitros"
+					meansure="ml"
+					value={filters.millilitersRange}
+					handleChangeFilters={value => {
+						handleChangeFilters({
+							millilitersRange: value as [number, number],
+						})
+					}}
+				/>
+			</div>
+			<Separator />
+			{/* Scents */}
+			<ListInput
+				id="scents"
+				label="Aromas"
+				values={filters.scentsIds}
+				options={scents.data.map(scent => ({
+					value: scent.id,
+					label: scent.name,
+				}))}
+				loading={scents.loading}
+				handleValuesChange={handleScentChange}
+			/>
 		</div>
 	)
 }
