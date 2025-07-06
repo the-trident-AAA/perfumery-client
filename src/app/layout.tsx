@@ -26,8 +26,8 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 					<ShopCartProvider>
 						<ModalProvider>
 							<ShopCartTotalItemsProviderContainer>
+								<ToastContainer />
 								<main className="flex min-h-screen flex-col gap-8">
-									<ToastContainer />
 									<Header />
 									<div className="md:container md:mx-auto px-3">
 										{children}
