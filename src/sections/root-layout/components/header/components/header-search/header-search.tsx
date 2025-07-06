@@ -1,13 +1,13 @@
 "use client"
 import { Search as SearchIcon } from "lucide-react"
-import SearchInput from "@/src/components/search-input/search-input"
 import useHeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/hooks/use-header-search"
+import SearchInput from "@/src/components/inputs/search-input/search-input"
 
 const HeaderSearch = () => {
 	const { isMobile, toggleSearch, searchRef, showSearch } = useHeaderSearch()
 
 	return !isMobile ? (
-		<SearchInput />
+		<SearchInput id="name" />
 	) : (
 		<div className="relative" ref={searchRef}>
 			<button
@@ -19,7 +19,7 @@ const HeaderSearch = () => {
 			</button>
 			{showSearch && (
 				<div className="absolute top-full right-[-50px] mt-2 w-64 bg-white shadow-lg rounded-lg p-2 z-10 border border-gray-200">
-					<SearchInput />
+					<SearchInput id="name" />
 				</div>
 			)}
 		</div>
