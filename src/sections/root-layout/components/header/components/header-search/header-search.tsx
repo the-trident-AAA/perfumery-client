@@ -15,9 +15,7 @@ const HeaderSearch = () => {
 
 	useEffect(() => {
 		const nameParam = searchParams.get("name")
-		if (nameParam !== null) {
-			setSearch(nameParam)
-		}
+		setSearch(nameParam || "")
 	}, [searchParams])
 
 	return !isMobile ? (
