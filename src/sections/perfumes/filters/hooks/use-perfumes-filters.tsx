@@ -74,6 +74,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 
 	return {
 		filters,
+		setFilters,
 		handleChangeFilters,
 		handleResetFilters,
 		getActiveFiltersCount,
