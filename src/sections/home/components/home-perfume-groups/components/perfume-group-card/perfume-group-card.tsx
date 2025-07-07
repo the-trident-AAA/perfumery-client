@@ -1,7 +1,6 @@
 "use client"
 import React from "react"
 import { motion } from "framer-motion"
-import Link from "next/link"
 import { paths } from "@/src/lib/routes/paths"
 import { PerfumeType } from "@/src/lib/types/perfume-types"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
