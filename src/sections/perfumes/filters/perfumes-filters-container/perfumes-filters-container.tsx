@@ -28,7 +28,12 @@ export default function PerfumesFiltersContainer() {
 
 	useEffect(() => {
 		const nameParam = searchParams.get("name")
-		setFilters(oldFilters => ({ ...oldFilters, name: nameParam || "" }))
+		const perfumTypeParam = searchParams.get("perfumeTypeId")
+		setFilters(oldFilters => ({
+			...oldFilters,
+			name: nameParam || undefined,
+			perfumeTypeId: perfumTypeParam || undefined,
+		}))
 	}, [searchParams])
 
 	return (
