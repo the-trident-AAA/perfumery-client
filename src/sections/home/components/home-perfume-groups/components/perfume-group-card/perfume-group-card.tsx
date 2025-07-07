@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { paths } from "@/src/lib/routes/paths"
 import { PerfumeType } from "@/src/lib/types/perfume-types"
+import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 
 interface Props {
 	perfumeGroup: PerfumeType
@@ -27,9 +28,8 @@ export default function PerfumeGroupCard({
 				w
 			}
 		>
-			<Link
-				href={paths.perfumes({ group: id.toString() }).root}
-				className="group"
+			<NavigationComponent
+				href={paths.perfumes({ perfumeTypeId: id.toString() }).root}
 			>
 				<div
 					className="absolute inset-0 bg-cover bg-center z-0"
@@ -49,7 +49,7 @@ export default function PerfumeGroupCard({
 						className="h-1 bg-white rounded-full"
 					/>
 				</div>
-			</Link>
+			</NavigationComponent>
 		</motion.div>
 	)
 }
