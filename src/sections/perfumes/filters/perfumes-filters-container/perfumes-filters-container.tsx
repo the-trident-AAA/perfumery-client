@@ -8,12 +8,15 @@ import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-type
 import usePerfumesFilters from "@/src/sections/perfumes/filters/hooks/use-perfumes-filters"
 import PerfumesFilters from "@/src/sections/perfumes/filters/perfumes-filters/perfumes-filters"
 import useScents from "@/src/sections/scents/hooks/use-scents"
-import React from "react"
+import { useSearchParams } from "next/navigation"
+import React, { useEffect } from "react"
 
 export default function PerfumesFiltersContainer() {
 	const breakpoint = useBreakpoint()
+	const searchParams = useSearchParams()
 	const {
 		filters,
+		setFilters,
 		handleChangeFilters,
 		handleResetFilters,
 		getActiveFiltersCount,
@@ -22,6 +25,13 @@ export default function PerfumesFiltersContainer() {
 	const { perfumeTypes, loadingData: loadingPerfumeTypes } = usePerfumeTypes()
 	const { scents, loadingData: loadingScents } = useScents()
 	const { offers, loadingData: loadingOffers } = useOffers()
+
+	useEffect(() => {
+		const nameParam = searchParams.get("name")
+		if (nameParam !== null) {
+			setFilters(oldFilters => ({ ...oldFilters, name: nameParam }))
+		} else setFilters(oldFilters => ({ ...oldFilters, name: "" }))
+	}, [searchParams])
 
 	return (
 		<div>
