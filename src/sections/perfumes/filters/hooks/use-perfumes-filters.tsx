@@ -3,7 +3,8 @@
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import { Pagination } from "@/src/lib/types/pagination"
 import { convertPerfumesFiltersDTO, Gender } from "@/src/lib/types/perfumes"
-import { Dispatch, SetStateAction, useState } from "react"
+import { useSearchParams } from "next/navigation"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 export interface PerfumesFilters {
 	name?: string
@@ -25,11 +26,34 @@ interface Props {
 
 export default function usePerfumesFilters({ setPagination }: Props) {
 	const { updateFiltersInUrl } = useUrlFilters()
+	const searchParams = useSearchParams()
 	const [filters, setFilters] = useState<PerfumesFilters>({
 		priceRange: [0, 1000],
 		millilitersRange: [0, 100],
 		scentsIds: [],
 	})
+
+	useEffect(() => {
+		const nameParam = searchParams.get("name")
+		const perfumTypeParam = searchParams.get("perfumeTypeId")
+		const brandParam = searchParams.get("brandId")
+		const genderParam = searchParams.get("gender") as Gender | null
+		const offerParam = searchParams.get("offerId")
+		const availableParam = searchParams.get("available")
+		setFilters(oldFilters => ({
+			...oldFilters,
+			name: nameParam || undefined,
+			perfumeTypeId: perfumTypeParam || undefined,
+			brandId: brandParam || undefined,
+			gender: genderParam || undefined,
+			offerId: offerParam || undefined,
+			available: availableParam
+				? availableParam === "true"
+					? true
+					: false
+				: undefined,
+		}))
+	}, [searchParams])
 
 	async function handleChangeFilters(
 		updatedFilters: Partial<PerfumesFilters>,
@@ -74,7 +98,6 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 
 	return {
 		filters,
-		setFilters,
 		handleChangeFilters,
 		handleResetFilters,
 		getActiveFiltersCount,
