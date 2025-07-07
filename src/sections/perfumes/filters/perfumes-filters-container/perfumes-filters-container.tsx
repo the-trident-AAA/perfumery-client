@@ -2,6 +2,7 @@
 import SheetFilters from "@/src/components/filters/sheet-filters"
 import SidePanelFilters from "@/src/components/filters/side-panel-filters"
 import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
+import { Gender } from "@/src/lib/types/perfumes"
 import useBrands from "@/src/sections/brands/hooks/use-brands"
 import useOffers from "@/src/sections/offers/hooks/use-offers"
 import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-types"
@@ -29,10 +30,22 @@ export default function PerfumesFiltersContainer() {
 	useEffect(() => {
 		const nameParam = searchParams.get("name")
 		const perfumTypeParam = searchParams.get("perfumeTypeId")
+		const brandParam = searchParams.get("brandId")
+		const genderParam = searchParams.get("gender") as Gender | null
+		const offerParam = searchParams.get("offerId")
+		const availableParam = searchParams.get("available")
 		setFilters(oldFilters => ({
 			...oldFilters,
 			name: nameParam || undefined,
 			perfumeTypeId: perfumTypeParam || undefined,
+			brandId: brandParam || undefined,
+			gender: genderParam || undefined,
+			offerId: offerParam || undefined,
+			available: availableParam
+				? availableParam === "true"
+					? true
+					: false
+				: undefined,
 		}))
 	}, [searchParams])
 
