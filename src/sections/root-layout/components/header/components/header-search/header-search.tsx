@@ -2,14 +2,13 @@
 import { Search as SearchIcon } from "lucide-react"
 import useHeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/hooks/use-header-search"
 import SearchInput from "@/src/components/inputs/search-input/search-input"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { paths } from "@/src/lib/routes/paths"
 import { useState, useEffect } from "react"
 
 const HeaderSearch = () => {
 	const [search, setSearch] = useState("")
 	const router = useRouter()
-	const currentPath = usePathname()
 	const searchParams = useSearchParams()
 	const { isMobile, toggleSearch, searchRef, showSearch } = useHeaderSearch()
 
