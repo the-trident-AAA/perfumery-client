@@ -17,6 +17,7 @@ import ShopCartTotalItemsProviderContainer from "@/src/sections/shop-cart/contex
 import { ToastContainer } from "react-toastify"
 import ClearShopCartModalContainer from "@/src/sections/shop-cart/clear-shop-cart/clear-shop-cart-modal-container"
 import { ShopCartProvider } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
+import { PerfumesFiltersProvider } from "@/src/sections/perfumes/filters/context/perfumes-filters-context"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -24,70 +25,80 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 			<body className={`${roboto.className} antialiased`}>
 				<SessionProvider>
 					<ShopCartProvider>
-						<ModalProvider>
-							<ShopCartTotalItemsProviderContainer>
-								<ToastContainer />
-								<main className="flex min-h-screen flex-col gap-8">
-									<Header />
-									<div className="md:container md:mx-auto px-3">
-										{children}
-									</div>
-									<Footer />
-									<Modal
-										formPath={
-											modalTypes.perfumDetailsModal.name
-										}
-										maxWidth="max-w-5xl"
-									>
-										<PerfumDetailsContainer />
-									</Modal>
-									<Modal
-										formPath={modalTypes.loginModal.name}
-										maxWidth="max-w-sm"
-									>
-										<LoginPanel />
-									</Modal>
-									<Modal
-										formPath={
-											modalTypes.registrationModal.name
-										}
-										maxWidth="max-w-6xl"
-									>
-										<RegistrationPanel />
-									</Modal>
-									<Modal
-										formPath={modalTypes.shopCartModal.name}
-										maxWidth="max-w-6xl"
-									>
-										<ShopCartContent variant="modal" />
-									</Modal>
-									<Modal
-										formPath={
-											modalTypes.editProfileModal.name
-										}
-										maxWidth="max-w-lg"
-									>
-										<EditProfileForm />
-									</Modal>
-									<Modal
-										formPath={
-											modalTypes.changePasswordModal.name
-										}
-										maxWidth="max-w-xl"
-									>
-										<ChangePasswordForm />
-									</Modal>
-									<Modal
-										formPath={
-											modalTypes.clearShopCartModal.name
-										}
-										maxWidth="max-w-xl"
-									>
-										<ClearShopCartModalContainer />
-									</Modal>
-								</main>
-							</ShopCartTotalItemsProviderContainer>
-						</ModalProvider>
+						<PerfumesFiltersProvider>
+							<ModalProvider>
+								<ShopCartTotalItemsProviderContainer>
+									<ToastContainer />
+									<main className="flex min-h-screen flex-col gap-8">
+										<Header />
+										<div className="md:container md:mx-auto px-3">
+											{children}
+										</div>
+										<Footer />
+										<Modal
+											formPath={
+												modalTypes.perfumDetailsModal
+													.name
+											}
+											maxWidth="max-w-5xl"
+										>
+											<PerfumDetailsContainer />
+										</Modal>
+										<Modal
+											formPath={
+												modalTypes.loginModal.name
+											}
+											maxWidth="max-w-sm"
+										>
+											<LoginPanel />
+										</Modal>
+										<Modal
+											formPath={
+												modalTypes.registrationModal
+													.name
+											}
+											maxWidth="max-w-6xl"
+										>
+											<RegistrationPanel />
+										</Modal>
+										<Modal
+											formPath={
+												modalTypes.shopCartModal.name
+											}
+											maxWidth="max-w-6xl"
+										>
+											<ShopCartContent variant="modal" />
+										</Modal>
+										<Modal
+											formPath={
+												modalTypes.editProfileModal.name
+											}
+											maxWidth="max-w-lg"
+										>
+											<EditProfileForm />
+										</Modal>
+										<Modal
+											formPath={
+												modalTypes.changePasswordModal
+													.name
+											}
+											maxWidth="max-w-xl"
+										>
+											<ChangePasswordForm />
+										</Modal>
+										<Modal
+											formPath={
+												modalTypes.clearShopCartModal
+													.name
+											}
+											maxWidth="max-w-xl"
+										>
+											<ClearShopCartModalContainer />
+										</Modal>
+									</main>
+								</ShopCartTotalItemsProviderContainer>
+							</ModalProvider>
+						</PerfumesFiltersProvider>
 					</ShopCartProvider>
 				</SessionProvider>
 			</body>
