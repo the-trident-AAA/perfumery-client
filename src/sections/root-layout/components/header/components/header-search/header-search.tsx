@@ -4,13 +4,15 @@ import useHeaderSearch from "@/src/sections/root-layout/components/header/compon
 import SearchInput from "@/src/components/inputs/search-input/search-input"
 import { useRouter, useSearchParams } from "next/navigation"
 import { paths } from "@/src/lib/routes/paths"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { PerfumesFiltersContext } from "@/src/sections/perfumes/filters/context/perfumes-filters-context"
 
 const HeaderSearch = () => {
 	const [search, setSearch] = useState("")
 	const router = useRouter()
 	const searchParams = useSearchParams()
 	const { isMobile, toggleSearch, searchRef, showSearch } = useHeaderSearch()
+	const { filters } = useContext(PerfumesFiltersContext)
 
 	useEffect(() => {
 		const nameParam = searchParams.get("name")
@@ -27,6 +29,17 @@ const HeaderSearch = () => {
 				router.push(
 					paths.perfumes({
 						...(e.target.value && { name: e.target.value }),
+						...(filters.brandId && { brandId: filters.brandId }),
+						...(filters.offerId && { offerId: filters.offerId }),
+						...(filters.perfumeTypeId && {
+							perfumeTypeId: filters.perfumeTypeId,
+						}),
+						...(filters.gender && {
+							gender: filters.gender,
+						}),
+						...(filters.available !== undefined && {
+							available: filters.available ? "true" : "false",
+						}),
 					}).root,
 				)
 			}}
