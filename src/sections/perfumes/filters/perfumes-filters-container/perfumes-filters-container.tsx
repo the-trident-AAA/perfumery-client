@@ -5,10 +5,10 @@ import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
 import useBrands from "@/src/sections/brands/hooks/use-brands"
 import useOffers from "@/src/sections/offers/hooks/use-offers"
 import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-types"
-import usePerfumesFilters from "@/src/sections/perfumes/filters/hooks/use-perfumes-filters"
+import { PerfumesFiltersContext } from "@/src/sections/perfumes/filters/context/perfumes-filters-context"
 import PerfumesFilters from "@/src/sections/perfumes/filters/perfumes-filters/perfumes-filters"
 import useScents from "@/src/sections/scents/hooks/use-scents"
-import React from "react"
+import React, { useContext } from "react"
 
 export default function PerfumesFiltersContainer() {
 	const breakpoint = useBreakpoint()
@@ -18,7 +18,7 @@ export default function PerfumesFiltersContainer() {
 		handleChangeFilters,
 		handleResetFilters,
 		getActiveFiltersCount,
-	} = usePerfumesFilters({})
+	} = useContext(PerfumesFiltersContext)
 	const { brands, loadingData: loadingBrands } = useBrands()
 	const { perfumeTypes, loadingData: loadingPerfumeTypes } = usePerfumeTypes()
 	const { scents, loadingData: loadingScents } = useScents()
