@@ -1,29 +1,16 @@
-import Logo from "./components/logo"
 import HeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/header-search"
-import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
-import HeaderNavigationOptions from "@/src/sections/root-layout/components/header/components/header-navigation-options/header-navigation-options"
+import AppLogo from "@/src/components/app-logo/app-logo"
+import HeaderNavbar from "@/src/sections/root-layout/components/header/header-navbar"
 
 const Header = () => {
 	return (
-		<header className="bg-primary sticky top-0 z-50 shadow-md flex flex-col">
-			<div className="container mx-auto py-4 px-6">
-				<div className="flex items-center justify-between h-16">
-					{/* Logo - alineado a la izquierda */}
-					<div className="flex-shrink-0 flex items-center">
-						<Logo />
-					</div>
-
-					{/* Barra de búsqueda - centrada con espacio adaptable */}
-					<div className="flex-1 max-w-2xl mx-4 md:mx-8">
-						<HeaderSearch />
-					</div>
-
-					{/* Iconos de usuario y carrito - alineados a la derecha */}
-					<HeaderNavigationOptions />
+		<header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+			<div className="container mx-auto px-4 py-4 flex items-center justify-between">
+				<AppLogo />
+				<div className="flex-1 max-w-2xl mx-4 md:mx-8">
+					<HeaderSearch />
 				</div>
-			</div>
-			<div className="bg-white">
-				<HeaderNavigationMenu />
+				<HeaderNavbar />
 			</div>
 		</header>
 	)
