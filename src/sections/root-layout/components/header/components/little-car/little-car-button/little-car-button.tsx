@@ -1,4 +1,5 @@
 "use client"
+import { Avatar, AvatarFallback } from "@/src/components/ui/avatar"
 import { Badge } from "@/src/components/ui/badge"
 import { Button } from "@/src/components/ui/button"
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
@@ -14,11 +15,16 @@ const LittleCarButton = React.forwardRef<
 		<Button
 			variant="default"
 			size="icon"
-			className="h-12 w-12 relative hover:bg-gray-700"
+			className="relative h-10 w-10 rounded-full hover:bg-accent/50 transition-colors duration-200"
 			ref={ref}
 			{...props}
 		>
-			<ShoppingCartIcon className="size-10 " />
+			<Avatar className="h-10 w-10 shadow-sm">
+				<AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground font-semibold text-sm">
+					<ShoppingCartIcon className="size-5" />
+				</AvatarFallback>
+			</Avatar>
+
 			{totalItems > 0 && (
 				<Badge
 					className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center text-xs"
