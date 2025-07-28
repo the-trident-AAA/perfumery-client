@@ -1,6 +1,6 @@
 import EmptyContent from "@/src/components/empty-content/empty-content"
 import { getOffersList } from "@/src/lib/services/offers"
-import HomeOffersCarousel from "@/src/sections/home/components/home-offers/components/home-offers-carousel/home-offers-carousel"
+import OfferCard from "@/src/sections/home/components/home-offers/components/offer-card/offer-card"
 import React from "react"
 
 export default async function HomeOffersList() {
@@ -8,7 +8,11 @@ export default async function HomeOffersList() {
 	if (!res.response || res.error) throw new Error("Error in fetching offers")
 	const offers = res.response
 	return offers.length > 0 ? (
-		<HomeOffersCarousel offers={offers} />
+		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{offers.map((offer, index) => (
+				<OfferCard key={index} offer={offer} />
+			))}
+		</div>
 	) : (
 		<EmptyContent
 			title="No hay ofertas nuevas"
