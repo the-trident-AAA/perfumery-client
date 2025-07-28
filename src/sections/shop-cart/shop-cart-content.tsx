@@ -5,6 +5,7 @@ import { LoadingSpinner } from "@/src/components/ui/loading-spinner"
 import { ShopCart } from "@/src/lib/types/shop-cart"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import ClearShopCartButton from "@/src/sections/shop-cart/components/clear-shop-cart-button/clear-shop-cart-button"
+import CreateOrderButton from "@/src/sections/shop-cart/components/create-order-button/create-order-button"
 import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import PerfumeShopCartList from "@/src/sections/shop-cart/perfume-shop-cart-list/perfume-shop-cart-list"
 
@@ -50,12 +51,7 @@ const ShopCartContentBody = ({
 					</div>
 				</div>
 				<div className="flex gap-2">
-					<Button
-						className="bg-primary lg:text-lg"
-						disabled={isDisabled}
-					>
-						Crear Pedido
-					</Button>
+					<CreateOrderButton isDisabled={isDisabled} />
 					<ClearShopCartButton
 						shopCartId={shopCartData.id}
 						shopCartRefresh={onRefresh}
