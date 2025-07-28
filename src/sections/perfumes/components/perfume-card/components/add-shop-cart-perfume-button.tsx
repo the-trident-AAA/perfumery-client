@@ -1,19 +1,21 @@
 "use client"
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
+import { getGenderColor, Perfume } from "@/src/lib/types/perfumes"
 import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useCreateShopCartPerfume from "@/src/sections/shop-cart/hooks/use-create-shop-cart-perfume"
+import { ShoppingCart } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import React, { useCallback, useContext } from "react"
 import { toast } from "react-toastify"
 
 interface Props {
-	perfumeId: string
+	perfume: Perfume
 }
 
-export default function AddShopCartPerfumeButton({ perfumeId }: Props) {
+export default function AddShopCartPerfumeButton({ perfume }: Props) {
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
 	const { createShopCartPerfume, loading } = useCreateShopCartPerfume({
@@ -33,7 +35,11 @@ export default function AddShopCartPerfumeButton({ perfumeId }: Props) {
 			e.stopPropagation()
 			if (session) {
 				const shopCartId = session.user.shopCartId as string
-				createShopCartPerfume({ shopCartId, perfumeId, cant: 1 })
+				createShopCartPerfume({
+					shopCartId,
+					perfumeId: perfume.id,
+					cant: 1,
+				})
 			} else {
 				router.push(paths.sign_in.root)
 			}
@@ -43,12 +49,21 @@ export default function AddShopCartPerfumeButton({ perfumeId }: Props) {
 
 	return (
 		<Button
-			variant={"outline"}
-			className="w-full py-3 text-sm sm:text-xl text-center text-pink-600 font-medium hover:bg-pink-50 transition-colors"
-			disabled={loading || status === "loading"}
-			onClick={handleAddShopCartPerfume}
+			className={`${
+				perfume.available
+					? `bg-gradient-to-r ${getGenderColor(perfume.gender)} hover:shadow-lg transform hover:scale-105`
+					: "bg-primary"
+			} transition-all duration-300 text-white font-medium px-6`}
+			disabled={!perfume.available}
 		>
-			Añadir al carrito
+			{perfume.available ? (
+				<>
+					<ShoppingCart className="h-4 w-4 mr-2" />
+					Añadir
+				</>
+			) : (
+				"Agotado"
+			)}
 		</Button>
 	)
 }
