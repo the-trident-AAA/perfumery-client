@@ -1,7 +1,7 @@
 import EmptyContent from "@/src/components/empty-content/empty-content"
 import { getPerfumesList } from "@/src/lib/services/perfumes"
 import { SearchParamsPagination } from "@/src/lib/types/pagination"
-import PerfurmeCard from "@/src/sections/perfumes/components/perfume-card/perfume-card"
+import { PerfumeCard } from "@/src/sections/perfumes/components/perfume-card/perfume-card"
 import React from "react"
 
 interface Props {
@@ -17,7 +17,7 @@ export default async function PerfumesList({ searchParams }: Props) {
 	return perfumes.length > 0 ? (
 		<div className="grid grid-cols-2 2xs:grid-cols-3 xl:grid-cols-4 gap-6">
 			{perfumes.map(perfume => (
-				<PerfurmeCard key={perfume.id} perfume={perfume} />
+				<PerfumeCard key={perfume.id} perfume={perfume} />
 			))}
 		</div>
 	) : (

@@ -3,7 +3,8 @@
 import { StandardCarouselProvider } from "@/src/components/ui/standard-carousel/context/standard-carousel-context"
 import StandardCarousel from "@/src/components/ui/standard-carousel/standard-carousel"
 import { Perfume } from "@/src/lib/types/perfumes"
-import PerfurmeCard from "@/src/sections/perfumes/components/perfume-card/perfume-card"
+import { PerfumeCard } from "@/src/sections/perfumes/components/perfume-card/perfume-card"
+
 import React from "react"
 
 interface Props {
@@ -20,7 +21,7 @@ export default function HomePromotionsCarousel({ data }: Props) {
 				withArrows
 				arrowsPosition="outside"
 				arrowsLocation="bottom"
-				renderCard={item => <PerfurmeCard perfume={item} />}
+				renderCard={item => <PerfumeCard perfume={item} />}
 				shouldCenter={(breakpoint: string, cantElements: number) => {
 					switch (breakpoint) {
 						case "3xl":
