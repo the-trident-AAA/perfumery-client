@@ -13,7 +13,7 @@ export interface Perfume {
 	discountOffer?: number
 	gender: string
 	scents: string[]
-	liters: number
+	milliliters: number
 	perfumeType: string
 	available: boolean
 	price: number

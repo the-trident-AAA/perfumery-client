@@ -169,7 +169,7 @@ export function PerfumeCard({ perfume }: PerfumeCardProps) {
 						</div>
 						<div className="flex items-center gap-1">
 							<span className="text-primary font-semibold">
-								{perfume.liters * 1000}ml
+								{perfume.milliliters * 1000}ml
 							</span>
 						</div>
 					</div>
