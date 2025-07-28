@@ -61,7 +61,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 		: undefined
 
 	return (
-		<div className="relative w-full group">
+		<div className="relative w-full">
 			<Carousel
 				plugins={plugins}
 				setApi={setApi}
