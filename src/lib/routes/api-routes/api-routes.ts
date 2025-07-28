@@ -35,7 +35,7 @@ export const apiRoutes = {
 		clearShopCart: `${process.env.NEXT_PUBLIC_API_URL}shop-cart-perfume/clear-shop-cart/:id`,
 	},
 	orders: {
-		create: `${process.env.NEXT_PUBLIC_API_URL}/order`,
+		get: `${process.env.NEXT_PUBLIC_API_URL}order`,
 	},
 } as const
 
