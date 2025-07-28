@@ -1,7 +1,8 @@
 import EmptyContent from "@/src/components/empty-content/empty-content"
 import { getPerfumesList } from "@/src/lib/services/perfumes"
 import { SearchParamsPagination } from "@/src/lib/types/pagination"
-import { PerfumeCard } from "@/src/sections/perfumes/components/perfume-card/perfume-card"
+import PerfumeCard from "@/src/sections/perfumes/components/perfume-card/perfume-card"
+
 import React from "react"
 
 interface Props {

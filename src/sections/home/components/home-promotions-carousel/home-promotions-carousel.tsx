@@ -3,7 +3,7 @@
 import { StandardCarouselProvider } from "@/src/components/ui/standard-carousel/context/standard-carousel-context"
 import StandardCarousel from "@/src/components/ui/standard-carousel/standard-carousel"
 import { Perfume } from "@/src/lib/types/perfumes"
-import { PerfumeCard } from "@/src/sections/perfumes/components/perfume-card/perfume-card"
+import PerfumeCard from "@/src/sections/perfumes/components/perfume-card/perfume-card"
 
 import React from "react"
 
@@ -18,7 +18,7 @@ export default function HomePromotionsCarousel({ data }: Props) {
 				items={data}
 				dimension="100vw"
 				className="pl-4 mr-4"
-				itemsStyles="basis-1/2 sm:basis-1/3 md:basis-1/3 lg:basis-1/5"
+				itemsStyles="sm:basis-1/2 md:basis-1/3 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
 				withArrows
 				arrowsPosition="outside"
 				arrowsLocation="bottom"
