@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
-import { getGenderColor, Perfume } from "@/src/lib/types/perfumes"
+import { Perfume } from "@/src/lib/types/perfumes"
 import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useCreateShopCartPerfume from "@/src/sections/shop-cart/hooks/use-create-shop-cart-perfume"
@@ -51,10 +51,11 @@ export default function AddShopCartPerfumeButton({ perfume }: Props) {
 		<Button
 			className={`${
 				perfume.available
-					? `bg-gradient-to-r ${getGenderColor(perfume.gender)} hover:shadow-lg transform hover:scale-105`
+					? `bg-primary hover:shadow-lg transform hover:scale-105`
 					: "bg-primary"
 			} transition-all duration-300 text-white font-medium px-6`}
-			disabled={!perfume.available}
+			disabled={loading || !perfume.available}
+			onClick={handleAddShopCartPerfume}
 		>
 			{perfume.available ? (
 				<>
