@@ -4,18 +4,28 @@ import React, { Suspense } from "react"
 
 export default function HomePerfumeGroups() {
 	return (
-		<div className="flex flex-col gap-4">
-			<p className="text-2xl">Grupos de Perfume</p>
-			<Suspense
-				fallback={
-					<CardSkeletonGroup
-						containerClassName="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full"
-						count={4}
-					/>
-				}
-			>
-				<PerfumeGroupsList />
-			</Suspense>
-		</div>
+		<section className="bg-muted pb-20">
+			<div className="container mx-auto flex flex-col gap-12 pt-4">
+				<div className="text-center space-y-4 ">
+					<h2 className="text-3xl lg:text-4xl font-bold text-primary">
+						Descubre nuestras colecciones de perfumes
+					</h2>
+					<p className="text-xl text-black font-semibold max-w-2xl mx-auto">
+						Explora los grupos de fragancias disponibles y encuentra
+						el aroma perfecto para cada ocasión
+					</p>
+				</div>
+				<Suspense
+					fallback={
+						<CardSkeletonGroup
+							containerClassName="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full"
+							count={4}
+						/>
+					}
+				>
+					<PerfumeGroupsList />
+				</Suspense>
+			</div>
+		</section>
 	)
 }
