@@ -175,7 +175,7 @@ export function PerfumeCard({ perfume }: PerfumeCardProps) {
 					</div>
 
 					{/* Rating */}
-					<div className="flex items-center gap-1">
+					{/* <div className="flex items-center gap-1">
 						{[1, 2, 3, 4, 5].map(star => (
 							<Star
 								key={star}
@@ -185,7 +185,7 @@ export function PerfumeCard({ perfume }: PerfumeCardProps) {
 						<span className="text-xs text-muted-foreground ml-1">
 							(4.8)
 						</span>
-					</div>
+					</div>*/}
 
 					{/* Price Section */}
 					<div className="flex items-center justify-between pt-3 border-t border-border/50">
