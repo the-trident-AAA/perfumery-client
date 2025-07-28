@@ -29,11 +29,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 							<ModalProvider>
 								<ShopCartTotalItemsProviderContainer>
 									<ToastContainer />
-									<main className="flex min-h-screen flex-col gap-8">
+									<main className="flex min-h-screen flex-col">
 										<Header />
-										<div className="md:container md:mx-auto px-3">
-											{children}
-										</div>
+										{children}
 										<Footer />
 										<Modal
 											formPath={
