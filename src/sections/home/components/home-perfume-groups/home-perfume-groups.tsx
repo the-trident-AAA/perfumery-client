@@ -4,7 +4,7 @@ import React, { Suspense } from "react"
 
 export default function HomePerfumeGroups() {
 	return (
-		<section className="bg-muted pb-20">
+		<section className="bg-muted pt-12 pb-20">
 			<div className="container mx-auto flex flex-col gap-12 pt-4">
 				<div className="text-center space-y-4 ">
 					<h2 className="text-3xl lg:text-4xl font-bold text-primary">
