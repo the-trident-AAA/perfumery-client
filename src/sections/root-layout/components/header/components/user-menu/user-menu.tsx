@@ -14,6 +14,8 @@ import { Avatar, AvatarFallback } from "@/src/components/ui/avatar"
 import { Badge } from "@/src/components/ui/badge"
 import { Separator } from "@/src/components/ui/separator"
 import SignOutButton from "@/src/sections/root-layout/components/header/components/sign-out-button/sign-out-button"
+import NavigationComponent from "@/src/components/navigation-component/navigation-component"
+import { paths } from "@/src/lib/routes/paths"
 
 export default function UserMenu() {
 	const { data: session, status } = useSession()
@@ -109,19 +111,20 @@ export default function UserMenu() {
 				{/* Opciones del menú */}
 				<div className="p-2">
 					<div className="space-y-1">
-						<Button
-							variant="ghost"
-							className="w-full justify-between h-10 px-3 hover:bg-accent/50 transition-colors"
-							onClick={handleOpenProfileModal}
-						>
-							<div className="flex items-center">
-								<User className="mr-3 h-4 w-4 text-muted-foreground" />
-								<span className="text-sm font-medium">
-									Ver perfil
-								</span>
-							</div>
-							<ChevronRight className="h-3 w-3 text-muted-foreground" />
-						</Button>
+						<NavigationComponent href={paths.profile.root}>
+							<Button
+								variant="ghost"
+								className="w-full justify-between h-10 px-3 hover:bg-accent/50 transition-colors"
+								onClick={handleOpenProfileModal}
+							>
+								<div className="flex items-center">
+									<User className="mr-3 h-4 w-4 text-muted-foreground" />
+									<span className="text-sm font-medium">
+										Ver perfil
+									</span>
+								</div>
+							</Button>
+						</NavigationComponent>
 
 						<Button
 							variant="ghost"
