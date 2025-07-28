@@ -89,3 +89,18 @@ export const convertPerfumesFiltersDTO = (
 		price: priceRange[0] > 0 ? priceRange[0] : undefined,
 	}
 }
+
+export const getGenderColor = (gender: string) => {
+	switch (gender.toLowerCase()) {
+		case "masculino":
+		case "hombre":
+			return "from-blue-500 to-indigo-600"
+		case "femenino":
+		case "mujer":
+			return "from-pink-500 to-rose-600"
+		case "unisex":
+			return "from-purple-500 to-violet-600"
+		default:
+			return "from-gray-500 to-gray-600"
+	}
+}
