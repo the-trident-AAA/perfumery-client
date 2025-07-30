@@ -69,7 +69,7 @@ export default function PerfumeCard({ perfume }: Props) {
 				{/* Partículas flotantes */}
 				<Sparkles className="absolute top-6 right-8 h-4 w-4 text-primary/60 animate-pulse" />
 				<Sparkles className="absolute top-16 left-6 h-3 w-3 text-primary/40 animate-pulse delay-300" />
-				<Sparkles className="absolute bottom-20 right-12 h-5 w-5 text-primary/50 animate-pulse delay-700" />
+				<Sparkles className="absolute bottom-23 left-32 h-5 w-5 text-primary/50 animate-pulse delay-700" />
 
 				{/* Elementos geométricos */}
 				<div className="absolute top-8 left-8 w-2 h-2 bg-primary/60 rounded-full animate-bounce" />
@@ -175,93 +175,103 @@ export default function PerfumeCard({ perfume }: Props) {
 				</div>
 
 				{/* Content Section mejorada */}
-				<div className="p-6 space-y-5 relative">
+				<div className="relative">
 					{/* Franja decorativa interna */}
 					<div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary/40 via-primary/60 to-primary/40 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
-					{/* Brand and Type mejorados */}
-					<div className="flex items-center justify-between animate-fade-in delay-100">
-						<Badge className="text-xs font-semibold border-2 border-primary/30 text-primary bg-gradient-to-r from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 transition-all duration-300 transform hover:scale-105">
-							{perfume.brand}
-						</Badge>
-						<Badge className="text-xs bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 border border-gray-300 hover:from-gray-200 hover:to-gray-300 transition-all duration-300">
-							{perfume.perfumeType}
-						</Badge>
-					</div>
-
-					{/* Title mejorado */}
-					<div className="space-y-3 animate-fade-in delay-200">
-						<h3 className="font-bold text-xl text-foreground line-clamp-1 group-hover:text-primary transition-all duration-300 transform group-hover:scale-105 origin-left">
-							{perfume.name}
-						</h3>
-						<p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed group-hover:text-foreground transition-colors duration-300">
-							{perfume.description}
-						</p>
-					</div>
-
-					{/* Details mejorados */}
-					<div className="flex items-center justify-between text-sm animate-fade-in delay-300">
-						<div className="flex items-center gap-3">
-							<div
-								className={`w-3 h-3 rounded-full bg-gradient-to-r ${getGenderColor(
-									perfume.gender,
-								)} border-2 border-white shadow-lg animate-pulse`}
-							/>
-							<span className="text-muted-foreground font-semibold group-hover:text-primary transition-colors duration-300">
-								{perfume.gender}
-							</span>
+					<div className="flex flex-col p-4 gap-2 bg-gradient-to-br from-primary via-primary/90 to-primary/80">
+						{/* Brand and Type mejorados */}
+						<div className="flex items-center justify-between animate-fade-in delay-100">
+							<Badge
+								variant={"outline"}
+								className="text-black font-bold bg-muted"
+							>
+								{perfume.brand}
+							</Badge>
+							<Badge
+								variant={"default"}
+								className="text-black font-bold bg-muted"
+							>
+								{perfume.perfumeType}
+							</Badge>
 						</div>
-						<div className="flex items-center gap-2 bg-primary/10 px-3 py-1 rounded-full">
-							<Gift className="h-3 w-3 text-primary" />
-							<span className="text-primary font-bold">
-								{perfume.milliliters}ml
-							</span>
-						</div>
-					</div>
 
-					{/* Price Section súper mejorada */}
-					<div className="flex items-center justify-between pt-4 border-t border-border/50 animate-fade-in delay-400">
-						<div className="flex flex-col space-y-1">
-							{perfume.discountOffer ? (
-								<>
-									<span className="text-2xl font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-										{fCurrency(discountedPrice)}
-									</span>
-									<span className="text-sm text-muted-foreground line-through opacity-75">
-										{fCurrency(perfume.price)}
-									</span>
-								</>
-							) : (
-								<span className="text-2xl font-black bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-									{fCurrency(perfume.price)}
-								</span>
-							)}
+						{/* Title mejorado */}
+						<div className="space-y-3 animate-fade-in delay-200">
+							<h3 className="font-bold text-xl text-white line-clamp-1 transform group-hover:scale-105 origin-left">
+								{perfume.name}
+							</h3>
+							<p className="text-sm text-white line-clamp-2 leading-relaxed">
+								{perfume.description}
+							</p>
 						</div>
-						<AddShopCartPerfumeButton perfume={perfume} />
-					</div>
 
-					{/* Availability indicator mejorado */}
-					<div className="flex items-center justify-between pt-3 animate-fade-in delay-500">
-						<div className="flex items-center gap-2">
-							<div
-								className={`w-2.5 h-2.5 rounded-full ${
-									perfume.available
-										? "bg-green-500 animate-pulse"
-										: "bg-red-500"
-								} shadow-lg`}
-							/>
-							<span className="text-xs font-medium text-muted-foreground">
-								{perfume.available ? "En stock" : "Agotado"}
-							</span>
-						</div>
-						{perfume.available && perfume.cant <= 5 && (
-							<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-2 py-1 rounded-full animate-pulse">
-								<Zap className="h-3 w-3" />
-								<span className="text-xs font-bold">
-									¡Solo {perfume.cant}!
+						{/* Details mejorados */}
+						<div className="flex items-center justify-between text-sm animate-fade-in delay-300">
+							<div className="flex items-center gap-3">
+								<div
+									className={`w-3 h-3 rounded-full bg-gradient-to-r ${getGenderColor(
+										perfume.gender,
+									)} border-2 border-white shadow-lg animate-pulse`}
+								/>
+								<span className="text-white font-semibold">
+									{perfume.gender}
 								</span>
 							</div>
-						)}
+							<div className="flex items-center gap-2 bg-muted px-3 py-1 rounded-full">
+								<Gift className="h-3 w-3 text-black" />
+								<span className="text-black font-bold">
+									{perfume.milliliters}ml
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex flex-col gap-2 p-4">
+						{/* Price Section súper mejorada */}
+						<div className="flex items-center justify-between pt-4 border-t border-border/50 animate-fade-in delay-400">
+							<div className="flex flex-col space-y-1">
+								{perfume.discountOffer ? (
+									<>
+										<span className="text-2xl font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+											{fCurrency(discountedPrice)}
+										</span>
+										<span className="text-sm text-muted-foreground line-through opacity-75">
+											{fCurrency(perfume.price)}
+										</span>
+									</>
+								) : (
+									<span className="text-2xl font-black bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+										{fCurrency(perfume.price)}
+									</span>
+								)}
+							</div>
+							<AddShopCartPerfumeButton perfume={perfume} />
+						</div>
+
+						{/* Availability indicator mejorado */}
+						<div className="flex items-center justify-between pt-3 animate-fade-in delay-500">
+							<div className="flex items-center gap-2">
+								<div
+									className={`w-2.5 h-2.5 rounded-full ${
+										perfume.available
+											? "bg-green-500 animate-pulse"
+											: "bg-red-500"
+									} shadow-lg`}
+								/>
+								<span className="text-xs font-medium text-muted-foreground">
+									{perfume.available ? "En stock" : "Agotado"}
+								</span>
+							</div>
+							{perfume.available && perfume.cant <= 5 && (
+								<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-2 py-1 rounded-full animate-pulse">
+									<Zap className="h-3 w-3" />
+									<span className="text-xs font-bold">
+										¡Solo {perfume.cant}!
+									</span>
+								</div>
+							)}
+						</div>
 					</div>
 
 					{/* Franja decorativa inferior */}
