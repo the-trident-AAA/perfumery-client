@@ -9,6 +9,7 @@ import { paths } from "@/src/lib/routes/paths"
 import { Button } from "@/src/components/ui/button"
 import UserMenu from "@/src/sections/root-layout/components/header/components/user-menu/user-menu"
 import LittleCar from "@/src/sections/root-layout/components/header/components/little-car/little-car"
+import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
 
 export default function HeaderNavbar() {
 	const { data: session, status } = useSession()
@@ -27,6 +28,7 @@ export default function HeaderNavbar() {
 	return (
 		<nav className="flex items-center gap-2 sm:gap-4">
 			<div className="flex items-center gap-2 sm:gap-4">
+				<HeaderNavigationMenu />
 				{!session && (
 					<NavigationComponent href={paths.sign_in.root}>
 						<Button

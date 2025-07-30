@@ -11,53 +11,36 @@ interface NavigationItem {
 
 export const navigationItems: NavigationItem[] = [
 	{
-		label: "Inicio",
-		path: paths.home.root,
-		icon: <HouseIcon color="black" className="size-4 sm:size-6" />,
-	},
-	{
 		label: "Perfumes",
 		path: paths.perfumes().root,
-		icon: <ShoppingCartIcon color="black" className="size-4 sm:size-6" />,
+		icon: <ShoppingCartIcon className="size-4 text-yellow-300 sm:size-6" />,
 		childrens: [
 			{
 				label: "Diseñador",
 				path: paths.perfumes({ group: "1" }).root,
 				icon: (
-					<ShoppingCartIcon
-						color="black"
-						className="size-4 sm:size-6"
-					/>
+					<ShoppingCartIcon className="size-4 text-yellow-300 sm:size-6" />
 				),
 			},
 			{
 				label: "Árabe",
 				path: paths.perfumes({ group: "2" }).root,
 				icon: (
-					<ShoppingCartIcon
-						color="black"
-						className="size-4 sm:size-6"
-					/>
+					<ShoppingCartIcon className="size-4 text-yellow-300 sm:size-6" />
 				),
 			},
 			{
 				label: "Nicho",
 				path: paths.perfumes({ group: "3" }).root,
 				icon: (
-					<ShoppingCartIcon
-						color="black"
-						className="size-4 sm:size-6"
-					/>
+					<ShoppingCartIcon className="size-4 text-yellow-300 sm:size-6" />
 				),
 			},
 			{
 				label: "Nacional",
 				path: paths.perfumes({ group: "4" }).root,
 				icon: (
-					<ShoppingCartIcon
-						color="black"
-						className="size-4 sm:size-6"
-					/>
+					<ShoppingCartIcon className="size-4 text-yellow-300 sm:size-6" />
 				),
 			},
 		],
