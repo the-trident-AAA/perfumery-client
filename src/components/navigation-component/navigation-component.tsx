@@ -4,8 +4,17 @@ import React, { ReactNode } from "react"
 interface Props {
 	children: ReactNode
 	href: string
+	className?: string
 }
 
-export default function NavigationComponent({ children, href }: Props) {
-	return <Link href={href}>{children}</Link>
+export default function NavigationComponent({
+	children,
+	href,
+	className,
+}: Props) {
+	return (
+		<Link className={className} href={href}>
+			{children}
+		</Link>
+	)
 }
