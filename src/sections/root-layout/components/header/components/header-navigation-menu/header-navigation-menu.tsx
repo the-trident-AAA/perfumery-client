@@ -1,3 +1,5 @@
+import NavigationComponent from "@/src/components/navigation-component/navigation-component"
+import { Button } from "@/src/components/ui/button"
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -18,7 +20,10 @@ interface LinkItemProps {
 }
 
 const LinkItem = ({ label, icon, path }: LinkItemProps) => (
-	<NavigationMenuLink className="text-[16px] sm:text-xl" asChild>
+	<NavigationMenuLink
+		className="text-[16px] bg-gradient-to-br from-primary via-primary/90 rounded-2xl to-primary/80 text-yellow-300 sm:text-xl"
+		asChild
+	>
 		<Link href={path} className={navigationMenuTriggerStyle()}>
 			<div className="flex gap-2 items-center">
 				{icon && icon}
@@ -30,7 +35,7 @@ const LinkItem = ({ label, icon, path }: LinkItemProps) => (
 
 export default function HeaderNavigationMenu() {
 	return (
-		<NavigationMenu className="mx-auto p-2">
+		<NavigationMenu>
 			<NavigationMenuList>
 				{navigationItems.map((navigationItem, index) =>
 					!navigationItem.childrens ? (
@@ -43,31 +48,22 @@ export default function HeaderNavigationMenu() {
 						</NavigationMenuItem>
 					) : (
 						<NavigationMenuItem key={index}>
-							<NavigationMenuTrigger className="text-[16px] sm:text-xl">
-								<LinkItem
-									label={navigationItem.label}
-									icon={navigationItem.icon}
-									path={navigationItem.path}
-								/>
+							<NavigationMenuTrigger className="text-[16px] text-white sm:text-xl">
+								{navigationItem.icon && navigationItem.icon}
+								{navigationItem.label}
 							</NavigationMenuTrigger>
-							<NavigationMenuContent className="flex flex-col 2xl:flex-row gap-2">
+							<NavigationMenuContent className="flex flex-col gap-2">
 								{navigationItem.childrens.map(
 									(child, childIndex) => (
-										<NavigationMenuLink
-											className="text-[16px] sm:text-xl"
-											asChild
+										<NavigationComponent
 											key={childIndex}
+											href={child.path}
 										>
-											<Link
-												href={child.path}
-												className={navigationMenuTriggerStyle()}
-											>
-												<div className="flex gap-2 items-center">
-													{child.icon && child.icon}
-													{child.label}
-												</div>
-											</Link>
-										</NavigationMenuLink>
+											<Button className="flex gap-2 w-full justify-start">
+												{child.icon && child.icon}
+												{child.label}
+											</Button>
+										</NavigationComponent>
 									),
 								)}
 							</NavigationMenuContent>
