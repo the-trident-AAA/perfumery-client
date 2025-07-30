@@ -142,9 +142,7 @@ export default async function BestSellingProducts() {
 								</div>
 							}
 						>
-							<div className="relative bg-muted shadow-xl">
-								<BestSellingProductsList />
-							</div>
+							<BestSellingProductsList />
 						</Suspense>
 					</div>
 
