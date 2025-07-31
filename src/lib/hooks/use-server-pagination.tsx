@@ -2,7 +2,7 @@
 
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import { Pagination } from "@/src/lib/types/pagination"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface Props {
 	defaultPagination?: Pagination
@@ -15,6 +15,20 @@ export default function useServerPagination({ defaultPagination }: Props) {
 			limit: 10,
 		},
 	)
+
+	useEffect(() => {
+		if (!defaultPagination) return
+
+		setPagination(prev => {
+			if (
+				prev.page !== defaultPagination.page ||
+				prev.limit !== defaultPagination.limit
+			) {
+				return defaultPagination
+			}
+			return prev
+		})
+	}, [defaultPagination?.page, defaultPagination?.limit])
 	const { updateFiltersInUrl } = useUrlFilters()
 
 	function serverHandleChangePage(page: number) {
