@@ -1,25 +1,45 @@
+"use client"
+import CustomPagination from "@/src/components/custom-pagination/custom-pagination"
 import EmptyContent from "@/src/components/empty-content/empty-content"
-import { getPerfumesList } from "@/src/lib/services/perfumes"
-import { SearchParamsPagination } from "@/src/lib/types/pagination"
+import useServerPagination from "@/src/lib/hooks/use-server-pagination"
+import { PaginationMeta } from "@/src/lib/types/pagination"
+import { Perfume } from "@/src/lib/types/perfumes"
 import PerfumeCard from "@/src/sections/perfumes/components/perfume-card/perfume-card"
-
 import React from "react"
 
 interface Props {
-	searchParams: SearchParamsPagination
+	perfumes: Perfume[]
+	apiPagination: PaginationMeta
 }
 
-export default async function PerfumesList({ searchParams }: Props) {
-	const res = await getPerfumesList(searchParams)
+export default function PerfumesList({ perfumes, apiPagination }: Props) {
+	const { pagination, serverHandleChangePage, serverHandlePageSizeChange } =
+		useServerPagination({
+			defaultPagination: {
+				limit: apiPagination.limit,
+				page: apiPagination.page,
+			},
+		})
 
-	if (!res.response || res.error) throw new Error("Error fetching perfumes")
-
-	const perfumes = res.response.data
 	return perfumes.length > 0 ? (
-		<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-			{perfumes.map(perfume => (
-				<PerfumeCard key={perfume.id} perfume={perfume} />
-			))}
+		<div className="flex flex-col gap-4 justify-between">
+			<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+				{perfumes.map(perfume => (
+					<PerfumeCard key={perfume.id} perfume={perfume} />
+				))}
+			</div>
+			<CustomPagination
+				currentPage={pagination.page as number}
+				itemsPerPage={pagination.limit as number}
+				onPageChange={serverHandleChangePage}
+				onItemsPerPageChange={(pageSize: string) => {
+					serverHandlePageSizeChange(Number(pageSize))
+				}}
+				totalItems={apiPagination.total}
+				totalPages={Math.ceil(
+					apiPagination.total / apiPagination.limit,
+				)}
+			/>
 		</div>
 	) : (
 		<EmptyContent
