@@ -8,6 +8,7 @@ import { HomeBanner } from "@/src/lib/types/home-banners"
 import { Badge } from "@/src/components/ui/badge"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { Button } from "@/src/components/ui/button"
+import { paths } from "@/src/lib/routes/paths"
 
 interface Props {
 	homeBanner: HomeBanner
@@ -153,7 +154,7 @@ export default function HomeBannerSection({
 
 						{/* Botones de acción */}
 						<div className="flex flex-col sm:flex-row gap-4 animate-fade-in delay-700">
-							<NavigationComponent href="/">
+							<NavigationComponent href={paths.perfumes().root}>
 								<Button className="group bg-white text-primary hover:bg-white/90 text-lg font-bold px-8 py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105">
 									<ShoppingBag className="w-5 h-5 mr-3" />
 									Explorar Colección
