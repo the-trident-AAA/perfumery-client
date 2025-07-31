@@ -2,7 +2,6 @@
 
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import { Pagination } from "@/src/lib/types/pagination"
-import { useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 interface Props {
@@ -16,7 +15,6 @@ export default function useServerPagination({ defaultPagination }: Props) {
 			limit: 10,
 		},
 	)
-	const searchParams = useSearchParams()
 	const { updateFiltersInUrl } = useUrlFilters()
 
 	function serverHandleChangePage(page: number) {
