@@ -79,7 +79,7 @@ export default function HomeBannerSection({
 			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-yellow-400 via-white to-yellow-400 opacity-80" />
 
 			{/* Contenido principal */}
-			<div className="relative py-2 z-10 container mx-auto px-6 h-full flex items-center">
+			<div className="relative py-6 z-10 container mx-auto px-6 h-full flex items-center">
 				<div className="grid items-center gap-12 lg:grid-cols-2 w-full">
 					{/* Contenido de texto */}
 					<div
