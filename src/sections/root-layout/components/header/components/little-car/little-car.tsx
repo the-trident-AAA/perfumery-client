@@ -17,7 +17,7 @@ const LittleCar = () => {
 			<PopoverTrigger asChild>
 				<LittleCarButton />
 			</PopoverTrigger>
-			<PopoverContent className="w-full max-h-screen overflow-auto">
+			<PopoverContent className="w-full">
 				<ShopCartContent variant="modal" />
 			</PopoverContent>
 		</Popover>
