@@ -3,26 +3,21 @@
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import { Pagination } from "@/src/lib/types/pagination"
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
-export default function useServerPagination() {
-	const [pagination, setPagination] = useState<Pagination>({
-		page: 1,
-		limit: 10,
-	})
+interface Props {
+	defaultPagination?: Pagination
+}
+
+export default function useServerPagination({ defaultPagination }: Props) {
+	const [pagination, setPagination] = useState<Pagination>(
+		defaultPagination || {
+			page: 1,
+			limit: 10,
+		},
+	)
 	const searchParams = useSearchParams()
 	const { updateFiltersInUrl } = useUrlFilters()
-
-	useEffect(() => {
-		const page = searchParams.get("page")
-		const limit = searchParams.get("limit")
-
-		setPagination(oldPagination => ({
-			...oldPagination,
-			page: Number(page) || undefined,
-			limit: Number(limit) || undefined,
-		}))
-	}, [searchParams])
 
 	function serverHandleChangePage(page: number) {
 		const newPagination = {
@@ -40,12 +35,12 @@ export default function useServerPagination() {
 	function serverHandlePageSizeChange(pageSize: number) {
 		const newPagination = {
 			...pagination,
-			pageSize,
+			limit: pageSize,
 		}
 		setPagination(pagination => ({
 			...pagination,
 			page: 1,
-			pageSize,
+			limit: pageSize,
 		}))
 
 		updateFiltersInUrl(newPagination)
