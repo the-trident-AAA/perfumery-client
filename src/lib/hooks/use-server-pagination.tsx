@@ -47,6 +47,7 @@ export default function useServerPagination({ defaultPagination }: Props) {
 	function serverHandlePageSizeChange(pageSize: number) {
 		const newPagination = {
 			...pagination,
+			page: 1,
 			limit: pageSize,
 		}
 		setPagination(pagination => ({
