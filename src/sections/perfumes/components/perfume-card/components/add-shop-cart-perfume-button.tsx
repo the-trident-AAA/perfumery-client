@@ -53,13 +53,13 @@ export default function AddShopCartPerfumeButton({ perfume }: Props) {
 				perfume.available
 					? `bg-primary hover:shadow-lg transform hover:scale-105`
 					: "bg-primary"
-			} transition-all duration-300 text-white font-medium px-6`}
+			} transition-all duration-300 text-secondary font-bold px-6`}
 			disabled={loading || !perfume.available}
 			onClick={handleAddShopCartPerfume}
 		>
 			{perfume.available ? (
 				<>
-					<ShoppingCart className="h-4 w-4 mr-2" />
+					<ShoppingCart className="size-6 mr-2" />
 					Añadir
 				</>
 			) : (

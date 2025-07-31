@@ -183,14 +183,14 @@ export default function PerfumeCard({ perfume }: Props) {
 						{/* Brand and Type mejorados */}
 						<div className="flex items-center justify-between animate-fade-in delay-100">
 							<Badge
-								variant={"outline"}
-								className="text-black font-bold bg-muted"
+								variant={"secondary"}
+								className="text-black font-bold"
 							>
 								{perfume.brand}
 							</Badge>
 							<Badge
-								variant={"default"}
-								className="text-black font-bold bg-muted"
+								variant={"secondary"}
+								className="text-black font-bold"
 							>
 								{perfume.perfumeType}
 							</Badge>
