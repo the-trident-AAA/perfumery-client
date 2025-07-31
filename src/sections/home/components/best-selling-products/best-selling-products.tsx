@@ -94,7 +94,7 @@ export default async function BestSellingProducts() {
 						<div className="flex justify-center items-center gap-8 pt-4">
 							<div className="text-center">
 								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-white">
-									<Award className="w-6 h-6" />
+									<Award className="w-6 h-6 text-secondary" />
 									#1
 								</div>
 								<div className="text-white text-sm font-medium">
@@ -104,7 +104,7 @@ export default async function BestSellingProducts() {
 							<div className="w-px h-12 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
 							<div className="text-center">
 								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-white">
-									<Sparkles className="w-6 h-6" />
+									<Sparkles className="w-6 h-6 text-secondary" />
 									98%
 								</div>
 								<div className="text-white text-sm font-medium">
@@ -113,8 +113,9 @@ export default async function BestSellingProducts() {
 							</div>
 							<div className="w-px h-12 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
 							<div className="text-center">
-								<div className="text-2xl font-bold text-white">
-									5★
+								<div className="text-2xl flex gap-1 justify-center w-full items-center font-bold text-white">
+									5
+									<Star className="w-6 h-6 text-secondary" />
 								</div>
 								<div className="text-white text-sm font-medium">
 									Calificación

@@ -74,7 +74,7 @@ export default function UserMenu() {
 					aria-label="Menú de usuario"
 				>
 					<Avatar className="h-10 w-10 shadow-sm">
-						<AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground font-semibold text-sm">
+						<AvatarFallback className="bg-primary text-secondary font-semibold text-sm">
 							{userInitials}
 						</AvatarFallback>
 					</Avatar>
@@ -90,7 +90,7 @@ export default function UserMenu() {
 				<div className="p-4 border-b bg-gradient-to-r from-muted/50 to-muted/30">
 					<div className="flex items-center gap-3">
 						<Avatar className="h-12 w-12 border-2 border-background shadow-sm">
-							<AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground font-semibold">
+							<AvatarFallback className="bg-primary text-secondary font-semibold">
 								{userInitials}
 							</AvatarFallback>
 						</Avatar>
