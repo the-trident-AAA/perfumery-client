@@ -26,6 +26,7 @@ const HeaderSearch = () => {
 			placeHolder="Comience a buscar perfumes..."
 			onChange={e => {
 				setSearch(e.target.value)
+				const limit = searchParams.get("limit")
 				router.push(
 					paths.perfumes({
 						...(e.target.value && { name: e.target.value }),
@@ -39,6 +40,9 @@ const HeaderSearch = () => {
 						}),
 						...(filters.available !== undefined && {
 							available: filters.available ? "true" : "false",
+						}),
+						...(limit && {
+							limit,
 						}),
 					}).root,
 				)
