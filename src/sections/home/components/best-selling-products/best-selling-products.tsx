@@ -5,7 +5,7 @@ import { Sparkles, TrendingUp, Award, Star } from "lucide-react"
 
 export default async function BestSellingProducts() {
 	return (
-		<section className="relative w-full overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-primary/80">
+		<section className="relative w-full overflow-hidden bg-primary">
 			{/* Elementos decorativos de fondo */}
 			<div className="absolute inset-0 overflow-hidden">
 				{/* Círculos decorativos grandes */}
@@ -37,7 +37,7 @@ export default async function BestSellingProducts() {
 			</div>
 
 			{/* Franja superior decorativa */}
-			<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+			<div className="absolute top-0 left-0 right-0 h-1 bg-secondary" />
 
 			{/* Contenido principal */}
 			<div className="relative z-10 pt-20 pb-24">
@@ -161,9 +161,6 @@ export default async function BestSellingProducts() {
 					</div>
 				</div>
 			</div>
-
-			{/* Franja inferior decorativa */}
-			<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent" />
 		</section>
 	)
 }
