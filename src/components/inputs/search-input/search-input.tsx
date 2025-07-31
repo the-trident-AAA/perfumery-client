@@ -8,6 +8,7 @@ interface Props {
 	id: string
 	label?: string
 	placeHolder?: string
+	className?: string
 	value?: string
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -16,6 +17,7 @@ export default function SearchInput({
 	id,
 	label,
 	placeHolder = "Introduzca valor a buscar",
+	className,
 	value,
 	onChange,
 }: Props) {
@@ -29,7 +31,7 @@ export default function SearchInput({
 					placeholder={placeHolder}
 					value={value || ""}
 					onChange={onChange}
-					className="pl-10 bg-white"
+					className={"pl-10 bg-muted " + className}
 				/>
 			</div>
 		</div>
