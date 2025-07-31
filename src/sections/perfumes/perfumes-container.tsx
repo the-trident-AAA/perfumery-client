@@ -2,7 +2,8 @@ import { CardSkeletonGroup } from "@/src/components/card-skeleton-group/card-ske
 import DetailsSectionHeader from "@/src/components/details-section-header/details-section-header"
 import { SearchParamsPagination } from "@/src/lib/types/pagination"
 import PerfumesFiltersContainer from "@/src/sections/perfumes/filters/perfumes-filters-container/perfumes-filters-container"
-import PerfumesList from "@/src/sections/perfumes/list/perfumes-list"
+import PerfumesListContainer from "@/src/sections/perfumes/list/perfumes-list-container"
+
 import React, { Suspense } from "react"
 
 interface Props {
@@ -26,7 +27,7 @@ export default function PerfumesContainer({ searchParams }: Props) {
 						/>
 					}
 				>
-					<PerfumesList searchParams={searchParams} />
+					<PerfumesListContainer searchParams={searchParams} />
 				</Suspense>
 			</div>
 		</div>
