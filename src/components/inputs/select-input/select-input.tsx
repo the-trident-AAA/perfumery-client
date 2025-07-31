@@ -14,6 +14,7 @@ import React from "react"
 interface Props {
 	label?: string
 	placeHolder?: string
+	labelClassName?: string
 	value?: string
 	onValueChange?: (value: string) => void
 	options: { value: string; label: string }[]
@@ -27,6 +28,7 @@ interface Props {
 export default function SelectInput({
 	label,
 	placeHolder = "Seleccione elemento",
+	labelClassName,
 	value,
 	onValueChange,
 	options,
@@ -35,8 +37,8 @@ export default function SelectInput({
 	fullWidth = true,
 }: Props) {
 	return (
-		<div className="space-y-2">
-			{label && <Label>{label}</Label>}
+		<div className="space-y-2 z-10">
+			{label && <Label className={labelClassName}>{label}</Label>}
 			<div className="relative">
 				<Select
 					value={value || ""}
