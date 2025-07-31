@@ -29,7 +29,10 @@ export default function CheckboxInput({
 					onCheckedChange={onCheckedChange}
 				/>
 				{description && (
-					<Label htmlFor={id} className="text-sm font-normal">
+					<Label
+						htmlFor={id}
+						className="text-sm text-secondary font-normal"
+					>
 						{description}
 					</Label>
 				)}
