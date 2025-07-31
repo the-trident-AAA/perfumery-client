@@ -51,8 +51,8 @@ export default function AddShopCartPerfumeButton({ perfume }: Props) {
 		<Button
 			className={`${
 				perfume.available
-					? `bg-primary hover:shadow-lg transform hover:scale-105`
-					: "bg-primary"
+					? `bg-gradient-to-br from-primary via-primary/90 to-primary/80 hover:shadow-lg transform hover:scale-105`
+					: "bg-gradient-to-br from-primary via-primary/90 to-primary/80"
 			} transition-all duration-300 text-secondary font-bold px-6`}
 			disabled={loading || !perfume.available}
 			onClick={handleAddShopCartPerfume}
