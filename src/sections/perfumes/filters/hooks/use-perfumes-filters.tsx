@@ -66,7 +66,10 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 			...prev,
 			...updatedFilters,
 		}))
-		updateFiltersInUrl(convertPerfumesFiltersDTO(newFilters))
+		updateFiltersInUrl({
+			...convertPerfumesFiltersDTO(newFilters),
+			page: 1,
+		})
 		if (setPagination)
 			setPagination(oldPagination => ({ ...oldPagination, page: 1 }))
 	}
@@ -77,7 +80,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 			millilitersRange: [0, 100],
 			scentsIds: [],
 		})
-		updateFiltersInUrl({})
+		updateFiltersInUrl({ page: 1 })
 		if (setPagination)
 			setPagination(oldPagination => ({ ...oldPagination, page: 1 }))
 	}
