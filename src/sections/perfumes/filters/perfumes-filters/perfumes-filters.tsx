@@ -56,7 +56,7 @@ export default function PerfumesFilterss({
 					handleChangeFilters({ name: e.target.value || undefined })
 				}}
 			/>
-			<Separator />
+			<Separator className="bg-secondary" />
 			<div className="flex flex-col gap-4">
 				{/* Brand */}
 				<SelectInput
@@ -131,7 +131,7 @@ export default function PerfumesFilterss({
 					}}
 				/>
 			</div>
-			<Separator />
+			<Separator className="bg-secondary" />
 			{/* Available y Offers */}
 			<div className="flex flex-col gap-4">
 				{/* Disponibilidad */}
@@ -167,9 +167,9 @@ export default function PerfumesFilterss({
 					}}
 				/>
 			</div>
-			<Separator />
+			<Separator className="bg-secondary" />
 			{/* Price and Mililiters */}
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<div className="flex flex-col gap-4">
 				{/* Price */}
 				<SliderInput
 					label="Precio"
@@ -194,7 +194,7 @@ export default function PerfumesFilterss({
 					}}
 				/>
 			</div>
-			<Separator />
+			<Separator className="bg-secondary" />
 			{/* Scents */}
 			<ListInput
 				id="scents"
