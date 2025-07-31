@@ -19,9 +19,6 @@ export default function HomePromotionsCarousel({ data }: Props) {
 				dimension="100vw"
 				className="pl-4 mr-4"
 				itemsStyles="sm:basis-1/2 md:basis-1/3 lg:basis-1/3 2xl:basis-1/4"
-				withArrows
-				arrowsPosition="outside"
-				arrowsLocation="bottom"
 				renderCard={item => <PerfumeCard perfume={item} />}
 				shouldCenter={(breakpoint: string, cantElements: number) => {
 					switch (breakpoint) {
