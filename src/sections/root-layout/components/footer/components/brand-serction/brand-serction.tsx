@@ -5,30 +5,21 @@ import React from "react"
 export default function BrandSection() {
 	return (
 		<div className="space-y-4">
-			<h3 className="text-xl font-serif font-medium">Essence</h3>
-			<p className="text-neutral-600 text-sm">
+			<h3 className="text-xl text-secondary font-medium">Essence</h3>
+			<p className="text-secondary text-sm">
 				Discover our collection of luxury perfumes crafted with the
 				finest ingredients from around the world.
 			</p>
 			<div className="flex space-x-4">
-				<Link
-					href="#"
-					className="text-neutral-600 hover:text-neutral-900"
-				>
+				<Link href="#" className="text-secondary hover:text-white">
 					<Facebook size={20} />
 					<span className="sr-only">Facebook</span>
 				</Link>
-				<Link
-					href="#"
-					className="text-neutral-600 hover:text-neutral-900"
-				>
+				<Link href="#" className="text-secondary hover:text-white">
 					<Instagram size={20} />
 					<span className="sr-only">Instagram</span>
 				</Link>
-				<Link
-					href="#"
-					className="text-neutral-600 hover:text-neutral-900"
-				>
+				<Link href="#" className="text-secondary hover:text-white">
 					<Twitter size={20} />
 					<span className="sr-only">Twitter</span>
 				</Link>

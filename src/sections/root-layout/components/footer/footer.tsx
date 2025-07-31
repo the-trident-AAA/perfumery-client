@@ -7,7 +7,7 @@ import Promotion from "@/src/sections/root-layout/components/footer/components/p
 
 export default function Footer() {
 	return (
-		<footer className="bg-neutral-50 border-t">
+		<footer className="bg-primary border-t">
 			<div className="container mx-auto px-4 py-12">
 				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
 					{/* Brand Section */}
