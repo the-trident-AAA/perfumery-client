@@ -43,7 +43,9 @@ export default function SelectInput({
 					onValueChange={onValueChange}
 					disabled={loading}
 				>
-					<SelectTrigger className={`${fullWidth ? "w-full" : ""}`}>
+					<SelectTrigger
+						className={`${fullWidth ? "w-full" : ""} bg-muted`}
+					>
 						<SelectValue
 							placeholder={loading ? "Cargando..." : placeHolder}
 						/>
