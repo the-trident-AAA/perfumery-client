@@ -16,7 +16,7 @@ export default async function PerfumesList({ searchParams }: Props) {
 
 	const perfumes = res.response.data
 	return perfumes.length > 0 ? (
-		<div className="grid grid-cols-2 2xs:grid-cols-3 xl:grid-cols-4 gap-6">
+		<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
 			{perfumes.map(perfume => (
 				<PerfumeCard key={perfume.id} perfume={perfume} />
 			))}
