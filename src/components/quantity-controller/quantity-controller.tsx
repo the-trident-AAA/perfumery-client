@@ -1,6 +1,6 @@
 "use client"
+
 import { Minus, Plus } from "lucide-react"
-import React from "react"
 
 interface Props {
 	quantity: number
@@ -16,9 +16,9 @@ export default function QuantityController({
 	loadingAction,
 }: Props) {
 	return (
-		<div className="flex items-center border rounded">
+		<div className="flex items-center z-10 border-1 rounded-lg hover:border-primary/50 transition-all duration-300">
 			<button
-				className="p-1 2xs:p-2"
+				className="p-1 2xs:p-2 text-secondary bg-primary hover:bg-primary/70 transition-all duration-200 rounded-l-md"
 				aria-label="Decrease quantity"
 				onClick={() => {
 					actionDecrease()
@@ -27,9 +27,11 @@ export default function QuantityController({
 			>
 				<Minus className="h-4 w-4" />
 			</button>
-			<span className="px-2 2xs:px-4">{quantity}</span>
+			<span className="px-2 2xs:px-4 font-semibold bg-muted text-primary border-x border-primary/20">
+				{quantity}
+			</span>
 			<button
-				className="p-1 2xs:p-2"
+				className="p-1 2xs:p-2 text-secondary bg-primary hover:bg-primary/70 transition-all duration-200 rounded-r-md"
 				aria-label="Increase quantity"
 				onClick={() => {
 					actionIncrease()
