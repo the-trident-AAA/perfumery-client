@@ -1,8 +1,8 @@
 import { paths } from "@/src/lib/routes/paths"
-import { HouseIcon, ShoppingCartIcon } from "lucide-react"
+import { ShoppingCartIcon } from "lucide-react"
 import { ReactNode } from "react"
 
-interface NavigationItem {
+export interface NavigationItem {
 	label: string
 	icon?: ReactNode
 	path: string
