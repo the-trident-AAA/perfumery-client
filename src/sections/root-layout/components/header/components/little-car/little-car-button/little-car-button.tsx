@@ -20,7 +20,7 @@ const LittleCarButton = React.forwardRef<
 			{...props}
 		>
 			<Avatar className="h-10 w-10 shadow-sm">
-				<AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground font-semibold text-sm">
+				<AvatarFallback className="bg-primary text-secondary font-semibold text-sm">
 					<ShoppingCartIcon className="size-5" />
 				</AvatarFallback>
 			</Avatar>

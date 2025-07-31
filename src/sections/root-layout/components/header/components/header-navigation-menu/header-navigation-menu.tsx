@@ -48,7 +48,7 @@ export default function HeaderNavigationMenu() {
 						</NavigationMenuItem>
 					) : (
 						<NavigationMenuItem key={index}>
-							<NavigationMenuTrigger className="text-[16px] text-white sm:text-xl">
+							<NavigationMenuTrigger className="text-[16px] text-secondary sm:text-xl">
 								{navigationItem.icon && navigationItem.icon}
 								{navigationItem.label}
 							</NavigationMenuTrigger>
@@ -59,7 +59,7 @@ export default function HeaderNavigationMenu() {
 											key={childIndex}
 											href={child.path}
 										>
-											<Button className="flex gap-2 w-full justify-start">
+											<Button className="flex gap-2 w-full text-secondary justify-start">
 												{child.icon && child.icon}
 												{child.label}
 											</Button>
