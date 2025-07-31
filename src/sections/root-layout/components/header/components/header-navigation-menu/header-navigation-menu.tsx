@@ -1,3 +1,5 @@
+"use client"
+
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { Button } from "@/src/components/ui/button"
 import {
@@ -9,7 +11,11 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from "@/src/components/ui/navigation-menu"
-import { navigationItems } from "@/src/sections/root-layout/components/header/components/header-navigation-menu/lib/navigation-items"
+import { Skeleton } from "@/src/components/ui/skeleton"
+import { paths } from "@/src/lib/routes/paths"
+import { PerfumeType } from "@/src/lib/types/perfume-types"
+import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-types"
+import { ShoppingCartIcon } from "lucide-react"
 import Link from "next/link"
 import React, { ReactNode } from "react"
 
@@ -34,22 +40,51 @@ const LinkItem = ({ label, icon, path }: LinkItemProps) => (
 )
 
 export default function HeaderNavigationMenu() {
+	const { perfumeTypes, loadingData: loadingDataPerfumeTypes } =
+		usePerfumeTypes()
+
+	if (loadingDataPerfumeTypes) {
+		return (
+			<div className="flex gap-4">
+				<Skeleton className="h-10 w-32 rounded-xl" />
+			</div>
+		)
+	}
+
+	if (!perfumeTypes || perfumeTypes.length === 0) {
+		return null // o algún fallback
+	}
+
+	const [first, ...restPerfumeTypes] = perfumeTypes
+
+	const navigationItem = {
+		label: first.name,
+		path: paths.perfumes({ perfumeTypeId: first.id.toString() }).root,
+		icon: <ShoppingCartIcon className="size-4 text-secondary sm:size-6" />,
+		childrens: restPerfumeTypes.map((perfumeType: PerfumeType) => ({
+			label: perfumeType.name,
+			path: paths.perfumes({ perfumeTypeId: perfumeType.id.toString() })
+				.root,
+			icon: (
+				<ShoppingCartIcon className="size-4 text-secondary sm:size-6" />
+			),
+		})),
+	}
+
 	return (
 		<NavigationMenu>
 			<NavigationMenuList>
-				{navigationItems.map((navigationItem, index) =>
-					!navigationItem.childrens ? (
-						<NavigationMenuItem key={index}>
-							<LinkItem
-								label={navigationItem.label}
-								icon={navigationItem.icon}
-								path={navigationItem.path}
-							/>
-						</NavigationMenuItem>
+				<NavigationMenuItem>
+					{navigationItem.childrens.length === 0 ? (
+						<LinkItem
+							label={navigationItem.label}
+							icon={navigationItem.icon}
+							path={navigationItem.path}
+						/>
 					) : (
-						<NavigationMenuItem key={index}>
+						<>
 							<NavigationMenuTrigger className="text-[16px] text-secondary sm:text-xl">
-								{navigationItem.icon && navigationItem.icon}
+								{navigationItem.icon}
 								{navigationItem.label}
 							</NavigationMenuTrigger>
 							<NavigationMenuContent className="flex flex-col gap-2">
@@ -60,16 +95,16 @@ export default function HeaderNavigationMenu() {
 											href={child.path}
 										>
 											<Button className="flex gap-2 w-full text-secondary justify-start">
-												{child.icon && child.icon}
+												{child.icon}
 												{child.label}
 											</Button>
 										</NavigationComponent>
 									),
 								)}
 							</NavigationMenuContent>
-						</NavigationMenuItem>
-					),
-				)}
+						</>
+					)}
+				</NavigationMenuItem>
 			</NavigationMenuList>
 		</NavigationMenu>
 	)
