@@ -23,11 +23,6 @@ export default function PerfumesList({ perfumes, apiPagination }: Props) {
 
 	return perfumes.length > 0 ? (
 		<div className="flex flex-col gap-4 justify-between">
-			<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-				{perfumes.map(perfume => (
-					<PerfumeCard key={perfume.id} perfume={perfume} />
-				))}
-			</div>
 			<CustomPagination
 				currentPage={pagination.page as number}
 				itemsPerPage={pagination.limit as number}
@@ -40,6 +35,11 @@ export default function PerfumesList({ perfumes, apiPagination }: Props) {
 					apiPagination.total / apiPagination.limit,
 				)}
 			/>
+			<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+				{perfumes.map(perfume => (
+					<PerfumeCard key={perfume.id} perfume={perfume} />
+				))}
+			</div>
 		</div>
 	) : (
 		<EmptyContent
