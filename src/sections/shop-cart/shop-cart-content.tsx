@@ -1,4 +1,5 @@
 "use client"
+import EmptyContent from "@/src/components/empty-content/empty-content"
 import { FetchingDataErrorPanel } from "@/src/components/fetching-data-error-panel/fetching-data-error-panel"
 import { Button } from "@/src/components/ui/button"
 import { LoadingSpinner } from "@/src/components/ui/loading-spinner"
@@ -76,9 +77,11 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 
 	return (
 		<div className="flex flex-col gap-4 mt-2 w-full">
-			<div className="flex justify-center gap-2">
-				<ShoppingCartIcon className="size-8" />
-				<h1 className="text-2xl font-bold">Tu Carrito</h1>
+			<div className="flex justify-center bg-primary p-2 rounded-2xl gap-2">
+				<ShoppingCartIcon className="size-8 text-secondary" />
+				<h1 className="text-2xl text-secondary font-bold">
+					Tu Carrito
+				</h1>
 			</div>
 
 			{loading ? (
@@ -95,11 +98,18 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 					</div>
 				)
 			) : shopCart && !error ? (
-				<ShopCartContentBody
-					shopCartData={shopCart}
-					variant={variant}
-					onRefresh={fetchShopCart}
-				/>
+				shopCart.shopCartPerfumes.length > 0 ? (
+					<ShopCartContentBody
+						shopCartData={shopCart}
+						variant={variant}
+						onRefresh={fetchShopCart}
+					/>
+				) : (
+					<EmptyContent
+						title="No se han añadido perfumes al carrito aun"
+						description="Empiece a añadir perfumes al carrito !!"
+					/>
+				)
 			) : (
 				<FetchingDataErrorPanel
 					message={error as string}
