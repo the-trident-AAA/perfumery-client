@@ -36,8 +36,12 @@ export default function SliderInput({
 					className="w-full"
 				/>
 				<div className="flex justify-between text-sm text-muted-foreground mt-1">
-					<span>{value[0] + " " + (meansure || "")}</span>
-					<span>{value[1] + " " + (meansure || "")}</span>
+					<span className="text-secondary">
+						{value[0] + " " + (meansure || "")}
+					</span>
+					<span className="text-secondary">
+						{value[1] + " " + (meansure || "")}
+					</span>
 				</div>
 			</div>
 		</div>
