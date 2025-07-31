@@ -24,8 +24,8 @@ export default function SliderInput({
 	step = 10,
 }: Props) {
 	return (
-		<div className="space-y-3">
-			{label && <Label>{label}</Label>}
+		<div className="space-y-6">
+			{label && <Label className="text-secondary">{label}</Label>}
 			<div className="px-2">
 				<Slider
 					value={value}
