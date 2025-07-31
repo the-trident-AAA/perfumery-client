@@ -177,7 +177,7 @@ export default function PerfumeCard({ perfume }: Props) {
 				{/* Content Section mejorada */}
 				<div className="relative">
 					{/* Franja decorativa interna */}
-					<div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary/40 via-primary/60 to-primary/40 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+					<div className="absolute top-0 left-6 right-6 h-0.5 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
 					<div className="flex flex-col m-2 p-4 gap-2 bg-gradient-to-br from-primary via-primary/90 rounded-2xl to-primary/80">
 						{/* Brand and Type mejorados */}
