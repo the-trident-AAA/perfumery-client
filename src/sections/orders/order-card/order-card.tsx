@@ -164,12 +164,12 @@ export default function OrderCard({ order }: { order: Order }) {
 								</div>
 							</div>
 
-							<div className="text-right">
+							<div className="flex flex-col gap-2 w-full justify-center text-right">
 								<span className="font-black text-black text-2xl">
 									${order.price.toFixed(2)}
 								</span>
 
-								<p className="text-sm text-black mt-1">
+								<p className="text-sm text-black">
 									Total del pedido
 								</p>
 							</div>
