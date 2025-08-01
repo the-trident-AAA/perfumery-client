@@ -33,7 +33,7 @@ export default function PerfumeShopCartCard({
 	})
 
 	return (
-		<div className="group relative overflow-hidden border-0 bg-gradient-to-r from-white via-white to-gray-50/50 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
+		<div className="group relative overflow-hidden border-0 bg-muted shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
 			<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/60 via-primary to-primary/60 z-20" />
 
 			{/* Líneas laterales con efecto de flujo */}
