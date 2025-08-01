@@ -8,8 +8,9 @@ import {
 } from "@/src/components/ui/accordion"
 import { Badge } from "@/src/components/ui/badge"
 import { Card } from "@/src/components/ui/card"
+import { Package, Clock, CheckCircle, XCircle, Truck } from "lucide-react"
 import { Gender } from "@/src/lib/types/perfumes"
-import { PerfumeOrder } from "@/src/sections/orders/perfume-orders/perfume-order-card/perfume-order-card"
+import type { PerfumeOrder } from "@/src/sections/orders/perfume-orders/perfume-order-card/perfume-order-card"
 import PerfumeOrdersList from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list"
 
 export interface Order {
@@ -20,20 +21,45 @@ export interface Order {
 	perfumeOrder: any[]
 }
 
-const getStatusColor = (status: string) => {
+const getStatusConfig = (status: string) => {
 	switch (status.toLowerCase()) {
 		case "completado":
 		case "entregado":
-			return "bg-green-500"
+			return {
+				color: "bg-green-500 hover:bg-green-600",
+				icon: CheckCircle,
+				gradient: "from-green-500/20 to-transparent",
+			}
 		case "en proceso":
+			return {
+				color: "bg-primary hover:bg-primary/90",
+				icon: Clock,
+				gradient: "from-primary/20 to-transparent",
+			}
 		case "enviado":
-			return "bg-blue-500"
+			return {
+				color: "bg-secondary hover:bg-secondary/90",
+				icon: Truck,
+				gradient: "from-secondary/20 to-transparent",
+			}
 		case "pendiente":
-			return "bg-yellow-500"
+			return {
+				color: "bg-yellow-500 hover:bg-yellow-600",
+				icon: Clock,
+				gradient: "from-yellow-500/20 to-transparent",
+			}
 		case "cancelado":
-			return "bg-red-500"
+			return {
+				color: "bg-red-500 hover:bg-red-600",
+				icon: XCircle,
+				gradient: "from-red-500/20 to-transparent",
+			}
 		default:
-			return "bg-gray-500"
+			return {
+				color: "bg-gray-500 hover:bg-gray-600",
+				icon: Package,
+				gradient: "from-gray-500/20 to-transparent",
+			}
 	}
 }
 
@@ -47,11 +73,11 @@ const perfurmesOrder: PerfumeOrder[] = [
 			description:
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
-			image: "/images/place-holder.jpg",
+			image: "/placeholder.svg?height=80&width=80",
 			available: true,
 			cant: 0,
 			gender: Gender.FEMALE,
-			liters: 2,
+			milliliters: 2,
 			perfumeType: "sd",
 			scents: ["a"],
 		},
@@ -67,11 +93,11 @@ const perfurmesOrder: PerfumeOrder[] = [
 			description:
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
-			image: "/images/place-holder.jpg",
+			image: "/placeholder.svg?height=80&width=80",
 			available: true,
 			cant: 0,
 			gender: Gender.FEMALE,
-			liters: 2,
+			milliliters: 2,
 			perfumeType: "sd",
 			scents: ["a"],
 		},
@@ -87,11 +113,11 @@ const perfurmesOrder: PerfumeOrder[] = [
 			description:
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
-			image: "/images/place-holder.jpg",
+			image: "/placeholder.svg?height=80&width=80",
 			available: true,
 			cant: 0,
 			gender: Gender.FEMALE,
-			liters: 2,
+			milliliters: 2,
 			perfumeType: "sd",
 			scents: ["a"],
 		},
@@ -101,30 +127,56 @@ const perfurmesOrder: PerfumeOrder[] = [
 ]
 
 export default function OrderCard({ order }: { order: Order }) {
+	const statusConfig = getStatusConfig(order.status)
+	const StatusIcon = statusConfig.icon
+
 	return (
-		<Card className="w-full mb-4 overflow-hidden">
+		<Card className="w-full mb-4 bg-muted overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
+			{/* Gradient header bar */}
+
 			<Accordion type="single" collapsible className="w-full">
 				<AccordionItem value={order.code} className="border-0">
-					<AccordionTrigger className="px-6 py-4 hover:no-underline">
-						<div className="flex flex-col md:flex-row w-full items-start md:items-center justify-between gap-2">
-							<div className="flex flex-col items-start">
-								<span className="font-semibold text-lg">
-									Pedido #{order.code}
-								</span>
-								<Badge
-									className={`${getStatusColor(order.status)} text-white mt-1`}
-								>
-									{order.status}
-								</Badge>
+					<AccordionTrigger className="px-6 py-4 relative hover:no-underline group">
+						<div
+							className="absolute inset-y-0 left-0 w-1/2 bg-primary opacity-90"
+							style={{
+								clipPath:
+									"polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%)",
+							}}
+						/>
+						<div className="flex flex-col z-10 md:flex-row w-full items-start md:items-center justify-between gap-4">
+							<div className="flex items-center gap-4">
+								<div className="bg-secondary p-3 rounded-full">
+									<Package className="h-6 w-6 text-black" />
+								</div>
+
+								<div className="flex flex-col items-start">
+									<span className="font-bold text-xl text-secondary group-hover:text-secondary/80 transition-colors">
+										Pedido #{order.code}
+									</span>
+
+									<Badge
+										className={`${statusConfig.color} text-white mt-2 flex items-center gap-1 px-3 py-1`}
+									>
+										<StatusIcon className="h-3 w-3" />
+										{order.status}
+									</Badge>
+								</div>
 							</div>
+
 							<div className="text-right">
-								<span className="font-bold text-xl">
+								<span className="font-black text-black text-2xl">
 									${order.price.toFixed(2)}
 								</span>
+
+								<p className="text-sm text-black mt-1">
+									Total del pedido
+								</p>
 							</div>
 						</div>
 					</AccordionTrigger>
-					<AccordionContent className="px-4 2xs:px-6 pb-4">
+
+					<AccordionContent className="p-4 bg-muted 2xs:px-6 pb-6">
 						<PerfumeOrdersList perfumesOrder={perfurmesOrder} />
 					</AccordionContent>
 				</AccordionItem>
