@@ -15,7 +15,7 @@ export default function PerfumeShopCartList({
 }: Props) {
 	return (
 		<div
-			className={`grid grid-cols-1 gap-4 ${variant === "modal" ? "max-h-[46vh] xl:max-h-[62vh]" : ""} overflow-y-auto p-2`}
+			className={`grid gap-4 ${variant === "modal" ? "max-h-[46vh] xl:max-h-[62vh] grid-cols-1 " : "sm:grid-cols-2"} overflow-y-auto p-2`}
 		>
 			{shopCartPerfumes.map((shopCartPerfume, index) => (
 				<PerfumeShopCartCard
