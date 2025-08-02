@@ -32,7 +32,7 @@ export default function Modal({
 			onOpenChange={(state: boolean) => onOpenChange(formPath)}
 		>
 			<DialogContent
-				className={`w-full max-h-screen pl-2 pr-2 xs:p-4 flex flex-col  ${
+				className={`w-full max-h-[95vh] pl-2 pr-2 xs:p-4 flex flex-col  ${
 					!maxWidth
 						? wide === "normal"
 							? "sm:max-w-lg"
