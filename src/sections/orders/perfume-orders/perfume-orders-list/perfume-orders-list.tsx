@@ -10,16 +10,15 @@ interface Props {
 export default function PerfumeOrdersList({ perfumesOrder }: Props) {
 	return (
 		<div className="space-y-4">
-			{/* Enhanced header with primary color accent */}
 			<div className="flex items-center gap-3 pb-2">
-				<div className="flex gap-2 items-center rounded-2xl bg-primary p-2">
-					<Sparkles className="h-5 w-5 text-secondary" />
+				<div className="flex gap-2 items-center rounded-2xl bg-secondary p-2">
+					<Sparkles className="h-5 w-5 text-primary" />
 
-					<h3 className="font-bold text-lg text-secondary">
+					<h3 className="font-bold text-lg text-primary">
 						Perfumes en este pedido
 					</h3>
 				</div>
-				<div className="flex-1 h-px bg-primary" />
+				<div className="flex-1 h-[4px] rounded-2xl bg-secondary" />
 			</div>
 
 			{perfumesOrder.length > 0 ? (

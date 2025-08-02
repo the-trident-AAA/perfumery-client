@@ -138,7 +138,7 @@ export default function OrderCard({ order }: { order: Order }) {
 				<AccordionItem value={order.code} className="border-0">
 					<AccordionTrigger className="px-6 py-4 relative hover:no-underline group">
 						<div
-							className="absolute inset-y-0 left-0 w-1/2 bg-primary opacity-90"
+							className="absolute inset-y-0 left-0 w-1/2 bg-secondary"
 							style={{
 								clipPath:
 									"polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%)",
@@ -146,12 +146,12 @@ export default function OrderCard({ order }: { order: Order }) {
 						/>
 						<div className="flex flex-col z-10 md:flex-row w-full items-start md:items-center justify-between gap-4">
 							<div className="flex items-center gap-4">
-								<div className="bg-secondary p-3 rounded-full">
-									<Package className="h-6 w-6 text-black" />
+								<div className="bg-primary p-3 rounded-full">
+									<Package className="h-6 w-6 text-secondary" />
 								</div>
 
 								<div className="flex flex-col items-start">
-									<span className="font-bold text-xl text-secondary group-hover:text-secondary/80 transition-colors">
+									<span className="font-bold text-xl text-primary group-hover:text-primary/80 transition-colors">
 										Pedido #{order.code}
 									</span>
 
