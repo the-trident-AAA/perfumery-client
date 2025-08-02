@@ -55,7 +55,7 @@ const HeaderSearch = () => {
 				className={`p-2 rounded-full hover:bg-gray-100`}
 				aria-label="Buscar"
 			>
-				<SearchIcon className="size-8 sm:size-12 text-white" />
+				<SearchIcon className="size-8 sm:size-12 text-secondary" />
 			</button>
 			{showSearch && (
 				<div className="absolute top-full right-[-50px] mt-2 w-64 text-black bg-white shadow-lg rounded-lg p-2 z-10 border border-gray-200">
