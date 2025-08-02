@@ -19,7 +19,12 @@ export default function SignOutButton() {
 	}, [signOut])
 
 	return (
-		<Button className="w-full" disabled={loading} onClick={handleSignOut}>
+		<Button
+			variant={"secondary"}
+			className="w-full text-primary"
+			disabled={loading}
+			onClick={handleSignOut}
+		>
 			Cerrar Sesión
 		</Button>
 	)

@@ -89,8 +89,8 @@ export default function UserMenu() {
 				{/* Header del usuario */}
 				<div className="p-4 border-b bg-gradient-to-r from-muted/50 to-muted/30">
 					<div className="flex items-center gap-3">
-						<Avatar className="h-12 w-12 border-2 border-background shadow-sm">
-							<AvatarFallback className="bg-primary text-secondary font-semibold">
+						<Avatar className="h-12 w-12 shadow-sm">
+							<AvatarFallback className="bg-secondary text-primary font-semibold">
 								{userInitials}
 							</AvatarFallback>
 						</Avatar>
@@ -101,7 +101,10 @@ export default function UserMenu() {
 							<p className="text-xs text-muted-foreground truncate">
 								{user.email || "email@ejemplo.com"}
 							</p>
-							<Badge variant="default" className="mt-1 text-xs">
+							<Badge
+								variant="secondary"
+								className="mt-1 text-primary text-xs"
+							>
 								Activo
 							</Badge>
 						</div>
@@ -114,11 +117,11 @@ export default function UserMenu() {
 						<NavigationComponent href={paths.profile.root}>
 							<Button
 								variant="ghost"
-								className="w-full justify-between h-10 px-3 hover:bg-accent/50 transition-colors"
+								className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
 								onClick={handleOpenProfileModal}
 							>
 								<div className="flex items-center">
-									<User className="mr-3 h-4 w-4 text-muted-foreground" />
+									<User className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
 									<span className="text-sm font-medium">
 										Ver perfil
 									</span>
@@ -128,30 +131,15 @@ export default function UserMenu() {
 
 						<Button
 							variant="ghost"
-							className="w-full justify-between h-10 px-3 hover:bg-accent/50 transition-colors"
+							className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
 							onClick={handleOpenSettings}
 						>
 							<div className="flex items-center">
-								<Settings className="mr-3 h-4 w-4 text-muted-foreground" />
+								<Settings className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
 								<span className="text-sm font-medium">
-									Configuración
+									Editar Perfil
 								</span>
 							</div>
-							<ChevronRight className="h-3 w-3 text-muted-foreground" />
-						</Button>
-
-						<Button
-							variant="ghost"
-							className="w-full justify-between h-10 px-3 hover:bg-accent/50 transition-colors"
-							onClick={handleOpenHelp}
-						>
-							<div className="flex items-center">
-								<HelpCircle className="mr-3 h-4 w-4 text-muted-foreground" />
-								<span className="text-sm font-medium">
-									Ayuda y soporte
-								</span>
-							</div>
-							<ChevronRight className="h-3 w-3 text-muted-foreground" />
 						</Button>
 					</div>
 				</div>
