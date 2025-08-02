@@ -27,7 +27,8 @@ export default function CreateOrderButton({ isDisabled = false }: Props) {
 				console.log("Se toco el click")
 				createOrder()
 			}}
-			className="bg-primary lg:text-lg"
+			variant={"secondary"}
+			className="text-primary lg:text-lg"
 			disabled={loading || isDisabled}
 		>
 			Crear Pedido

@@ -26,7 +26,7 @@ export default function ClearShopCartButton({
 	}, [shopCartId])
 	return (
 		<Button
-			className="flex gap-2 bg-red-600"
+			className="flex gap-2 bg-red-600 hover:bg-red-600/80"
 			onClick={onClearShopCart}
 			disabled={isDisabled}
 		>
