@@ -25,6 +25,7 @@ export interface ModalTypes {
 		cancelButtonText: string
 		confirmButtonText: string
 	}
+	ordersModal: SectionModal
 }
 
 export const modalTypes: ModalTypes = {
@@ -60,5 +61,9 @@ export const modalTypes: ModalTypes = {
 			"La acción de limpieza del carrito de compras provocará la eliminación de todos los perfumes que se encuentran en el mismo.",
 		cancelButtonText: "Cancelar",
 		confirmButtonText: "Confirmar",
+	},
+	ordersModal: {
+		name: "ordersModal",
+		title: "Pedidos",
 	},
 }
