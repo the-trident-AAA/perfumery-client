@@ -1,8 +1,25 @@
 "use server"
 import { auth } from "@/src/auth"
 import { buildApiResponse } from "@/src/lib/api"
-import { apiRoutes } from "@/src/lib/routes/api-routes/api-routes"
+import { QueryParamsURLFactory } from "@/src/lib/request"
+import {
+	apiRoutes,
+	tagsCacheByRoutes,
+} from "@/src/lib/routes/api-routes/api-routes"
 import { Order } from "@/src/lib/types/orders"
+import { PaginationResponse } from "@/src/lib/types/pagination"
+import { IQueryable } from "@/src/lib/types/request"
+
+export async function getOrdersList(params: IQueryable) {
+	const url = new QueryParamsURLFactory(params, apiRoutes.orders.get).build()
+
+	const res = await fetch(url, {
+		method: "GET",
+		next: { tags: [tagsCacheByRoutes.orders.multipleTag] },
+	})
+
+	return await buildApiResponse<PaginationResponse<Order>>(res)
+}
 
 export async function createOrder() {
 	const session = await auth()
