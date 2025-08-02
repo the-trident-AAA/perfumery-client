@@ -1,6 +1,7 @@
+import { CardSkeletonGroup } from "@/src/components/card-skeleton-group/card-skeleton-group"
 import OrdersList from "@/src/sections/orders/orders-list/orders-list"
 import { ListOrderedIcon } from "lucide-react"
-import React from "react"
+import React, { Suspense } from "react"
 
 export default function OrdersContent() {
 	return (
@@ -11,7 +12,16 @@ export default function OrdersContent() {
 					Pedidos Realizados
 				</h1>
 			</div>
-			<OrdersList />
+			<Suspense
+				fallback={
+					<CardSkeletonGroup
+						containerClassName="grid grid-cols-1 gap-8 w-full"
+						count={8}
+					/>
+				}
+			>
+				<OrdersList />
+			</Suspense>
 		</div>
 	)
 }

@@ -1,10 +1,9 @@
-import PerfumeOrderCard, {
-	type PerfumeOrder,
-} from "@/src/sections/orders/perfume-orders/perfume-order-card/perfume-order-card"
+import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
+import PerfumeOrderCard from "@/src/sections/orders/perfume-orders/perfume-order-card/perfume-order-card"
 import { Sparkles } from "lucide-react"
 
 interface Props {
-	perfumesOrder: PerfumeOrder[]
+	perfumesOrder: OrderPerfume[]
 }
 
 export default function PerfumeOrdersList({ perfumesOrder }: Props) {

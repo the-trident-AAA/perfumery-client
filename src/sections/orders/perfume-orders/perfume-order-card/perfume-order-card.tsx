@@ -1,22 +1,15 @@
 "use client"
 
 import Image from "next/image"
-import { Perfume } from "@/src/lib/types/perfumes"
+import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
 
-export interface PerfumeOrder {
-	id: string
-	perfume: Perfume
-	cant: number
-	precio: number
-}
-
-interface PerfumeCartProps {
-	perfumeOrder: PerfumeOrder
+interface Props {
+	perfumeOrder: OrderPerfume
 }
 
 export default function PerfumeOrderCard({
-	perfumeOrder: { id, perfume, cant, precio },
-}: PerfumeCartProps) {
+	perfumeOrder: { perfume, cant, price },
+}: Props) {
 	return (
 		<div className=" rounded-2xl border">
 			<div className="p-0">
@@ -41,7 +34,7 @@ export default function PerfumeOrderCard({
 								{perfume.name}
 							</h3>
 							<p className="font-semibold text-sm 2xs:text-base">
-								${precio.toFixed(2)}
+								${perfume.price.toFixed(2)}
 							</p>
 						</div>
 
@@ -64,7 +57,7 @@ export default function PerfumeOrderCard({
 									Total:{" "}
 								</p>
 								<span className="font-bold text-xs 2xs:text-base">
-									${(precio * cant).toFixed(2)}
+									${price.toFixed(2)}
 								</span>
 							</div>
 						</div>
