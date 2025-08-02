@@ -73,7 +73,7 @@ const perfurmesOrder: PerfumeOrder[] = [
 			description:
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
-			image: "/placeholder.svg?height=80&width=80",
+			image: "/images/place-holder.jpg",
 			available: true,
 			cant: 0,
 			gender: Gender.FEMALE,
@@ -93,7 +93,7 @@ const perfurmesOrder: PerfumeOrder[] = [
 			description:
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
-			image: "/placeholder.svg?height=80&width=80",
+			image: "/images/place-holder.jpg",
 			available: true,
 			cant: 0,
 			gender: Gender.FEMALE,
@@ -113,7 +113,7 @@ const perfurmesOrder: PerfumeOrder[] = [
 			description:
 				"Una de las mejores fragancias que podrás encontrar sin duda alguna",
 			price: 90,
-			image: "/placeholder.svg?height=80&width=80",
+			image: "/images/place-holder.jpg",
 			available: true,
 			cant: 0,
 			gender: Gender.FEMALE,
