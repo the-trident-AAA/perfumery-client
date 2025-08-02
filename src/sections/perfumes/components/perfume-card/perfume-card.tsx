@@ -10,6 +10,7 @@ import { Button } from "@/src/components/ui/button"
 import { Badge } from "@/src/components/ui/badge"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume-card/components/add-shop-cart-perfume-button"
+import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 
 interface Props {
 	perfume: Perfume
@@ -39,7 +40,7 @@ export default function PerfumeCard({ perfume }: Props) {
 
 	return (
 		<Card
-			className={`group relative overflow-hidden border-0 bg-gradient-to-br from-white via-white to-gray-50/50 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 ${
+			className={`group relative overflow-hidden border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 ${
 				isLoaded ? "animate-fade-in-up" : "opacity-0"
 			}`}
 			onMouseEnter={() => setIsHovered(true)}
@@ -47,12 +48,7 @@ export default function PerfumeCard({ perfume }: Props) {
 			onMouseMove={handleMouseMove}
 		>
 			{/* Franjas decorativas superiores animadas */}
-			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary/60 via-primary to-primary/60 z-20" />
-			<div className="absolute top-2 left-0 right-0 h-px bg-gradient-to-r from-yellow-400 via-white to-yellow-400 opacity-80 z-20" />
-
-			{/* Líneas laterales con efecto de flujo */}
-			<div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary/50 via-primary/20 to-transparent z-10 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500" />
-			<div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-primary/50 via-primary/20 to-transparent z-10 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500 delay-100" />
+			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/60 via-secondary to-secondary/60 z-20" />
 
 			{/* Elementos decorativos flotantes */}
 			<div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -119,19 +115,29 @@ export default function PerfumeCard({ perfume }: Props) {
 			</Button>
 
 			<CardContent className="p-0">
-				{/* Image Section súper mejorada */}
-				<div className="relative h-80 overflow-hidden">
-					<Image
-						src={
-							perfume.image ||
-							`/placeholder.svg?height=320&width=280&query=elegant ${perfume.name || "perfume"} bottle luxury premium`
-						}
-						alt={perfume.name}
-						fill
-						className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 group-hover:contrast-110"
-					/>
+				{/* Imagen de fondo mejorada */}
+				<div className="relative h-80 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
+					<div className="absolute inset-0 flex items-center justify-center">
+						<Image
+							src={perfume.image || perfumeImagePlaceHolder}
+							width={600}
+							height={400}
+							alt="Colección de perfumes de lujo"
+							className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+						/>
+					</div>
+
+					{/* Partículas flotantes */}
+					<div className="absolute inset-0 pointer-events-none">
+						<Sparkles className="absolute top-8 left-8 h-4 w-4 text-primary/60 animate-pulse" />
+						<Sparkles className="absolute top-16 right-12 h-3 w-3 text-primary/40 animate-pulse delay-500" />
+						<Sparkles className="absolute bottom-20 left-16 h-5 w-5 text-primary/50 animate-pulse delay-1000" />
+					</div>
 
 					{/* Overlay con gradiente mejorado */}
+					<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+					{/* Contenido del overlay */}
 					<div
 						className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end transition-all duration-500 ${
 							isHovered ? "opacity-100" : "opacity-0"
@@ -168,28 +174,25 @@ export default function PerfumeCard({ perfume }: Props) {
 					</div>
 
 					{/* Línea divisoria animada */}
-					<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-
-					{/* Efecto de brillo que cruza la imagen */}
-					<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-y-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
+					<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 				</div>
 
 				{/* Content Section mejorada */}
-				<div className="relative">
+				<div className="relative bg-gradient-to-br from-secondary via-secondary/90 to-secondary/90">
 					{/* Franja decorativa interna */}
 					<div className="absolute top-0 left-6 right-6 h-0.5 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
-					<div className="flex flex-col m-2 p-4 gap-2 bg-gradient-to-br from-primary via-primary/90 rounded-2xl to-primary/80">
+					<div className="flex flex-col p-4 gap-2 ">
 						{/* Brand and Type mejorados */}
 						<div className="flex items-center justify-between animate-fade-in delay-100">
 							<Badge
-								variant={"secondary"}
+								variant={"default"}
 								className="text-black font-bold"
 							>
 								{perfume.brand}
 							</Badge>
 							<Badge
-								variant={"secondary"}
+								variant={"default"}
 								className="text-black font-bold"
 							>
 								{perfume.perfumeType}
@@ -227,7 +230,7 @@ export default function PerfumeCard({ perfume }: Props) {
 						</div>
 					</div>
 
-					<div className="flex flex-col gap-2 p-4">
+					<div className="flex flex-col  gap-2 p-4">
 						{/* Price Section súper mejorada */}
 						<div className="flex items-center justify-between pt-4 border-t border-border/50 animate-fade-in delay-400">
 							<div className="flex flex-col space-y-1">
@@ -241,7 +244,7 @@ export default function PerfumeCard({ perfume }: Props) {
 										</span>
 									</>
 								) : (
-									<span className="text-2xl font-black bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+									<span className="text-2xl font-black text-primary">
 										{fCurrency(perfume.price)}
 									</span>
 								)}
@@ -259,7 +262,7 @@ export default function PerfumeCard({ perfume }: Props) {
 											: "bg-red-500"
 									} shadow-lg`}
 								/>
-								<span className="text-xs font-medium text-muted-foreground">
+								<span className="text-xs font-medium text-primary">
 									{perfume.available ? "En stock" : "Agotado"}
 								</span>
 							</div>
@@ -275,12 +278,12 @@ export default function PerfumeCard({ perfume }: Props) {
 					</div>
 
 					{/* Franja decorativa inferior */}
-					<div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-yellow-400/40 via-primary/60 to-yellow-400/40 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
+					<div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-secondary via-secondary/60 to-secondary/40 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
 				</div>
 			</CardContent>
 
 			{/* Franja inferior con efecto de onda */}
-			<div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-primary/40 via-primary/60 to-primary/40 transform origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+			<div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/40 via-secondary/60 to-secondary/40 transform origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
 
 			{/* Efecto de brillo general */}
 			<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1500 ease-out pointer-events-none" />
