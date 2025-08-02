@@ -5,7 +5,7 @@ interface Props {
 
 export default function DetailsSectionHeader({ title, description }: Props) {
 	return (
-		<div className="relative flex flex-col sm:flex-row sm:items-center bg-white rounded-lg shadow-sm gap-4 p-6 overflow-hidden">
+		<div className="relative flex flex-col sm:flex-row sm:items-center bg-secondary rounded-lg shadow-sm gap-4 p-6 overflow-hidden">
 			{/* Panel azul diagonal superpuesto */}
 			<div
 				className="absolute inset-y-0 left-0 w-[100vh] bg-primary opacity-90"
