@@ -76,7 +76,7 @@ export default function HomeBannerSection({
 			</div>
 
 			{/* Franja superior decorativa */}
-			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-yellow-400 via-white to-yellow-400 opacity-80" />
+			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary via-secondary/80 to-secondary/40 opacity-80" />
 
 			{/* Contenido principal */}
 			<div className="relative py-6 z-10 container mx-auto px-6 h-full flex items-center">
@@ -87,7 +87,10 @@ export default function HomeBannerSection({
 					>
 						{/* Badge superior */}
 						<div className="flex items-center gap-4">
-							<Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm px-4 py-2 text-sm font-semibold animate-slide-down">
+							<Badge
+								variant={"secondary"}
+								className="text-primary"
+							>
 								<Sparkles className="w-4 h-4 mr-2" />
 								Colección Premium
 							</Badge>
@@ -98,7 +101,7 @@ export default function HomeBannerSection({
 										className="w-4 h-4 fill-yellow-400 text-yellow-400 animate-pulse"
 									/>
 								))}
-								<span className="text-white/80 text-sm ml-2">
+								<span className="text-secondary text-sm ml-2">
 									(4.9)
 								</span>
 							</div>
@@ -106,47 +109,47 @@ export default function HomeBannerSection({
 
 						{/* Título principal */}
 						<div className="space-y-4">
-							<h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white animate-slide-up">
+							<h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-secondary animate-slide-up">
 								<span className="block">
 									{title.split(" ").slice(0, 2).join(" ")}
 								</span>
-								<span className="block bg-gradient-to-r from-yellow-300 via-white to-yellow-300 bg-clip-text text-transparent animate-shimmer">
+								<span className="block">
 									{title.split(" ").slice(2).join(" ")}
 								</span>
 							</h1>
 
 							{/* Línea decorativa */}
-							<div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-white animate-expand-width" />
+							<div className="w-24 h-1 bg-secondary animate-expand-width" />
 						</div>
 
 						{/* Descripción */}
-						<p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl animate-fade-in delay-300">
+						<p className="text-xl lg:text-2xl text-secondary leading-relaxed max-w-2xl animate-fade-in delay-300">
 							{description}
 						</p>
 
 						{/* Estadísticas */}
 						<div className="flex items-center gap-8 animate-fade-in delay-500">
 							<div className="text-center">
-								<div className="text-3xl font-bold text-white">
+								<div className="text-3xl font-bold text-secondary">
 									500+
 								</div>
-								<div className="text-white/70 text-sm">
+								<div className="text-secondary/70 text-sm">
 									Fragancias
 								</div>
 							</div>
 							<div className="text-center">
-								<div className="text-3xl font-bold text-white">
+								<div className="text-3xl font-bold text-secondary">
 									50+
 								</div>
-								<div className="text-white/70 text-sm">
+								<div className="text-secondary/70 text-sm">
 									Marcas
 								</div>
 							</div>
 							<div className="text-center">
-								<div className="text-3xl font-bold text-white">
+								<div className="text-3xl font-bold text-secondary">
 									10K+
 								</div>
-								<div className="text-white/70 text-sm">
+								<div className="text-secondary/70 text-sm">
 									Clientes
 								</div>
 							</div>
@@ -155,7 +158,10 @@ export default function HomeBannerSection({
 						{/* Botones de acción */}
 						<div className="flex flex-col sm:flex-row gap-4 animate-fade-in delay-700">
 							<NavigationComponent href={paths.perfumes().root}>
-								<Button className="group bg-white text-primary hover:bg-white/90 text-lg font-bold px-8 py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105">
+								<Button
+									variant={"secondary"}
+									className="group bg-secondary text-primary text-lg font-bold px-8 py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
+								>
 									<ShoppingBag className="w-5 h-5 mr-3" />
 									Explorar Colección
 									<ArrowRight className="w-5 h-5 ml-3 transition-transform group-hover:translate-x-2" />
@@ -165,8 +171,8 @@ export default function HomeBannerSection({
 							</NavigationComponent>
 
 							<Button
-								variant="outline"
-								className="group border-2 border-white text-white hover:bg-white hover:text-primary text-lg font-semibold px-8 py-4 h-auto rounded-full backdrop-blur-sm transition-all duration-300 bg-transparent"
+								variant="secondary"
+								className="group bg-secondary text-primary text-lg font-bold px-8 py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
 							>
 								<Heart className="w-5 h-5 mr-3" />
 								Lista de Deseos
@@ -175,17 +181,17 @@ export default function HomeBannerSection({
 
 						{/* Indicadores de confianza */}
 						<div className="flex items-center gap-6 pt-4 animate-fade-in delay-1000">
-							<div className="flex items-center gap-2 text-white/80">
+							<div className="flex items-center gap-2 text-secondary">
 								<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
 								<span className="text-sm">Envío gratis</span>
 							</div>
-							<div className="flex items-center gap-2 text-white/80">
+							<div className="flex items-center gap-2 text-secondary">
 								<div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300" />
 								<span className="text-sm">
 									Garantía 30 días
 								</span>
 							</div>
-							<div className="flex items-center gap-2 text-white/80">
+							<div className="flex items-center gap-2 text-secondary">
 								<div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-600" />
 								<span className="text-sm">Auténticos</span>
 							</div>
@@ -216,10 +222,10 @@ export default function HomeBannerSection({
 								</div>
 
 								<div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 animate-slide-up delay-500">
-									<div className="text-primary font-bold text-lg">
+									<div className="text-secondary font-bold text-lg">
 										Hasta 50% OFF
 									</div>
-									<div className="text-primary/70 text-sm">
+									<div className="text-secondary text-sm">
 										En fragancias seleccionadas
 									</div>
 								</div>
@@ -230,8 +236,8 @@ export default function HomeBannerSection({
 							<div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-tl from-white/30 to-yellow-400/30 rounded-full blur-xl animate-pulse delay-700" />
 
 							{/* Marcos decorativos */}
-							<div className="absolute -inset-4 border-2 border-white/20 rounded-3xl transform -rotate-1 animate-pulse" />
-							<div className="absolute -inset-8 border border-white/10 rounded-3xl transform rotate-1 animate-pulse delay-500" />
+
+							<div className="absolute -inset-8 border border-black bg-primary/15 rounded-3xl transform rotate-1 animate-pulse delay-500" />
 						</div>
 					</div>
 				</div>

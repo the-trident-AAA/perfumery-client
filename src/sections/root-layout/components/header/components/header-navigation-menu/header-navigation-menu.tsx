@@ -27,7 +27,7 @@ interface LinkItemProps {
 
 const LinkItem = ({ label, icon, path }: LinkItemProps) => (
 	<NavigationMenuLink
-		className="text-[16px] bg-gradient-to-br from-primary via-primary/90 rounded-2xl to-primary/80 text-yellow-300 sm:text-xl"
+		className="text-[16px] bg-secondary rounded-2xl text-primary sm:text-xl"
 		asChild
 	>
 		<Link href={path} className={navigationMenuTriggerStyle()}>
@@ -60,13 +60,13 @@ export default function HeaderNavigationMenu() {
 	const navigationItem = {
 		label: first.name,
 		path: paths.perfumes({ perfumeTypeId: first.id.toString() }).root,
-		icon: <ShoppingCartIcon className="size-4 text-secondary sm:size-6" />,
+		icon: <ShoppingCartIcon className="size-4 text-primrary sm:size-6" />,
 		childrens: restPerfumeTypes.map((perfumeType: PerfumeType) => ({
 			label: perfumeType.name,
 			path: paths.perfumes({ perfumeTypeId: perfumeType.id.toString() })
 				.root,
 			icon: (
-				<ShoppingCartIcon className="size-4 text-secondary sm:size-6" />
+				<ShoppingCartIcon className="size-4 text-primrary sm:size-6" />
 			),
 		})),
 	}
@@ -83,7 +83,7 @@ export default function HeaderNavigationMenu() {
 						/>
 					) : (
 						<>
-							<NavigationMenuTrigger className="text-[16px] text-secondary sm:text-xl">
+							<NavigationMenuTrigger className="text-[16px] text-primary bg-secondary sm:text-xl">
 								{navigationItem.icon}
 								{navigationItem.label}
 							</NavigationMenuTrigger>
@@ -94,7 +94,7 @@ export default function HeaderNavigationMenu() {
 											key={childIndex}
 											href={child.path}
 										>
-											<Button className="flex gap-2 w-full text-secondary justify-start">
+											<Button className="flex gap-2 w-full text-primary bg-secondary justify-start">
 												{child.icon}
 												{child.label}
 											</Button>
