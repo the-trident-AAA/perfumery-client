@@ -4,9 +4,13 @@ import { Sparkles } from "lucide-react"
 
 interface Props {
 	perfumesOrder: OrderPerfume[]
+	variant?: "modal" | "default"
 }
 
-export default function PerfumeOrdersList({ perfumesOrder }: Props) {
+export default function PerfumeOrdersList({
+	perfumesOrder,
+	variant = "default",
+}: Props) {
 	return (
 		<div className="space-y-4">
 			<div className="flex items-center gap-3 pb-2">
@@ -21,7 +25,9 @@ export default function PerfumeOrdersList({ perfumesOrder }: Props) {
 			</div>
 
 			{perfumesOrder.length > 0 ? (
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div
+					className={`grid grid-cols-1 ${variant === "modal" && "md:grid-cols-2"} gap-4`}
+				>
 					{perfumesOrder.map((perfumeOrder, index) => (
 						<PerfumeOrderCard
 							key={index}

@@ -12,7 +12,12 @@ import { Package, Box } from "lucide-react"
 import PerfumeOrdersList from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list"
 import { Order } from "@/src/lib/types/orders"
 
-export default function OrderCard({ order }: { order: Order }) {
+interface Props {
+	order: Order
+	variant?: "modal" | "default"
+}
+
+export default function OrderCard({ order, variant = "default" }: Props) {
 	const statusConfig = order.state
 
 	return (

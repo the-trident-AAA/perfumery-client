@@ -3,7 +3,11 @@ import OrdersList from "@/src/sections/orders/orders-list/orders-list"
 import { ListOrderedIcon } from "lucide-react"
 import React, { Suspense } from "react"
 
-export default function OrdersContent() {
+interface Props {
+	variant?: "modal" | "default"
+}
+
+export default function OrdersContent({ variant = "default" }: Props) {
 	return (
 		<div className="flex flex-col gap-2 mt-2">
 			<div className="flex bg-secondary p-2 rounded-2xl justify-center gap-2">

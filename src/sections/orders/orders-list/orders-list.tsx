@@ -2,7 +2,11 @@ import { getOrdersList } from "@/src/lib/services/orders"
 import OrderCard from "@/src/sections/orders/order-card/order-card"
 import React from "react"
 
-export default async function OrdersList() {
+interface Props {
+	variant?: "modal" | "default"
+}
+
+export default async function OrdersList({ variant = "default" }: Props) {
 	const res = await getOrdersList({})
 
 	if (!res.response || res.error) throw new Error("Error fetching orders")
