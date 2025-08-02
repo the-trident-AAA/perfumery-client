@@ -7,6 +7,8 @@ import { Offer } from "@/src/lib/types/offers"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
 import { Badge } from "@/src/components/ui/badge"
+import NavigationComponent from "@/src/components/navigation-component/navigation-component"
+import { paths } from "@/src/lib/routes/paths"
 
 interface Props {
 	offer: Offer
@@ -15,7 +17,7 @@ interface Props {
 const offerImagePlaceHolder = "/placeholder.svg?height=400&width=600"
 
 export default function OfferCard({
-	offer: { name, description, image, offerType, scope, discount },
+	offer: { id, name, description, image, offerType, scope, discount },
 }: Props) {
 	const [isHovered, setIsHovered] = useState(false)
 
@@ -111,18 +113,26 @@ export default function OfferCard({
 								</p>
 
 								{/* Botón mejorado con animaciones */}
-								<Button
-									variant={"secondary"}
-									className="text-primary w-full sm:w-auto flex items-center justify-center gap-2 group/btn shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-200"
+								<NavigationComponent
+									href={
+										paths.perfumes({
+											offerId: id.toString(),
+										}).root
+									}
 								>
-									<span className="font-semibold">
-										Comprar Ahora
-									</span>
-									<ArrowRight className="h-4 w-4 transition-all duration-300 group-hover/btn:translate-x-2 group-hover/btn:scale-110" />
+									<Button
+										variant={"secondary"}
+										className="text-primary w-full sm:w-auto flex items-center justify-center gap-2 group/btn shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-200"
+									>
+										<span className="font-semibold">
+											Comprar Ahora
+										</span>
+										<ArrowRight className="h-4 w-4 transition-all duration-300 group-hover/btn:translate-x-2 group-hover/btn:scale-110" />
 
-									{/* Efecto de brillo en el botón */}
-									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-500" />
-								</Button>
+										{/* Efecto de brillo en el botón */}
+										<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-500" />
+									</Button>
+								</NavigationComponent>
 							</div>
 						</div>
 
