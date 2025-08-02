@@ -97,7 +97,7 @@ export default function PerfumeShopCartCard({
 							</h3>
 
 							{/* Precio */}
-							<p className="text-lg font-bold text-primary">
+							<p className="text-lg font-bold text-secondary">
 								{fCurrency(shopCartPerfume.perfume.price)}
 							</p>
 
@@ -112,7 +112,7 @@ export default function PerfumeShopCartCard({
 
 								{/* Precio total */}
 								<div className="text-right">
-									<p className="text-sm text-muted-foreground">
+									<p className="text-sm text-secondary">
 										Total
 									</p>
 									<p className="font-bold">
