@@ -77,11 +77,9 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 
 	return (
 		<div className="flex flex-col gap-4 mt-2 w-full">
-			<div className="flex justify-center bg-primary p-2 rounded-2xl gap-2">
-				<ShoppingCartIcon className="size-8 text-secondary" />
-				<h1 className="text-2xl text-secondary font-bold">
-					Tu Carrito
-				</h1>
+			<div className="flex justify-center bg-secondary p-2 rounded-2xl gap-2">
+				<ShoppingCartIcon className="size-8 text-primary" />
+				<h1 className="text-2xl text-primary font-bold">Tu Carrito</h1>
 			</div>
 
 			{loading ? (
