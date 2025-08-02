@@ -32,8 +32,8 @@ export default function HeaderNavbar() {
 				{!session && (
 					<NavigationComponent href={paths.sign_in.root}>
 						<Button
-							className="text-xs sm:text-base"
-							variant="outline"
+							className="text-xs text-primary sm:text-base"
+							variant="secondary"
 							size="sm"
 						>
 							Iniciar Sesión

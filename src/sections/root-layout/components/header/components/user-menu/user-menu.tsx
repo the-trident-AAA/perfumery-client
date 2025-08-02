@@ -74,7 +74,7 @@ export default function UserMenu() {
 					aria-label="Menú de usuario"
 				>
 					<Avatar className="h-10 w-10 shadow-sm">
-						<AvatarFallback className="bg-primary text-secondary font-semibold text-sm">
+						<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
 							{userInitials}
 						</AvatarFallback>
 					</Avatar>

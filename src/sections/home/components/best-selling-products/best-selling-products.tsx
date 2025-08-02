@@ -46,44 +46,36 @@ export default async function BestSellingProducts() {
 					<div className="text-center space-y-8 mb-16">
 						{/* Badge superior */}
 						<div className="flex justify-center">
-							<div className="inline-flex items-center text-white gap-2 bg-primary/10 border border-primary/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold">
+							<div className="inline-flex items-center text-primary gap-2 bg-secondary border border-secondary/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold">
 								<TrendingUp className="w-4 h-4" />
 								Más Vendidos
-								<div className="flex items-center gap-1 ml-2">
-									{[1, 2, 3, 4, 5].map(star => (
-										<Star
-											key={star}
-											className="w-3 h-3 fill-yellow-400 text-yellow-400"
-										/>
-									))}
-								</div>
 							</div>
 						</div>
 
 						{/* Título principal con efectos */}
 						<div className="space-y-6">
 							<h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-								<span className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white animate-slide-up">
+								<span className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-secondary animate-slide-up">
 									Los favoritos de
 								</span>
-								<span className="block bg-gradient-to-r from-yellow-300 via-white to-yellow-300 bg-clip-text text-transparent animate-shimmer">
+								<span className="block text-secondary">
 									nuestros clientes
 								</span>
 							</h2>
 
 							{/* Línea decorativa */}
 							<div className="flex justify-center">
-								<div className="w-32 h-1 bg-gradient-to-r from-primary to-yellow-400 rounded-full" />
+								<div className="w-32 h-1 bg-gradient-to-r from-secondary to-secondary/80 rounded-full" />
 							</div>
 						</div>
 
 						{/* Descripción mejorada */}
 						<div className="max-w-3xl mx-auto space-y-4">
-							<p className="text-xl lg:text-2xl text-white leading-relaxed font-medium">
+							<p className="text-xl lg:text-2xl text-secondary leading-relaxed font-semibold">
 								Descubre los perfumes más vendidos y déjate
 								cautivar por las fragancias que todos aman
 							</p>
-							<p className="text-lg text-white leading-relaxed">
+							<p className="text-lg text-secondary font-semibold leading-relaxed">
 								Cada fragancia ha sido cuidadosamente
 								seleccionada por su calidad excepcional y
 								popularidad entre nuestros clientes
@@ -93,31 +85,31 @@ export default async function BestSellingProducts() {
 						{/* Estadísticas decorativas */}
 						<div className="flex justify-center items-center gap-8 pt-4">
 							<div className="text-center">
-								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-white">
+								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-secondary">
 									<Award className="w-6 h-6 text-secondary" />
 									#1
 								</div>
-								<div className="text-white text-sm font-medium">
+								<div className="text-secondary text-sm font-semibold">
 									En Ventas
 								</div>
 							</div>
 							<div className="w-px h-12 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
 							<div className="text-center">
-								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-white">
+								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-secondary">
 									<Sparkles className="w-6 h-6 text-secondary" />
 									98%
 								</div>
-								<div className="text-white text-sm font-medium">
+								<div className="text-secondary text-sm font-semibold">
 									Satisfacción
 								</div>
 							</div>
 							<div className="w-px h-12 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
 							<div className="text-center">
-								<div className="text-2xl flex gap-1 justify-center w-full items-center font-bold text-white">
+								<div className="text-2xl flex gap-1 justify-center w-full items-center font-bold text-secondary">
 									5
 									<Star className="w-6 h-6 text-secondary" />
 								</div>
-								<div className="text-white text-sm font-medium">
+								<div className="text-secondary text-sm font-semibold">
 									Calificación
 								</div>
 							</div>
@@ -149,13 +141,13 @@ export default async function BestSellingProducts() {
 
 					{/* Elementos decorativos inferiores */}
 					<div className="flex justify-center mt-12">
-						<div className="flex items-center gap-4 text-white">
-							<div className="w-2 h-2 bg-yellow-400/60 rounded-full" />
-							<span className="text-sm font-medium">
+						<div className="flex items-center gap-4 text-secondary">
+							<div className="w-2 h-2 bg-secondary rounded-full" />
+							<span className="text-sm font-semibold">
 								Productos auténticos garantizados
 							</span>
-							<div className="w-2 h-2 bg-yellow-400/60 rounded-full" />
-							<span className="text-sm font-medium">
+							<div className="w-2 h-2 bg-secondary rounded-full" />
+							<span className="text-sm font-semibold">
 								Envío gratuito en pedidos
 							</span>
 						</div>
