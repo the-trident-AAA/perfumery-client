@@ -81,7 +81,7 @@ export default function PerfumeShopCartCard({
 						{/* Badge de cantidad si es mayor a 1 */}
 						{shopCartPerfume.cant > 1 && (
 							<div className="absolute -top-2 -right-2 z-20">
-								<Badge className="bg-gradient-to-r from-primary to-primary/80 text-white font-bold px-2 py-1 shadow-lg border-2 border-white/20 animate-pulse">
+								<Badge className="bg-secondary text-white font-bold px-2 py-1 shadow-lg border-2 border-white/20 animate-pulse">
 									x{shopCartPerfume.cant}
 								</Badge>
 							</div>
