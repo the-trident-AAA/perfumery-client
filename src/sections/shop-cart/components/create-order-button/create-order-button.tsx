@@ -1,5 +1,7 @@
 "use client"
 import { Button } from "@/src/components/ui/button"
+import { revalidateServerTags } from "@/src/lib/cache"
+import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 import useCreateOrder from "@/src/sections/orders/hooks/use-create-order"
 import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
@@ -16,6 +18,7 @@ export default function CreateOrderButton({ isDisabled = false }: Props) {
 	const { createOrder, loading } = useCreateOrder({
 		onCreateAction: () => {
 			toast.success("Pedido creado exitosamente")
+			revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
 			// update the shop cart state
 			fetchShopCartTotalItems()
 			fetchShopCart()
