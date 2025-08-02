@@ -12,9 +12,7 @@ export default async function OrdersList({ variant = "default" }: Props) {
 	if (!res.response || res.error) throw new Error("Error fetching orders")
 
 	const orders = res.response.data
-	const pagination = res.response.paginationMeta
-	console.log("Perfumes")
-	console.log(orders)
+
 	return (
 		<div className="grid grid-cols-1 gap-4 p-2">
 			{orders.map(order => (
