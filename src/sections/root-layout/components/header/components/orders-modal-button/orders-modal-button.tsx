@@ -2,12 +2,15 @@
 import { ModalContext } from "@/src/components/modal/context/modalContext"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import { Avatar, AvatarFallback } from "@/src/components/ui/avatar"
+import { Badge } from "@/src/components/ui/badge"
 import { Button } from "@/src/components/ui/button"
+import useUserTotalOrders from "@/src/sections/orders/hooks/use-user-total-orders"
 import { ShoppingBag } from "lucide-react"
 import React, { useContext } from "react"
 
 export default function OrdersModalButton() {
 	const { handleOpenModal } = useContext(ModalContext)
+	const { totalOrders } = useUserTotalOrders()
 	return (
 		<Button
 			variant="default"
@@ -22,6 +25,14 @@ export default function OrdersModalButton() {
 					<ShoppingBag className="size-5" />
 				</AvatarFallback>
 			</Avatar>
+			{totalOrders > 0 && (
+				<Badge
+					className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center text-xs"
+					variant="destructive"
+				>
+					{totalOrders}
+				</Badge>
+			)}
 		</Button>
 	)
 }
