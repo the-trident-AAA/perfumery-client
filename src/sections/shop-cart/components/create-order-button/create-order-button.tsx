@@ -2,6 +2,7 @@
 import { Button } from "@/src/components/ui/button"
 import { revalidateServerTags } from "@/src/lib/cache"
 import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
+import { UserTotalOrdersContext } from "@/src/sections/orders/context/user-total-orders-context"
 import useCreateOrder from "@/src/sections/orders/hooks/use-create-order"
 import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
@@ -15,10 +16,13 @@ interface Props {
 export default function CreateOrderButton({ isDisabled = false }: Props) {
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
+	const { fetchUserTotalOrders } = useContext(UserTotalOrdersContext)
 	const { createOrder, loading } = useCreateOrder({
 		onCreateAction: () => {
 			toast.success("Pedido creado exitosamente")
 			revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
+			// update the user total orders
+			fetchUserTotalOrders()
 			// update the shop cart state
 			fetchShopCartTotalItems()
 			fetchShopCart()

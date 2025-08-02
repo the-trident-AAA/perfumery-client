@@ -4,13 +4,13 @@ import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import { Avatar, AvatarFallback } from "@/src/components/ui/avatar"
 import { Badge } from "@/src/components/ui/badge"
 import { Button } from "@/src/components/ui/button"
-import useUserTotalOrders from "@/src/sections/orders/hooks/use-user-total-orders"
+import { UserTotalOrdersContext } from "@/src/sections/orders/context/user-total-orders-context"
 import { ShoppingBag } from "lucide-react"
 import React, { useContext } from "react"
 
 export default function OrdersModalButton() {
 	const { handleOpenModal } = useContext(ModalContext)
-	const { totalOrders } = useUserTotalOrders()
+	const { totalOrders } = useContext(UserTotalOrdersContext)
 	return (
 		<Button
 			variant="default"
