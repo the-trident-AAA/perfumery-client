@@ -41,7 +41,6 @@ export async function getUserTotalOrders() {
 		method: "GET",
 		headers: {
 			Authorization: "Bearer " + session?.accessToken,
-			"content-type": "application/json",
 		},
 		next: { tags: [tagsCacheByRoutes.orders.singleTag] },
 	})
