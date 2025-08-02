@@ -101,7 +101,7 @@ export default function CustomPagination({
 		<div className="flex relative flex-col gap-4 p-3 sm:p-4 bg-gradient-to-br from-primary via-primary/90 to-primary/80 border rounded-lg shadow-sm">
 			{/* Información de elementos - Solo en desktop */}
 			{showTotalItems && (
-				<div className="hidden sm:block text-sm text-secondary text-center sm:text-left">
+				<div className="hidden sm:block font-semibold text-sm sm:text-base text-secondary text-center sm:text-left">
 					Mostrando {startItem} - {endItem} de {totalItems} elementos
 				</div>
 			)}
@@ -119,11 +119,11 @@ export default function CustomPagination({
 				<div className="flex items-center gap-1 sm:gap-2 order-2 sm:order-1">
 					{/* Botón primera página - Solo desktop */}
 					<Button
-						variant="outline"
+						variant="secondary"
 						size="sm"
 						onClick={() => onPageChange(1)}
 						disabled={currentPage === 1}
-						className="hidden bg-muted lg:flex h-8 w-8 p-0"
+						className="hidden text-primary lg:flex h-8 w-8 p-0"
 						title="Primera página"
 					>
 						<ChevronsLeft className="h-3 w-3" />
@@ -131,11 +131,11 @@ export default function CustomPagination({
 
 					{/* Botón página anterior */}
 					<Button
-						variant="outline"
+						variant="secondary"
 						size="sm"
 						onClick={() => onPageChange(currentPage - 1)}
 						disabled={currentPage === 1}
-						className="h-8 bg-muted px-2 sm:px-3"
+						className="h-8 text-primary px-2 sm:px-3"
 						title="Página anterior"
 					>
 						<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -149,21 +149,21 @@ export default function CustomPagination({
 						{visiblePages.map((page, index) => (
 							<div key={index}>
 								{page === "..." ? (
-									<span className="px-1 sm:px-2 py-2 text-gray-400 bg-muted text-xs sm:text-sm">
+									<span className="px-1 sm:px-2 py-2 text-gray-400  text-xs sm:text-sm">
 										...
 									</span>
 								) : (
 									<Button
 										variant={
 											currentPage === page
-												? "default"
+												? "secondary"
 												: "outline"
 										}
 										size="sm"
 										onClick={() =>
 											onPageChange(page as number)
 										}
-										className={`h-8 w-8 ${currentPage !== page && "bg-muted"} sm:min-w-[40px] p-0 text-xs sm:text-sm`}
+										className={`h-8 w-8  ${currentPage === page && "text-primary"} sm:min-w-[40px] p-0 text-xs sm:text-sm`}
 										title={`Página ${page}`}
 									>
 										{page}
@@ -175,11 +175,11 @@ export default function CustomPagination({
 
 					{/* Botón página siguiente */}
 					<Button
-						variant="outline"
+						variant="secondary"
 						size="sm"
 						onClick={() => onPageChange(currentPage + 1)}
 						disabled={currentPage === totalPages}
-						className="h-8v bg-muted px-2 sm:px-3"
+						className="h-8 text-primary  px-2 sm:px-3"
 						title="Página siguiente"
 					>
 						<span className="hidden md:inline mr-1 text-xs sm:text-sm">
@@ -190,11 +190,11 @@ export default function CustomPagination({
 
 					{/* Botón última página - Solo desktop */}
 					<Button
-						variant="outline"
+						variant="secondary"
 						size="sm"
 						onClick={() => onPageChange(totalPages)}
 						disabled={currentPage === totalPages}
-						className="hidden lg:flex bg-muted h-8 w-8 p-0"
+						className="hidden lg:flex text-primary h-8 w-8 p-0"
 						title="Última página"
 					>
 						<ChevronsRight className="h-3 w-3" />
@@ -206,7 +206,7 @@ export default function CustomPagination({
 					<div className="flex items-center gap-2 text-xs sm:text-sm order-1 sm:order-2">
 						<SelectInput
 							label="Elementos por página"
-							labelClassName="text-secondary"
+							labelClassName="text-secondary text-sm sm:text-base font-semibold"
 							value={String(itemsPerPage)}
 							onValueChange={onItemsPerPageChange}
 							options={itemsPerPageOptions.map(itemPerPage => ({
