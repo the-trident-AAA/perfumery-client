@@ -94,7 +94,10 @@ export default function HeaderNavigationMenu() {
 											key={childIndex}
 											href={child.path}
 										>
-											<Button className="flex gap-2 w-full text-primary bg-secondary justify-start">
+											<Button
+												variant={"secondary"}
+												className="flex gap-2 w-full text-primary justify-start"
+											>
 												{child.icon}
 												{child.label}
 											</Button>
