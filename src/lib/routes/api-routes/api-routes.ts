@@ -36,7 +36,7 @@ export const apiRoutes = {
 	},
 	orders: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}order`,
-		getUserTotalOrders: `${process.env.NEXT_PUBLIC_API_URL}user-total-orders/:id`,
+		getUserTotalOrders: `${process.env.NEXT_PUBLIC_API_URL}user-total-orders`,
 	},
 } as const
 

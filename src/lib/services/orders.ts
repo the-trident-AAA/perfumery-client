@@ -35,14 +35,16 @@ export async function createOrder() {
 	return await buildApiResponse<Order>(res)
 }
 
-export async function getUserTotalOrders(userId: string) {
-	const res = await fetch(
-		apiRoutes.orders.getUserTotalOrders.replace(":id", userId),
-		{
-			method: "GET",
-			next: { tags: [tagsCacheByRoutes.orders.singleTag] },
+export async function getUserTotalOrders() {
+	const session = await auth()
+	const res = await fetch(apiRoutes.orders.getUserTotalOrders, {
+		method: "GET",
+		headers: {
+			Authorization: "Bearer " + session?.accessToken,
+			"content-type": "application/json",
 		},
-	)
+		next: { tags: [tagsCacheByRoutes.orders.singleTag] },
+	})
 
 	return await buildApiResponse<{ total: number }>(res)
 }
