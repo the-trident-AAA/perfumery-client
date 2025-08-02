@@ -1,10 +1,13 @@
 import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
+import { User } from "@/src/lib/types/users"
 
 export interface Order {
 	id: string
 	state: OrderState
-	price: number
+	user: User
 	orderPerfumes: OrderPerfume[]
+	totalItems: number
+	totalMount: number
 }
 
 export enum OrderState {
