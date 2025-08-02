@@ -11,7 +11,7 @@ import React, { useContext } from "react"
 export default function OrdersModalButton() {
 	const { handleOpenModal } = useContext(ModalContext)
 	const { totalOrders } = useContext(UserTotalOrdersContext)
-	console.log("Total orders: " + totalOrders)
+
 	return (
 		<Button
 			variant="default"
