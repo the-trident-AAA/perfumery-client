@@ -8,7 +8,7 @@ interface Props {
 
 export default function SidePanelFilters({ title, children }: Props) {
 	return (
-		<aside className="w-full bg-gradient-to-br from-primary via-primary/90 to-primary/80 p-6 rounded-2xl min-h-screen ">
+		<aside className="w-full bg-primary border-t-12 border-secondary p-6 rounded-2xl min-h-screen ">
 			<div className="flex gap-2 items-center justify-center mb-6">
 				<SlidersHorizontal className="text-secondary" />
 				<h2 className="text-xl font-semibold text-secondary">
