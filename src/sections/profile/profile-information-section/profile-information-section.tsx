@@ -12,11 +12,13 @@ export default function ProfileInformationSection() {
 				<AvatarFallback>AP</AvatarFallback>
 			</Avatar>
 
-			<h1 className="text-2xl font-medium text-gray-700 mt-2">
+			<h1 className="text-2xl font-bold text-secondary mt-2">
 				Andy Pelaez
 			</h1>
 
-			<p className="text-gray-500 text-sm mt-1 mb-6">andyP02@gmail.com</p>
+			<p className="text-secondary font-semibold text-sm mt-1 mb-6">
+				andyP02@gmail.com
+			</p>
 
 			<EditProfileButton />
 		</div>

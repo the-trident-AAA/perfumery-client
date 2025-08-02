@@ -8,8 +8,8 @@ export default function EditProfileButton() {
 	const { handleOpenModal } = useContext(ModalContext)
 	return (
 		<Button
-			className="w-full py-3 px-4
-transition-colors rounded-md text-lg font-medium"
+			variant={"secondary"}
+			className="w-full py-3 px-4 text-primary"
 			onClick={() => {
 				handleOpenModal({ name: modalTypes.editProfileModal.name })
 			}}
