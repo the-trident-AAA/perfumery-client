@@ -18,6 +18,7 @@ import { ToastContainer } from "react-toastify"
 import ClearShopCartModalContainer from "@/src/sections/shop-cart/clear-shop-cart/clear-shop-cart-modal-container"
 import { ShopCartProvider } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import { PerfumesFiltersProvider } from "@/src/sections/perfumes/filters/context/perfumes-filters-context"
+import OrdersContent from "@/src/sections/orders/orders-content"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -92,6 +93,14 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 											maxWidth="max-w-xl"
 										>
 											<ClearShopCartModalContainer />
+										</Modal>
+										<Modal
+											formPath={
+												modalTypes.ordersModal.name
+											}
+											maxWidth="max-w-3xl"
+										>
+											<OrdersContent variant="modal" />
 										</Modal>
 									</main>
 								</ShopCartTotalItemsProviderContainer>

@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation"
 import React from "react"
-
 import { useSession } from "next-auth/react"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { paths } from "@/src/lib/routes/paths"
@@ -10,6 +9,7 @@ import { Button } from "@/src/components/ui/button"
 import UserMenu from "@/src/sections/root-layout/components/header/components/user-menu/user-menu"
 import LittleCar from "@/src/sections/root-layout/components/header/components/little-car/little-car"
 import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
+import OrdersModalButton from "@/src/sections/root-layout/components/header/components/orders-modal-button/orders-modal-button"
 
 export default function HeaderNavbar() {
 	const { data: session, status } = useSession()
@@ -42,6 +42,7 @@ export default function HeaderNavbar() {
 				)}
 			</div>
 			{session && <LittleCar />}
+			{session && <OrdersModalButton />}
 			{session && <UserMenu />}
 		</nav>
 	)
