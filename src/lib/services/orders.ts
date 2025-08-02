@@ -34,3 +34,15 @@ export async function createOrder() {
 	console.log(res)
 	return await buildApiResponse<Order>(res)
 }
+
+export async function getUserTotalOrders(userId: string) {
+	const res = await fetch(
+		apiRoutes.orders.getUserTotalOrders.replace(":id", userId),
+		{
+			method: "GET",
+			next: { tags: [tagsCacheByRoutes.orders.singleTag] },
+		},
+	)
+
+	return await buildApiResponse<{ total: number }>(res)
+}
