@@ -26,19 +26,19 @@ export default function OfferCard({
 			onMouseLeave={() => setIsHovered(false)}
 		>
 			{/* Franja decorativa superior */}
-			<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/60 via-primary to-primary/60 z-20" />
+			<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary/60 via-secondary to-secondary/60 z-20" />
 
 			{/* Elementos decorativos flotantes */}
 			<div className="absolute top-3 right-4 z-20">
 				<div className="flex gap-2">
-					<div className="w-2 h-2 bg-primary/60 rounded-full animate-pulse" />
-					<div className="w-2 h-2 bg-primary/40 rounded-full animate-pulse delay-100" />
-					<div className="w-2 h-2 bg-primary/60 rounded-full animate-pulse delay-200" />
+					<div className="w-2 h-2 bg-secondary/60 rounded-full animate-pulse" />
+					<div className="w-2 h-2 bg-secondary/40 rounded-full animate-pulse delay-100" />
+					<div className="w-2 h-2 bg-secondary/60 rounded-full animate-pulse delay-200" />
 				</div>
 			</div>
 
 			{/* Banner superior mejorado */}
-			<div className="relative h-36 bg-gradient-to-br from-primary via-primary/90 to-primary/80 p-6 text-primary-foreground overflow-hidden">
+			<div className="relative h-36 bg-gradient-to-br from-secondary via-secondary/90 to-secondary/90 p-6 text-primary-foreground overflow-hidden">
 				{/* Patrón de fondo animado */}
 				<div className="absolute inset-0 opacity-10">
 					<div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-y-12 animate-pulse" />
@@ -60,7 +60,7 @@ export default function OfferCard({
 						<h2 className="text-2xl font-bold tracking-tight animate-slide-up">
 							HASTA
 						</h2>
-						<span className="text-5xl font-black bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent animate-bounce-subtle">
+						<span className="text-5xl font-black bg-primary bg-clip-text text-transparent animate-bounce-subtle">
 							{discount * 100}%
 						</span>
 					</div>
@@ -111,7 +111,10 @@ export default function OfferCard({
 								</p>
 
 								{/* Botón mejorado con animaciones */}
-								<Button className="bg-white text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto flex items-center justify-center gap-2 group/btn shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-200">
+								<Button
+									variant={"secondary"}
+									className="text-primary w-full sm:w-auto flex items-center justify-center gap-2 group/btn shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-200"
+								>
 									<span className="font-semibold">
 										Comprar Ahora
 									</span>
@@ -138,18 +141,18 @@ export default function OfferCard({
 					<div className="relative z-10 flex items-center justify-between">
 						<div className="space-y-2">
 							<div className="flex items-center gap-2">
-								<Sparkles className="h-4 w-4 text-primary" />
-								<p className="text-sm text-muted-foreground font-medium">
+								<Sparkles className="h-4 w-4 text-secondary" />
+								<p className="text-sm text-secondary font-medium">
 									Fragancias seleccionadas
 								</p>
 							</div>
-							<p className="text-base font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+							<p className="text-base font-semibold text-secondary group-hover:text-black transition-colors duration-300">
 								{scope}
 							</p>
 						</div>
 
 						<div className="transform transition-all duration-300 group-hover:scale-110">
-							<Badge className="bg-gradient-to-r from-primary/10 to-primary/20 text-primary border-primary/30 font-semibold px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300">
+							<Badge className="bg-gradient-to-r from-secondary/10 to-secondary/20 text-secondary border-secondary/30 font-semibold px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300">
 								{offerType}
 							</Badge>
 						</div>
@@ -158,7 +161,7 @@ export default function OfferCard({
 			</CardContent>
 
 			{/* Franja inferior */}
-			<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/40 via-primary/60 to-primary/40" />
+			<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary/40 via-secondary/60 to-secondary/40" />
 		</Card>
 	)
 }
