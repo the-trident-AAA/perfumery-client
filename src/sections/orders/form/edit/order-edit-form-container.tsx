@@ -18,7 +18,7 @@ interface Props {
 	children: ReactNode
 }
 
-export default function EditPerfumeFormContainer({ order, children }: Props) {
+export default function OrderEditFormContainer({ order, children }: Props) {
 	const { editOrder, loading: submitLoading } = useEditOrder({
 		id: order.id,
 		onEditAction: () => {
@@ -39,17 +39,15 @@ export default function EditPerfumeFormContainer({ order, children }: Props) {
 	}
 	return (
 		<FormProvider {...form}>
-			<form
-				onSubmit={form.handleSubmit(onSubmit)}
-				className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
-			>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="relative">
 				{children}
 				<Button
-					variant={"default"}
+					variant={"secondary"}
 					type="submit"
 					disabled={submitLoading}
+					className="absolute text-primary bottom-7 right-4"
 				>
-					{"Actualizar"}
+					Actualizar
 				</Button>
 			</form>
 		</FormProvider>
