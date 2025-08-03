@@ -6,7 +6,7 @@ import {
 	apiRoutes,
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
-import { Order } from "@/src/lib/types/orders"
+import { Order, OrderEditDto } from "@/src/lib/types/orders"
 import { PaginationResponse } from "@/src/lib/types/pagination"
 import { IQueryable } from "@/src/lib/types/request"
 
@@ -46,4 +46,17 @@ export async function getUserTotalOrders() {
 	})
 
 	return await buildApiResponse<{ total: number }>(res)
+}
+
+export async function editOrder(id: string, orderEditDTO: OrderEditDto) {
+	const res = await fetch(apiRoutes.orders.getById.replace(":id", id), {
+		method: "PATCH",
+		headers: {
+			Authorization: "Bearer " + "token",
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(orderEditDTO),
+	})
+
+	return await buildApiResponse<{ success: boolean }>(res)
 }
