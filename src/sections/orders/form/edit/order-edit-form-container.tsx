@@ -30,7 +30,11 @@ export default function OrderEditFormContainer({ order, children }: Props) {
 	const form = useForm<OrderEdit>({
 		resolver: zodResolver(orderEditSchema),
 		defaultValues: {
-			perfumes: order.orderPerfumes,
+			perfumes: order.orderPerfumes.map(orderPerfume => ({
+				id: orderPerfume.id,
+				cant: orderPerfume.cant,
+				perfumeId: orderPerfume.perfume.id,
+			})),
 		},
 	})
 
