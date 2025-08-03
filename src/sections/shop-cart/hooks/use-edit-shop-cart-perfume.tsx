@@ -25,7 +25,10 @@ export default function useEditShopCartPerfume({ id, onEditAction }: Props) {
 					convertShopCartPerfumeEditDTO(shopCartPerfume),
 				)
 				if (!res.response || res.error)
-					setError("Error en la edición del perfume del carrito")
+					setError(
+						res.error?.reason ||
+							"Error en la edición del perfume del carrito",
+					)
 				else {
 					onEditAction()
 				}

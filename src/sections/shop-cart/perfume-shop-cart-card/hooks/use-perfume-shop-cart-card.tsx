@@ -6,7 +6,7 @@ import {
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useDeleteShopCartPerfume from "@/src/sections/shop-cart/hooks/use-delete-shop-cart-perfume"
 import useEditShopCartPerfume from "@/src/sections/shop-cart/hooks/use-edit-shop-cart-perfume"
-import { useCallback, useContext } from "react"
+import { useCallback, useContext, useEffect } from "react"
 import { toast } from "react-toastify"
 
 interface Props {
@@ -19,13 +19,20 @@ export default function usePerfumeShopCartCard({
 	shopCartRefresh,
 }: Props) {
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
-	const { loading: loadingEdit, editShopCartPerfume } =
-		useEditShopCartPerfume({
-			id: shopCartPerfume.id,
-			onEditAction: () => {
-				shopCartRefresh()
-			},
-		})
+	const {
+		loading: loadingEdit,
+		editShopCartPerfume,
+		error,
+	} = useEditShopCartPerfume({
+		id: shopCartPerfume.id,
+		onEditAction: () => {
+			shopCartRefresh()
+		},
+	})
+
+	useEffect(() => {
+		if (error) toast.error(error)
+	}, [error])
 
 	const { loading: loadingDelete, deleteShopCartPerfume } =
 		useDeleteShopCartPerfume({
