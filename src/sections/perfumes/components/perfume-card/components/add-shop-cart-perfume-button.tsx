@@ -8,7 +8,7 @@ import useCreateShopCartPerfume from "@/src/sections/shop-cart/hooks/use-create-
 import { ShoppingCart } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import React, { useCallback, useContext } from "react"
+import React, { useCallback, useContext, useEffect } from "react"
 import { toast } from "react-toastify"
 
 interface Props {
@@ -18,7 +18,7 @@ interface Props {
 export default function AddShopCartPerfumeButton({ perfume }: Props) {
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
-	const { createShopCartPerfume, loading } = useCreateShopCartPerfume({
+	const { createShopCartPerfume, loading, error } = useCreateShopCartPerfume({
 		onCreateAction: () => {
 			fetchShopCartTotalItems()
 			fetchShopCart()
@@ -27,6 +27,13 @@ export default function AddShopCartPerfumeButton({ perfume }: Props) {
 			})
 		},
 	})
+
+	useEffect(() => {
+		if (error)
+			toast.error(error, {
+				position: "bottom-center",
+			})
+	}, [error])
 	const router = useRouter()
 	const { data: session, status } = useSession()
 

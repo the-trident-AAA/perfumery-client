@@ -23,7 +23,10 @@ export default function useCreateShopCartPerfume({ onCreateAction }: Props) {
 					convertShopCartPerfumeCreateDTO(shopCartPerfume),
 				)
 				if (!res.response || res.error)
-					setError("Error en la creación del perfume del carrito")
+					setError(
+						res.error?.reason ||
+							"Error en la creación del perfume del carrito",
+					)
 				else {
 					onCreateAction()
 				}
