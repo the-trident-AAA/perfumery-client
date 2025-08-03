@@ -1,4 +1,5 @@
 import { getOrdersList } from "@/src/lib/services/orders"
+import OrderEditFormContainer from "@/src/sections/orders/form/edit/order-edit-form-container"
 import OrderCard from "@/src/sections/orders/order-card/order-card"
 import React from "react"
 
@@ -16,7 +17,9 @@ export default async function OrdersList({ variant = "default" }: Props) {
 	return (
 		<div className="grid grid-cols-1 gap-4 p-2">
 			{orders.map(order => (
-				<OrderCard key={order.id} order={order} />
+				<OrderEditFormContainer key={order.id} order={order}>
+					<OrderCard order={order} />
+				</OrderEditFormContainer>
 			))}
 		</div>
 	)
