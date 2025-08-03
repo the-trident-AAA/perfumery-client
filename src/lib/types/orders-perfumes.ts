@@ -6,3 +6,8 @@ export interface OrderPerfume {
 	cant: number
 	price: number
 }
+
+export interface OrderPerfumeEditDto {
+	perfumeId: string
+	cant: number
+}
