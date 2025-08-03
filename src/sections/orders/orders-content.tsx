@@ -24,7 +24,7 @@ export default function OrdersContent({ variant = "default" }: Props) {
 					/>
 				}
 			>
-				<OrdersList />
+				<OrdersList variant={variant} />
 			</Suspense>
 		</div>
 	)

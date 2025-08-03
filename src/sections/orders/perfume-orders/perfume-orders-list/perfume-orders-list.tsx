@@ -26,7 +26,7 @@ export default function PerfumeOrdersList({
 
 			{perfumesOrder.length > 0 ? (
 				<div
-					className={`grid grid-cols-1 ${variant === "modal" && "md:grid-cols-2"} gap-4`}
+					className={`grid ${variant === "default" ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"} gap-4`}
 				>
 					{perfumesOrder.map((perfumeOrder, index) => (
 						<PerfumeOrderCard

@@ -18,7 +18,7 @@ export default async function OrdersList({ variant = "default" }: Props) {
 		<div className="grid grid-cols-1 gap-4 p-2">
 			{orders.map(order => (
 				<OrderEditFormContainer key={order.id} order={order}>
-					<OrderCard order={order} />
+					<OrderCard order={order} variant={variant} />
 				</OrderEditFormContainer>
 			))}
 		</div>
