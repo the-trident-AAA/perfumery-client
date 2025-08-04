@@ -49,6 +49,8 @@ export default function PerfumeOrderCard({
 						<div className="flex items-center flex-row gap-1 justify-between mt-3">
 							<RHFQuantityInput
 								name={`perfumes.${index}.cant`}
+								conditionalChange={cant + 1 <= perfume.cant}
+								conditionalChangeError="No se puede seleccionar más cantidad de ese perfume, ya que la tienda no cuenta con la disponibilidad suficiente"
 								min={1}
 							/>
 							<div className="flex flex-col items-center 2xs:flex-row gap-1">
