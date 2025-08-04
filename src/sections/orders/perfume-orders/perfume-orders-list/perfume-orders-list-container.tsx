@@ -1,4 +1,5 @@
 "use client"
+import { LoadingSpinner } from "@/src/components/ui/loading-spinner"
 import OrderEditFormContainer from "@/src/sections/orders/form/edit/order-edit-form-container"
 import useOrderPefumes from "@/src/sections/orders/hooks/use-order-perfumes"
 import PerfumeOrdersList from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list"
@@ -17,7 +18,9 @@ export default function PerfumeOrdersListContainer({
 		id: orderId,
 	})
 	return loading ? (
-		"loading..."
+		<div className="flex items-center justify-center">
+			<LoadingSpinner size={32} />
+		</div>
 	) : (
 		<OrderEditFormContainer
 			orderId={orderId}
