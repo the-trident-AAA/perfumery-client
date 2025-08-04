@@ -7,6 +7,7 @@ import {
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
 import { Order, OrderEditDto } from "@/src/lib/types/orders"
+import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
 import { PaginationResponse } from "@/src/lib/types/pagination"
 import { IQueryable } from "@/src/lib/types/request"
 
@@ -19,6 +20,22 @@ export async function getOrdersList(params: IQueryable) {
 	})
 
 	return await buildApiResponse<PaginationResponse<Order>>(res)
+}
+
+export async function getOrderPerfumes(id: string) {
+	const session = await auth()
+	const res = await fetch(
+		apiRoutes.orders.getOrderPerfumes.replace(":id", id),
+		{
+			method: "GET",
+			headers: {
+				Authorization: "Bearer " + session?.accessToken,
+			},
+			next: { tags: [tagsCacheByRoutes.orders.orderPerfumes] },
+		},
+	)
+
+	return await buildApiResponse<OrderPerfume[]>(res)
 }
 
 export async function createOrder() {
