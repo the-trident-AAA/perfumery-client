@@ -1,36 +1,42 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
-import React, { ReactNode } from "react"
+import React, { ReactNode, useEffect } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import {
 	OrderEdit,
 	orderEditSchema,
 } from "@/src/sections/orders/form/edit/schemas/order-edit-schema"
-import { Order } from "@/src/lib/types/orders"
 import useEditOrder from "@/src/sections/orders/hooks/use-edit-order"
-import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 import { Button } from "@/src/components/ui/button"
-import { revalidateServerTags } from "@/src/lib/cache"
+import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
+import { Sparkles } from "lucide-react"
 
 interface Props {
-	order: Order
+	orderId: string
+	orderPerfumes: OrderPerfume[]
+	fetchOrderPerfumes: () => void
 	children: ReactNode
 }
 
-export default function OrderEditFormContainer({ order, children }: Props) {
+export default function OrderEditFormContainer({
+	orderId,
+	children,
+	orderPerfumes,
+	fetchOrderPerfumes,
+}: Props) {
 	const { editOrder, loading: submitLoading } = useEditOrder({
-		id: order.id,
+		id: orderId,
 		onEditAction: () => {
 			toast.success("Orden actualizada con éxito")
-			revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
+			fetchOrderPerfumes()
 		},
 	})
 
 	const form = useForm<OrderEdit>({
 		resolver: zodResolver(orderEditSchema),
 		defaultValues: {
-			perfumes: order.orderPerfumes.map(orderPerfume => ({
+			perfumes: orderPerfumes.map(orderPerfume => ({
 				id: orderPerfume.id,
 				cant: orderPerfume.cant,
 				perfumeId: orderPerfume.perfume.id,
@@ -41,18 +47,40 @@ export default function OrderEditFormContainer({ order, children }: Props) {
 	function onSubmit(order: OrderEdit) {
 		editOrder(order)
 	}
+
+	useEffect(() => {
+		console.log("Entre")
+		form.reset({
+			perfumes: orderPerfumes.map(orderPerfume => ({
+				id: orderPerfume.id,
+				cant: orderPerfume.cant,
+				perfumeId: orderPerfume.perfume.id,
+			})),
+		})
+	}, [orderPerfumes, form])
+
 	return (
 		<FormProvider {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="relative">
+			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+				<div className="flex items-center gap-3 pb-2">
+					<div className="flex gap-2 items-center rounded-2xl bg-secondary p-2">
+						<Sparkles className="h-5 w-5 text-primary" />
+
+						<h3 className="font-bold text-lg text-primary">
+							Perfumes en este pedido
+						</h3>
+					</div>
+					<div className="flex-1 h-[4px] rounded-2xl bg-secondary" />
+					<Button
+						variant={"secondary"}
+						type="submit"
+						disabled={submitLoading}
+						className="text-primary"
+					>
+						Actualizar
+					</Button>
+				</div>
 				{children}
-				<Button
-					variant={"secondary"}
-					type="submit"
-					disabled={submitLoading}
-					className="absolute text-primary bottom-7 right-4"
-				>
-					Actualizar
-				</Button>
 			</form>
 		</FormProvider>
 	)
