@@ -10,6 +10,7 @@ import {
 } from "@/src/components/ui/form"
 import { useFormContext } from "react-hook-form"
 import { useCallback } from "react"
+import { toast } from "react-toastify"
 
 interface Props {
 	name: string
@@ -21,6 +22,8 @@ interface Props {
 	disabled?: boolean
 	loadingAction?: boolean
 	fullWidth?: boolean
+	conditionalChange?: boolean
+	conditionalChangeError?: string
 }
 
 export function RHFQuantityInput({
@@ -33,14 +36,18 @@ export function RHFQuantityInput({
 	disabled = false,
 	loadingAction = false,
 	fullWidth = true,
+	conditionalChange = true,
+	conditionalChangeError = "No es posible realizar más la acción de incremento",
 }: Props) {
 	const { control, setValue, watch } = useFormContext()
 	const value = watch(name) ?? min
 
 	const actionIncrease = useCallback(() => {
-		if (value + step <= max) {
-			setValue(name, value + step)
-		}
+		if (conditionalChange) {
+			if (value + step <= max) {
+				setValue(name, value + step)
+			}
+		} else toast.error(conditionalChangeError)
 	}, [value, step, max, name, setValue])
 
 	const actionDecrease = useCallback(() => {
