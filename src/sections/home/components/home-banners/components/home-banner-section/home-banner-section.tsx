@@ -9,6 +9,7 @@ import { Badge } from "@/src/components/ui/badge"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
+import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 
 interface Props {
 	homeBanner: HomeBanner
@@ -106,20 +107,28 @@ export default function HomeBannerSection({
 								</span>
 							</div>
 						</div>
+						<div className="flex gap-4 items-center">
+							<Avatar className="h-40 w-40">
+								<AvatarImage src="/icons/logo-icon.png" />
+								<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
+									{"PP"}
+								</AvatarFallback>
+							</Avatar>
 
-						{/* Título principal */}
-						<div className="space-y-4">
-							<h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-secondary animate-slide-up">
-								<span className="block">
-									{title.split(" ").slice(0, 2).join(" ")}
-								</span>
-								<span className="block">
-									{title.split(" ").slice(2).join(" ")}
-								</span>
-							</h1>
+							{/* Título principal */}
+							<div className="space-y-4">
+								<h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-secondary animate-slide-up">
+									<span className="block">
+										{title.split(" ").slice(0, 2).join(" ")}
+									</span>
+									<span className="block">
+										{title.split(" ").slice(2).join(" ")}
+									</span>
+								</h1>
 
-							{/* Línea decorativa */}
-							<div className="w-24 h-1 bg-secondary animate-expand-width" />
+								{/* Línea decorativa */}
+								<div className="w-24 h-1 bg-secondary animate-expand-width" />
+							</div>
 						</div>
 
 						{/* Descripción */}
