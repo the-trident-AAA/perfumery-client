@@ -9,8 +9,8 @@ import {
 import { Badge } from "@/src/components/ui/badge"
 import { Card } from "@/src/components/ui/card"
 import { Package, Box } from "lucide-react"
-import PerfumeOrdersList from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list"
 import { Order } from "@/src/lib/types/orders"
+import PerfumeOrdersListContainer from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list-container"
 
 interface Props {
 	order: Order
@@ -67,8 +67,8 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 					</AccordionTrigger>
 
 					<AccordionContent className="p-4 bg-muted 2xs:px-6 pb-6">
-						<PerfumeOrdersList
-							perfumesOrder={order.orderPerfumes}
+						<PerfumeOrdersListContainer
+							orderId={order.id}
 							variant={variant}
 						/>
 					</AccordionContent>
