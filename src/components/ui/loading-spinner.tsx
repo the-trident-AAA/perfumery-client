@@ -9,7 +9,7 @@ interface Props {
 export function LoadingSpinner({ size = 24, className }: Props) {
 	return (
 		<Loader2
-			className={cn("animate-spin text-muted-foreground", className)}
+			className={cn("animate-spin text-secondary", className)}
 			size={size}
 		/>
 	)
