@@ -32,7 +32,7 @@ export default function PerfumeOrdersList({
 
 			{perfumes.length > 0 ? (
 				<div
-					className={`grid ${variant === "default" ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"} gap-4 pb-6`}
+					className={`grid ${variant === "default" ? "grid-cols-1 xl:grid-cols-2" : "grid-cols-1"} gap-4 pb-6`}
 				>
 					{perfumes.map((perfume, index) => {
 						const orderPerfume = perfumesOrder.find(
