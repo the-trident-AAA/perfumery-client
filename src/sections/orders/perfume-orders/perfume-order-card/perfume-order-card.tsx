@@ -2,13 +2,16 @@
 
 import Image from "next/image"
 import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
+import { RHFQuantityInput } from "@/src/components/form/rhf-components/rhf-quantity-input/rhf-quantity-input"
 
 interface Props {
+	index: number
 	perfumeOrder: OrderPerfume
 }
 
 export default function PerfumeOrderCard({
 	perfumeOrder: { perfume, cant, price },
+	index,
 }: Props) {
 	return (
 		<div className=" rounded-2xl border">
@@ -44,14 +47,10 @@ export default function PerfumeOrderCard({
 
 						{/* Controles de cantidad */}
 						<div className="flex items-center flex-row gap-1 justify-between mt-3">
-							<div className="flex flex-col 2xs:flex-row gap-1 items-center">
-								<p className="font-medium text-sm 2xs:text-base ">
-									Cantidad:{" "}
-								</p>
-								<span className="font-bold text-xs 2xs:text-base">
-									{cant}
-								</span>
-							</div>
+							<RHFQuantityInput
+								name={`perfumes.${index}.cant`}
+								min={1}
+							/>
 							<div className="flex flex-col items-center 2xs:flex-row gap-1">
 								<p className="font-medium text-sm 2xs:text-base ">
 									Total:{" "}
