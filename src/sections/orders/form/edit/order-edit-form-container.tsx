@@ -11,6 +11,8 @@ import useEditOrder from "@/src/sections/orders/hooks/use-edit-order"
 import { Button } from "@/src/components/ui/button"
 import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
 import { Sparkles } from "lucide-react"
+import { revalidateServerTags } from "@/src/lib/cache"
+import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 
 interface Props {
 	orderId: string
@@ -29,6 +31,7 @@ export default function OrderEditFormContainer({
 		id: orderId,
 		onEditAction: () => {
 			toast.success("Orden actualizada con éxito")
+			revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
 			fetchOrderPerfumes()
 		},
 	})
