@@ -5,6 +5,7 @@ import useServerPagination from "@/src/lib/hooks/use-server-pagination"
 import { PaginationMeta } from "@/src/lib/types/pagination"
 import { Perfume } from "@/src/lib/types/perfumes"
 import PerfumeCard from "@/src/sections/perfumes/components/perfume-card/perfume-card"
+import PerfumesOrderContainer from "@/src/sections/perfumes/order/perfumes-order-container"
 import React from "react"
 
 interface Props {
@@ -35,6 +36,7 @@ export default function PerfumesList({ perfumes, apiPagination }: Props) {
 					apiPagination.total / apiPagination.limit,
 				)}
 			/>
+			<PerfumesOrderContainer />
 			<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
 				{perfumes.map(perfume => (
 					<PerfumeCard key={perfume.id} perfume={perfume} />
