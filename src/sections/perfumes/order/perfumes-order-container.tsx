@@ -24,7 +24,7 @@ export default function PerfumesOrderContainer() {
 					type: "number",
 				},
 			]}
-			defaultSort="name"
+			defaultSort="price"
 			onSortChange={(sortKey: string, direction: "asc" | "desc") => {
 				updateFiltersInUrl({
 					orderBy: sortKey,
