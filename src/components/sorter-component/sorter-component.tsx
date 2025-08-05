@@ -84,9 +84,9 @@ export default function SorterComponent({
 
 	return (
 		<div
-			className={`flex flex-wrap gap-2 p-4 bg-gray-50 rounded-lg border ${className}`}
+			className={`flex flex-wrap gap-2 p-4 bg-primary rounded-lg ${className}`}
 		>
-			<span className="text-sm font-medium text-gray-600 flex items-center">
+			<span className="text-base font-semibold text-secondary flex items-center">
 				Ordenar por:
 			</span>
 			{sortOptions.map(option => (
@@ -95,9 +95,9 @@ export default function SorterComponent({
 					variant={
 						currentSort === option.key ? "secondary" : "outline"
 					}
-					size="sm"
+					size={"sm"}
 					onClick={() => handleSortClick(option.key)}
-					className={`flex items-center ${currentSort === option.key && "text-primary"} gap-1 text-sm`}
+					className={`flex items-center ${currentSort === option.key && "text-primary"} gap-1`}
 				>
 					{getSortLabel(option)}
 					{getSortIcon(option.key)}
