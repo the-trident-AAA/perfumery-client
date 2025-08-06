@@ -38,7 +38,7 @@ export default function PerfumesFilterss({
 				: currentScents.filter(id => id !== scentId)
 
 			handleChangeFilters({
-				scentsIds: newScents.length > 0 ? newScents : undefined,
+				scentsIds: newScents.length > 0 ? newScents : [],
 			})
 		},
 		[filters, handleChangeFilters],
