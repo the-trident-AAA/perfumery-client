@@ -91,8 +91,8 @@ export const convertPerfumesFiltersDTO = (
 		...rest,
 		priceMin: priceRange[0],
 		priceMax: priceRange[1],
-		millilitersMin: priceRange[0],
-		millilitersMax: priceRange[1],
+		millilitersMin: millilitersRange[0],
+		millilitersMax: millilitersRange[1],
 	}
 }
 
