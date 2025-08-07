@@ -6,7 +6,6 @@ import Footer from "@/src/sections/root-layout/components/footer/footer"
 import { ModalProvider } from "@/src/components/modal/context/modalContext"
 import Modal from "@/src/components/modal/modal"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
-import PerfumDetailsContainer from "@/src/sections/perfumes/perfum-details/perfum-details-container/perfum-details-container"
 import LoginPanel from "@/src/components/login-panel/login-panel"
 import RegistrationPanel from "@/src/components/registration-panel/registration-panel"
 import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
@@ -36,15 +35,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 											<Header />
 											{children}
 											<Footer />
-											<Modal
-												formPath={
-													modalTypes
-														.perfumDetailsModal.name
-												}
-												maxWidth="max-w-5xl"
-											>
-												<PerfumDetailsContainer />
-											</Modal>
 											<Modal
 												formPath={
 													modalTypes.loginModal.name
