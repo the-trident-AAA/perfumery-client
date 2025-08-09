@@ -1,7 +1,13 @@
 import { Order } from "@/src/lib/types/orders"
 
-export function formatOrderMessage(order: Order) {
-	const intro = `Hola, soy *${order.user.username}* y deseo el siguiente pedido:\n\n`
+export function formatOrderMessage(
+	order: Order,
+	mode: "create" | "edit" = "edit",
+) {
+	const intro =
+		mode === "create"
+			? `Hola, soy *${order.user.username}* y deseo el siguiente pedido:\n\n`
+			: `Hola, soy *${order.user.username}* y aquí presento una edición de mi Pedido:\n\n`
 
 	const header = `*Pedido*: ${order.id}\n*Email*: ${order.user.email}\n\n`
 
