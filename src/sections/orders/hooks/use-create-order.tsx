@@ -1,6 +1,8 @@
 "use client"
 import { useCallback, useState } from "react"
 import { createOrder as createOrderService } from "@/src/lib/services/orders"
+import { useWhatsappMessage } from "@/src/lib/hooks/messages/use-whatsapp-message"
+import { formatOrderMessage } from "@/src/sections/orders/lib/orders-messages"
 
 interface Props {
 	onCreateAction: () => void
@@ -9,7 +11,7 @@ interface Props {
 export default function useCreateOrder({ onCreateAction }: Props) {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
-
+	const sendWhatsappMessage = useWhatsappMessage("5359891829")
 	const createOrder = useCallback(async () => {
 		try {
 			setLoading(true)
@@ -18,6 +20,7 @@ export default function useCreateOrder({ onCreateAction }: Props) {
 			if (!res.response || res.error)
 				setError("Error en la creación del pedido")
 			else {
+				sendWhatsappMessage(formatOrderMessage(res.response))
 				onCreateAction()
 			}
 		} catch (error) {
