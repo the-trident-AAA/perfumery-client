@@ -19,6 +19,7 @@ import { ShopCartProvider } from "@/src/sections/shop-cart/context/shop-cart-con
 import { PerfumesFiltersProvider } from "@/src/sections/perfumes/filters/context/perfumes-filters-context"
 import OrdersContent from "@/src/sections/orders/orders-content"
 import { UserTotalOrdersProvider } from "@/src/sections/orders/context/user-total-orders-context"
+import ProgressBar from "@/src/components/providers/progress-bar."
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -31,73 +32,80 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 								<ShopCartTotalItemsProviderContainer>
 									<UserTotalOrdersProvider>
 										<ToastContainer />
-										<main className="flex min-h-screen flex-col">
-											<Header />
-											{children}
-											<Footer />
-											<Modal
-												formPath={
-													modalTypes.loginModal.name
-												}
-												maxWidth="max-w-sm"
-											>
-												<LoginPanel />
-											</Modal>
-											<Modal
-												formPath={
-													modalTypes.registrationModal
-														.name
-												}
-												maxWidth="max-w-6xl"
-											>
-												<RegistrationPanel />
-											</Modal>
-											<Modal
-												formPath={
-													modalTypes.shopCartModal
-														.name
-												}
-												maxWidth="max-w-6xl"
-											>
-												<ShopCartContent variant="modal" />
-											</Modal>
-											<Modal
-												formPath={
-													modalTypes.editProfileModal
-														.name
-												}
-												maxWidth="max-w-lg"
-											>
-												<EditProfileForm />
-											</Modal>
-											<Modal
-												formPath={
-													modalTypes
-														.changePasswordModal
-														.name
-												}
-												maxWidth="max-w-xl"
-											>
-												<ChangePasswordForm />
-											</Modal>
-											<Modal
-												formPath={
-													modalTypes
-														.clearShopCartModal.name
-												}
-												maxWidth="max-w-xl"
-											>
-												<ClearShopCartModalContainer />
-											</Modal>
-											<Modal
-												formPath={
-													modalTypes.ordersModal.name
-												}
-												maxWidth="max-w-3xl"
-											>
-												<OrdersContent variant="modal" />
-											</Modal>
-										</main>
+										<ProgressBar>
+											<main className="flex min-h-screen flex-col">
+												<Header />
+												{children}
+												<Footer />
+												<Modal
+													formPath={
+														modalTypes.loginModal
+															.name
+													}
+													maxWidth="max-w-sm"
+												>
+													<LoginPanel />
+												</Modal>
+												<Modal
+													formPath={
+														modalTypes
+															.registrationModal
+															.name
+													}
+													maxWidth="max-w-6xl"
+												>
+													<RegistrationPanel />
+												</Modal>
+												<Modal
+													formPath={
+														modalTypes.shopCartModal
+															.name
+													}
+													maxWidth="max-w-6xl"
+												>
+													<ShopCartContent variant="modal" />
+												</Modal>
+												<Modal
+													formPath={
+														modalTypes
+															.editProfileModal
+															.name
+													}
+													maxWidth="max-w-lg"
+												>
+													<EditProfileForm />
+												</Modal>
+												<Modal
+													formPath={
+														modalTypes
+															.changePasswordModal
+															.name
+													}
+													maxWidth="max-w-xl"
+												>
+													<ChangePasswordForm />
+												</Modal>
+												<Modal
+													formPath={
+														modalTypes
+															.clearShopCartModal
+															.name
+													}
+													maxWidth="max-w-xl"
+												>
+													<ClearShopCartModalContainer />
+												</Modal>
+												<Modal
+													formPath={
+														modalTypes.ordersModal
+															.name
+													}
+													maxWidth="max-w-3xl"
+												>
+													<OrdersContent variant="modal" />
+												</Modal>
+											</main>
+										</ProgressBar>
 									</UserTotalOrdersProvider>
 								</ShopCartTotalItemsProviderContainer>
 							</ModalProvider>
