@@ -34,7 +34,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 	return (
 		<div className="bg-muted overflow-hidden">
 			{/* Header con información básica - Layout horizontal */}
-			<div className="flex flex-col gap-6 p-6">
+			<div className="flex flex-col gap-6 pt-6 px-6">
 				<BackButton />
 				<div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 					<div className="flex-1">
