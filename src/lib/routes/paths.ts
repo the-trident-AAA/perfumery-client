@@ -6,6 +6,10 @@ interface Path {
 interface ApplicationPath {
 	home: Path
 	sign_in: Path
+	perfume: (
+		params?: Record<string, string>,
+		query?: Record<string, string>,
+	) => Path
 	perfumes: (query?: Record<string, string>) => Path
 	profile: Path
 }
@@ -32,6 +36,17 @@ export const paths: ApplicationPath = {
 	sign_in: {
 		root: "/sign-in",
 		isProtected: false,
+	},
+	perfume: (params = {}, query = {}) => {
+		const basePath = "/perfumes/[id]"
+		const pathWithParams = replaceParamsInPath(basePath, params)
+		const queryString = buildQueryString(query)
+		return {
+			root: queryString
+				? `${pathWithParams}?${queryString}`
+				: pathWithParams,
+			isProtected: false,
+		}
 	},
 	perfumes: (query = {}) => {
 		const basePath = "/perfumes"
