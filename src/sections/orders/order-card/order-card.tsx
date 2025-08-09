@@ -68,7 +68,7 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 
 					<AccordionContent className="p-4 bg-muted 2xs:px-6 pb-6">
 						<PerfumeOrdersListContainer
-							orderId={order.id}
+							order={order}
 							variant={variant}
 						/>
 					</AccordionContent>

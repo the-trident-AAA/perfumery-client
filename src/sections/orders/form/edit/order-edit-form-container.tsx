@@ -13,26 +13,31 @@ import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
 import { Sparkles } from "lucide-react"
 import { revalidateServerTags } from "@/src/lib/cache"
 import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
+import { Order } from "@/src/lib/types/orders"
+import { useWhatsappMessage } from "@/src/lib/hooks/messages/use-whatsapp-message"
+import { formatOrderMessage } from "@/src/sections/orders/lib/orders-messages"
 
 interface Props {
-	orderId: string
+	order: Order
 	orderPerfumes: OrderPerfume[]
 	fetchOrderPerfumes: () => void
 	children: ReactNode
 }
 
 export default function OrderEditFormContainer({
-	orderId,
+	order,
 	children,
 	orderPerfumes,
 	fetchOrderPerfumes,
 }: Props) {
+	const sendWhatsappMessage = useWhatsappMessage("5354745543")
 	const { editOrder, loading: submitLoading } = useEditOrder({
-		id: orderId,
+		id: order.id,
 		onEditAction: () => {
 			toast.success("Orden actualizada con éxito")
 			revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
 			fetchOrderPerfumes()
+			sendWhatsappMessage(formatOrderMessage(order, "edit"))
 		},
 	})
 

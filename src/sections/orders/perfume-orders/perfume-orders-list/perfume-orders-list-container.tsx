@@ -1,21 +1,22 @@
 "use client"
 import { LoadingSpinner } from "@/src/components/ui/loading-spinner"
+import { Order } from "@/src/lib/types/orders"
 import OrderEditFormContainer from "@/src/sections/orders/form/edit/order-edit-form-container"
 import useOrderPefumes from "@/src/sections/orders/hooks/use-order-perfumes"
 import PerfumeOrdersList from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list"
 import React from "react"
 
 interface Props {
-	orderId: string
+	order: Order
 	variant?: "modal" | "default"
 }
 
 export default function PerfumeOrdersListContainer({
-	orderId,
+	order,
 	variant = "default",
 }: Props) {
 	const { orderPerfumes, loading, fetchOrderPerfumes } = useOrderPefumes({
-		id: orderId,
+		id: order.id,
 	})
 	return loading ? (
 		<div className="flex items-center justify-center">
@@ -23,7 +24,7 @@ export default function PerfumeOrdersListContainer({
 		</div>
 	) : (
 		<OrderEditFormContainer
-			orderId={orderId}
+			order={order}
 			orderPerfumes={orderPerfumes}
 			fetchOrderPerfumes={fetchOrderPerfumes}
 		>
