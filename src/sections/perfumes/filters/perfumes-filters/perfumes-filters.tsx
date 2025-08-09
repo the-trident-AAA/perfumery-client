@@ -175,6 +175,7 @@ export default function PerfumesFilterss({
 					label="Precio"
 					meansure="$"
 					value={filters.priceRange}
+					step={5}
 					handleChangeFilters={value => {
 						handleChangeFilters({
 							priceRange: value as [number, number],
@@ -187,6 +188,7 @@ export default function PerfumesFilterss({
 					label="Mililitros"
 					meansure="ml"
 					value={filters.millilitersRange}
+					step={5}
 					handleChangeFilters={value => {
 						handleChangeFilters({
 							millilitersRange: value as [number, number],
