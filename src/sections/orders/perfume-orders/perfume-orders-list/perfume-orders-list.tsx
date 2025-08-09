@@ -1,4 +1,5 @@
 "use client"
+import DeleteMaskCard from "@/src/components/form/components/delete-mask-card/delete-mask-card"
 import { Badge } from "@/src/components/ui/badge"
 import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
 import { fCurrency } from "@/src/lib/utils/format-number"
@@ -18,6 +19,14 @@ export default function PerfumeOrdersList({
 }: Props) {
 	const { watch, setValue, trigger } = useFormContext()
 	const perfumes = watch("perfumes") as OrderPerfumeEdit[]
+
+	const handleRemovePerfume = (indexToRemove: number) => {
+		const updatedPerfumes = perfumes.filter(
+			(_, index) => index !== indexToRemove,
+		)
+		setValue("perfumes", updatedPerfumes)
+		trigger("perfumes")
+	}
 
 	return (
 		<div className="space-y-4">
@@ -49,19 +58,24 @@ export default function PerfumeOrdersList({
 							p => p.id === perfume.id,
 						)
 						return (
-							<PerfumeOrderCard
+							<DeleteMaskCard
 								key={index}
-								index={index}
-								perfumeOrder={
-									{
-										...orderPerfume,
-										cant: perfume.cant,
-										price:
-											perfume.cant *
-											(orderPerfume?.perfume.price || 0),
-									} as OrderPerfume
-								}
-							/>
+								handleRemove={() => handleRemovePerfume(index)}
+							>
+								<PerfumeOrderCard
+									index={index}
+									perfumeOrder={
+										{
+											...orderPerfume,
+											cant: perfume.cant,
+											price:
+												perfume.cant *
+												(orderPerfume?.perfume.price ||
+													0),
+										} as OrderPerfume
+									}
+								/>
+							</DeleteMaskCard>
 						)
 					})}
 				</div>
