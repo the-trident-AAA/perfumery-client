@@ -101,12 +101,6 @@ export default function UserMenu() {
 							<p className="text-xs text-muted-foreground truncate">
 								{user.email || "email@ejemplo.com"}
 							</p>
-							<Badge
-								variant="secondary"
-								className="mt-1 text-primary text-xs"
-							>
-								Activo
-							</Badge>
 						</div>
 					</div>
 				</div>
