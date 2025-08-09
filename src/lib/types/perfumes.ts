@@ -29,7 +29,7 @@ export interface PerfumeDetails {
 	offer?: Offer
 	gender: Gender
 	scents: Scent[]
-	liters: number
+	milliliters: number
 	perfumeType: PerfumeType
 	available: boolean
 	price: number
