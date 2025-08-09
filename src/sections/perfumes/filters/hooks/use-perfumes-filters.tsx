@@ -29,7 +29,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 	const searchParams = useSearchParams()
 	const [filters, setFilters] = useState<PerfumesFilters>({
 		priceRange: [0, 1000],
-		millilitersRange: [0, 100],
+		millilitersRange: [0, 1000],
 		scentsIds: [],
 	})
 
@@ -77,7 +77,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 	function handleResetFilters() {
 		setFilters({
 			priceRange: [0, 1000],
-			millilitersRange: [0, 100],
+			millilitersRange: [0, 1000],
 			scentsIds: [],
 		})
 		updateFiltersInUrl({ page: 1 })
