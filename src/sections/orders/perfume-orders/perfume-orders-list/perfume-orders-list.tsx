@@ -7,6 +7,7 @@ import { OrderPerfumeEdit } from "@/src/sections/orders/form/edit/schemas/order-
 import PerfumeOrderCard from "@/src/sections/orders/perfume-orders/perfume-order-card/perfume-order-card"
 import { Sparkles } from "lucide-react"
 import { useFormContext } from "react-hook-form"
+import { toast } from "react-toastify"
 
 interface Props {
 	perfumesOrder: OrderPerfume[]
@@ -21,11 +22,15 @@ export default function PerfumeOrdersList({
 	const perfumes = watch("perfumes") as OrderPerfumeEdit[]
 
 	const handleRemovePerfume = (indexToRemove: number) => {
-		const updatedPerfumes = perfumes.filter(
-			(_, index) => index !== indexToRemove,
-		)
-		setValue("perfumes", updatedPerfumes)
-		trigger("perfumes")
+		if (perfumes.length > 1) {
+			const updatedPerfumes = perfumes.filter(
+				(_, index) => index !== indexToRemove,
+			)
+			setValue("perfumes", updatedPerfumes)
+			trigger("perfumes")
+		} else {
+			toast.error("El pedido debe de tener al menos un perfume")
+		}
 	}
 
 	return (
