@@ -26,6 +26,7 @@ export default function usePerfumeShopCartCard({
 	} = useEditShopCartPerfume({
 		id: shopCartPerfume.id,
 		onEditAction: () => {
+			fetchShopCartTotalItems()
 			shopCartRefresh()
 		},
 	})
