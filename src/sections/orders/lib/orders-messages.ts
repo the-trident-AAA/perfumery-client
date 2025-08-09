@@ -30,5 +30,5 @@ export function formatOrderMessage(
 
 	const footer = `\n\n *Total del pedido*: $${totalGeneral}`
 
-	return intro + itemsIntro + header + items + footer
+	return intro + header + itemsIntro + items + footer
 }
