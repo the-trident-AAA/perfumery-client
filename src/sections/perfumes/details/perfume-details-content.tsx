@@ -16,6 +16,7 @@ import { genderMap, PerfumeDetails } from "@/src/lib/types/perfumes"
 import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 import PerfumeInfoCard from "@/src/sections/perfumes/details/components/perfume-info-card/perfume-info-card"
 import { fCurrency } from "@/src/lib/utils/format-number"
+import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume-card/components/add-shop-cart-perfume-button"
 
 interface Props {
 	perfume: PerfumeDetails
@@ -210,15 +211,10 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 
 					{/* Botones de acción - Layout horizontal */}
 					<div className="flex flex-col sm:flex-row gap-3">
-						<Button
-							size="lg"
-							variant={"secondary"}
-							className="flex-1 text-primary"
-							disabled={!perfume.available}
-						>
-							<ShoppingCart className="w-5 h-5 mr-2" />
-							Agregar al carrito
-						</Button>
+						<AddShopCartPerfumeButton
+							variant="large"
+							perfume={perfume}
+						/>
 						<Button
 							variant="secondary"
 							size="lg"
