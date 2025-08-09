@@ -17,6 +17,7 @@ import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place
 import PerfumeInfoCard from "@/src/sections/perfumes/details/components/perfume-info-card/perfume-info-card"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume-card/components/add-shop-cart-perfume-button"
+import BackButton from "@/src/components/back-button/back-button"
 
 interface Props {
 	perfume: PerfumeDetails
@@ -33,7 +34,8 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 	return (
 		<div className="bg-muted overflow-hidden">
 			{/* Header con información básica - Layout horizontal */}
-			<div className="p-6">
+			<div className="flex flex-col gap-6 p-6">
+				<BackButton />
 				<div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 					<div className="flex-1">
 						<div className="flex items-center gap-3 mb-3">
