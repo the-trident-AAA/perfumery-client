@@ -51,6 +51,11 @@ export default function OrderEditFormContainer({
 		editOrder(order)
 	}
 
+	function refreshInfo() {
+		revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
+		fetchOrderPerfumes()
+	}
+
 	useEffect(() => {
 		console.log("Entre")
 		form.reset({
@@ -74,14 +79,25 @@ export default function OrderEditFormContainer({
 						</h3>
 					</div>
 					<div className="flex-1 h-[4px] rounded-2xl bg-secondary" />
-					<Button
-						variant={"secondary"}
-						type="submit"
-						disabled={submitLoading}
-						className="text-primary"
-					>
-						Actualizar
-					</Button>
+					<div className="flex flex-col sm:flex-row gap-2">
+						<Button
+							variant={"secondary"}
+							type="submit"
+							disabled={submitLoading}
+							className="text-primary"
+						>
+							Actualizar
+						</Button>
+						<Button
+							variant={"secondary"}
+							onClick={refreshInfo}
+							type="button"
+							disabled={submitLoading}
+							className="text-primary"
+						>
+							Descartar Cambios
+						</Button>
+					</div>
 				</div>
 				{children}
 			</form>
