@@ -4,7 +4,7 @@ import HeaderNavbar from "@/src/sections/root-layout/components/header/header-na
 
 const Header = () => {
 	return (
-		<header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+		<header className="shadow-2xl bg-white/80 backdrop-blur-sm sticky top-0 z-50">
 			<div
 				className="absolute inset-y-0 left-0 w-1/2 bg-primary opacity-90"
 				style={{
