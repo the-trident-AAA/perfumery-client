@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Heart, Sparkles, Zap, Gift } from "lucide-react"
+import { Heart, Sparkles, Zap, Gift, Eye } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { getGenderColor, Perfume } from "@/src/lib/types/perfumes"
@@ -11,6 +11,8 @@ import { Badge } from "@/src/components/ui/badge"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume-card/components/add-shop-cart-perfume-button"
 import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
+import NavigationComponent from "@/src/components/navigation-component/navigation-component"
+import { paths } from "@/src/lib/routes/paths"
 
 interface Props {
 	perfume: Perfume
@@ -116,66 +118,77 @@ export default function PerfumeCard({ perfume }: Props) {
 
 			<CardContent className="p-0">
 				{/* Imagen de fondo mejorada */}
-				<div className="relative h-80 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
-					<div className="absolute inset-0 flex items-center justify-center">
-						<Image
-							src={perfume.image || perfumeImagePlaceHolder}
-							width={600}
-							height={400}
-							alt="Colección de perfumes de lujo"
-							className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-						/>
-					</div>
+				<NavigationComponent
+					href={paths.perfume({ id: perfume.id }).root}
+				>
+					<div className="relative h-80 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
+						<div className="absolute inset-0 flex items-center justify-center">
+							<Image
+								src={perfume.image || perfumeImagePlaceHolder}
+								width={600}
+								height={400}
+								alt="Colección de perfumes de lujo"
+								className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+							/>
+						</div>
 
-					{/* Partículas flotantes */}
-					<div className="absolute inset-0 pointer-events-none">
-						<Sparkles className="absolute top-8 left-8 h-4 w-4 text-primary/60 animate-pulse" />
-						<Sparkles className="absolute top-16 right-12 h-3 w-3 text-primary/40 animate-pulse delay-500" />
-						<Sparkles className="absolute bottom-20 left-16 h-5 w-5 text-primary/50 animate-pulse delay-1000" />
-					</div>
+						{/* Partículas flotantes */}
+						<div className="absolute inset-0 pointer-events-none">
+							<Sparkles className="absolute top-8 left-8 h-4 w-4 text-primary/60 animate-pulse" />
+							<Sparkles className="absolute top-16 right-12 h-3 w-3 text-primary/40 animate-pulse delay-500" />
+							<Sparkles className="absolute bottom-20 left-16 h-5 w-5 text-primary/50 animate-pulse delay-1000" />
+						</div>
 
-					{/* Overlay con gradiente mejorado */}
-					<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+						{/* Overlay con gradiente mejorado */}
+						<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-					{/* Contenido del overlay */}
-					<div
-						className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end transition-all duration-500 ${
-							isHovered ? "opacity-100" : "opacity-0"
-						}`}
-					>
-						<div className="p-5 w-full transform transition-all duration-300 group-hover:translate-y-[-4px]">
-							<div className="flex items-center gap-2 mb-3 animate-slide-up">
-								<Sparkles className="h-5 w-5 text-yellow-400 animate-spin-slow" />
-								<span className="text-sm font-semibold text-white">
-									Notas aromáticas
-								</span>
-							</div>
-							<div className="flex flex-wrap gap-2 animate-fade-in delay-200">
-								{perfume.scents
-									.slice(0, 4)
-									.map((scent, index) => (
-										<Badge
-											key={index}
-											className="text-xs bg-white/20 text-white border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-200 transform hover:scale-105"
-											style={{
-												animationDelay: `${index * 100}ms`,
-											}}
-										>
-											{scent}
+						{/* Contenido del overlay */}
+						<div
+							className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-16 transition-all duration-500 ${
+								isHovered ? "opacity-100" : "opacity-0"
+							}`}
+						>
+							<Button
+								className="text-secondary flex gap-2 items-center cursor-pointer"
+								variant={"default"}
+							>
+								<Eye />
+								Ver Detalles
+							</Button>
+							<div className="p-5 w-full transform transition-all duration-300 group-hover:translate-y-[-4px]">
+								<div className="flex items-center gap-2 mb-3 animate-slide-up">
+									<Sparkles className="h-5 w-5 text-yellow-400 animate-spin-slow" />
+									<span className="text-sm font-semibold text-white">
+										Notas aromáticas
+									</span>
+								</div>
+								<div className="flex flex-wrap gap-2 animate-fade-in delay-200">
+									{perfume.scents
+										.slice(0, 4)
+										.map((scent, index) => (
+											<Badge
+												key={index}
+												className="text-xs bg-white/20 text-white border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-200 transform hover:scale-105"
+												style={{
+													animationDelay: `${index * 100}ms`,
+												}}
+											>
+												{scent}
+											</Badge>
+										))}
+									{perfume.scents.length > 4 && (
+										<Badge className="text-xs bg-primary/80 text-white border-primary/40 backdrop-blur-sm animate-pulse">
+											+{perfume.scents.length - 4}
 										</Badge>
-									))}
-								{perfume.scents.length > 4 && (
-									<Badge className="text-xs bg-primary/80 text-white border-primary/40 backdrop-blur-sm animate-pulse">
-										+{perfume.scents.length - 4}
-									</Badge>
-								)}
+									)}
+								</div>
 							</div>
 						</div>
-					</div>
 
-					{/* Línea divisoria animada */}
-					<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-				</div>
+						{/* Línea divisoria animada */}
+						<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+					</div>
+				</NavigationComponent>
 
 				{/* Content Section mejorada */}
 				<div className="relative bg-gradient-to-br from-secondary via-secondary/90 to-secondary/90">
