@@ -43,6 +43,7 @@ export const apiRoutes = {
 	users: {
 		getById: `${process.env.NEXT_PUBLIC_API_URL}users/:id`,
 		getByIdWithoutRelations: `${process.env.NEXT_PUBLIC_API_URL}users/find-one-without-relations/:id`,
+		edit: `${process.env.NEXT_PUBLIC_API_URL}users/:id`,
 	},
 } as const
 

@@ -6,7 +6,7 @@ import {
 	apiRoutes,
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
-import { User } from "@/src/lib/types/users"
+import { User, UserEditDTO } from "@/src/lib/types/users"
 
 export async function getUserById(id: string) {
 	const session = await auth()
@@ -45,6 +45,20 @@ export async function getUserProfile() {
 			},
 		},
 	)
+
+	return await buildApiResponse<User>(res)
+}
+
+export async function editUser(id: string, userEditDTO: UserEditDTO) {
+	const session = await auth()
+	const res = await fetch(apiRoutes.users.edit.replace(":id", id), {
+		method: "PATCH",
+		headers: {
+			Authorization: "Bearer " + session?.accessToken,
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(userEditDTO),
+	})
 
 	return await buildApiResponse<User>(res)
 }
