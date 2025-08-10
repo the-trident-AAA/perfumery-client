@@ -9,7 +9,7 @@ import {
 	PopoverTrigger,
 } from "@/src/components/ui/popover"
 import { Button } from "@/src/components/ui/button"
-import { Avatar, AvatarFallback } from "@/src/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 import { Separator } from "@/src/components/ui/separator"
 import SignOutButton from "@/src/sections/root-layout/components/header/components/sign-out-button/sign-out-button"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
@@ -58,6 +58,7 @@ export default function UserMenu() {
 					aria-label="Menú de usuario"
 				>
 					<Avatar className="h-10 w-10 shadow-sm">
+						{user.avatar && <AvatarImage src={user.avatar} />}
 						<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
 							{userInitials}
 						</AvatarFallback>
@@ -74,6 +75,7 @@ export default function UserMenu() {
 				<div className="p-4 border-b bg-gradient-to-r from-muted/50 to-muted/30">
 					<div className="flex items-center gap-3">
 						<Avatar className="h-12 w-12 shadow-sm">
+							{user.avatar && <AvatarImage src={user.avatar} />}
 							<AvatarFallback className="bg-secondary text-primary font-semibold">
 								{userInitials}
 							</AvatarFallback>
