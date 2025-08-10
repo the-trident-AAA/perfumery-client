@@ -1,7 +1,7 @@
 "use client"
 
 import { User, Settings } from "lucide-react"
-import { useMemo } from "react"
+import { useContext, useMemo } from "react"
 import { Skeleton } from "@/src/components/ui/skeleton"
 import {
 	Popover,
@@ -15,9 +15,12 @@ import SignOutButton from "@/src/sections/root-layout/components/header/componen
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { paths } from "@/src/lib/routes/paths"
 import useUserProfile from "@/src/sections/users/hooks/use-user-profile"
+import { ModalContext } from "@/src/components/modal/context/modalContext"
+import { modalTypes } from "@/src/components/modal/types/modalTypes"
 
 export default function UserMenu() {
-	const { user, loading } = useUserProfile()
+	const { handleOpenModal } = useContext(ModalContext)
+	const { user, loading, fetchUserProfile } = useUserProfile()
 
 	const userInitials = useMemo(() => {
 		if (!user?.email) return "?"
@@ -111,6 +114,12 @@ export default function UserMenu() {
 						<Button
 							variant="ghost"
 							className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
+							onClick={() => {
+								handleOpenModal({
+									name: modalTypes.profileUserModal.name,
+									actionExecute: fetchUserProfile,
+								})
+							}}
 						>
 							<div className="flex items-center">
 								<Settings className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />

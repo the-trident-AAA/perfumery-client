@@ -18,6 +18,7 @@ import { PerfumesFiltersProvider } from "@/src/sections/perfumes/filters/context
 import OrdersContent from "@/src/sections/orders/orders-content"
 import { UserTotalOrdersProvider } from "@/src/sections/orders/context/user-total-orders-context"
 import ProgressBar from "@/src/components/providers/progress-bar."
+import ProfileUserModalContainer from "@/src/sections/users/form/profile/profile-user-form-modal-container"
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
@@ -66,12 +67,12 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 												<Modal
 													formPath={
 														modalTypes
-															.editProfileModal
+															.profileUserModal
 															.name
 													}
-													maxWidth="max-w-lg"
+													maxWidth="max-w-3xl"
 												>
-													Modal de Edición de Perfil
+													<ProfileUserModalContainer />
 												</Modal>
 												<Modal
 													formPath={
