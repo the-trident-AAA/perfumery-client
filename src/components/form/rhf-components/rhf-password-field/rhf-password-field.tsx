@@ -46,7 +46,7 @@ export function RHFPasswordField({
 						<FormControl>
 							<Input
 								type={showPassword ? "text" : "password"}
-								className={`${fullWidth ? "w-full" : ""} pr-10`}
+								className={`bg-muted ${fullWidth ? "w-full" : ""} pr-10`}
 								placeholder={placeholder}
 								{...field}
 							/>
