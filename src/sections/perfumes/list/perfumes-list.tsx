@@ -45,8 +45,8 @@ export default function PerfumesList({ perfumes, apiPagination }: Props) {
 		</div>
 	) : (
 		<EmptyContent
-			title="No hay perfumes disponibles"
-			description="De momento la tienda no cuenta con perfumes para ofrecer"
+			title="No se encontraron perfumes"
+			description="No existe coincidencia de perfumes con los filtros seleccionados"
 		/>
 	)
 }
