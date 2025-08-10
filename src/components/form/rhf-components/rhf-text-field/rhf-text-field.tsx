@@ -41,7 +41,7 @@ export function RHFTextField({
 					<FormControl>
 						<Input
 							type={type}
-							className={`${fullWidth ? "w-full" : ""}`}
+							className={`bg-muted ${fullWidth ? "w-full" : ""}`}
 							disabled={disabled}
 							placeholder={placeholder}
 							{...field}
