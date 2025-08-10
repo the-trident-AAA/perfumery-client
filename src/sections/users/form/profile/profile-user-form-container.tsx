@@ -57,12 +57,12 @@ export default function ProfileUserFormContainer({
 	return (
 		<div className="w-full flex flex-1 flex-col justify-between gap-4 h-full">
 			<div className="flex items-center gap-4 mb-6">
-				<div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-					<UserIcon className="w-8 h-8 text-white" />
+				<div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
+					<UserIcon className="w-8 h-8 text-primary" />
 				</div>
 				<div>
 					<h2 className="text-2xl font-bold">Perfil de Usuario</h2>
-					<p className="text-muted-foreground">
+					<p className="text-secondary">
 						Gestiona tu información personal y seguridad
 					</p>
 				</div>
@@ -73,9 +73,14 @@ export default function ProfileUserFormContainer({
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="w-full"
 					>
-						<Card className="w-full h-full flex flex-col justify-between gap-4 p-6">
+						<Card className="w-full h-full bg-primary border-0 flex flex-col justify-between gap-4 p-6">
 							<ProfileUserForm user={user} error={error} />
-							<Button type="submit" disabled={submitLoading}>
+							<Button
+								variant={"secondary"}
+								className="text-primary"
+								type="submit"
+								disabled={submitLoading}
+							>
 								Guardar Cambios
 							</Button>
 						</Card>
@@ -84,7 +89,12 @@ export default function ProfileUserFormContainer({
 				<ChangePasswordMode user={user} />
 			</div>
 			<div className="flex gap-2 justify-end">
-				<Button type="button" variant={"outline"} onClick={handleClose}>
+				<Button
+					type="button"
+					variant={"secondary"}
+					className="text-primary"
+					onClick={handleClose}
+				>
 					Cerrar
 				</Button>
 			</div>

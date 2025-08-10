@@ -56,9 +56,10 @@ export default function ChangePasswordModeFormContainer({
 					error={error}
 				/>
 				<Button
+					variant={"secondary"}
 					type="submit"
 					disabled={submitLoading}
-					className="w-full"
+					className="w-full text-primary"
 				>
 					Actualizar Contraseña
 				</Button>

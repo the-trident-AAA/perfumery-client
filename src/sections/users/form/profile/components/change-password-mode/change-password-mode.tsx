@@ -23,7 +23,7 @@ export default function ChangePasswordMode({ user }: Props) {
 		"form" | "reset" | null
 	>(null)
 	return (
-		<Card className="w-full h-full">
+		<Card className="w-full bg-primary border-0 h-full">
 			<CardHeader className="pb-4">
 				<CardTitle className="flex items-center gap-2 text-lg">
 					<Lock className="w-5 h-5" />
@@ -34,17 +34,17 @@ export default function ChangePasswordMode({ user }: Props) {
 				{!changePasswordMode && (
 					<div className="space-y-3">
 						<Button
-							variant="outline"
+							variant="secondary"
 							onClick={() => setChangePasswordMode("form")}
-							className="w-full justify-start"
+							className="w-full text-primary justify-start"
 						>
 							<Lock className="w-4 h-4 mr-2" />
 							Cambiar Contraseña
 						</Button>
 						<Button
-							variant="outline"
+							variant="secondary"
 							onClick={() => setChangePasswordMode("reset")}
-							className="w-full justify-start"
+							className="w-full text-primary justify-start"
 						>
 							<Mail className="w-4 h-4 mr-2" />
 							Olvidé mi Contraseña

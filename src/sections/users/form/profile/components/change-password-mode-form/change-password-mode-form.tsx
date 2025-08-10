@@ -21,7 +21,8 @@ export default function ChangePasswordModeForm({
 			<div className="flex items-center justify-between">
 				<h4 className="font-medium">Cambiar Contraseña</h4>
 				<Button
-					variant="ghost"
+					variant="secondary"
+					className="text-primary"
 					type="button"
 					size="sm"
 					onClick={() => setChangePasswordMode(null)}

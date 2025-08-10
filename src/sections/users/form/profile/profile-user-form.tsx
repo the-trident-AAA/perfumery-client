@@ -16,7 +16,7 @@ export default function UserProfileModal({ error, user }: Props) {
 			<div className="flex flex-col gap-4">
 				{error && <AlertDestructive title={error} />}
 				<div className="pb-4">
-					<div className="flex items-center gap-2 text-lg">
+					<div className="flex items-center font-semibold gap-2 text-lg">
 						<UserIcon className="w-5 h-5" />
 						Información Personal
 					</div>
@@ -30,8 +30,10 @@ export default function UserProfileModal({ error, user }: Props) {
 						/>
 					</div>
 					<div className="space-y-2">
-						<p>{user.email}</p>
-						<p className="text-xs text-muted-foreground">
+						<p className="text-base font-semibold text-secondary">
+							{user.email}
+						</p>
+						<p className="text-sm font-semibold text-secondary">
 							El email no puede ser modificado
 						</p>
 					</div>
