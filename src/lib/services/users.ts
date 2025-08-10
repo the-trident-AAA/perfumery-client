@@ -10,13 +10,16 @@ import { User } from "@/src/lib/types/users"
 
 export async function getUserById(id: string) {
 	const session = await auth()
-	const res = await fetch(apiRoutes.users.getById.replace(":id", id), {
-		method: "GET",
-		headers: {
-			Authorization: "Bearer " + session?.accessToken,
+	const res = await fetch(
+		apiRoutes.users.getByIdWithoutRelations.replace(":id", id),
+		{
+			method: "GET",
+			headers: {
+				Authorization: "Bearer " + session?.accessToken,
+			},
+			next: { tags: [tagsCacheByRoutes.users.singleTag + ": " + id] },
 		},
-		next: { tags: [tagsCacheByRoutes.users.singleTag + ": " + id] },
-	})
+	)
 
 	return await buildApiResponse<User>(res)
 }
