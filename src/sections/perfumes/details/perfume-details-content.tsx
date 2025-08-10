@@ -120,13 +120,13 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 			<div className="flex flex-col lg:flex-row items-center p-4 w-full gap-4">
 				{/* Imagen - 2 columnas */}
 				<div className="">
-					<div className="aspect-square rounded-xl overflow-hidden bg-gray-100 sticky top-8">
+					<div className="border-4 border-secondary rounded-2xl p-2 flex items-center justify-center">
 						<Image
 							src={perfume.image || perfumeImagePlaceHolder}
-							alt={perfume.name}
 							width={600}
-							height={600}
-							className="w-full h-full object-cover"
+							height={400}
+							alt={perfume.id}
+							className="object-cover max-h-[460px]"
 						/>
 					</div>
 				</div>
