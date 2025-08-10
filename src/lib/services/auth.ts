@@ -28,13 +28,13 @@ export async function signOut() {
 	return signOutAuth({ redirect: false })
 }
 
-export async function changePasswordUser(
-	id: string,
-	changePasswordDTO: ChangePasswordDTO,
-) {
+export async function changePasswordUser(changePasswordDTO: ChangePasswordDTO) {
 	const session = await auth()
 	const res = await fetch(
-		apiRoutes.auth.changePasswordUser.replace(":id", id),
+		apiRoutes.auth.changePasswordUser.replace(
+			":id",
+			session?.user.id as string,
+		),
 		{
 			method: "POST",
 			headers: {
