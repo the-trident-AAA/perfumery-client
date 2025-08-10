@@ -23,3 +23,28 @@ export async function getUserById(id: string) {
 
 	return await buildApiResponse<User>(res)
 }
+
+export async function getUserProfile() {
+	const session = await auth()
+	const res = await fetch(
+		apiRoutes.users.getByIdWithoutRelations.replace(
+			":id",
+			session?.user.id as string,
+		),
+		{
+			method: "GET",
+			headers: {
+				Authorization: "Bearer " + session?.accessToken,
+			},
+			next: {
+				tags: [
+					(tagsCacheByRoutes.users.singleTag +
+						": " +
+						session?.user.id) as string,
+				],
+			},
+		},
+	)
+
+	return await buildApiResponse<User>(res)
+}
