@@ -26,6 +26,7 @@ export interface ModalTypes {
 		confirmButtonText: string
 	}
 	ordersModal: SectionModal
+	profileUserModal: SectionModal
 }
 
 export const modalTypes: ModalTypes = {
@@ -65,5 +66,9 @@ export const modalTypes: ModalTypes = {
 	ordersModal: {
 		name: "ordersModal",
 		title: "Pedidos",
+	},
+	profileUserModal: {
+		name: "profileUserModal",
+		title: "Información de Perfil",
 	},
 }
