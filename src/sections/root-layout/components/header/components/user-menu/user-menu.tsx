@@ -1,8 +1,7 @@
 "use client"
 
-import { User, Settings, HelpCircle, ChevronRight } from "lucide-react"
-import { useCallback, useMemo } from "react"
-import { useSession } from "next-auth/react"
+import { User, Settings } from "lucide-react"
+import { useMemo } from "react"
 import { Skeleton } from "@/src/components/ui/skeleton"
 import {
 	Popover,
@@ -11,15 +10,15 @@ import {
 } from "@/src/components/ui/popover"
 import { Button } from "@/src/components/ui/button"
 import { Avatar, AvatarFallback } from "@/src/components/ui/avatar"
-import { Badge } from "@/src/components/ui/badge"
 import { Separator } from "@/src/components/ui/separator"
 import SignOutButton from "@/src/sections/root-layout/components/header/components/sign-out-button/sign-out-button"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { paths } from "@/src/lib/routes/paths"
+import useUserProfile from "@/src/sections/users/hooks/use-user-profile"
 
 export default function UserMenu() {
-	const { data: session, status } = useSession()
-	const user = session?.user
+	const { user, loading } = useUserProfile()
+
 	const userInitials = useMemo(() => {
 		if (!user?.email) return "?"
 
@@ -34,22 +33,7 @@ export default function UserMenu() {
 		return emailParts.slice(0, 2).toUpperCase()
 	}, [user?.email])
 
-	const handleOpenProfileModal = useCallback(() => {
-		// Implementar lógica del modal de perfil
-		console.log("Opening profile modal")
-	}, [])
-
-	const handleOpenSettings = useCallback(() => {
-		// Implementar lógica de configuración
-		console.log("Opening settings")
-	}, [])
-
-	const handleOpenHelp = useCallback(() => {
-		// Implementar lógica de ayuda
-		console.log("Opening help")
-	}, [])
-
-	if (status === "loading") {
+	if (loading) {
 		return (
 			<div className="flex items-center gap-2">
 				<Skeleton className="h-10 w-10 rounded-full" />
@@ -112,7 +96,6 @@ export default function UserMenu() {
 							<Button
 								variant="ghost"
 								className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
-								onClick={handleOpenProfileModal}
 							>
 								<div className="flex items-center">
 									<User className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
@@ -126,7 +109,6 @@ export default function UserMenu() {
 						<Button
 							variant="ghost"
 							className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
-							onClick={handleOpenSettings}
 						>
 							<div className="flex items-center">
 								<Settings className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
