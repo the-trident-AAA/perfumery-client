@@ -24,7 +24,7 @@ export default function UserProfileModal({ error, user }: Props) {
 				<div className="space-y-4">
 					<div className="space-y-2">
 						<RHFTextField
-							name="nombreUsuario"
+							name="username"
 							label="Nombre de Usuario"
 							fullWidth
 						/>
