@@ -40,6 +40,9 @@ export const apiRoutes = {
 		getUserTotalOrders: `${process.env.NEXT_PUBLIC_API_URL}order/user-total-orders`,
 		getOrderPerfumes: `${process.env.NEXT_PUBLIC_API_URL}order/get-order-perfumes/:id`,
 	},
+	users: {
+		getById: `${process.env.NEXT_PUBLIC_API_URL}users/:id`,
+	},
 } as const
 
 export const tagsCacheByRoutes = {
@@ -77,5 +80,9 @@ export const tagsCacheByRoutes = {
 		singleTag: `order`,
 		multipleTag: "orders",
 		orderPerfumes: "order-perfumes",
+	},
+	users: {
+		singleTag: "user",
+		multipleTag: "users",
 	},
 } as const
