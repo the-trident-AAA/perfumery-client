@@ -2,7 +2,7 @@ import { z } from "zod"
 
 export interface UserEdit {
 	username: string
-	avatar?: string
+	avatar?: File
 }
 
 export const userEditSchema = z.object({
