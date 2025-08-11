@@ -19,6 +19,8 @@ import { User } from "@/src/lib/types/users"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import useEditUser from "@/src/sections/users/hooks/use-edit-user"
 import useImageForm from "@/src/components/form/hooks/use-image-form"
+import { revalidateServerTags } from "@/src/lib/cache"
+import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 
 interface Props {
 	user: User
@@ -38,6 +40,9 @@ export default function ProfileUserFormContainer({
 		id: user.id.toString(),
 		onEditAction: () => {
 			toast.success("Información de perfil actualizada con éxito")
+			revalidateServerTags(
+				tagsCacheByRoutes.users.singleTag + ": " + user.id,
+			)
 			refreshUserInfo()
 		},
 	})
