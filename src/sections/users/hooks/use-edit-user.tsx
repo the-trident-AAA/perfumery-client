@@ -15,10 +15,17 @@ export default function useEditUser({ id, onEditAction }: Props) {
 
 	const editUser = useCallback(
 		async (user: UserEdit) => {
+			const { avatar, ...rest } = user
 			try {
 				setLoading(true)
 				setError(null)
-				const res = await editUserService(id, convertUserEditDTO(user))
+				const formData = new FormData()
+				if (avatar) formData.append("avatar", avatar)
+				const res = await editUserService(
+					id,
+					convertUserEditDTO(rest),
+					formData,
+				)
 				if (!res.response || res.error)
 					setError(
 						res.error?.reason || "Error en la edición del usuario",

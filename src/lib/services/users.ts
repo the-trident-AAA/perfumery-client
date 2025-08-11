@@ -2,6 +2,7 @@
 
 import { auth } from "@/src/auth"
 import { buildApiResponse } from "@/src/lib/api"
+import { createFormDataBody } from "@/src/lib/request-body"
 import {
 	apiRoutes,
 	tagsCacheByRoutes,
@@ -49,15 +50,21 @@ export async function getUserProfile() {
 	return await buildApiResponse<User>(res)
 }
 
-export async function editUser(id: string, userEditDTO: UserEditDTO) {
+export async function editUser(
+	id: string,
+	userEditDTO: UserEditDTO,
+	formData: FormData,
+) {
 	const session = await auth()
 	const res = await fetch(apiRoutes.users.edit.replace(":id", id), {
 		method: "PATCH",
 		headers: {
 			Authorization: "Bearer " + session?.accessToken,
-			"content-type": "application/json",
 		},
-		body: JSON.stringify(userEditDTO),
+		body: createFormDataBody({
+			...userEditDTO,
+			avatar: formData.get("avatar"),
+		}),
 	})
 
 	return await buildApiResponse<User>(res)
