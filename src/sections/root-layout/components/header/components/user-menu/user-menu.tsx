@@ -85,7 +85,7 @@ export default function UserMenu() {
 						</Avatar>
 						<div className="flex-1 min-w-0">
 							<p className="font-semibold text-sm text-foreground truncate">
-								{user.email?.split("@")[0] || "Usuario"}
+								{user.username}
 							</p>
 							<p className="text-xs text-muted-foreground truncate">
 								{user.email || "email@ejemplo.com"}
