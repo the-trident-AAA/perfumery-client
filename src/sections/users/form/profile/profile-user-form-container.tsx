@@ -18,6 +18,7 @@ import {
 import { User } from "@/src/lib/types/users"
 import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import useEditUser from "@/src/sections/users/hooks/use-edit-user"
+import useImageForm from "@/src/components/form/hooks/use-image-form"
 
 interface Props {
 	user: User
@@ -47,6 +48,13 @@ export default function ProfileUserFormContainer({
 		},
 	})
 
+	const { loading: imageLoading, error: imageError } = useImageForm({
+		form,
+		imageUrl: user.avatar,
+		imageName: user.username,
+		fieldName: "avatar",
+	})
+
 	const handleClose = () => {
 		handleCloseModal(modalTypes.profileUserModal.name)
 	}
@@ -74,7 +82,14 @@ export default function ProfileUserFormContainer({
 						className="w-full"
 					>
 						<Card className="w-full h-full bg-primary border-0 flex flex-col justify-between gap-4 p-6">
-							<ProfileUserForm user={user} error={error} />
+							<ProfileUserForm
+								user={user}
+								error={error}
+								imageRecived={{
+									loading: imageLoading,
+									error: imageError,
+								}}
+							/>
 							<Button
 								variant={"secondary"}
 								className="text-primary"
