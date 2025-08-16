@@ -18,7 +18,6 @@ import { PerfumesFiltersProvider } from "@/src/sections/perfumes/filters/context
 import OrdersContent from "@/src/sections/orders/orders-content"
 import { UserTotalOrdersProvider } from "@/src/sections/orders/context/user-total-orders-context"
 import ProgressBar from "@/src/components/providers/progress-bar."
-import ProfileUserModalContainer from "@/src/sections/users/form/profile/profile-user-form-modal-container"
 
 const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 	children,
@@ -67,16 +66,6 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 													maxWidth="max-w-6xl"
 												>
 													<ShopCartContent variant="modal" />
-												</Modal>
-												<Modal
-													formPath={
-														modalTypes
-															.profileUserModal
-															.name
-													}
-													maxWidth="max-w-3xl"
-												>
-													<ProfileUserModalContainer />
 												</Modal>
 												<Modal
 													formPath={
