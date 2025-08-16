@@ -20,7 +20,10 @@ import { UserTotalOrdersProvider } from "@/src/sections/orders/context/user-tota
 import ProgressBar from "@/src/components/providers/progress-bar."
 import ProfileUserModalContainer from "@/src/sections/users/form/profile/profile-user-form-modal-container"
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
+const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
+	children,
+	modal,
+}) => {
 	return (
 		<html>
 			<body className={`${roboto.className} antialiased`}>
@@ -34,6 +37,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 										<ProgressBar>
 											<main className="flex min-h-screen flex-col">
 												<Header />
+												{modal}
 												{children}
 												<Footer />
 												<Modal
