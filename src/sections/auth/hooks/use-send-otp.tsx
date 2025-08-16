@@ -7,7 +7,7 @@ interface Props {
 	onSendAction: () => void
 }
 
-export default function useEditUser({ id, onSendAction }: Props) {
+export default function useSendOtp({ id, onSendAction }: Props) {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 
