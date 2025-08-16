@@ -38,7 +38,11 @@ export function RHFInputOtpField({
 			name={name}
 			render={({ field }) => (
 				<FormItem className="w-full flex flex-col items-center gap-2">
-					{label && <FormLabel>{label}</FormLabel>}
+					{label && (
+						<FormLabel className="text-secondary font-bold">
+							{label}
+						</FormLabel>
+					)}
 					<FormControl>
 						<InputOTP
 							maxLength={length}
@@ -48,13 +52,19 @@ export function RHFInputOtpField({
 						>
 							<InputOTPGroup>
 								{Array.from({ length }).map((_, i) => (
-									<InputOTPSlot key={i} index={i} />
+									<InputOTPSlot
+										className="bg-muted"
+										key={i}
+										index={i}
+									/>
 								))}
 							</InputOTPGroup>
 						</InputOTP>
 					</FormControl>
 					{description && (
-						<FormDescription>{description}</FormDescription>
+						<FormDescription className="text-secondary font-semibold">
+							{description}
+						</FormDescription>
 					)}
 					<FormMessage />
 				</FormItem>
