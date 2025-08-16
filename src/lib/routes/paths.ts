@@ -69,7 +69,7 @@ export const paths: ApplicationPath = {
 		isProtected: true,
 	},
 	verificationCode: (params = {}, query = {}) => {
-		const basePath = "/verification-code/[id]/[objective]"
+		const basePath = "/verification-code/[id]/[otp]"
 		const pathWithParams = replaceParamsInPath(basePath, params)
 		const queryString = buildQueryString(query)
 		return {
