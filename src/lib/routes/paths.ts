@@ -10,6 +10,10 @@ interface ApplicationPath {
 		params?: Record<string, string>,
 		query?: Record<string, string>,
 	) => Path
+	verificationCode: (
+		params?: Record<string, string>,
+		query?: Record<string, string>,
+	) => Path
 	perfumes: (query?: Record<string, string>) => Path
 	profile: Path
 }
@@ -59,6 +63,17 @@ export const paths: ApplicationPath = {
 	profile: {
 		root: "/profile",
 		isProtected: true,
+	},
+	verificationCode: (params = {}, query = {}) => {
+		const basePath = "/verification-code/[id]"
+		const pathWithParams = replaceParamsInPath(basePath, params)
+		const queryString = buildQueryString(query)
+		return {
+			root: queryString
+				? `${pathWithParams}?${queryString}`
+				: pathWithParams,
+			isProtected: false,
+		}
 	},
 } as const
 
