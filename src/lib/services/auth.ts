@@ -59,3 +59,15 @@ export async function sendOtp(userId: string) {
 
 	return await buildApiResponse<{ message: string }>(res)
 }
+
+export async function verifyOtp(userId: string, otp: string) {
+	const res = await fetch(apiRoutes.auth.verifyOtp, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify({ userId, otp }),
+	})
+
+	return await buildApiResponse<{ valid: boolean; message: string }>(res)
+}
