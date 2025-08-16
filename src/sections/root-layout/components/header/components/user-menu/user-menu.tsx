@@ -111,23 +111,19 @@ export default function UserMenu() {
 							</Button>
 						</NavigationComponent>
 
-						<Button
-							variant="ghost"
-							className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
-							onClick={() => {
-								handleOpenModal({
-									name: modalTypes.profileUserModal.name,
-									actionExecute: fetchUserProfile,
-								})
-							}}
-						>
-							<div className="flex items-center">
-								<Settings className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
-								<span className="text-sm font-medium">
-									Editar Perfil
-								</span>
-							</div>
-						</Button>
+						<NavigationComponent href={paths.editProfile.root}>
+							<Button
+								variant="ghost"
+								className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
+							>
+								<div className="flex items-center">
+									<Settings className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
+									<span className="text-sm font-medium">
+										Editar Perfil
+									</span>
+								</div>
+							</Button>
+						</NavigationComponent>
 					</div>
 				</div>
 
