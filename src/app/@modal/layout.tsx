@@ -12,7 +12,7 @@ export default function ModalLayout({
 			<div className="relative flex flex-col gap-4 items-center justify-center bg-muted p-4 rounded-2xl shadow-xl ">
 				{/* Botón de cerrar */}
 				<div className="flex w-full gap-2 justify-between items-center">
-					<p>Title</p>
+					<p></p>
 					<ExitModalButton />
 				</div>
 				{children}
