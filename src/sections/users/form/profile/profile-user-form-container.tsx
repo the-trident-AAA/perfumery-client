@@ -24,13 +24,9 @@ import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 
 interface Props {
 	user: User
-	refreshUserInfo: () => Promise<void>
 }
 
-export default function ProfileUserFormContainer({
-	user,
-	refreshUserInfo,
-}: Props) {
+export default function ProfileUserFormContainer({ user }: Props) {
 	const { handleCloseModal } = use(ModalContext)
 	const {
 		loading: submitLoading,
@@ -43,7 +39,6 @@ export default function ProfileUserFormContainer({
 			revalidateServerTags(
 				tagsCacheByRoutes.users.singleTag + ": " + user.id,
 			)
-			refreshUserInfo()
 		},
 	})
 	const form = useForm<UserEdit>({
