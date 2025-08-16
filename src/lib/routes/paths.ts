@@ -80,7 +80,7 @@ export const paths: ApplicationPath = {
 		}
 	},
 	changePassword: (params = {}, query = {}) => {
-		const basePath = "/change-password/[id][otp]"
+		const basePath = "/change-password/[id]/[otp]"
 		const pathWithParams = replaceParamsInPath(basePath, params)
 		const queryString = buildQueryString(query)
 		return {
