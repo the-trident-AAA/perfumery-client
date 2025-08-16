@@ -16,7 +16,6 @@ import NavigationComponent from "@/src/components/navigation-component/navigatio
 import { paths } from "@/src/lib/routes/paths"
 import useUserProfile from "@/src/sections/users/hooks/use-user-profile"
 import { ModalContext } from "@/src/components/modal/context/modalContext"
-import { modalTypes } from "@/src/components/modal/types/modalTypes"
 
 export default function UserMenu() {
 	const { handleOpenModal } = useContext(ModalContext)
