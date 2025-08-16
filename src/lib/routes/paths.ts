@@ -10,6 +10,7 @@ interface ApplicationPath {
 		params?: Record<string, string>,
 		query?: Record<string, string>,
 	) => Path
+	editProfile: Path
 	verificationCode: (
 		params?: Record<string, string>,
 		query?: Record<string, string>,
@@ -66,6 +67,10 @@ export const paths: ApplicationPath = {
 	},
 	profile: {
 		root: "/profile",
+		isProtected: true,
+	},
+	editProfile: {
+		root: "/edit-profile",
 		isProtected: true,
 	},
 	verificationCode: (params = {}, query = {}) => {
