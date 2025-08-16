@@ -1,6 +1,4 @@
 "use client"
-
-import { use } from "react"
 import { toast } from "react-toastify"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -10,24 +8,23 @@ import { Button } from "@/src/components/ui/button"
 import ChangePasswordMode from "./components/change-password-mode/change-password-mode"
 import { User as UserIcon } from "lucide-react"
 import { Card } from "@/src/components/ui/card"
-import { ModalContext } from "@/src/components/modal/context/modalContext"
 import {
 	UserEdit,
 	userEditSchema,
 } from "@/src/sections/users/form/edit/schemas/edit-user-schema"
 import { User } from "@/src/lib/types/users"
-import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import useEditUser from "@/src/sections/users/hooks/use-edit-user"
 import useImageForm from "@/src/components/form/hooks/use-image-form"
 import { revalidateServerTags } from "@/src/lib/cache"
 import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
+import { useRouter } from "next/navigation"
 
 interface Props {
 	user: User
 }
 
 export default function ProfileUserFormContainer({ user }: Props) {
-	const { handleCloseModal } = use(ModalContext)
+	const router = useRouter()
 	const {
 		loading: submitLoading,
 		editUser,
@@ -56,7 +53,7 @@ export default function ProfileUserFormContainer({ user }: Props) {
 	})
 
 	const handleClose = () => {
-		handleCloseModal(modalTypes.profileUserModal.name)
+		router.back()
 	}
 
 	function onSubmit(data: UserEdit) {
