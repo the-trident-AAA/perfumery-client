@@ -23,7 +23,7 @@ interface Props {
 	length?: number
 }
 
-export function RHFOTPField({
+export function RHFInputOtpField({
 	name,
 	label,
 	description,
