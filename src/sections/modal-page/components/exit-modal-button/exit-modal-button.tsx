@@ -11,7 +11,7 @@ export default function ExitModalButton() {
 	return (
 		<Button
 			variant={"ghost"}
-			className="hover:text-destructive"
+			className="hover:text-destructive hover:bg-muted"
 			size={"icon"}
 			onClick={close}
 		>
