@@ -2,6 +2,7 @@ export const apiRoutes = {
 	auth: {
 		login: `${process.env.NEXT_PUBLIC_API_URL}auth/login`,
 		changePasswordUser: `${process.env.NEXT_PUBLIC_API_URL}auth/change-password-user/:id`,
+		sendOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/send-otp`,
 	},
 	perfumes: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}perfume`,

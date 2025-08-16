@@ -47,3 +47,15 @@ export async function changePasswordUser(changePasswordDTO: ChangePasswordDTO) {
 
 	return await buildApiResponse<User>(res)
 }
+
+export async function sendOtp(userId: string) {
+	const res = await fetch(apiRoutes.auth.sendOtp, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify({ userId }),
+	})
+
+	return await buildApiResponse<{ message: string }>(res)
+}
