@@ -15,7 +15,7 @@ interface ApplicationPath {
 		params?: Record<string, string>,
 		query?: Record<string, string>,
 	) => Path
-	changePassword: (
+	forgotPassword: (
 		params?: Record<string, string>,
 		query?: Record<string, string>,
 	) => Path
@@ -84,8 +84,8 @@ export const paths: ApplicationPath = {
 			isProtected: false,
 		}
 	},
-	changePassword: (params = {}, query = {}) => {
-		const basePath = "/change-password/[id]/[otp]"
+	forgotPassword: (params = {}, query = {}) => {
+		const basePath = "/forgot-password/[id]/[otp]"
 		const pathWithParams = replaceParamsInPath(basePath, params)
 		const queryString = buildQueryString(query)
 		return {

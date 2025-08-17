@@ -4,7 +4,7 @@ type Props = {
 	params: Promise<{ id: string; otp: string }>
 }
 
-export default async function ChangePasswordPage({ params }: Props) {
+export default async function ForgotPasswordPage({ params }: Props) {
 	const { id, otp } = await params
 	return (
 		<div>
