@@ -3,6 +3,7 @@ import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 import { Button } from "@/src/components/ui/button"
 import { Form } from "@/src/components/ui/form"
 import { paths } from "@/src/lib/routes/paths"
+import useCheckOtp from "@/src/sections/auth/hooks/use-check-otp"
 import useVerifyOtp from "@/src/sections/auth/hooks/use-verify-otp"
 import {
 	Otp,
@@ -26,15 +27,20 @@ export default function VerfificationCodeFormContainer({
 	const router = useRouter()
 	const {
 		verifyOtp,
-		loading: loadingSubmit,
+		loading: loadingVerifyOtp,
 		error: verifyOtpError,
 	} = useVerifyOtp({
-		onVerifyOtpAction: (otp: string) => {
-			router.push(
-				objective === "activate"
-					? paths.home.root
-					: paths.forgotPassword({ id: userId, otp }).root,
-			)
+		onVerifyOtpAction: () => {
+			router.push(paths.home.root)
+		},
+	})
+	const {
+		checkOtp,
+		loading: loadingCheckOtp,
+		error: checkOtpError,
+	} = useCheckOtp({
+		onCheckOtpAction: (otp: string) => {
+			router.push(paths.forgotPassword({ id: userId, otp }).root)
 		},
 	})
 
@@ -46,7 +52,8 @@ export default function VerfificationCodeFormContainer({
 	})
 
 	function onSubmit(otp: Otp) {
-		verifyOtp(userId, otp)
+		if (objective === "activate") verifyOtp(userId, otp)
+		else checkOtp(userId, otp)
 	}
 	return (
 		<Form {...form}>
@@ -54,11 +61,21 @@ export default function VerfificationCodeFormContainer({
 				onSubmit={form.handleSubmit(onSubmit)}
 				className="flex flex-col gap-4 w-full"
 			>
-				{verifyOtpError && <AlertDestructive title={verifyOtpError} />}
+				{objective === "activate"
+					? verifyOtpError && (
+							<AlertDestructive title={verifyOtpError} />
+						)
+					: checkOtpError && (
+							<AlertDestructive title={checkOtpError} />
+						)}
 				<VerificationCodeForm />
 				<Button
 					type="submit"
-					disabled={loadingSubmit}
+					disabled={
+						objective === "activate"
+							? loadingVerifyOtp
+							: loadingCheckOtp
+					}
 					variant={"secondary"}
 					className="w-full text-primary"
 				>
