@@ -76,6 +76,18 @@ export async function verifyOtp(userId: string, otp: string) {
 	return await buildApiResponse<{ valid: boolean; message: string }>(res)
 }
 
+export async function checkOtp(userId: string, otp: string) {
+	const res = await fetch(apiRoutes.auth.checkOtp, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify({ userId, otp }),
+	})
+
+	return await buildApiResponse<{ valid: boolean; message: string }>(res)
+}
+
 export async function resetPassword(forgotPasswordDTO: ForgotPasswordDTO) {
 	const res = await fetch(apiRoutes.auth.resetPassword, {
 		method: "POST",

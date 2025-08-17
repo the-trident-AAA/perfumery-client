@@ -4,6 +4,7 @@ export const apiRoutes = {
 		changePasswordUser: `${process.env.NEXT_PUBLIC_API_URL}auth/change-password-user/:id`,
 		sendOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/send-otp`,
 		verifyOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/verify-otp`,
+		checkOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/check-otp`,
 		resetPassword: `${process.env.NEXT_PUBLIC_API_URL}auth/reset-password`,
 	},
 	perfumes: {
