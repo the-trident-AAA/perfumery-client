@@ -50,8 +50,8 @@ export default function SignInFormContainer() {
 					<SignInForm />
 					<Button
 						type="submit"
-						variant={"default"}
-						className="w-full"
+						variant={"secondary"}
+						className="w-full text-primary"
 						disabled={submitLoading}
 					>
 						Iniciar Sesión
