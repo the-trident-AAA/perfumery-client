@@ -4,7 +4,7 @@ import { Otp } from "@/src/sections/verification-code/form/schemas/verification-
 import { useCallback, useState } from "react"
 
 interface Props {
-	onVerifyOtpAction: (otp: string) => void
+	onVerifyOtpAction: () => void
 }
 
 export default function useVerifyOtp({ onVerifyOtpAction }: Props) {
@@ -24,7 +24,7 @@ export default function useVerifyOtp({ onVerifyOtpAction }: Props) {
 							"Error en la verificación del código",
 					)
 				else {
-					onVerifyOtpAction(otp.otp)
+					onVerifyOtpAction()
 				}
 			} catch (error) {
 				console.log(error)
