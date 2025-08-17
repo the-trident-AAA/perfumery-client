@@ -33,7 +33,7 @@ export default function VerfificationCodeFormContainer({
 			router.push(
 				objective === "activate"
 					? paths.home.root
-					: paths.changePassword({ id: userId, otp }).root,
+					: paths.forgotPassword({ id: userId, otp }).root,
 			)
 		},
 	})
