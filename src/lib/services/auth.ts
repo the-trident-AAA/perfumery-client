@@ -2,7 +2,11 @@
 import { auth, signIn as signInAuth, signOut as signOutAuth } from "@/src/auth"
 import { buildApiResponse } from "@/src/lib/api"
 import { apiRoutes } from "@/src/lib/routes/api-routes/api-routes"
-import { ChangePasswordDTO, CredentialsDTO } from "@/src/lib/types/auth"
+import {
+	ChangePasswordDTO,
+	CredentialsDTO,
+	ForgotPasswordDTO,
+} from "@/src/lib/types/auth"
 import { User } from "next-auth"
 
 export async function login(credentials: CredentialsDTO) {
@@ -70,4 +74,16 @@ export async function verifyOtp(userId: string, otp: string) {
 	})
 
 	return await buildApiResponse<{ valid: boolean; message: string }>(res)
+}
+
+export async function resetPassword(forgotPasswordDTO: ForgotPasswordDTO) {
+	const res = await fetch(apiRoutes.auth.resetPassword, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(forgotPasswordDTO),
+	})
+
+	return await buildApiResponse<{ message: string }>(res)
 }
