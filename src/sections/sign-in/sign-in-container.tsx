@@ -7,7 +7,7 @@ export default function SignInContainer() {
 	return (
 		<div className="flex w-full h-screen">
 			{/* Left Side - Form */}
-			<div className="w-full md:w-1/2 flex items-center justify-center flex-col gap-4 p-10">
+			<div className="w-full md:w-1/2 flex items-center justify-center flex-col gap-12 p-10">
 				<AppLogo withText={false} avatarClassName="h-42 w-42" />
 				<SignInFormContainer />
 			</div>
