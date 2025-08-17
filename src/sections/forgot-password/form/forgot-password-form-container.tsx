@@ -11,7 +11,6 @@ import {
 	forgotPasswordSchema,
 } from "@/src/sections/forgot-password/form/schemas/forgot-password-schema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/navigation"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
@@ -22,7 +21,6 @@ interface Props {
 }
 
 export default function ForgotPasswordFormContainer({ userId, otp }: Props) {
-	const router = useRouter()
 	const {
 		resetPassword,
 		loading: loadingSubmit,
@@ -30,7 +28,7 @@ export default function ForgotPasswordFormContainer({ userId, otp }: Props) {
 	} = useResetPassword({
 		onResetPasswordAction: () => {
 			toast.success("Cambio de contraseña realizado con éxito")
-			router.push(paths.home.root)
+			window.location.href = paths.home.root
 		},
 	})
 	const form = useForm<ForgotPassword>({
