@@ -19,8 +19,10 @@ export default function VerificationCodeContainer({
 				<Mail className="w-8 h-8 text-primary" />
 			</div>
 			<div className="space-y-2">
-				<p className="text-2xl font-bold">Verifica tu email</p>
-				<p className="text-secondary font-semibold">
+				<p className="text-2xl text-center w-full font-bold">
+					Verifica tu email
+				</p>
+				<p className="text-secondary text-center w-full font-semibold">
 					Hemos enviado un código de 6 dígitos a tu dirección de
 					correo electrónico
 				</p>
