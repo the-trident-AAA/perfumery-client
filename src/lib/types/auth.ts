@@ -1,3 +1,4 @@
+import { ForgotPassword } from "@/src/sections/forgot-password/form/schemas/forgot-password-schema"
 import { Credentials } from "@/src/sections/sign-in/form/schemas/credentials-schema"
 import { ChangePassword } from "@/src/sections/users/form/profile/components/change-password-mode-form/schemas/change-password-schema"
 
@@ -8,6 +9,12 @@ export interface CredentialsDTO {
 
 export interface ChangePasswordDTO {
 	currentPassword: string
+	newPassword: string
+}
+
+export interface ForgotPasswordDTO {
+	userId: string
+	otp: string
 	newPassword: string
 }
 
@@ -25,5 +32,17 @@ export const convertChangePasswordDTO = (
 ): ChangePasswordDTO => {
 	return {
 		...changePassword,
+	}
+}
+
+export const convertForgotPasswordDTO = (
+	forgotPassword: Omit<ForgotPassword, "confirmPassword">,
+	userId: string,
+	otp: string,
+): ForgotPasswordDTO => {
+	return {
+		...forgotPassword,
+		userId,
+		otp,
 	}
 }
