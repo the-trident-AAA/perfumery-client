@@ -40,6 +40,17 @@ export default function HeaderNavbar() {
 						</Button>
 					</NavigationComponent>
 				)}
+				{!session && (
+					<NavigationComponent href={paths.registration.root}>
+						<Button
+							className="text-xs sm:text-base"
+							variant="outline"
+							size="sm"
+						>
+							Regístrate
+						</Button>
+					</NavigationComponent>
+				)}
 			</div>
 			{session && <LittleCar />}
 			{session && <OrdersModalButton />}
