@@ -18,14 +18,14 @@ export default function ModalLayoutContainer({ children }: Props) {
 	else if (pathname.includes(paths.registration.root)) maxWidth = "max-w-md"
 	return (
 		<div
-			className={`flex flex-col w-full ${maxWidth} gap-4 bg-muted p-4 rounded-2xl shadow-xl`}
+			className={`flex flex-col w-full max-h-[95vh] ${maxWidth} gap-4 bg-muted p-4 rounded-2xl shadow-xl`}
 		>
 			{/* Botón de cerrar */}
 			<div className="flex w-full gap-2 justify-between items-center">
 				<p></p>
 				<ExitModalButton />
 			</div>
-			{children}
+			<div className="flex-1 overflow-auto">{children}</div>
 		</div>
 	)
 }
