@@ -9,10 +9,10 @@ export default function RegistrationContainer() {
 				<UserPlus className="w-8 h-8 text-primary" />
 			</div>
 			<div className="space-y-2">
-				<p className="text-2xl text-secondary font-bold">
+				<p className="text-2xl text-secondary text-center font-bold">
 					Crear cuenta
 				</p>
-				<p className="font-semibold text-secondary">
+				<p className="font-semibold text-center text-secondary">
 					Completa los siguientes campos para crear tu cuenta
 				</p>
 			</div>
