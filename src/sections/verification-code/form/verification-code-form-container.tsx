@@ -27,7 +27,7 @@ export default function VerfificationCodeFormContainer({
 	userId,
 	objective,
 }: Props) {
-	const { signIn } = useSignIn({
+	const { signIn, loading: loadingSignin } = useSignIn({
 		onSignInAction: () => {
 			window.location.href = paths.home.root
 		},
@@ -93,7 +93,7 @@ export default function VerfificationCodeFormContainer({
 					type="submit"
 					disabled={
 						objective === "activate"
-							? loadingActivateAccount
+							? loadingActivateAccount || loadingSignin
 							: loadingCheckOtp
 					}
 					variant={"secondary"}
