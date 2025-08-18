@@ -27,7 +27,11 @@ export default function VerfificationCodeFormContainer({
 	userId,
 	objective,
 }: Props) {
-	const { signIn } = useSignIn({ onSignInAction: () => {} })
+	const { signIn } = useSignIn({
+		onSignInAction: () => {
+			window.location.href = paths.home.root
+		},
+	})
 	const router = useRouter()
 	const {
 		verifyOtp,
