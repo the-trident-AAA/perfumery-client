@@ -36,7 +36,7 @@ export type ApiResponse<T> = {
 export type Error = {
 	name: string
 	reason: string
-	metadata?: object
+	metadata?: any
 	code: string
 }
 
