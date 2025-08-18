@@ -11,11 +11,7 @@ export default function RegistrationForm() {
 				label="Dirección de correo electrónico"
 				placeholder="ej: example@example.com"
 			/>
-			<RHFPasswordField
-				name="password"
-				label="Nueva Contraseña"
-				fullWidth
-			/>
+			<RHFPasswordField name="password" label="Contraseña" fullWidth />
 			<RHFPasswordField
 				name="confirmPassword"
 				label="Confirmar Contraseña"
