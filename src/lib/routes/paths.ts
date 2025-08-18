@@ -6,6 +6,7 @@ interface Path {
 interface ApplicationPath {
 	home: Path
 	sign_in: Path
+	registration: Path
 	perfume: (
 		params?: Record<string, string>,
 		query?: Record<string, string>,
@@ -44,6 +45,10 @@ export const paths: ApplicationPath = {
 	},
 	sign_in: {
 		root: "/sign-in",
+		isProtected: false,
+	},
+	registration: {
+		root: "/registration",
 		isProtected: false,
 	},
 	perfume: (params = {}, query = {}) => {
