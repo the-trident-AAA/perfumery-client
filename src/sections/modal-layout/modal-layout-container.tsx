@@ -15,6 +15,7 @@ export default function ModalLayoutContainer({ children }: Props) {
 	if (pathname.includes(paths.editProfile.root)) maxWidth = "max-w-3xl"
 	else if (pathname.includes("/verification-code")) maxWidth = "max-w-sm"
 	else if (pathname.includes("/forgot-password")) maxWidth = "max-w-sm"
+	else if (pathname.includes(paths.registration.root)) maxWidth = "max-w-md"
 	return (
 		<div
 			className={`flex flex-col w-full ${maxWidth} gap-4 bg-muted p-4 rounded-2xl shadow-xl`}
