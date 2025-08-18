@@ -1,4 +1,5 @@
 import { ForgotPassword } from "@/src/sections/forgot-password/form/schemas/forgot-password-schema"
+import { Register } from "@/src/sections/registration/form/schemas/register-schema"
 import { Credentials } from "@/src/sections/sign-in/form/schemas/credentials-schema"
 import { ChangePassword } from "@/src/sections/users/form/profile/components/change-password-mode-form/schemas/change-password-schema"
 
@@ -16,6 +17,20 @@ export interface ForgotPasswordDTO {
 	userId: string
 	otp: string
 	newPassword: string
+}
+
+export interface RegisterDTO {
+	username: string
+	email: string
+	password: string
+}
+
+export const convertRegisterDTO = (register: Register): RegisterDTO => {
+	return {
+		email: register.email,
+		password: register.password,
+		username: register.username,
+	}
 }
 
 export const convertCredentialsDTO = (
