@@ -5,7 +5,7 @@ import { Register } from "@/src/sections/registration/form/schemas/register-sche
 import { useCallback, useState } from "react"
 
 interface Props {
-	onRegisterAction: () => void
+	onRegisterAction: (userId: string) => void
 }
 
 export default function useRegister({ onRegisterAction }: Props) {
@@ -26,7 +26,7 @@ export default function useRegister({ onRegisterAction }: Props) {
 						res.error?.reason || "Error en el registro de usuario",
 					)
 				else {
-					onRegisterAction()
+					onRegisterAction(res.response.id)
 				}
 			} catch (error) {
 				console.log(error)
