@@ -1,5 +1,6 @@
 "use client"
 import { register as registerService } from "@/src/lib/services/auth"
+import { generateToken } from "@/src/lib/token"
 import { convertRegisterDTO } from "@/src/lib/types/auth"
 import { Register } from "@/src/sections/registration/form/schemas/register-schema"
 import { useCallback, useState } from "react"
@@ -26,6 +27,22 @@ export default function useRegister({ onRegisterAction }: Props) {
 						res.error?.reason || "Error en el registro de usuario",
 					)
 				else {
+					// save the credentials in temporal token
+					const temporalTokenWithCredentials = await generateToken<{
+						username: string
+						password: string
+					}>({
+						username: registerSchema.username,
+						password: registerSchema.password,
+					})
+					localStorage.setItem(
+						"temporalToken",
+						JSON.stringify({
+							data: temporalTokenWithCredentials,
+							expiry: new Date().getTime() + 10 * 60 * 1000, // 10 min
+						}),
+					)
+
 					onRegisterAction(res.response.id)
 				}
 			} catch (error) {
