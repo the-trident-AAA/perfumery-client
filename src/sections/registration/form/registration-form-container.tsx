@@ -5,6 +5,7 @@ import { Button } from "@/src/components/ui/button"
 import { Form } from "@/src/components/ui/form"
 import { paths } from "@/src/lib/routes/paths"
 import useRegister from "@/src/sections/auth/hooks/use-register"
+import useSendOtp from "@/src/sections/auth/hooks/use-send-otp"
 import RegistrationForm from "@/src/sections/registration/form/registration-form"
 import {
 	Register,
@@ -18,13 +19,15 @@ import { toast } from "react-toastify"
 
 export default function RegistrationFormContainer() {
 	const router = useRouter()
+	const { sendOtp, loading: loadingSendOtp } = useSendOtp({})
 	const {
 		register,
 		loading: loadingSubmit,
 		error: registerPasswordError,
 	} = useRegister({
-		onRegisterAction: (userId: string) => {
+		onRegisterAction: async (userId: string) => {
 			toast.success("Registro completado con éxito")
+			await sendOtp(userId)
 			router.push(
 				paths.verificationCode({ id: userId, objective: "activate" })
 					.root,
@@ -57,7 +60,7 @@ export default function RegistrationFormContainer() {
 				<RegistrationForm />
 				<Button
 					type="submit"
-					disabled={loadingSubmit}
+					disabled={loadingSubmit || loadingSendOtp}
 					variant={"secondary"}
 					className="w-full text-primary"
 				>
