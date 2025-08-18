@@ -4,7 +4,7 @@ import { Otp } from "@/src/sections/verification-code/form/schemas/verification-
 import { useCallback, useState } from "react"
 
 interface Props {
-	onVerifyOtpAction: () => void
+	onVerifyOtpAction: () => Promise<void>
 }
 
 export default function useVerifyOtp({ onVerifyOtpAction }: Props) {
