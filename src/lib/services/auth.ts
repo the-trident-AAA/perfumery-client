@@ -6,6 +6,7 @@ import {
 	ChangePasswordDTO,
 	CredentialsDTO,
 	ForgotPasswordDTO,
+	RegisterDTO,
 } from "@/src/lib/types/auth"
 import { User } from "next-auth"
 
@@ -30,6 +31,18 @@ export async function signIn(credentials: CredentialsDTO) {
 
 export async function signOut() {
 	return signOutAuth({ redirect: false })
+}
+
+export async function register(registerDTO: RegisterDTO) {
+	const res = await fetch(apiRoutes.auth.register, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(registerDTO),
+	})
+
+	return await buildApiResponse<User>(res)
 }
 
 export async function changePasswordUser(changePasswordDTO: ChangePasswordDTO) {

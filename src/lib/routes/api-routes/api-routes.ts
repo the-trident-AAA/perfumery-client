@@ -1,6 +1,7 @@
 export const apiRoutes = {
 	auth: {
 		login: `${process.env.NEXT_PUBLIC_API_URL}auth/login`,
+		register: `${process.env.NEXT_PUBLIC_API_URL}auth/register`,
 		changePasswordUser: `${process.env.NEXT_PUBLIC_API_URL}auth/change-password-user/:id`,
 		sendOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/send-otp`,
 		verifyOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/verify-otp`,
