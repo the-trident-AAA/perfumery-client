@@ -31,7 +31,7 @@ export default function VerfificationCodeFormContainer({
 		error: verifyOtpError,
 	} = useVerifyOtp({
 		onVerifyOtpAction: () => {
-			router.push(paths.home.root)
+			window.location.href = paths.home.root
 		},
 	})
 	const {
