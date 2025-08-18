@@ -7,6 +7,7 @@ export const apiRoutes = {
 		verifyOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/verify-otp`,
 		checkOtp: `${process.env.NEXT_PUBLIC_API_URL}auth/check-otp`,
 		resetPassword: `${process.env.NEXT_PUBLIC_API_URL}auth/reset-password`,
+		activateAccount: `${process.env.NEXT_PUBLIC_API_URL}auth/activate-account`,
 	},
 	perfumes: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}perfume`,
