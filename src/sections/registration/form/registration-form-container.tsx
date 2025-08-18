@@ -55,22 +55,6 @@ export default function RegistrationFormContainer() {
 					<AlertDestructive title={registerPasswordError} />
 				)}
 				<RegistrationForm />
-				{/* Password Requirements */}
-				<div className="text-xs text-secondary font-semibold space-y-1">
-					<p>Requisitos:</p>
-					<ul className="list-disc list-inside space-y-1 ml-2">
-						<li className={"text-primary"}>
-							Usuario: mínimo 3 caracteres
-						</li>
-						<li className={"text-primary"}>Email válido</li>
-						<li className={"text-primary"}>
-							Contraseña: mínimo 8 caracteres
-						</li>
-						<li className={"text-primary"}>
-							Una mayúscula, una minúscula y un número
-						</li>
-					</ul>
-				</div>
 				<Button
 					type="submit"
 					disabled={loadingSubmit}
