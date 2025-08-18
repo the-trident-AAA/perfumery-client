@@ -3,8 +3,10 @@ import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 import { Button } from "@/src/components/ui/button"
 import { Form } from "@/src/components/ui/form"
 import { paths } from "@/src/lib/routes/paths"
+import { verifyToken } from "@/src/lib/token"
 import useCheckOtp from "@/src/sections/auth/hooks/use-check-otp"
 import useVerifyOtp from "@/src/sections/auth/hooks/use-verify-otp"
+import useSignIn from "@/src/sections/sign-in/form/hooks/use-sign-in"
 import {
 	Otp,
 	otpSchema,
@@ -25,15 +27,25 @@ export default function VerfificationCodeFormContainer({
 	userId,
 	objective,
 }: Props) {
+	const { signIn } = useSignIn({ onSignInAction: () => {} })
 	const router = useRouter()
 	const {
 		verifyOtp,
 		loading: loadingVerifyOtp,
 		error: verifyOtpError,
 	} = useVerifyOtp({
-		onVerifyOtpAction: () => {
-			toast.success("Cuenta activada con éxito")
-			window.location.href = paths.home.root
+		onVerifyOtpAction: async () => {
+			const temporalToken = localStorage.getItem("temporalToken")
+			const credentials = (await verifyToken(
+				JSON.parse(temporalToken as string).data,
+			)) as {
+				username: string
+				password: string
+			}
+			signIn({
+				firstCredential: credentials.username,
+				password: credentials.password,
+			})
 		},
 	})
 	const {
