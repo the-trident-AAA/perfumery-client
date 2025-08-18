@@ -8,6 +8,7 @@ import {
 	ForgotPasswordDTO,
 	RegisterDTO,
 } from "@/src/lib/types/auth"
+import { User as UserType } from "@/src/lib/types/users"
 import { User } from "next-auth"
 
 export async function login(credentials: CredentialsDTO) {
@@ -42,7 +43,7 @@ export async function register(registerDTO: RegisterDTO) {
 		body: JSON.stringify(registerDTO),
 	})
 
-	return await buildApiResponse<User>(res)
+	return await buildApiResponse<UserType>(res)
 }
 
 export async function changePasswordUser(changePasswordDTO: ChangePasswordDTO) {
