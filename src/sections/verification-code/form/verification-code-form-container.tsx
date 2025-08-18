@@ -35,6 +35,7 @@ export default function VerfificationCodeFormContainer({
 		error: verifyOtpError,
 	} = useVerifyOtp({
 		onVerifyOtpAction: async () => {
+			toast.success("Verificación realizada con éxito")
 			const temporalToken = localStorage.getItem("temporalToken")
 			const credentials = (await verifyToken(
 				JSON.parse(temporalToken as string).data,
