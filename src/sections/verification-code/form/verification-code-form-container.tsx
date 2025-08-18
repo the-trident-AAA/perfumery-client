@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { useForm } from "react-hook-form"
+import { toast } from "react-toastify"
 
 interface Props {
 	userId: string
@@ -31,6 +32,7 @@ export default function VerfificationCodeFormContainer({
 		error: verifyOtpError,
 	} = useVerifyOtp({
 		onVerifyOtpAction: () => {
+			toast.success("Cuenta activada con éxito")
 			window.location.href = paths.home.root
 		},
 	})
