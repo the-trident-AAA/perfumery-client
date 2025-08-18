@@ -8,6 +8,6 @@ export interface Credentials {
 export const credentialsSchema = z.object({
 	firstCredential: z
 		.string()
-		.min(3, { message: "El Nombre de Usuario no es válido" }),
+		.min(2, { message: "El Nombre de Usuario no es válido" }),
 	password: z.string().min(1, { message: "Debe introducir una constraseña" }),
 })
