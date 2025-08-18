@@ -4,8 +4,8 @@ import { Button } from "@/src/components/ui/button"
 import { Form } from "@/src/components/ui/form"
 import { paths } from "@/src/lib/routes/paths"
 import { verifyToken } from "@/src/lib/token"
+import useActivateAccount from "@/src/sections/auth/hooks/use-activate-account"
 import useCheckOtp from "@/src/sections/auth/hooks/use-check-otp"
-import useVerifyOtp from "@/src/sections/auth/hooks/use-verify-otp"
 import useSignIn from "@/src/sections/sign-in/form/hooks/use-sign-in"
 import {
 	Otp,
@@ -34,11 +34,11 @@ export default function VerfificationCodeFormContainer({
 	})
 	const router = useRouter()
 	const {
-		verifyOtp,
-		loading: loadingVerifyOtp,
-		error: verifyOtpError,
-	} = useVerifyOtp({
-		onVerifyOtpAction: async () => {
+		activateAccount,
+		loading: loadingActivateAccount,
+		error: activateAccountError,
+	} = useActivateAccount({
+		onActivateAccountAction: async () => {
 			toast.success("Verificación realizada con éxito")
 			const temporalToken = localStorage.getItem("temporalToken")
 			const credentials = (await verifyToken(
@@ -47,6 +47,7 @@ export default function VerfificationCodeFormContainer({
 				username: string
 				password: string
 			}
+			console.log(credentials)
 			signIn({
 				firstCredential: credentials.username,
 				password: credentials.password,
@@ -71,7 +72,7 @@ export default function VerfificationCodeFormContainer({
 	})
 
 	function onSubmit(otp: Otp) {
-		if (objective === "activate") verifyOtp(userId, otp)
+		if (objective === "activate") activateAccount(userId, otp)
 		else checkOtp(userId, otp)
 	}
 	return (
@@ -81,8 +82,8 @@ export default function VerfificationCodeFormContainer({
 				className="flex flex-col gap-4 w-full"
 			>
 				{objective === "activate"
-					? verifyOtpError && (
-							<AlertDestructive title={verifyOtpError} />
+					? activateAccountError && (
+							<AlertDestructive title={activateAccountError} />
 						)
 					: checkOtpError && (
 							<AlertDestructive title={checkOtpError} />
@@ -92,7 +93,7 @@ export default function VerfificationCodeFormContainer({
 					type="submit"
 					disabled={
 						objective === "activate"
-							? loadingVerifyOtp
+							? loadingActivateAccount
 							: loadingCheckOtp
 					}
 					variant={"secondary"}
