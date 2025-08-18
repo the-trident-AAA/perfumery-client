@@ -60,7 +60,7 @@ export const buildApiResponse = async <T>(
 					},
 					code: "403",
 				},
-				status: 400,
+				status: 403,
 			}
 		}
 	}
