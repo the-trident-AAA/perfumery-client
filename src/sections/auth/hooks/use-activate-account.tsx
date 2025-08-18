@@ -4,8 +4,7 @@ import { Otp } from "@/src/sections/verification-code/form/schemas/verification-
 import { useCallback, useState } from "react"
 
 interface Props {
-	id: string
-	onActivateAccountAction: () => void
+	onActivateAccountAction: () => Promise<void>
 }
 
 export default function useActivateAccount({ onActivateAccountAction }: Props) {
