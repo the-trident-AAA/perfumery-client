@@ -18,6 +18,8 @@ import useImageForm from "@/src/components/form/hooks/use-image-form"
 import { revalidateServerTags } from "@/src/lib/cache"
 import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 import { useRouter } from "next/navigation"
+import { useContext } from "react"
+import { ProfileContext } from "@/src/sections/auth/context/profile-context/profile-context"
 
 interface Props {
 	user: User
@@ -25,6 +27,7 @@ interface Props {
 
 export default function ProfileUserFormContainer({ user }: Props) {
 	const router = useRouter()
+	const { fetchUserProfile } = useContext(ProfileContext)
 	const {
 		loading: submitLoading,
 		editUser,
@@ -33,6 +36,7 @@ export default function ProfileUserFormContainer({ user }: Props) {
 		id: user.id.toString(),
 		onEditAction: () => {
 			toast.success("Información de perfil actualizada con éxito")
+			fetchUserProfile()
 			revalidateServerTags(
 				tagsCacheByRoutes.users.singleTag + ": " + user.id,
 			)

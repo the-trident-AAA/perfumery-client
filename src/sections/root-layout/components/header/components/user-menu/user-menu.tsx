@@ -14,12 +14,10 @@ import { Separator } from "@/src/components/ui/separator"
 import SignOutButton from "@/src/sections/root-layout/components/header/components/sign-out-button/sign-out-button"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { paths } from "@/src/lib/routes/paths"
-import useUserProfile from "@/src/sections/users/hooks/use-user-profile"
-import { ModalContext } from "@/src/components/modal/context/modalContext"
+import { ProfileContext } from "@/src/sections/auth/context/profile-context/profile-context"
 
 export default function UserMenu() {
-	const { handleOpenModal } = useContext(ModalContext)
-	const { user, loading, fetchUserProfile } = useUserProfile()
+	const { user, loading } = useContext(ProfileContext)
 
 	const userInitials = useMemo(() => {
 		if (!user?.email) return "?"
