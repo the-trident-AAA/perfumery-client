@@ -11,7 +11,7 @@ export const registerSchema = z
 	.object({
 		username: z
 			.string()
-			.min(3, { message: "Debe contar con al menos 3 caracteres" }),
+			.min(2, { message: "Debe contar con al menos 2 caracteres" }),
 		email: z.string().email({
 			message:
 				"El campo debe seguir las directrices de un correo electrónico",
