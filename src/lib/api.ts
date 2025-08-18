@@ -49,6 +49,19 @@ export const buildApiResponse = async <T>(
 				},
 				status: 400,
 			}
+		} else if (response.status === 403) {
+			const error = await response.json()
+			return {
+				error: {
+					name: "forbidden",
+					reason: error.message,
+					metadata: {
+						userId: error.userId,
+					},
+					code: "403",
+				},
+				status: 400,
+			}
 		}
 	}
 
