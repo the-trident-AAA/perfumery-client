@@ -12,10 +12,17 @@ import { PaginationResponse } from "@/src/lib/types/pagination"
 import { IQueryable } from "@/src/lib/types/request"
 
 export async function getOrdersList(params: IQueryable) {
-	const url = new QueryParamsURLFactory(params, apiRoutes.orders.get).build()
+	const session = await auth()
+	const url = new QueryParamsURLFactory(
+		{ ...params, userId: session?.user.id as string },
+		apiRoutes.orders.get,
+	).build()
 
 	const res = await fetch(url, {
 		method: "GET",
+		headers: {
+			Authorization: "Bearer " + session?.accessToken,
+		},
 		next: { tags: [tagsCacheByRoutes.orders.multipleTag] },
 	})
 
