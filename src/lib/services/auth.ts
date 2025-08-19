@@ -43,7 +43,7 @@ export async function verifyStateAccount(credentials: CredentialsDTO) {
 		body: JSON.stringify(credentials),
 	})
 
-	return await buildApiResponse<{ valid: boolean; message: string }>(res)
+	return await buildApiResponse<{ userId: string }>(res)
 }
 
 export async function register(registerDTO: RegisterDTO) {
