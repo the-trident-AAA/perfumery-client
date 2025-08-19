@@ -55,9 +55,9 @@ export default function SignInFormContainer() {
 					Ingrese el correo electrónico asociado a su cuenta
 				</p>
 				{verifyStateAccountError && (
-					<AlertDestructive description={verifyStateAccountError} />
+					<AlertDestructive title={verifyStateAccountError} />
 				)}
-				{signInError && <AlertDestructive description={signInError} />}
+				{signInError && <AlertDestructive title={signInError} />}
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
 					className="w-full flex flex-col gap-6"
