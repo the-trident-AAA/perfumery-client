@@ -8,7 +8,7 @@ import { generateToken } from "@/src/lib/token"
 import { paths } from "@/src/lib/routes/paths"
 
 interface Props {
-	onVerifyStateAccountAction: () => void
+	onVerifyStateAccountAction: (credentials: Credentials) => void
 }
 
 export default function useVerifyStateAccount({
@@ -54,7 +54,7 @@ export default function useVerifyStateAccount({
 					)
 				} else setError(error.reason)
 			} else {
-				onVerifyStateAccountAction()
+				onVerifyStateAccountAction(credentials)
 			}
 		},
 		[onVerifyStateAccountAction],
