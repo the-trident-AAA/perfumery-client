@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { Error } from "@/src/lib/types/api"
 import { generateToken } from "@/src/lib/token"
 import { paths } from "@/src/lib/routes/paths"
+import useSendOtp from "@/src/sections/auth/hooks/use-send-otp"
 
 interface Props {
 	onVerifyStateAccountAction: (credentials: Credentials) => void
@@ -17,6 +18,16 @@ export default function useVerifyStateAccount({
 	const router = useRouter()
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
+	const { sendOtp, loading: loadingSendOtp } = useSendOtp({
+		onSendAction: (userId: string) => {
+			router.push(
+				paths.verificationCode({
+					id: userId,
+					objective: "activate",
+				}).root,
+			)
+		},
+	})
 
 	const verifyStateAccount = useCallback(
 		async (credentials: Credentials) => {
@@ -46,12 +57,7 @@ export default function useVerifyStateAccount({
 							expiry: new Date().getTime() + 10 * 60 * 1000, // 10 min
 						}),
 					)
-					router.push(
-						paths.verificationCode({
-							id: userId,
-							objective: "activate",
-						}).root,
-					)
+					sendOtp(userId)
 				} else setError(error.reason)
 			} else {
 				onVerifyStateAccountAction(credentials)
@@ -64,5 +70,6 @@ export default function useVerifyStateAccount({
 		loading,
 		error,
 		verifyStateAccount,
+		loadingSendOtp,
 	}
 }
