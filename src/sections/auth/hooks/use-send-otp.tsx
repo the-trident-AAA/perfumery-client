@@ -3,7 +3,7 @@ import { sendOtp as sendOtpService } from "@/src/lib/services/auth"
 import { useCallback, useState } from "react"
 
 interface Props {
-	onSendAction?: () => void
+	onSendAction?: (userId: string) => void
 }
 
 export default function useSendOtp({ onSendAction }: Props) {
@@ -23,7 +23,7 @@ export default function useSendOtp({ onSendAction }: Props) {
 							"Error en el envío del código de verificación",
 					)
 				else {
-					if (onSendAction) onSendAction()
+					if (onSendAction) onSendAction(id)
 				}
 			} catch (error) {
 				console.log(error)
