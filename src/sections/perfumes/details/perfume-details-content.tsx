@@ -1,23 +1,14 @@
-import Image from "next/image"
-import {
-	Heart,
-	ShoppingCart,
-	Star,
-	Droplets,
-	Palette,
-	Users,
-	User,
-} from "lucide-react"
+import { Heart, Star, Droplets, Palette, Users } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
 import { Badge } from "@/src/components/ui/badge"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { Separator } from "@/src/components/ui/separator"
 import { genderMap, PerfumeDetails } from "@/src/lib/types/perfumes"
-import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 import PerfumeInfoCard from "@/src/sections/perfumes/details/components/perfume-info-card/perfume-info-card"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume-card/components/add-shop-cart-perfume-button"
 import BackButton from "@/src/components/back-button/back-button"
+import ThumbnailsImage from "@/src/components/thumbnails-image/thumbnails-image"
 
 interface Props {
 	perfume: PerfumeDetails
@@ -119,17 +110,10 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 			{/* Contenido principal - Layout más horizontal */}
 			<div className="flex flex-col lg:flex-row items-center p-4 w-full gap-4">
 				{/* Imagen - 2 columnas */}
-				<div className="">
-					<div className="border-4 border-secondary rounded-2xl p-2 flex items-center justify-center">
-						<Image
-							src={perfume.image || perfumeImagePlaceHolder}
-							width={600}
-							height={400}
-							alt={perfume.id}
-							className="object-cover max-h-[460px]"
-						/>
-					</div>
-				</div>
+				<ThumbnailsImage
+					altName={perfume.name}
+					images={[perfume.image, ...perfume.images]}
+				/>
 
 				{/* Información del producto - 3 columnas */}
 				<div className="space-y-6 w-full">
