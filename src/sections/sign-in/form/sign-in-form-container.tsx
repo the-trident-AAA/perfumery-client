@@ -29,6 +29,7 @@ export default function SignInFormContainer() {
 		verifyStateAccount,
 		loading: loadingVerifiyStateAccount,
 		error: verifyStateAccountError,
+		loadingSendOtp,
 	} = useVerifyStateAccount({
 		onVerifyStateAccountAction: (credentials: Credentials) => {
 			signIn(credentials)
@@ -67,7 +68,11 @@ export default function SignInFormContainer() {
 						type="submit"
 						variant={"secondary"}
 						className="w-full text-primary"
-						disabled={loadingSignIn || loadingVerifiyStateAccount}
+						disabled={
+							loadingSignIn ||
+							loadingVerifiyStateAccount ||
+							loadingSendOtp
+						}
 					>
 						Iniciar Sesión
 					</Button>
