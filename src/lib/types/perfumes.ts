@@ -8,7 +8,7 @@ export interface Perfume {
 	id: string
 	name: string
 	description: string
-	image?: string
+	image: string
 	brand: string
 	discountOffer?: number
 	gender: string
@@ -24,7 +24,7 @@ export interface PerfumeDetails {
 	id: string
 	name: string
 	description: string
-	image?: string
+	image: string
 	images: string[]
 	brand: Brand
 	offer?: Offer
