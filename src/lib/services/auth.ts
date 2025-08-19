@@ -34,6 +34,18 @@ export async function signOut() {
 	return signOutAuth({ redirect: false })
 }
 
+export async function verifyStateAccount(credentials: CredentialsDTO) {
+	const res = await fetch(apiRoutes.auth.verifyStateAccount, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(credentials),
+	})
+
+	return await buildApiResponse<{ valid: boolean; message: string }>(res)
+}
+
 export async function register(registerDTO: RegisterDTO) {
 	const res = await fetch(apiRoutes.auth.register, {
 		method: "POST",
