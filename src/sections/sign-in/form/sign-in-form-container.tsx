@@ -10,19 +10,31 @@ import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/src/components/ui/button"
 import { AlertDestructive } from "@/src/components/ui/alert-destructive"
+import useVerifyStateAccount from "@/src/sections/auth/hooks/use-verify-state-account"
 
 export default function SignInFormContainer() {
 	const router = useRouter()
 	const {
 		signIn,
-		loading: submitLoading,
-		error,
+		loading: loadingSignIn,
+		error: signInError,
 	} = useSignIn({
 		onSignInAction: () => {
 			toast.success("Inicio de sessión realizado con éxtio")
 			router.push(paths.home.root)
 		},
 	})
+
+	const {
+		verifyStateAccount,
+		loading: loadingVerifiyStateAccount,
+		error: verifyStateAccountError,
+	} = useVerifyStateAccount({
+		onVerifyStateAccountAction: (credentials: Credentials) => {
+			signIn(credentials)
+		},
+	})
+
 	const form = useForm<Credentials>({
 		resolver: zodResolver(credentialsSchema),
 		defaultValues: {
@@ -32,7 +44,7 @@ export default function SignInFormContainer() {
 	})
 
 	function onSubmit(credentials: Credentials) {
-		signIn(credentials)
+		verifyStateAccount(credentials)
 	}
 
 	return (
@@ -42,7 +54,10 @@ export default function SignInFormContainer() {
 				<p className="text-secondary font-semibold">
 					Ingrese el correo electrónico asociado a su cuenta
 				</p>
-				{error && <AlertDestructive description={error} />}
+				{verifyStateAccountError && (
+					<AlertDestructive description={verifyStateAccountError} />
+				)}
+				{signInError && <AlertDestructive description={signInError} />}
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
 					className="w-full flex flex-col gap-6"
@@ -52,7 +67,7 @@ export default function SignInFormContainer() {
 						type="submit"
 						variant={"secondary"}
 						className="w-full text-primary"
-						disabled={submitLoading}
+						disabled={loadingSignIn || loadingVerifiyStateAccount}
 					>
 						Iniciar Sesión
 					</Button>
