@@ -48,7 +48,7 @@ export default function useVerifyStateAccount({
 					)
 					router.push(
 						paths.verificationCode({
-							userId,
+							id: userId,
 							objective: "activate",
 						}).root,
 					)
