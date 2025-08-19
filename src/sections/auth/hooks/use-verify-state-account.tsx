@@ -56,6 +56,7 @@ export default function useVerifyStateAccount({
 			} else {
 				onVerifyStateAccountAction(credentials)
 			}
+			setLoading(false)
 		},
 		[onVerifyStateAccountAction],
 	)
