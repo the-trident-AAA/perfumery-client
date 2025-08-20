@@ -10,20 +10,20 @@ interface Props {
 export default function ThumbnailsImage({ images, altName }: Props) {
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 	return (
-		<div className="space-y-4">
+		<div className="flex flex-col gap-4">
 			{/* Imagen principal */}
-			<div className="aspect-square rounded-xl overflow-hidden bg-gray-100">
+			<div className="aspect-square w-full h-[52vh] rounded-xl overflow-hidden bg-gray-100">
 				<Image
 					src={images[selectedImageIndex] || "/placeholder.svg"}
 					alt={altName}
 					width={600}
 					height={600}
-					className="w-full h-full object-cover"
+					className="w-full h-full object-center"
 				/>
 			</div>
 
 			{/* Thumbnails */}
-			<div className="flex gap-3 overflow-x-auto pb-2">
+			<div className="flex flex-wrap gap-3 overflow-x-auto pb-2">
 				{images.map((image, index) => (
 					<button
 						key={index}
