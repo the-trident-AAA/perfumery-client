@@ -2,8 +2,9 @@
 import React from "react"
 import { StandardCarouselProvider } from "@/src/components/ui/standard-carousel/context/standard-carousel-context"
 import StandardCarousel from "@/src/components/ui/standard-carousel/standard-carousel"
-import HomeBannerSection from "@/src/sections/home/components/home-banners/components/home-banner-section/home-banner-section"
+
 import { HomeBanner } from "@/src/lib/types/home-banners"
+import HomeBannerSection from "@/src/sections/home/components/home-banner-section/home-banner-section"
 
 interface Props {
 	homeBanners: HomeBanner[]
