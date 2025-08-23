@@ -1,8 +1,6 @@
 "use client"
-
 import type React from "react"
 import { ArrowRight, Sparkles, Star, ShoppingBag, Heart } from "lucide-react"
-import Image from "next/image"
 import { useEffect, useState } from "react"
 import { HomeBanner } from "@/src/lib/types/home-banners"
 import { Badge } from "@/src/components/ui/badge"
@@ -10,12 +8,11 @@ import NavigationComponent from "@/src/components/navigation-component/navigatio
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
+import HomeBannerImagesCarousel from "@/src/sections/home/components/home-banner-section/components/home-banner-images-carousel/home-banner-images-carousel"
 
 interface Props {
 	homeBanner: HomeBanner
 }
-
-const homeBannerImagePlaceHolder = "/placeholder.svg?height=600&width=800"
 
 export default function HomeBannerSection({
 	homeBanner: { id, title, description, images, infoTips, statisticalTips },
@@ -192,45 +189,7 @@ export default function HomeBannerSection({
 					<div
 						className={`relative ${isLoaded ? "animate-fade-in-right" : "opacity-0"}`}
 					>
-						<div className="relative">
-							{/* Contenedor de imagen principal */}
-							<div className="relative h-[600px] w-full overflow-hidden rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
-								<Image
-									src={
-										images[0] || homeBannerImagePlaceHolder
-									}
-									alt={title}
-									fill
-									className="object-cover transition-all duration-700 hover:scale-110"
-									priority
-								/>
-
-								{/* Overlay con gradiente */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-								{/* Elementos flotantes sobre la imagen */}
-								<div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm rounded-full p-3 animate-bounce">
-									<Sparkles className="w-6 h-6 text-white" />
-								</div>
-
-								<div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 animate-slide-up delay-500">
-									<div className="text-secondary font-bold text-lg">
-										Hasta 50% OFF
-									</div>
-									<div className="text-secondary text-sm">
-										En fragancias seleccionadas
-									</div>
-								</div>
-							</div>
-
-							{/* Elementos decorativos alrededor de la imagen */}
-							<div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-yellow-400/30 to-white/30 rounded-full blur-xl animate-pulse" />
-							<div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-tl from-white/30 to-yellow-400/30 rounded-full blur-xl animate-pulse delay-700" />
-
-							{/* Marcos decorativos */}
-
-							<div className="absolute -inset-8 border border-black bg-primary/15 rounded-3xl transform rotate-1 animate-pulse delay-500" />
-						</div>
+						<HomeBannerImagesCarousel images={images} />
 					</div>
 				</div>
 			</div>
