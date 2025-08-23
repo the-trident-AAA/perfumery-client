@@ -31,7 +31,7 @@ export async function getHomeBannerById(id: string) {
 	return await buildApiResponse<HomeBannerDetails>(res)
 }
 
-export async function getMainHomeBanner(id: string) {
+export async function getMainHomeBanner() {
 	const res = await fetch(apiRoutes.homeBanners.getMainHomeBanner, {
 		method: "GET",
 		next: { tags: [tagsCacheByRoutes.homeBanners.singleTag] },
