@@ -18,7 +18,7 @@ interface Props {
 const homeBannerImagePlaceHolder = "/placeholder.svg?height=600&width=800"
 
 export default function HomeBannerSection({
-	homeBanner: { id, title, description, image },
+	homeBanner: { id, title, description, images, infoTips, statisticalTips },
 }: Props) {
 	const [isLoaded, setIsLoaded] = useState(false)
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -138,30 +138,16 @@ export default function HomeBannerSection({
 
 						{/* Estadísticas */}
 						<div className="flex items-center gap-8 animate-fade-in delay-500">
-							<div className="text-center">
-								<div className="text-3xl font-bold text-secondary">
-									500+
+							{statisticalTips.map((statisticalTip, index) => (
+								<div key={index} className="text-center">
+									<div className="text-3xl font-bold text-secondary">
+										{statisticalTip.info}
+									</div>
+									<div className="text-secondary/70 text-sm">
+										{statisticalTip.statistics}
+									</div>
 								</div>
-								<div className="text-secondary/70 text-sm">
-									Fragancias
-								</div>
-							</div>
-							<div className="text-center">
-								<div className="text-3xl font-bold text-secondary">
-									50+
-								</div>
-								<div className="text-secondary/70 text-sm">
-									Marcas
-								</div>
-							</div>
-							<div className="text-center">
-								<div className="text-3xl font-bold text-secondary">
-									10K+
-								</div>
-								<div className="text-secondary/70 text-sm">
-									Clientes
-								</div>
-							</div>
+							))}
 						</div>
 
 						{/* Botones de acción */}
@@ -190,20 +176,15 @@ export default function HomeBannerSection({
 
 						{/* Indicadores de confianza */}
 						<div className="flex items-center gap-6 pt-4 animate-fade-in delay-1000">
-							<div className="flex items-center gap-2 text-secondary">
-								<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-								<span className="text-sm">Envío gratis</span>
-							</div>
-							<div className="flex items-center gap-2 text-secondary">
-								<div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300" />
-								<span className="text-sm">
-									Garantía 30 días
-								</span>
-							</div>
-							<div className="flex items-center gap-2 text-secondary">
-								<div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-600" />
-								<span className="text-sm">Auténticos</span>
-							</div>
+							{infoTips.map((infoTip, index) => (
+								<div
+									key={index}
+									className="flex items-center gap-2 text-secondary"
+								>
+									<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+									<span className="text-sm">{infoTip}</span>
+								</div>
+							))}
 						</div>
 					</div>
 
@@ -215,7 +196,9 @@ export default function HomeBannerSection({
 							{/* Contenedor de imagen principal */}
 							<div className="relative h-[600px] w-full overflow-hidden rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
 								<Image
-									src={image || homeBannerImagePlaceHolder}
+									src={
+										images[0] || homeBannerImagePlaceHolder
+									}
 									alt={title}
 									fill
 									className="object-cover transition-all duration-700 hover:scale-110"
