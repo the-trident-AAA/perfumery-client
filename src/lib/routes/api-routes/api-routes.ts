@@ -33,6 +33,7 @@ export const apiRoutes = {
 	homeBanners: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}home-banner`,
 		getById: `${process.env.NEXT_PUBLIC_API_URL}home-banner/:id`,
+		getMainHomeBanner: `${process.env.NEXT_PUBLIC_API_URL}home-banner/find-main-home-banner`,
 	},
 	shopCarts: {
 		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/:id`,
