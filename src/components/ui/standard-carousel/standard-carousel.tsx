@@ -147,9 +147,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 							onClick={handleClick(index)}
 							className={cn(
 								"size-2 cursor-pointer rounded-full transition-colors sm:size-3",
-								current === index
-									? "bg-primary"
-									: "bg-gray-300",
+								current === index ? "bg-secondary" : "bg-muted",
 							)}
 						/>
 					))}
