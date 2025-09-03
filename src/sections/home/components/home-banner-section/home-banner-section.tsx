@@ -83,27 +83,6 @@ export default function HomeBannerSection({
 					<div
 						className={`space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
 					>
-						{/* Badge superior */}
-						<div className="flex items-center gap-4">
-							<Badge
-								variant={"secondary"}
-								className="text-primary"
-							>
-								<Sparkles className="w-4 h-4 mr-2" />
-								Colección Premium
-							</Badge>
-							<div className="flex items-center gap-1">
-								{[1, 2, 3, 4, 5].map(star => (
-									<Star
-										key={star}
-										className="w-4 h-4 fill-yellow-400 text-yellow-400 animate-pulse"
-									/>
-								))}
-								<span className="text-secondary text-sm ml-2">
-									(4.9)
-								</span>
-							</div>
-						</div>
 						<div className="flex gap-4 items-center">
 							<Avatar className="h-40 w-40">
 								<AvatarImage src="/icons/logo-icon.png" />
