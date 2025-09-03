@@ -19,6 +19,23 @@ import OrdersContent from "@/src/sections/orders/orders-content"
 import { UserTotalOrdersProvider } from "@/src/sections/orders/context/user-total-orders-context"
 import ProgressBar from "@/src/components/providers/progress-bar."
 import { ProfileProvider } from "@/src/sections/auth/context/profile-context/profile-context"
+import { Geist, Geist_Mono } from "next/font/google"
+import { Metadata } from "next"
+
+const geistSans = Geist({
+	variable: "--font-geist-sans",
+	subsets: ["latin"],
+})
+
+const geistMono = Geist_Mono({
+	variable: "--font-geist-mono",
+	subsets: ["latin"],
+})
+
+export const metadata: Metadata = {
+	title: "Perfumes del Puro",
+	description: "Tienda de Perfumes",
+}
 
 const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 	children,
