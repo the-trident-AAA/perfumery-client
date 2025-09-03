@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Heart, Sparkles, Zap, Gift, Eye } from "lucide-react"
+import { Sparkles, Zap, Gift, Eye } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { getGenderColor, Perfume } from "@/src/lib/types/perfumes"
@@ -19,7 +19,6 @@ interface Props {
 }
 
 export default function PerfumeCard({ perfume }: Props) {
-	const [isLiked, setIsLiked] = useState(false)
 	const [isHovered, setIsHovered] = useState(false)
 	const [isLoaded, setIsLoaded] = useState(false)
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -99,22 +98,6 @@ export default function PerfumeCard({ perfume }: Props) {
 					</div>
 				</div>
 			)}
-
-			{/* Wishlist Button mejorado */}
-			<Button
-				variant="ghost"
-				size="icon"
-				className="absolute top-16 right-4 z-30 bg-white/90 hover:bg-white shadow-xl backdrop-blur-sm border border-white/40 transition-all duration-300 transform hover:scale-110"
-				onClick={() => setIsLiked(!isLiked)}
-			>
-				<Heart
-					className={`h-4 w-4 transition-all duration-300 ${
-						isLiked
-							? "fill-red-500 text-red-500 scale-125 animate-pulse"
-							: "text-gray-600 hover:text-red-400 hover:scale-110"
-					}`}
-				/>
-			</Button>
 
 			<CardContent className="p-0">
 				{/* Imagen de fondo mejorada */}
