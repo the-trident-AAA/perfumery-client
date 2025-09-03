@@ -195,21 +195,10 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 
 					<Separator className="bg-secondary" />
 
-					{/* Botones de acción - Layout horizontal */}
-					<div className="flex flex-col sm:flex-row gap-3">
-						<AddShopCartPerfumeButton
-							variant="large"
-							perfume={perfume}
-						/>
-						<Button
-							variant="secondary"
-							size="lg"
-							className="flex-1 text-primary"
-						>
-							<Heart className="w-5 h-5 mr-2" />
-							Lista de deseos
-						</Button>
-					</div>
+					<AddShopCartPerfumeButton
+						variant="large"
+						perfume={perfume}
+					/>
 				</div>
 			</div>
 		</div>
