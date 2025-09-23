@@ -1,6 +1,7 @@
 import HeaderSearch from "@/src/sections/root-layout/components/header/components/header-search/header-search"
 import AppLogo from "@/src/components/app-logo/app-logo"
 import HeaderNavbar from "@/src/sections/root-layout/components/header/header-navbar"
+import { Suspense } from "react"
 
 const Header = () => {
 	return (
@@ -14,7 +15,9 @@ const Header = () => {
 			<div className="container mx-auto px-4 py-4 flex items-center justify-between">
 				<AppLogo />
 				<div className="flex-1 max-w-2xl mx-4 md:mx-8">
-					<HeaderSearch />
+					<Suspense fallback={<div>Cargando...</div>}>
+						<HeaderSearch />
+					</Suspense>
 				</div>
 				<HeaderNavbar />
 			</div>
