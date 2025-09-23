@@ -13,8 +13,9 @@ import {
 } from "@/src/sections/verification-code/form/schemas/verification-code-schema"
 import VerificationCodeForm from "@/src/sections/verification-code/form/verification-code-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import React from "react"
+import React, { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 
@@ -27,11 +28,15 @@ export default function VerfificationCodeFormContainer({
 	userId,
 	objective,
 }: Props) {
-	const { signIn, loading: loadingSignin } = useSignIn({
-		onSignInAction: () => {
+	const { data: session, status } = useSession()
+	const { signIn, loading: loadingSignin } = useSignIn()
+
+	useEffect(() => {
+		if (status === "authenticated") {
 			window.location.href = paths.home.root
-		},
-	})
+		}
+	}, [session, status])
+
 	const router = useRouter()
 	const {
 		activateAccount,
