@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from "react"
+import { FC, PropsWithChildren, Suspense } from "react"
 import "../ui/globals.css"
 import { roboto } from "../ui/fonts"
 import Header from "../sections/root-layout/components/header/header"
@@ -47,83 +47,86 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 				<SessionProvider>
 					<ProfileProvider>
 						<ShopCartProvider>
-							<PerfumesFiltersProvider>
-								<ModalProvider>
-									<ShopCartTotalItemsProviderContainer>
-										<UserTotalOrdersProvider>
-											<ToastContainer />
-											<ProgressBar>
-												<main className="flex min-h-screen flex-col">
-													<Header />
-													{modal}
-													{children}
-													<Footer />
-													<Modal
-														formPath={
-															modalTypes
-																.loginModal.name
-														}
-														maxWidth="max-w-sm"
-													>
-														<LoginPanel />
-													</Modal>
-													<Modal
-														formPath={
-															modalTypes
-																.registrationModal
-																.name
-														}
-														maxWidth="max-w-6xl"
-													>
-														<RegistrationPanel />
-													</Modal>
-													<Modal
-														formPath={
-															modalTypes
-																.shopCartModal
-																.name
-														}
-														maxWidth="max-w-6xl"
-													>
-														<ShopCartContent variant="modal" />
-													</Modal>
-													<Modal
-														formPath={
-															modalTypes
-																.changePasswordModal
-																.name
-														}
-														maxWidth="max-w-xl"
-													>
-														Modal de olvido de
-														contraseña
-													</Modal>
-													<Modal
-														formPath={
-															modalTypes
-																.clearShopCartModal
-																.name
-														}
-														maxWidth="max-w-xl"
-													>
-														<ClearShopCartModalContainer />
-													</Modal>
-													<Modal
-														formPath={
-															modalTypes
-																.ordersModal
-																.name
-														}
-														maxWidth="max-w-3xl"
-													>
-														<OrdersContent variant="modal" />
-													</Modal>
-												</main>
-											</ProgressBar>
-										</UserTotalOrdersProvider>
-									</ShopCartTotalItemsProviderContainer>
-								</ModalProvider>
-							</PerfumesFiltersProvider>
+							<Suspense fallback={<div>Cargando...</div>}>
+								<PerfumesFiltersProvider>
+									<ModalProvider>
+										<ShopCartTotalItemsProviderContainer>
+											<UserTotalOrdersProvider>
+												<ToastContainer />
+												<ProgressBar>
+													<main className="flex min-h-screen flex-col">
+														<Header />
+														{modal}
+														{children}
+														<Footer />
+														<Modal
+															formPath={
+																modalTypes
+																	.loginModal
+																	.name
+															}
+															maxWidth="max-w-sm"
+														>
+															<LoginPanel />
+														</Modal>
+														<Modal
+															formPath={
+																modalTypes
+																	.registrationModal
+																	.name
+															}
+															maxWidth="max-w-6xl"
+														>
+															<RegistrationPanel />
+														</Modal>
+														<Modal
+															formPath={
+																modalTypes
+																	.shopCartModal
+																	.name
+															}
+															maxWidth="max-w-6xl"
+														>
+															<ShopCartContent variant="modal" />
+														</Modal>
+														<Modal
+															formPath={
+																modalTypes
+																	.changePasswordModal
+																	.name
+															}
+															maxWidth="max-w-xl"
+														>
+															Modal de olvido de
+															contraseña
+														</Modal>
+														<Modal
+															formPath={
+																modalTypes
+																	.clearShopCartModal
+																	.name
+															}
+															maxWidth="max-w-xl"
+														>
+															<ClearShopCartModalContainer />
+														</Modal>
+														<Modal
+															formPath={
+																modalTypes
+																	.ordersModal
+																	.name
+															}
+															maxWidth="max-w-3xl"
+														>
+															<OrdersContent variant="modal" />
+														</Modal>
+													</main>
+												</ProgressBar>
+											</UserTotalOrdersProvider>
+										</ShopCartTotalItemsProviderContainer>
+									</ModalProvider>
+								</PerfumesFiltersProvider>
+							</Suspense>
 						</ShopCartProvider>
 					</ProfileProvider>
 				</SessionProvider>
