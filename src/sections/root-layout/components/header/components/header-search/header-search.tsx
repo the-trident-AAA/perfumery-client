@@ -4,15 +4,14 @@ import useHeaderSearch from "@/src/sections/root-layout/components/header/compon
 import SearchInput from "@/src/components/inputs/search-input/search-input"
 import { useRouter, useSearchParams } from "next/navigation"
 import { paths } from "@/src/lib/routes/paths"
-import { useState, useEffect, useContext } from "react"
-import { PerfumesFiltersContext } from "@/src/sections/perfumes/filters/context/perfumes-filters-context"
+import { useState, useEffect } from "react"
+import { Gender } from "@/src/lib/types/perfumes"
 
 const HeaderSearch = () => {
 	const [search, setSearch] = useState("")
 	const router = useRouter()
 	const searchParams = useSearchParams()
 	const { isMobile, toggleSearch, searchRef, showSearch } = useHeaderSearch()
-	const { filters } = useContext(PerfumesFiltersContext)
 
 	useEffect(() => {
 		const nameParam = searchParams.get("name")
@@ -27,19 +26,25 @@ const HeaderSearch = () => {
 			onChange={e => {
 				setSearch(e.target.value)
 				const limit = searchParams.get("limit")
+				// get the current filters
+				const perfumTypeParam = searchParams.get("perfumeTypeId")
+				const brandParam = searchParams.get("brandId")
+				const genderParam = searchParams.get("gender") as Gender | null
+				const offerParam = searchParams.get("offerId")
+				const availableParam = searchParams.get("available")
 				router.push(
 					paths.perfumes({
 						...(e.target.value && { name: e.target.value }),
-						...(filters.brandId && { brandId: filters.brandId }),
-						...(filters.offerId && { offerId: filters.offerId }),
-						...(filters.perfumeTypeId && {
-							perfumeTypeId: filters.perfumeTypeId,
+						...(brandParam && { brandId: brandParam }),
+						...(offerParam && { offerId: offerParam }),
+						...(perfumTypeParam && {
+							perfumeTypeId: perfumTypeParam,
 						}),
-						...(filters.gender && {
-							gender: filters.gender,
+						...(genderParam && {
+							gender: genderParam,
 						}),
-						...(filters.available !== undefined && {
-							available: filters.available ? "true" : "false",
+						...(availableParam !== undefined && {
+							available: availableParam ? "true" : "false",
 						}),
 						...(limit && {
 							limit,
