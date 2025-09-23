@@ -1,20 +1,20 @@
 services:
-  perfumery-client:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: perfumery-client
-    ports:
-      - "8000:8000"
-    environment:
-      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://perfumery-api.onrender.com/}
-      - AUTH_SECRET=${AUTH_SECRET:-kagkhasghdgakjdghakghdkajgdkjasgdkagsdjgasjgdasdkgajdgaks}
-      - NODE_ENV=production
-      - AUTH_MODE=${AUTH_MODE:-dev}
-    restart: unless-stopped
-    networks:
-      - perfumery-client-network
+    perfumery-client:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: perfumery-client
+        ports:
+            - "4002:4002"
+        environment:
+            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://perfumery-api.onrender.com/}
+            - AUTH_SECRET=${AUTH_SECRET:-kagkhasghdgakjdghakghdkajgdkjasgdkagsdjgasjgdasdkgajdgaks}
+            - NODE_ENV=production
+            - AUTH_MODE=${AUTH_MODE:-dev}
+        restart: unless-stopped
+        networks:
+            - perfumery-network
 
 networks:
-  perfumery-client-network:
-    driver: bridge
+    perfumery-network:
+        driver: bridge
