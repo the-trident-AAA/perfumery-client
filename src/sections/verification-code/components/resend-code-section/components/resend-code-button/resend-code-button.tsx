@@ -10,7 +10,6 @@ interface Props {
 
 export default function ResendCodeButton({ userId }: Props) {
 	const { sendOtp, loading } = useSendOtp({
-		id: userId,
 		onSendAction: () => {
 			toast.success("Código enviado con éxito")
 		},
@@ -21,7 +20,7 @@ export default function ResendCodeButton({ userId }: Props) {
 			className="text-primary"
 			disabled={loading}
 			onClick={() => {
-				sendOtp()
+				sendOtp(userId)
 			}}
 		>
 			Reenviar Código
