@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { useEffect } from "react"
 import { Credentials, credentialsSchema } from "./schemas/credentials-schema"
 import SignInForm from "./sign-in-form"
 import useSignIn from "./hooks/use-sign-in"
@@ -10,18 +10,18 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/src/components/ui/button"
 import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 import useVerifyStateAccount from "@/src/sections/auth/hooks/use-verify-state-account"
+import { useSession } from "next-auth/react"
 
 export default function SignInFormContainer() {
-	const {
-		signIn,
-		loading: loadingSignIn,
-		error: signInError,
-	} = useSignIn({
-		onSignInAction: () => {
-			toast.success("Inicio de sessión realizado con éxtio")
+	const { data: session, status } = useSession()
+	const { signIn, loading: loadingSignIn, error: signInError } = useSignIn()
+
+	useEffect(() => {
+		if (status === "authenticated") {
+			toast.success("Inicio de sesión realizado con éxito")
 			window.location.href = paths.home.root
-		},
-	})
+		}
+	}, [session, status])
 
 	const {
 		verifyStateAccount,
