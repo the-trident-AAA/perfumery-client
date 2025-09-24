@@ -44,7 +44,8 @@ const HeaderSearch = () => {
 							gender: genderParam,
 						}),
 						...(availableParam !== undefined && {
-							available: availableParam ? "true" : "false",
+							available:
+								availableParam === "true" ? "true" : "false",
 						}),
 						...(limit && {
 							limit,
