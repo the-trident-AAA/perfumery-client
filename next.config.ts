@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
 			{
 				protocol: "http",
 				hostname: process.env.NEXT_PUBLIC_IMAGE_HOST || "localhost",
-				port: process.env.NEXT_PUBLIC_IMAGE_PORT || "9000",
 				pathname: "/perfumery/**",
 			},
 		],
