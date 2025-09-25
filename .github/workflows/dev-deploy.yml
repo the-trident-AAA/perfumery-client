@@ -37,6 +37,8 @@ jobs:
             echo 'NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}' > .env &&
             echo 'AUTH_SECRET=${{ secrets.AUTH_SECRET }}' >> .env &&
             echo 'AUTH_MODE=${{ secrets.AUTH_MODE }}' >> .env &&
+            echo 'NEXT_PUBLIC_IMAGE_HOST=${{ secrets.NEXT_PUBLIC_IMAGE_HOST }}' >> .env &&
+            echo 'NEXT_PUBLIC_IMAGE_PORT=${{ secrets.NEXT_PUBLIC_IMAGE_PORT }}' >> .env &&
             git pull origin develop &&
             docker-compose pull &&
             docker-compose build --no-cache &&
