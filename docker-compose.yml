@@ -3,6 +3,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
+        extra_hosts:
+            - "minio.perfumesdelpuro.com:172.17.0.1"
         container_name: perfumery-client
         ports:
             - "4002:4002"
@@ -16,5 +18,5 @@ services:
             - perfumery-network
 
 networks:
-  perfumery-network:
-    name: perfumery-network
+    perfumery-network:
+        name: perfumery-network
