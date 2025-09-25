@@ -16,5 +16,5 @@ services:
             - perfumery-network
 
 networks:
-    perfumery-network:
-        driver: bridge
+  perfumery-network:
+    name: perfumery-network
