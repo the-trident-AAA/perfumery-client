@@ -10,10 +10,13 @@ import UserMenu from "@/src/sections/root-layout/components/header/components/us
 import LittleCar from "@/src/sections/root-layout/components/header/components/little-car/little-car"
 import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
 import OrdersModalButton from "@/src/sections/root-layout/components/header/components/orders-modal-button/orders-modal-button"
+import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
+import PopoverContainer from "@/src/components/ui/popover-container"
+import { Menu } from "lucide-react"
 
 export default function HeaderNavbar() {
 	const { data: session, status } = useSession()
-	const pathname = usePathname()
+	const breakpoint = useBreakpoint()
 
 	if (status === "loading") {
 		return (
@@ -41,9 +44,22 @@ export default function HeaderNavbar() {
 					</NavigationComponent>
 				)}
 			</div>
-			{session && <LittleCar />}
-			{session && <OrdersModalButton />}
-			{session && <UserMenu />}
+			{session &&
+				(breakpoint == "sm" || breakpoint == "xs" ? (
+					<PopoverContainer trigger={<Menu />}>
+						<div className="flex flex-col items-center gap-2 sm:gap-4">
+							<LittleCar />
+							<OrdersModalButton />
+							<UserMenu />
+						</div>
+					</PopoverContainer>
+				) : (
+					<div className="flex items-center gap-2 sm:gap-4">
+						<LittleCar />
+						<OrdersModalButton />
+						<UserMenu />
+					</div>
+				))}
 		</nav>
 	)
 }
