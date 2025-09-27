@@ -12,6 +12,7 @@ import {
 	navigationMenuTriggerStyle,
 } from "@/src/components/ui/navigation-menu"
 import { Skeleton } from "@/src/components/ui/skeleton"
+import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
 import { paths } from "@/src/lib/routes/paths"
 import { PerfumeType } from "@/src/lib/types/perfume-types"
 import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-types"
@@ -40,6 +41,7 @@ const LinkItem = ({ label, icon, path }: LinkItemProps) => (
 )
 
 export default function HeaderNavigationMenu() {
+	const breakpoint = useBreakpoint()
 	const { perfumeTypes, loadingData: loadingDataPerfumeTypes } =
 		usePerfumeTypes()
 
@@ -60,7 +62,7 @@ export default function HeaderNavigationMenu() {
 	const navigationItem = {
 		label: "Ver Perfumes",
 		path: paths.perfumes().root,
-		icon: <ShoppingCartIcon className="size-4 text-primrary sm:size-6" />,
+		icon: <ShoppingCartIcon className="size-6 text-primrary sm:size-6" />,
 		childrens: perfumeTypes.map((perfumeType: PerfumeType) => ({
 			label: perfumeType.name,
 			path: paths.perfumes({ perfumeTypeId: perfumeType.id.toString() })
@@ -83,9 +85,14 @@ export default function HeaderNavigationMenu() {
 						/>
 					) : (
 						<>
-							<NavigationMenuTrigger className="text-[16px] text-primary bg-secondary sm:text-xl">
+							<NavigationMenuTrigger className="text-[12px] text-primary bg-secondary sm:text-xl">
 								{navigationItem.icon}
-								{navigationItem.label}
+								{(breakpoint === "md" ||
+									breakpoint === "lg" ||
+									breakpoint === "xl" ||
+									breakpoint === "2xl" ||
+									breakpoint === "3xl") &&
+									navigationItem.label}
 							</NavigationMenuTrigger>
 							<NavigationMenuContent className="flex flex-col gap-2">
 								{navigationItem.childrens.map(
@@ -96,7 +103,7 @@ export default function HeaderNavigationMenu() {
 										>
 											<Button
 												variant={"secondary"}
-												className="flex gap-2 w-full text-primary justify-start"
+												className="flex gap-2 w-full sm:text-xl text-primary justify-start"
 											>
 												{child.icon}
 												{child.label}
