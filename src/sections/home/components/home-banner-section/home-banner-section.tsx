@@ -83,7 +83,7 @@ export default function HomeBannerSection({
 					<div
 						className={`space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
 					>
-						<div className="flex gap-4 items-center">
+						<div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 items-center">
 							<Avatar className="h-40 w-40">
 								<AvatarImage src="/icons/logo-icon.png" />
 								<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
