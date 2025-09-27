@@ -30,7 +30,9 @@ export default function OrderEditFormContainer({
 	orderPerfumes,
 	fetchOrderPerfumes,
 }: Props) {
-	const sendWhatsappMessage = useWhatsappMessage("5354745543")
+	const sendWhatsappMessage = useWhatsappMessage(
+		String(process.env.NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER),
+	)
 	const { editOrder, loading: submitLoading } = useEditOrder({
 		id: order.id,
 		onEditAction: () => {

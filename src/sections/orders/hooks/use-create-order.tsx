@@ -11,7 +11,9 @@ interface Props {
 export default function useCreateOrder({ onCreateAction }: Props) {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
-	const sendWhatsappMessage = useWhatsappMessage("5359891829")
+	const sendWhatsappMessage = useWhatsappMessage(
+		String(process.env.NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER),
+	)
 	const createOrder = useCallback(async () => {
 		try {
 			setLoading(true)
