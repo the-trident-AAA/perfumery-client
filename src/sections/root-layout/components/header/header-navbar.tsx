@@ -46,7 +46,10 @@ export default function HeaderNavbar() {
 			</div>
 			{session &&
 				(breakpoint == "sm" || breakpoint == "xs" ? (
-					<PopoverContainer trigger={<Menu />}>
+					<PopoverContainer
+						contentClassName="w-12"
+						trigger={<Menu />}
+					>
 						<div className="flex flex-col items-center gap-2 sm:gap-4">
 							<LittleCar />
 							<OrdersModalButton />
