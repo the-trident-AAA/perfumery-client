@@ -83,7 +83,7 @@ export default async function BestSellingProducts() {
 						</div>
 
 						{/* Estadísticas decorativas */}
-						<div className="flex justify-center items-center gap-8 pt-4">
+						<div className="flex justify-center mx-4 items-center gap-8 pt-4">
 							<div className="text-center">
 								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-secondary">
 									<Award className="w-6 h-6 text-secondary" />

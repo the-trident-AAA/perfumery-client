@@ -5,7 +5,7 @@ import React, { Suspense } from "react"
 export default function HomeOffers() {
 	return (
 		<div className="bg-muted pt-12 pb-20">
-			<div className="container mx-auto flex flex-col gap-12 pt-4">
+			<div className="container mx-auto flex flex-col px-4 gap-12 pt-4">
 				<div className="text-center space-y-4 ">
 					<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
 						Aromas irresistibles a precios especiales
