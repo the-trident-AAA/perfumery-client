@@ -65,7 +65,7 @@ export default function ProfileUserFormContainer({ user }: Props) {
 	}
 	return (
 		<div className="w-full flex flex-1 flex-col justify-between gap-4 h-full">
-			<div className="flex items-center gap-4 mb-6">
+			<div className="flex items-center gap-4">
 				<div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
 					<UserIcon className="w-8 h-8 text-primary" />
 				</div>
@@ -76,7 +76,7 @@ export default function ProfileUserFormContainer({ user }: Props) {
 					</p>
 				</div>
 			</div>
-			<div className="flex w-full h-full gap-2 ">
+			<div className="flex flex-col sm:flex-row w-full h-full gap-2 ">
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
