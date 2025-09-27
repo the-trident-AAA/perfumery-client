@@ -1,8 +1,8 @@
 "use client"
-import React from "react"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { paths } from "@/src/lib/routes/paths"
-import { PerfumeType } from "@/src/lib/types/perfume-types"
+import type { PerfumeType } from "@/src/lib/types/perfume-types"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 
 interface Props {
@@ -30,11 +30,13 @@ export default function PerfumeGroupCard({
 			<NavigationComponent
 				href={paths.perfumes({ perfumeTypeId: id.toString() }).root}
 			>
-				<div
-					className="absolute inset-0 bg-cover bg-center z-0"
-					style={{
-						backgroundImage: `url(${image || "/images/place-holder.jpg"})`,
-					}}
+				<Image
+					src={image || "/images/place-holder.jpg"}
+					alt={`${name} perfume collection`}
+					fill
+					className="absolute inset-0 object-cover z-0"
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+					priority={false}
 				/>
 				<div className="absolute inset-0 bg-gradient-to-b bg-black/40 z-10 transition-opacity duration-500 ease-in-out group-hover:opacity-0" />
 				<div className="relative z-20 flex flex-col items-center justify-center h-64 p-6 text-white">
