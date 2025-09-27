@@ -113,14 +113,14 @@ export default function HomeBannerSection({
 						</p>
 
 						{/* Estadísticas */}
-						<div className="flex items-center gap-8 animate-fade-in delay-500">
+						<div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-8 animate-fade-in delay-500">
 							{statisticalTips.map((statisticalTip, index) => (
 								<div key={index} className="text-center">
-									<div className="text-3xl font-bold text-secondary">
-										{statisticalTip.info}
-									</div>
 									<div className="text-secondary/70 text-sm">
 										{statisticalTip.statistics}
+									</div>
+									<div className="text-3xl font-bold text-secondary">
+										{statisticalTip.info}
 									</div>
 								</div>
 							))}
@@ -131,7 +131,7 @@ export default function HomeBannerSection({
 							<NavigationComponent href={paths.perfumes().root}>
 								<Button
 									variant={"secondary"}
-									className="group bg-secondary text-primary text-lg font-bold px-8 py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
+									className="group bg-secondary w-full sm:w-auto text-primary text-lg font-bold px-8 py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
 								>
 									<ShoppingBag className="w-5 h-5 mr-3" />
 									Explorar Colección
@@ -143,7 +143,7 @@ export default function HomeBannerSection({
 						</div>
 
 						{/* Indicadores de confianza */}
-						<div className="flex items-center gap-6 pt-4 animate-fade-in delay-1000">
+						<div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-6 pt-4 animate-fade-in delay-1000">
 							{infoTips.map((infoTip, index) => (
 								<div
 									key={index}
