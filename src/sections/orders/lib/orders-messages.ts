@@ -2,7 +2,7 @@ import { Order } from "@/src/lib/types/orders"
 
 export function formatOrderMessage(
 	order: Order,
-	mode: "create" | "edit" = "edit",
+	mode: "create" | "edit" = "create",
 ) {
 	const intro =
 		mode === "create"
