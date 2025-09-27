@@ -9,12 +9,12 @@ import {
 	PopoverTrigger,
 } from "@/src/components/ui/popover"
 import { Button } from "@/src/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 import { Separator } from "@/src/components/ui/separator"
 import SignOutButton from "@/src/sections/root-layout/components/header/components/sign-out-button/sign-out-button"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { paths } from "@/src/lib/routes/paths"
 import { ProfileContext } from "@/src/sections/auth/context/profile-context/profile-context"
+import Image from "next/image"
 
 export default function UserMenu() {
 	const { user, loading } = useContext(ProfileContext)
@@ -52,18 +52,21 @@ export default function UserMenu() {
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
-				<Button
-					variant="ghost"
-					className="relative h-10 w-10 rounded-full hover:bg-accent/50 transition-colors duration-200"
-					aria-label="Menú de usuario"
-				>
-					<Avatar className="h-10 w-10 shadow-sm">
-						{user.avatar && <AvatarImage src={user.avatar} />}
-						<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
+				<div className="relative h-10 w-10 rounded-full overflow-hidden shadow-sm bg-secondary">
+					{user.avatar ? (
+						<Image
+							src={user.avatar || "/placeholder.svg"}
+							alt={`Avatar de ${user.username || user.email}`}
+							fill
+							className="object-cover"
+							sizes="48px"
+						/>
+					) : (
+						<div className="flex items-center justify-center h-full w-full bg-secondary text-primary font-semibold">
 							{userInitials}
-						</AvatarFallback>
-					</Avatar>
-				</Button>
+						</div>
+					)}
+				</div>
 			</PopoverTrigger>
 
 			<PopoverContent
@@ -74,12 +77,21 @@ export default function UserMenu() {
 				{/* Header del usuario */}
 				<div className="p-4 border-b bg-gradient-to-r from-muted/50 to-muted/30">
 					<div className="flex items-center gap-3">
-						<Avatar className="h-12 w-12 shadow-sm">
-							{user.avatar && <AvatarImage src={user.avatar} />}
-							<AvatarFallback className="bg-secondary text-primary font-semibold">
-								{userInitials}
-							</AvatarFallback>
-						</Avatar>
+						<div className="relative h-12 w-12 rounded-full overflow-hidden shadow-sm bg-secondary">
+							{user.avatar ? (
+								<Image
+									src={user.avatar || "/placeholder.svg"}
+									alt={`Avatar de ${user.username || user.email}`}
+									fill
+									className="object-cover"
+									sizes="48px"
+								/>
+							) : (
+								<div className="flex items-center justify-center h-full w-full bg-secondary text-primary font-semibold">
+									{userInitials}
+								</div>
+							)}
+						</div>
 						<div className="flex-1 min-w-0">
 							<p className="font-semibold text-sm text-foreground truncate">
 								{user.username}
