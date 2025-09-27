@@ -12,7 +12,7 @@ const Header = () => {
 					clipPath: "polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%)",
 				}}
 			/>
-			<div className="container mx-auto px-4 py-4 flex items-center justify-between">
+			<div className="px-6 py-4 flex items-center justify-between">
 				<AppLogo />
 				<div className="flex-1 max-w-2xl mx-4 md:mx-8">
 					<Suspense fallback={<div>Cargando...</div>}>
