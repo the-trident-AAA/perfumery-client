@@ -5,7 +5,9 @@ import { useEffect, useRef, useState } from "react"
 
 export default function useHeaderSearch() {
 	const breakpoint = useBreakpoint()
-	const [isMobile, setIsMobile] = useState<boolean>(breakpoint === "xs")
+	const [isMobile, setIsMobile] = useState<boolean>(
+		breakpoint === "xs" || breakpoint === "md" || breakpoint === "lg",
+	)
 	const [showSearch, setShowSearch] = useState<boolean>(false)
 	const searchRef = useRef<HTMLDivElement>(null)
 
@@ -14,7 +16,9 @@ export default function useHeaderSearch() {
 	})
 
 	useEffect(() => {
-		setIsMobile(breakpoint === "xs")
+		setIsMobile(
+			breakpoint === "xs" || breakpoint === "md" || breakpoint === "lg",
+		)
 	}, [breakpoint])
 
 	const toggleSearch = () => {
