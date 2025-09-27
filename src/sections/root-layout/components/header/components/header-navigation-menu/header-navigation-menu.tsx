@@ -62,7 +62,7 @@ export default function HeaderNavigationMenu() {
 	const navigationItem = {
 		label: "Ver Perfumes",
 		path: paths.perfumes().root,
-		icon: <ShoppingCartIcon className="size-6 text-primrary sm:size-6" />,
+		icon: <ShoppingCartIcon className="size-4 text-primrary sm:size-6" />,
 		childrens: perfumeTypes.map((perfumeType: PerfumeType) => ({
 			label: perfumeType.name,
 			path: paths.perfumes({ perfumeTypeId: perfumeType.id.toString() })
