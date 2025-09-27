@@ -18,7 +18,7 @@ export default function PerfumeInfoCard({ info, title, icon }: Props) {
 			}}
 			transition={{ type: "spring", stiffness: 200, damping: 15 }}
 		>
-			<Card className="bg-primary border-t-6 border-b-6 border-secondary rounded-xl overflow-hidden cursor-pointer">
+			<Card className="bg-primary h-full border-t-6 border-b-6 border-secondary rounded-xl overflow-hidden cursor-pointer">
 				<CardContent className="p-4 text-center flex flex-col items-center gap-2 transition-colors duration-300 hover:bg-primary/90">
 					<motion.div
 						whileHover={{ rotate: 5 }}
