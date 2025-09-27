@@ -8,7 +8,7 @@ export default async function HomeOffersList() {
 	if (!res.response || res.error) throw new Error("Error in fetching offers")
 	const offers = res.response
 	return offers.length > 0 ? (
-		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+		<div className="grid sm:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-8">
 			{offers.map((offer, index) => (
 				<OfferCard key={index} offer={offer} />
 			))}
