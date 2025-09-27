@@ -4,13 +4,20 @@ import { Popover, PopoverContent, PopoverTrigger } from "./popover"
 interface Props {
 	children: ReactNode
 	trigger: ReactNode
+	contentClassName?: string
 }
 
-export default function PopoverContainer({ children, trigger }: Props) {
+export default function PopoverContainer({
+	children,
+	trigger,
+	contentClassName,
+}: Props) {
 	return (
 		<Popover>
 			<PopoverTrigger asChild>{trigger}</PopoverTrigger>
-			<PopoverContent className="">{children}</PopoverContent>
+			<PopoverContent className={contentClassName}>
+				{children}
+			</PopoverContent>
 		</Popover>
 	)
 }
