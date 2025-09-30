@@ -1,9 +1,6 @@
-"use client"
-
 import type React from "react"
 import { Sparkles, Zap, Gift, Eye } from "lucide-react"
 import Image from "next/image"
-import { useState, useEffect } from "react"
 import { getGenderColor, Perfume } from "@/src/lib/types/perfumes"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
@@ -19,34 +16,13 @@ interface Props {
 }
 
 export default function PerfumeCard({ perfume }: Props) {
-	const [isHovered, setIsHovered] = useState(false)
-	const [isLoaded, setIsLoaded] = useState(false)
-	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
 	const discountedPrice = perfume.discountOffer
 		? perfume.price - perfume.price * perfume.discountOffer
 		: perfume.price
 
-	useEffect(() => {
-		setIsLoaded(true)
-	}, [])
-
-	const handleMouseMove = (e: React.MouseEvent) => {
-		const rect = e.currentTarget.getBoundingClientRect()
-		setMousePosition({
-			x: (e.clientX - rect.left) / rect.width,
-			y: (e.clientY - rect.top) / rect.height,
-		})
-	}
-
 	return (
 		<Card
-			className={`group relative overflow-hidden h-full border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 ${
-				isLoaded ? "animate-fade-in-up" : "opacity-0"
-			}`}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			onMouseMove={handleMouseMove}
+			className={`group relative overflow-hidden h-full border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4`}
 		>
 			{/* Franjas decorativas superiores animadas */}
 			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/60 via-secondary to-secondary/60 z-20" />
@@ -54,14 +30,7 @@ export default function PerfumeCard({ perfume }: Props) {
 			{/* Elementos decorativos flotantes */}
 			<div className="absolute inset-0 pointer-events-none overflow-hidden">
 				{/* Círculos decorativos que siguen el mouse */}
-				<div
-					className="absolute w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-2xl transition-all duration-300"
-					style={{
-						top: `${mousePosition.y * 100}%`,
-						left: `${mousePosition.x * 100}%`,
-						transform: `translate(-50%, -50%) scale(${isHovered ? 1.5 : 1})`,
-					}}
-				/>
+				<div className="absolute w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-2xl transition-all duration-300" />
 
 				{/* Partículas flotantes */}
 				<Sparkles className="absolute top-6 right-8 h-4 w-4 text-primary/60 animate-pulse" />
@@ -127,9 +96,7 @@ export default function PerfumeCard({ perfume }: Props) {
 
 						{/* Contenido del overlay */}
 						<div
-							className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-6 transition-all duration-500 ${
-								isHovered ? "opacity-100" : "opacity-0"
-							}`}
+							className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-6 transition-all duration-500`}
 						>
 							<Button
 								className="text-secondary flex gap-2 items-center cursor-pointer"
