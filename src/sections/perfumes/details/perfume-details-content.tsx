@@ -44,22 +44,49 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 									-{perfume.offer.discount * 100}% OFF
 								</Badge>
 							)}
-							<div
-								className={`w-3 h-3 rounded-full ${
-									perfume.available
-										? "bg-green-500"
-										: "bg-red-500"
-								}`}
-							/>
-							<span
-								className={`text-sm font-medium ${
-									perfume.available
-										? "text-green-700"
-										: "text-red-700"
-								}`}
-							>
-								{perfume.available ? "En stock" : "Agotado"}
-							</span>
+							{perfume.available ? (
+								<div className="flex gap-2 items-center">
+									<div
+										className={`w-3 h-3 rounded-full ${
+											perfume.cant > 0
+												? "bg-green-500"
+												: "bg-red-500"
+										}`}
+									/>
+									<span
+										className={`text-sm font-medium ${
+											perfume.cant > 0
+												? "text-green-700"
+												: "text-red-700"
+										}`}
+									>
+										{perfume.cant > 0
+											? "En stock"
+											: "Agotado"}
+									</span>
+								</div>
+							) : (
+								<div className="flex gap-2 items-center">
+									<div
+										className={`w-3 h-3 rounded-full ${
+											perfume.available
+												? "bg-green-500"
+												: "bg-red-500"
+										}`}
+									/>
+									<span
+										className={`text-sm font-medium ${
+											perfume.available
+												? "text-green-700"
+												: "text-red-700"
+										}`}
+									>
+										{perfume.available
+											? "En stock"
+											: "No disponible"}
+									</span>
+								</div>
+							)}
 						</div>
 
 						<h1 className="text-3xl font-bold text-gray-900 mb-2">
