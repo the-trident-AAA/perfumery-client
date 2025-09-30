@@ -22,7 +22,7 @@ export default function PerfumesContainer({ searchParams }: Props) {
 				<Suspense
 					fallback={
 						<CardSkeletonGroup
-							containerClassName="grid grid-cols-2 2xs:grid-cols-3 xl:grid-cols-4 gap-6"
+							containerClassName="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6"
 							count={15}
 						/>
 					}
