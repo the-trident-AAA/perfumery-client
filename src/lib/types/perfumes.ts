@@ -90,6 +90,7 @@ export const convertPerfumesFiltersDTO = (
 		...rest,
 		priceMin: priceRange[0],
 		priceMax: priceRange[1],
+		available: perfumesFilters.available ? true : undefined,
 		scentsIds:
 			perfumesFilters.scentsIds.length > 0
 				? perfumesFilters.scentsIds

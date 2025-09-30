@@ -43,7 +43,7 @@ const HeaderSearch = () => {
 						...(genderParam && {
 							gender: genderParam,
 						}),
-						...(availableParam !== undefined && {
+						...(availableParam !== null && {
 							available:
 								availableParam === "true" ? "true" : "false",
 						}),

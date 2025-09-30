@@ -48,7 +48,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 			available: availableParam
 				? availableParam === "true"
 					? true
-					: false
+					: undefined
 				: undefined,
 		}))
 	}, [searchParams])
