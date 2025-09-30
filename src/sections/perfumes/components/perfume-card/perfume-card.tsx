@@ -354,7 +354,7 @@ export default function PerfumeCard({ perfume }: Props) {
 									<span className="text-xs font-medium text-primary">
 										{perfume.available
 											? "En stock"
-											: "Agotado"}
+											: "No disponible"}
 									</span>
 								</div>
 								{perfume.available && perfume.cant <= 5 && (

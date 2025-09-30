@@ -65,14 +65,16 @@ export default function AddShopCartPerfumeButton({
 			className={`${
 				variant === "large" ? "text-primary flex-1" : "text-secondary"
 			} transition-all duration-300 px-6`}
-			disabled={loading || !perfume.available}
+			disabled={loading || !perfume.available || perfume.cant === 0}
 			onClick={handleAddShopCartPerfume}
 		>
-			{perfume.available ? (
+			{perfume.available && perfume.cant > 0 ? (
 				<>
 					<ShoppingCart className="size-6 mr-2" />
 					Añadir
 				</>
+			) : !perfume.available ? (
+				"No disponible"
 			) : (
 				"Agotado"
 			)}
