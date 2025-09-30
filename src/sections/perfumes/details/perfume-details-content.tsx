@@ -19,7 +19,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 
 	// Calcular precio con descuento
 	const discountedPrice = perfume.offer
-		? perfume.price - (perfume.price * perfume.offer.discount) / 100
+		? perfume.price - perfume.price * perfume.offer.discount
 		: perfume.price
 
 	return (
@@ -41,7 +41,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 									variant="destructive"
 									className="text-sm"
 								>
-									-{perfume.offer.discount}% OFF
+									-{perfume.offer.discount * 100}% OFF
 								</Badge>
 							)}
 							<div
