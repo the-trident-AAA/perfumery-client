@@ -41,7 +41,7 @@ export default function PerfumeCard({ perfume }: Props) {
 
 	return (
 		<Card
-			className={`group relative overflow-hidden border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 ${
+			className={`group relative overflow-hidden h-full border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 ${
 				isLoaded ? "animate-fade-in-up" : "opacity-0"
 			}`}
 			onMouseEnter={() => setIsHovered(true)}
@@ -104,7 +104,7 @@ export default function PerfumeCard({ perfume }: Props) {
 				<NavigationComponent
 					href={paths.perfume({ id: perfume.id }).root}
 				>
-					<div className="relative h-80 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
+					<div className="relative h-54 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
 						<div className="absolute inset-0 flex items-center justify-center">
 							<Image
 								src={perfume.image || perfumeImagePlaceHolder}
@@ -127,7 +127,7 @@ export default function PerfumeCard({ perfume }: Props) {
 
 						{/* Contenido del overlay */}
 						<div
-							className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-16 transition-all duration-500 ${
+							className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-6 transition-all duration-500 ${
 								isHovered ? "opacity-100" : "opacity-0"
 							}`}
 						>
@@ -174,7 +174,7 @@ export default function PerfumeCard({ perfume }: Props) {
 				</NavigationComponent>
 
 				{/* Content Section mejorada */}
-				<div className="relative bg-gradient-to-br from-secondary via-secondary/90 to-secondary/90">
+				<div className="relative bg-gradient-to-br h-full from-secondary via-secondary/90 to-secondary/90">
 					{/* Franja decorativa interna */}
 					<div className="absolute top-0 left-6 right-6 h-0.5 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
@@ -272,17 +272,8 @@ export default function PerfumeCard({ perfume }: Props) {
 							)}
 						</div>
 					</div>
-
-					{/* Franja decorativa inferior */}
-					<div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-secondary via-secondary/60 to-secondary/40 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
 				</div>
 			</CardContent>
-
-			{/* Franja inferior con efecto de onda */}
-			<div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/40 via-secondary/60 to-secondary/40 transform origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-
-			{/* Efecto de brillo general */}
-			<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1500 ease-out pointer-events-none" />
 		</Card>
 	)
 }
