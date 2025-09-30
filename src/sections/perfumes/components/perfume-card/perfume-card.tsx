@@ -24,7 +24,7 @@ export default function PerfumeCard({ perfume }: Props) {
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
 	const discountedPrice = perfume.discountOffer
-		? perfume.price * (1 - perfume.discountOffer / 100)
+		? perfume.price - perfume.price * perfume.discountOffer
 		: perfume.price
 
 	useEffect(() => {
