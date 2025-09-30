@@ -182,19 +182,6 @@ export default function PerfumesFilterss({
 						})
 					}}
 				/>
-
-				{/* Mililiters */}
-				<SliderInput
-					label="Mililitros"
-					meansure="ml"
-					value={filters.millilitersRange}
-					step={5}
-					handleChangeFilters={value => {
-						handleChangeFilters({
-							millilitersRange: value as [number, number],
-						})
-					}}
-				/>
 			</div>
 			<Separator className="bg-secondary" />
 			{/* Scents */}

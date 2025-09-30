@@ -44,8 +44,6 @@ export interface PerfumesFiltersDTO {
 	gender?: Gender
 	scentsIds?: string[]
 	milliliters?: number
-	millilitersMin?: number
-	millilitersMax?: number
 	priceMin?: number
 	priceMax?: number
 	perfumeTypeId?: string
@@ -87,13 +85,11 @@ export const genderMapInverted: Map<string, Gender> = new Map(
 export const convertPerfumesFiltersDTO = (
 	perfumesFilters: PerfumesFilters,
 ): PerfumesFiltersDTO => {
-	const { priceRange, millilitersRange, ...rest } = perfumesFilters
+	const { priceRange, ...rest } = perfumesFilters
 	return {
 		...rest,
 		priceMin: priceRange[0],
 		priceMax: priceRange[1],
-		millilitersMin: millilitersRange[0],
-		millilitersMax: millilitersRange[1],
 	}
 }
 

@@ -16,7 +16,6 @@ interface Props {
 const defaultProps: Props = {
 	filters: {
 		priceRange: [0, 1000],
-		millilitersRange: [0, 100],
 		scentsIds: [],
 	},
 	getActiveFiltersCount: () => {
