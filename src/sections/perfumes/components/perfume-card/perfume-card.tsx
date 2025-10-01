@@ -16,10 +16,6 @@ interface Props {
 }
 
 export default function PerfumeCard({ perfume }: Props) {
-	const discountedPrice = perfume.discountOffer
-		? perfume.price - perfume.price * perfume.discountOffer
-		: perfume.price
-
 	return (
 		<>
 			<style jsx>{`
@@ -323,7 +319,7 @@ export default function PerfumeCard({ perfume }: Props) {
 									{perfume.discountOffer ? (
 										<>
 											<span className="text-2xl font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-												{fCurrency(discountedPrice)}
+												{fCurrency(perfume.totalPrice)}
 											</span>
 											<span className="text-sm text-muted-foreground line-through opacity-75">
 												{fCurrency(perfume.price)}

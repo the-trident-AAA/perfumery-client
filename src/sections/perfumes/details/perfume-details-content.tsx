@@ -17,11 +17,6 @@ interface Props {
 export default function PerfumeDetailsContent({ perfume }: Props) {
 	const genderInfo = genderMap.get(perfume.gender)
 
-	// Calcular precio con descuento
-	const discountedPrice = perfume.offer
-		? perfume.price - perfume.price * perfume.offer.discount
-		: perfume.price
-
 	return (
 		<div className="bg-muted overflow-hidden">
 			{/* Header con información básica - Layout horizontal */}
@@ -116,7 +111,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 					<div className="text-right">
 						<div className="flex items-center gap-3 justify-end">
 							<span className="text-3xl font-bold text-gray-900">
-								{fCurrency(discountedPrice)}
+								{fCurrency(perfume.totalPrice)}
 							</span>
 							{perfume.offer && (
 								<span className="text-xl text-gray-500 line-through">
@@ -127,7 +122,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 						{perfume.offer && (
 							<p className="text-sm text-green-600 font-medium mt-1">
 								¡Ahorras{" "}
-								{fCurrency(perfume.price - discountedPrice)}!
+								{fCurrency(perfume.price - perfume.totalPrice)}!
 							</p>
 						)}
 					</div>
