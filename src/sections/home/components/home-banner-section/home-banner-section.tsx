@@ -9,6 +9,7 @@ import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 import HomeBannerImagesCarousel from "@/src/sections/home/components/home-banner-section/components/home-banner-images-carousel/home-banner-images-carousel"
+import { Skeleton } from "@/src/components/ui/skeleton"
 
 interface Props {
 	homeBanner: HomeBanner
@@ -86,8 +87,10 @@ export default function HomeBannerSection({
 						<div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 items-center">
 							<Avatar className="h-40 w-40">
 								<AvatarImage src="/icons/logo-icon.png" />
-								<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
-									{"PP"}
+								<AvatarFallback className="">
+									<div className="flex items-center gap-2">
+										<Skeleton className="h-40 w-40 rounded-full" />
+									</div>
 								</AvatarFallback>
 							</Avatar>
 

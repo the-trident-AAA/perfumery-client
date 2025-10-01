@@ -2,6 +2,7 @@ import React from "react"
 import NavigationComponent from "../navigation-component/navigation-component"
 import { paths } from "@/src/lib/routes/paths"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
+import { Skeleton } from "@/src/components/ui/skeleton"
 
 interface Props {
 	avatarClassName?: string
@@ -17,8 +18,10 @@ export default function AppLogo({
 			<div className="flex items-center space-x-2">
 				<Avatar className={avatarClassName}>
 					<AvatarImage src="/icons/logo-icon.png" />
-					<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
-						{"PP"}
+					<AvatarFallback>
+						<div className="flex items-center gap-2">
+							<Skeleton className="h-10 w-10 rounded-full" />
+						</div>
 					</AvatarFallback>
 				</Avatar>
 				{withText && (
