@@ -35,7 +35,7 @@ export default function HomeBannerSection({
 	return (
 		<div
 			id={id}
-			className="relative w-screen h-full overflow-hidden bg-primary"
+			className="relative w-full h-full overflow-hidden bg-primary"
 			onMouseMove={handleMouseMove}
 		>
 			{/* Elementos decorativos de fondo animados */}
