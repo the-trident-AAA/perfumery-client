@@ -176,6 +176,7 @@ export default function PerfumesFilterss({
 					meansure="$"
 					value={filters.priceRange}
 					step={5}
+					max={300}
 					handleChangeFilters={value => {
 						handleChangeFilters({
 							priceRange: value as [number, number],
