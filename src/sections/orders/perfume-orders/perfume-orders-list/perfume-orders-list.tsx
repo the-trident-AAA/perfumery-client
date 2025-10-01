@@ -46,7 +46,8 @@ export default function PerfumeOrdersList({
 							return (
 								total +
 								(orderPerfume
-									? orderPerfume.perfume.price * perfume.cant
+									? orderPerfume.perfume.totalPrice *
+										perfume.cant
 									: 0)
 							)
 						}, 0),
