@@ -15,18 +15,15 @@ export function formatOrderMessage(
 
 	const items = order.orderPerfumes
 		.map((item, index) => {
-			const total = item.perfume.price * item.cant
+			const total = item.price
 			const scents =
 				item.perfume.scents?.map((s: any) => s.name).join(", ") ||
 				"Sin especificar"
-			return `*${index + 1}.* ${item.perfume.name} - ${item.perfume.brand.name}\n    Cantidad: ${item.cant}\n    Precio: $${item.perfume.price}\n    Subtotal: $${total}\n    Aromas: ${scents}`
+			return `*${index + 1}.* ${item.perfume.name} - ${item.perfume.brand.name}\n    Cantidad: ${item.cant}\n    Precio: $${item.perfume.totalPrice}\n    Subtotal: $${total}\n    Aromas: ${scents}`
 		})
 		.join("\n\n")
 
-	const totalGeneral = order.orderPerfumes.reduce(
-		(acc: number, item: any) => acc + item.perfume.price * item.cant,
-		0,
-	)
+	const totalGeneral = order.totalMount
 
 	const footer = `\n\n *Total del pedido*: $${totalGeneral}`
 
