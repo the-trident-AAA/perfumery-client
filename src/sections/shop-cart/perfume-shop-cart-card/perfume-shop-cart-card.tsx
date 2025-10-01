@@ -98,7 +98,7 @@ export default function PerfumeShopCartCard({
 
 							{/* Precio */}
 							<p className="text-lg font-bold text-secondary">
-								{fCurrency(shopCartPerfume.perfume.price)}
+								{fCurrency(shopCartPerfume.perfume.totalPrice)}
 							</p>
 
 							{/* Controlador de cantidad */}

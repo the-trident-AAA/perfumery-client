@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
 import { RHFQuantityInput } from "@/src/components/form/rhf-components/rhf-quantity-input/rhf-quantity-input"
+import { fCurrency } from "@/src/lib/utils/format-number"
 
 interface Props {
 	index: number
@@ -37,7 +38,7 @@ export default function PerfumeOrderCard({
 								{perfume.name}
 							</h3>
 							<p className="font-semibold text-sm 2xs:text-base">
-								${perfume.price.toFixed(2)}
+								{fCurrency(perfume.totalPrice)}
 							</p>
 						</div>
 
@@ -58,7 +59,7 @@ export default function PerfumeOrderCard({
 									Total:{" "}
 								</p>
 								<span className="font-bold text-xs 2xs:text-base">
-									${price.toFixed(2)}
+									{fCurrency(price)}
 								</span>
 							</div>
 						</div>
