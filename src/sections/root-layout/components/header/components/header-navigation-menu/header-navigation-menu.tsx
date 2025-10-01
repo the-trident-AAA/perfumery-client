@@ -74,7 +74,7 @@ export default function HeaderNavigationMenu() {
 	}
 
 	return (
-		<NavigationMenu>
+		<NavigationMenu align="right">
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					{navigationItem.childrens.length === 0 ? (

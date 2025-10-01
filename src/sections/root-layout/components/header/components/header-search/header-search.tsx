@@ -64,7 +64,7 @@ const HeaderSearch = () => {
 				<SearchIcon className="size-8 sm:size-12 text-secondary" />
 			</button>
 			{showSearch && (
-				<div className="absolute top-full right-[-82px] mt-2 w-[289px] text-black bg-white shadow-lg rounded-lg p-2 z-10 border border-gray-200">
+				<div className="absolute top-full right-[-142px] mt-2 w-[288px] text-black bg-white shadow-lg rounded-lg p-2 z-10 border border-gray-200">
 					<SearchInput
 						id="name"
 						value={search}
