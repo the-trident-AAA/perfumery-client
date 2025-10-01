@@ -75,8 +75,8 @@ export default function PerfumeOrdersList({
 											cant: perfume.cant,
 											price:
 												perfume.cant *
-												(orderPerfume?.perfume.price ||
-													0),
+												(orderPerfume?.perfume
+													.totalPrice || 0),
 										} as OrderPerfume
 									}
 								/>
