@@ -11,6 +11,7 @@ import { Card } from "@/src/components/ui/card"
 import { Package, Box } from "lucide-react"
 import { Order } from "@/src/lib/types/orders"
 import PerfumeOrdersListContainer from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list-container"
+import { fCurrency } from "@/src/lib/utils/format-number"
 
 interface Props {
 	order: Order
@@ -56,7 +57,7 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 
 							<div className="flex flex-col gap-2 w-full justify-center text-right">
 								<span className="font-black text-black text-2xl">
-									${order.totalMount.toFixed(2)}
+									{fCurrency(order.totalMount)}
 								</span>
 
 								<p className="text-sm text-black">
