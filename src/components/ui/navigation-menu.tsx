@@ -4,18 +4,27 @@ import { cva } from "class-variance-authority"
 import { ChevronDownIcon } from "lucide-react"
 import { cn } from "@/src/lib/utils/utils"
 
+// Tipos para la prop align
+type NavigationMenuAlign = "left" | "right"
+
+interface NavigationMenuProps
+	extends React.ComponentProps<typeof NavigationMenuPrimitive.Root> {
+	viewport?: boolean
+	align?: NavigationMenuAlign
+}
+
 function NavigationMenu({
 	className,
 	children,
 	viewport = true,
+	align = "left",
 	...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-	viewport?: boolean
-}) {
+}: NavigationMenuProps) {
 	return (
 		<NavigationMenuPrimitive.Root
 			data-slot="navigation-menu"
 			data-viewport={viewport}
+			data-align={align}
 			className={cn(
 				"group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
 				className,
@@ -23,7 +32,7 @@ function NavigationMenu({
 			{...props}
 		>
 			{children}
-			{viewport && <NavigationMenuViewport />}
+			{viewport && <NavigationMenuViewport align={align} />}
 		</NavigationMenuPrimitive.Root>
 	)
 }
@@ -81,15 +90,26 @@ function NavigationMenuTrigger({
 	)
 }
 
+interface NavigationMenuContentProps
+	extends React.ComponentProps<typeof NavigationMenuPrimitive.Content> {
+	align?: NavigationMenuAlign
+}
+
 function NavigationMenuContent({
 	className,
+	align = "left",
 	...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Content>) {
+}: NavigationMenuContentProps) {
 	return (
 		<NavigationMenuPrimitive.Content
 			data-slot="navigation-menu-content"
+			data-align={align}
 			className={cn(
+				// Modo izquierdo (por defecto)
 				"data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 top-0 left-0 w-full p-2 pr-2.5 md:absolute md:w-auto",
+				// Modo derecho
+				"data-[align=right]:data-[motion=from-end]:slide-in-from-left-52 data-[align=right]:data-[motion=from-start]:slide-in-from-right-52 data-[align=right]:data-[motion=to-end]:slide-out-to-left-52 data-[align=right]:data-[motion=to-start]:slide-out-to-right-52 data-[align=right]:right-0 data-[align=right]:left-auto",
+				// Estilos base compartidos
 				"group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
 				className,
 			)}
@@ -98,22 +118,36 @@ function NavigationMenuContent({
 	)
 }
 
+interface NavigationMenuViewportProps
+	extends React.ComponentProps<typeof NavigationMenuPrimitive.Viewport> {
+	align?: NavigationMenuAlign
+}
+
 function NavigationMenuViewport({
 	className,
+	align = "left",
 	...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+}: NavigationMenuViewportProps) {
 	return (
 		<div
 			className={cn(
+				// Modo izquierdo (por defecto)
 				"absolute top-full left-0 isolate z-50 flex justify-center",
+				// Modo derecho
+				"data-[align=right]:left-auto data-[align=right]:right-0 data-[align=right]:justify-end",
 			)}
+			data-align={align}
 		>
 			<NavigationMenuPrimitive.Viewport
 				data-slot="navigation-menu-viewport"
 				className={cn(
+					// Modo izquierdo (por defecto)
 					"origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
+					// Modo derecho
+					"data-[align=right]:origin-top-right",
 					className,
 				)}
+				data-align={align}
 				{...props}
 			/>
 		</div>
@@ -136,15 +170,25 @@ function NavigationMenuLink({
 	)
 }
 
+interface NavigationMenuIndicatorProps
+	extends React.ComponentProps<typeof NavigationMenuPrimitive.Indicator> {
+	align?: NavigationMenuAlign
+}
+
 function NavigationMenuIndicator({
 	className,
+	align = "left",
 	...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Indicator>) {
+}: NavigationMenuIndicatorProps) {
 	return (
 		<NavigationMenuPrimitive.Indicator
 			data-slot="navigation-menu-indicator"
+			data-align={align}
 			className={cn(
+				// Modo izquierdo (por defecto)
 				"data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+				// Modo derecho
+				"data-[align=right]:justify-end",
 				className,
 			)}
 			{...props}
@@ -165,3 +209,4 @@ export {
 	NavigationMenuViewport,
 	navigationMenuTriggerStyle,
 }
+export type { NavigationMenuAlign }
