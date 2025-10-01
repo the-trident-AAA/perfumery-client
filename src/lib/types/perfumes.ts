@@ -17,6 +17,7 @@ export interface Perfume {
 	perfumeType: string
 	available: boolean
 	price: number
+	totalPrice: number
 	cant: number
 }
 
@@ -34,6 +35,7 @@ export interface PerfumeDetails {
 	perfumeType: PerfumeType
 	available: boolean
 	price: number
+	totalPrice: number
 	cant: number
 }
 
