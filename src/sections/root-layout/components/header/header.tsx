@@ -13,8 +13,8 @@ const Header = () => {
 				}}
 			/>
 			<div className="px-6 py-4 flex items-center justify-between">
-				<AppLogo />
-				<div className="flex-1 max-w-2xl mx-4 md:mx-8">
+				<AppLogo avatarClassName="h-10 w-10 sm:h-12 sm:w-12" />
+				<div className="flex-1 mx-2 max-w-2xl">
 					<Suspense fallback={<div>Cargando...</div>}>
 						<HeaderSearch />
 					</Suspense>
