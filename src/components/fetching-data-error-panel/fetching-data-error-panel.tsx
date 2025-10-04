@@ -29,8 +29,9 @@ export function FetchingDataErrorPanel({ message, reset }: Props) {
 					<p className="text-muted-foreground">{message}</p>
 
 					<Button
+						variant={"secondary"}
 						onClick={reset}
-						className="mt-2 px-6 py-2 rounded-lg transition-transform hover:scale-105 duration-200"
+						className="mt-2 px-6 py-2 text-primary rounded-lg transition-transform hover:scale-105 duration-200"
 					>
 						<RefreshCw className="mr-2 h-4 w-4" />
 						Reintentar
