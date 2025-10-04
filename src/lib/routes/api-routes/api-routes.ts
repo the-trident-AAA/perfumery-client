@@ -39,7 +39,7 @@ export const apiRoutes = {
 		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/:id`,
 		getAnonymousShopCart: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/find-anonymous-shop-cart`,
 		getTotalItems: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/total-items/:id`,
-		getAnonymousShopCartTotalItems: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/clear-anonymous-shop-cart`,
+		getAnonymousShopCartTotalItems: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/total-items-anonymous`,
 	},
 	shopCartPerfumes: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}shop-cart-perfume`,
