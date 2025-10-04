@@ -17,6 +17,7 @@ export const fetcher = (url: string) => fetch(url).then(r => r.json())
 
 export const buildApiResponse = async <T>(
 	response: Response,
+	resolvedData?: T,
 ): Promise<ApiResponse<T>> => {
 	console.log(
 		"buildApiResponse called with response:",
@@ -26,7 +27,7 @@ export const buildApiResponse = async <T>(
 	)
 	if (response.ok) {
 		return {
-			response: (await response.json()) as T,
+			response: resolvedData || ((await response.json()) as T),
 			status: 200,
 		}
 	} else {
