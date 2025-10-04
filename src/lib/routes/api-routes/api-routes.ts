@@ -37,6 +37,7 @@ export const apiRoutes = {
 	},
 	shopCarts: {
 		getById: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/:id`,
+		getAnonymousShopCart: `${process.env.NEXT_PUBLIC_API_URL}shop-cart/find-anonymous-shop-cart`,
 	},
 	shopCartPerfumes: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}shop-cart-perfume`,
