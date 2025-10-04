@@ -11,7 +11,10 @@ export default function useUserTotalOrders() {
 		setError(null)
 		const res = await getUserTotalOrders()
 		if (!res.response || res.error)
-			setError("Error en la obtención del total de pedidos del usuario")
+			setError(
+				res.error?.reason ||
+					"Error en la obtención del total de pedidos del usuario",
+			)
 		else {
 			setTotalOrders(res.response.total)
 		}
