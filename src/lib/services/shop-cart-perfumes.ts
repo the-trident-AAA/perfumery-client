@@ -55,7 +55,7 @@ export async function createShopCartPerfume(
 		cookieStore.set("guestSession", shopCartPerfumeData.sessionId, {
 			maxAge: 30 * 24 * 60 * 60,
 			httpOnly: true,
-			secure: process.env.NODE_ENV === "production",
+			secure: false, // temporary
 			sameSite: "lax",
 			path: "/",
 		})
