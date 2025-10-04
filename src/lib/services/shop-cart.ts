@@ -36,7 +36,7 @@ export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 					sessionId: sessionId,
 				}),
 			})
-	console.log(res)
+
 	return await buildApiResponse<ShopCart>(res)
 }
 
