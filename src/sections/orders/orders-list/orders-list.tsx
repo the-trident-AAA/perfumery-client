@@ -10,7 +10,8 @@ interface Props {
 export default async function OrdersList({ variant = "default" }: Props) {
 	const res = await getOrdersList({ limit: 100 })
 
-	if (!res.response || res.error) throw new Error("Error fetching orders")
+	if (!res.response || res.error)
+		return <div>{res.error?.reason || "Error en la carga de orders"}</div>
 
 	const orders = res.response.data
 
