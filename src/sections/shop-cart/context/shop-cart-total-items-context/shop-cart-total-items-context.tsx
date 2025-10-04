@@ -20,13 +20,11 @@ export const ShopCartTotalItemsContext = createContext<Props>(defaultProps)
 
 export function ShopCartTotalItemsProvider({
 	children,
-	shopCartId,
 }: {
 	children: React.ReactNode
-	shopCartId: string | null
 }) {
 	const { totalItems, loading, fetchShopCartTotalItems } =
-		useShopCartTotalItems({ shopCartId })
+		useShopCartTotalItems()
 
 	return (
 		<ShopCartTotalItemsContext.Provider
