@@ -14,12 +14,17 @@ import { cookies } from "next/headers"
 
 export async function login(credentials: CredentialsDTO) {
 	const cookieStore = await cookies()
+	const sessionId = cookieStore.get("guestSession")?.value
+
 	const res = await fetch(apiRoutes.auth.login, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
 		},
-		body: JSON.stringify(credentials),
+		body: JSON.stringify({
+			...credentials,
+			sessionId,
+		}),
 	})
 	if (res.ok) cookieStore.delete("guestSession")
 
