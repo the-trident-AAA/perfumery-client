@@ -12,12 +12,13 @@ export default function useShopCartTotalItems() {
 		try {
 			const res = await getShopCartTotalItems()
 
-			if (!res.response || res.error)
-				throw new Error(
-					"Error al cargar la cantidad de items del carrito de compras",
+			if (!res.response || res.error) {
+				setError(
+					res.error?.reason ||
+						"Error al cargar la cantidad de items del carrito de compras",
 				)
-
-			setTotalItems(res.response.totalItems)
+				setTotalItems(0)
+			} else setTotalItems(res.response.totalItems)
 		} catch (error) {
 			if (error instanceof Error) setError(error.message)
 		} finally {
