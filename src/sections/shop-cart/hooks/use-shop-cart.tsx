@@ -14,11 +14,11 @@ export default function useShopCart() {
 			const res = await getShopCart()
 
 			if (!res.response || res.error)
-				throw new Error(
-					"Error al cargar la información del carrito de compras",
+				setError(
+					res.error?.reason ||
+						"Error al cargar la información del carrito de compras",
 				)
-
-			setShopCart(res.response)
+			else setShopCart(res.response)
 		} catch (error) {
 			if (error instanceof Error) setError(error.message)
 		} finally {
