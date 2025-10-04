@@ -13,6 +13,15 @@ import { IQueryable } from "@/src/lib/types/request"
 
 export async function getOrdersList(params: IQueryable) {
 	const session = await auth()
+	if (!session)
+		return {
+			error: {
+				name: "Unauthorized",
+				reason: "No está autorizado para usar este recurso",
+				code: "401",
+			},
+			status: 401,
+		}
 	const url = new QueryParamsURLFactory(
 		{ ...params, userId: session?.user.id as string },
 		apiRoutes.orders.get,
@@ -31,6 +40,15 @@ export async function getOrdersList(params: IQueryable) {
 
 export async function getOrderPerfumes(id: string) {
 	const session = await auth()
+	if (!session)
+		return {
+			error: {
+				name: "Unauthorized",
+				reason: "No está autorizado para usar este recurso",
+				code: "401",
+			},
+			status: 401,
+		}
 	const res = await fetch(
 		apiRoutes.orders.getOrderPerfumes.replace(":id", id),
 		{
