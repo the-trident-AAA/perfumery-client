@@ -61,6 +61,15 @@ export async function createOrder() {
 
 export async function getUserTotalOrders() {
 	const session = await auth()
+	if (!session)
+		return {
+			error: {
+				name: "Unauthorized",
+				reason: "No está autorizado para usar este recurso",
+				code: "401",
+			},
+			status: 401,
+		}
 	const res = await fetch(apiRoutes.orders.getUserTotalOrders, {
 		method: "GET",
 		headers: {
