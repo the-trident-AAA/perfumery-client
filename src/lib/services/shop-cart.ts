@@ -28,6 +28,9 @@ export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 			)
 		: await fetch(apiRoutes.shopCarts.getAnonymousShopCart, {
 				method: "POST",
+				headers: {
+					"content-type": "application/json",
+				},
 				next: { tags: [tagsCacheByRoutes.shopCarts.singleTag] },
 				body: JSON.stringify({
 					sessionId: sessionId,
@@ -56,6 +59,9 @@ export async function getShopCartTotalItems() {
 			)
 		: await fetch(apiRoutes.shopCarts.getAnonymousShopCartTotalItems, {
 				method: "POST",
+				headers: {
+					"content-type": "application/json",
+				},
 				next: { tags: [tagsCacheByRoutes.shopCarts.singleTag] },
 				body: JSON.stringify({
 					sessionId: sessionId,
