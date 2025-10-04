@@ -14,7 +14,7 @@ export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 	const cookieStore = await cookies()
 
 	const sessionId = cookieStore.get("guestSession")?.value
-
+	console.log(sessionId)
 	const res = session
 		? await fetch(
 				apiRoutes.shopCarts.getById.replace(
