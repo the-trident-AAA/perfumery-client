@@ -8,13 +8,11 @@ export interface ShopCartPerfume {
 }
 
 export interface ShopCartPerfumeCreate {
-	shopCartId: string
 	perfumeId: string
 	cant: number
 }
 
 export interface ShopCartPerfumeCreateDTO {
-	shopCartId: string
 	perfumeId: string
 	cant: number
 }

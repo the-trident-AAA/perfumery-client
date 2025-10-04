@@ -1,5 +1,5 @@
 "use server"
-
+import { auth } from "@/src/auth"
 import { buildApiResponse } from "@/src/lib/api"
 import {
 	apiRoutes,
@@ -11,6 +11,7 @@ import {
 	ShopCartPerfumeCreateDTO,
 	ShopCartPerfumeEditDTO,
 } from "@/src/lib/types/shop-cart-perfumes"
+import { cookies } from "next/headers"
 
 export async function getShopCartPerfumeById(id: string) {
 	const res = await fetch(
@@ -27,16 +28,42 @@ export async function getShopCartPerfumeById(id: string) {
 export async function createShopCartPerfume(
 	shopCartCreateDTO: ShopCartPerfumeCreateDTO,
 ) {
+	const session = await auth()
+	const cookieStore = await cookies()
+	const sessionId = cookieStore.get("guestSession")?.value
+
 	const res = await fetch(apiRoutes.shopCartPerfumes.get, {
 		method: "POST",
 		headers: {
 			Authorization: "Bearer " + "token",
 			"content-type": "application/json",
 		},
-		body: JSON.stringify(shopCartCreateDTO),
+		body: JSON.stringify({
+			...shopCartCreateDTO,
+			shopCartId: session?.user.shopCartId,
+			sessionId: sessionId || undefined,
+		}),
 	})
+	console.log(res)
 
-	return await buildApiResponse<ShopCartPerfume>(res)
+	const shopCartPerfumeData = (await res.json()) as {
+		data: ShopCartPerfume
+		sessionId?: string
+	}
+
+	if (shopCartPerfumeData.sessionId)
+		cookieStore.set("guestSession", shopCartPerfumeData.sessionId, {
+			maxAge: 30 * 24 * 60 * 60,
+			httpOnly: true,
+			secure: process.env.NODE_ENV === "production",
+			sameSite: "lax",
+			path: "/",
+		})
+
+	return await buildApiResponse<ShopCartPerfume>(
+		res,
+		shopCartPerfumeData.data,
+	)
 }
 
 export async function editShopCartPerfume(

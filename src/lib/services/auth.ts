@@ -10,8 +10,10 @@ import {
 } from "@/src/lib/types/auth"
 import { User as UserType } from "@/src/lib/types/users"
 import { User } from "next-auth"
+import { cookies } from "next/headers"
 
 export async function login(credentials: CredentialsDTO) {
+	const cookieStore = await cookies()
 	const res = await fetch(apiRoutes.auth.login, {
 		method: "POST",
 		headers: {
@@ -19,6 +21,8 @@ export async function login(credentials: CredentialsDTO) {
 		},
 		body: JSON.stringify(credentials),
 	})
+	if (res.ok) cookieStore.delete("guestSession")
+
 	return buildApiResponse<User>(res)
 }
 
