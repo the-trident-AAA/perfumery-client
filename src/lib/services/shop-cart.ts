@@ -7,11 +7,13 @@ import {
 } from "@/src/lib/routes/api-routes/api-routes"
 import { ApiResponse } from "@/src/lib/types/api"
 import { ShopCart, ShopCartTotalItems } from "@/src/lib/types/shop-cart"
+import { cookies } from "next/headers"
 
 export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 	const session = await auth()
+	const cookieStore = await cookies()
 
-	const sessionId = localStorage.getItem("sessionId")
+	const sessionId = cookieStore.get("guestSession")?.value
 
 	const res = session
 		? await fetch(
@@ -37,8 +39,9 @@ export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 
 export async function getShopCartTotalItems() {
 	const session = await auth()
+	const cookieStore = await cookies()
 
-	const sessionId = localStorage.getItem("sessionId")
+	const sessionId = cookieStore.get("guestSession")?.value
 
 	const res = session
 		? await fetch(
