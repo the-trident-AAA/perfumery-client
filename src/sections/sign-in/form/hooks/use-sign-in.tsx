@@ -3,7 +3,11 @@ import { useCallback, useState } from "react"
 import { Credentials } from "../schemas/credentials-schema"
 import { signIn as nextAuthSignIn } from "next-auth/react"
 
-export default function useSignIn() {
+interface Props {
+	onSignInAction: () => void
+}
+
+export default function useSignIn({ onSignInAction }: Props) {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 
@@ -18,6 +22,7 @@ export default function useSignIn() {
 			})
 			if (res?.error)
 				setError("Las credenciales proporcionadas no son correctas")
+			else onSignInAction()
 		} catch (error) {
 			console.log(error)
 		} finally {
