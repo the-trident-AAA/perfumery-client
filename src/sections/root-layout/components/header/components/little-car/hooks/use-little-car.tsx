@@ -63,8 +63,21 @@ export default function useLittleCar() {
 		closeModal,
 	])
 
+	const handleClose = useCallback(() => {
+		console.log("Entre al hadnel")
+		if (breakpoint === "md" || breakpoint === "sm" || breakpoint === "xs") {
+			console.log("Entre al modal")
+			// En breakpoints pequeños, cerrar el modal
+			handleCloseModal(modalTypes.shopCartModal.name)
+		} else {
+			// En breakpoints grandes, cerrar el popover
+			setIsPopoverOpen(false)
+		}
+		setIsShopCartOpen(false)
+	}, [breakpoint, handleCloseModal, setIsPopoverOpen])
+
 	useEffect(() => {
 		resizing()
 	}, [breakpoint])
-	return { isPopoverOpen, handleOnOpenPopover }
+	return { isPopoverOpen, handleOnOpenPopover, handleClose }
 }
