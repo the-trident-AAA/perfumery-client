@@ -15,6 +15,7 @@ import NavigationComponent from "@/src/components/navigation-component/navigatio
 import { paths } from "@/src/lib/routes/paths"
 import { ProfileContext } from "@/src/sections/auth/context/profile-context/profile-context"
 import Image from "next/image"
+import { PopoverClose } from "@radix-ui/react-popover"
 
 export default function UserMenu() {
 	const { user, loading } = useContext(ProfileContext)
@@ -107,31 +108,35 @@ export default function UserMenu() {
 				<div className="p-2">
 					<div className="space-y-1">
 						<NavigationComponent href={paths.profile.root}>
-							<Button
-								variant="ghost"
-								className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
-							>
-								<div className="flex items-center">
-									<User className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
-									<span className="text-sm font-medium">
-										Ver perfil
-									</span>
-								</div>
-							</Button>
+							<PopoverClose asChild>
+								<Button
+									variant="ghost"
+									className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
+								>
+									<div className="flex items-center">
+										<User className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
+										<span className="text-sm font-medium">
+											Ver perfil
+										</span>
+									</div>
+								</Button>
+							</PopoverClose>
 						</NavigationComponent>
 
 						<NavigationComponent href={paths.editProfile.root}>
-							<Button
-								variant="ghost"
-								className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
-							>
-								<div className="flex items-center">
-									<Settings className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
-									<span className="text-sm font-medium">
-										Editar Perfil
-									</span>
-								</div>
-							</Button>
+							<PopoverClose asChild>
+								<Button
+									variant="ghost"
+									className="w-full group justify-between h-10 px-3 hover:bg-secondary hover:text-primary transition-colors"
+								>
+									<div className="flex items-center">
+										<Settings className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-primary" />
+										<span className="text-sm font-medium">
+											Editar Perfil
+										</span>
+									</div>
+								</Button>
+							</PopoverClose>
 						</NavigationComponent>
 					</div>
 				</div>
@@ -140,7 +145,9 @@ export default function UserMenu() {
 
 				{/* Botón de cerrar sesión */}
 				<div className="p-2">
-					<SignOutButton />
+					<PopoverClose asChild>
+						<SignOutButton />
+					</PopoverClose>
 				</div>
 			</PopoverContent>
 		</Popover>
