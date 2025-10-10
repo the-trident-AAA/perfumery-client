@@ -16,6 +16,7 @@ import React, { useContext, useEffect, useRef } from "react"
 
 interface Props {
 	variant?: "default" | "modal"
+	handleCloseContainer?: () => void
 }
 
 interface ShopCartContentProps {
@@ -23,6 +24,7 @@ interface ShopCartContentProps {
 	variant: "default" | "modal"
 	onRefresh: () => Promise<void>
 	isDisabled?: boolean
+	handleCloseContainer?: () => void
 }
 
 const ShopCartContentBody = ({
@@ -30,6 +32,7 @@ const ShopCartContentBody = ({
 	variant,
 	onRefresh,
 	isDisabled = false,
+	handleCloseContainer,
 }: ShopCartContentProps) => {
 	return (
 		<div
@@ -52,7 +55,11 @@ const ShopCartContentBody = ({
 					</div>
 				</div>
 				<div className="flex gap-2">
-					<CreateOrderButton isDisabled={isDisabled} />
+					<CreateOrderButton
+						variant={variant}
+						isDisabled={isDisabled}
+						handleCloseContainer={handleCloseContainer}
+					/>
 					<ClearShopCartButton
 						shopCartId={shopCartData.id}
 						shopCartRefresh={onRefresh}
@@ -64,7 +71,10 @@ const ShopCartContentBody = ({
 	)
 }
 
-export default function ShopCartContent({ variant = "default" }: Props) {
+export default function ShopCartContent({
+	variant = "default",
+	handleCloseContainer,
+}: Props) {
 	const { shopCart, loading, error, fetchShopCart } =
 		useContext(ShopCartContext)
 	const lastValidShopCart = useRef(shopCart)
@@ -88,6 +98,7 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 						shopCartData={lastValidShopCart.current}
 						variant={variant}
 						onRefresh={fetchShopCart}
+						handleCloseContainer={handleCloseContainer}
 						isDisabled
 					/>
 				) : (
@@ -100,6 +111,7 @@ export default function ShopCartContent({ variant = "default" }: Props) {
 					<ShopCartContentBody
 						shopCartData={shopCart}
 						variant={variant}
+						handleCloseContainer={handleCloseContainer}
 						onRefresh={fetchShopCart}
 					/>
 				) : (

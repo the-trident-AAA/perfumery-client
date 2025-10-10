@@ -1,4 +1,6 @@
 "use client"
+import { ModalContext } from "@/src/components/modal/context/modalContext"
+import { modalTypes } from "@/src/components/modal/types/modalTypes"
 import { Button } from "@/src/components/ui/button"
 import { revalidateServerTags } from "@/src/lib/cache"
 import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
@@ -13,12 +15,19 @@ import React, { useContext } from "react"
 import { toast } from "react-toastify"
 
 interface Props {
+	variant?: "default" | "modal"
 	isDisabled: boolean
+	handleCloseContainer?: () => void
 }
 
-export default function CreateOrderButton({ isDisabled = false }: Props) {
+export default function CreateOrderButton({
+	variant,
+	isDisabled = false,
+	handleCloseContainer,
+}: Props) {
 	const { data: session } = useSession()
 	const router = useRouter()
+	const { handleCloseModal } = useContext(ModalContext)
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
 	const { fetchUserTotalOrders } = useContext(UserTotalOrdersContext)
@@ -38,6 +47,10 @@ export default function CreateOrderButton({ isDisabled = false }: Props) {
 			onClick={() => {
 				if (session) createOrder()
 				else router.push(paths.sign_in.root)
+
+				if (handleCloseContainer) handleCloseContainer()
+				else if (variant === "modal")
+					handleCloseModal(modalTypes.shopCartModal.name)
 			}}
 			variant={"secondary"}
 			className="text-primary lg:text-lg"

@@ -10,7 +10,7 @@ import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
 import React from "react"
 
 const LittleCar = () => {
-	const { isPopoverOpen, handleOnOpenPopover } = useLittleCar()
+	const { isPopoverOpen, handleOnOpenPopover, handleClose } = useLittleCar()
 
 	return (
 		<Popover open={isPopoverOpen} onOpenChange={handleOnOpenPopover}>
@@ -18,7 +18,10 @@ const LittleCar = () => {
 				<LittleCarButton />
 			</PopoverTrigger>
 			<PopoverContent className="w-full bg-muted">
-				<ShopCartContent variant="modal" />
+				<ShopCartContent
+					variant="modal"
+					handleCloseContainer={handleClose}
+				/>
 			</PopoverContent>
 		</Popover>
 	)
