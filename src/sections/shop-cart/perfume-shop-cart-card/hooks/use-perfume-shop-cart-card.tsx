@@ -59,7 +59,8 @@ export default function usePerfumeShopCartCard({
 	}, [handleShopCartPerfumeEdit, shopCartPerfume])
 
 	const decreaseQuantity = useCallback(() => {
-		handleShopCartPerfumeEdit({ cant: shopCartPerfume.cant - 1 })
+		if (shopCartPerfume.cant - 1 > 0)
+			handleShopCartPerfumeEdit({ cant: shopCartPerfume.cant - 1 })
 	}, [handleShopCartPerfumeEdit, shopCartPerfume])
 
 	const onDeleteShopCartPerfume = useCallback(() => {
