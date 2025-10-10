@@ -150,7 +150,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 						/>
 						<PerfumeInfoCard
 							title="Volumen"
-							info={perfume.milliliters * 1000 + " ml"}
+							info={perfume.milliliters + " ml"}
 							icon={
 								<Droplets className="w-6 h-6 mx-auto mb-2 text-secondary" />
 							}
