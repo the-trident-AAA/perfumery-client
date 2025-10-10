@@ -18,6 +18,7 @@ export const fetcher = (url: string) => fetch(url).then(r => r.json())
 export const buildApiResponse = async <T>(
 	response: Response,
 	resolvedData?: T,
+	jsonResponse?: any,
 ): Promise<ApiResponse<T>> => {
 	console.log(
 		"buildApiResponse called with response:",
@@ -41,7 +42,7 @@ export const buildApiResponse = async <T>(
 				status: 401,
 			}
 		else if (response.status === 400) {
-			const error = await response.json()
+			const error = jsonResponse || (await response.json())
 			return {
 				error: {
 					name: "bad request",
@@ -51,7 +52,7 @@ export const buildApiResponse = async <T>(
 				status: 400,
 			}
 		} else if (response.status === 403) {
-			const error = await response.json()
+			const error = jsonResponse || (await response.json())
 			return {
 				error: {
 					name: "forbidden",
