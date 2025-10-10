@@ -63,6 +63,7 @@ export async function createShopCartPerfume(
 	return await buildApiResponse<ShopCartPerfume>(
 		res,
 		shopCartPerfumeData.data,
+		shopCartPerfumeData,
 	)
 }
 
