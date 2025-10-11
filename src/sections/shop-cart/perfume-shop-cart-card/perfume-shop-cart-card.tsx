@@ -1,15 +1,15 @@
 "use client"
 
 import Image from "next/image"
-import { Sparkles, Trash2 } from "lucide-react"
+import { Trash2 } from "lucide-react"
 import QuantityController from "@/src/components/quantity-controller/quantity-controller"
 import type { ShopCartPerfume } from "@/src/lib/types/shop-cart-perfumes"
 import { fCurrency } from "@/src/lib/utils/format-number"
 import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 import usePerfumeShopCartCard from "@/src/sections/shop-cart/perfume-shop-cart-card/hooks/use-perfume-shop-cart-card"
 import { Button } from "@/src/components/ui/button"
-import { useState } from "react"
 import { Badge } from "@/src/components/ui/badge"
+import StockWarningWrapper from "@/src/components/stock-warning-wrapper/stock-warning-wrapper"
 
 interface PerfumeCartProps {
 	shopCartPerfume: ShopCartPerfume
@@ -32,22 +32,17 @@ export default function PerfumeShopCartCard({
 		shopCartRefresh,
 	})
 
+	const isOutOfStock = shopCartPerfume.cant > shopCartPerfume.perfume.cant
+
 	return (
-		<div className="group relative overflow-hidden border-0 bg-muted shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
-			<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/60 via-primary to-primary/60 z-20" />
-
-			{/* Líneas laterales con efecto de flujo */}
-			<div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-primary/50 via-primary/20 to-transparent z-10 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500" />
-			<div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-primary/50 via-primary/20 to-transparent z-10 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500 delay-100" />
-
-			{/* Elementos decorativos flotantes */}
-			<div className="absolute inset-0 pointer-events-none overflow-hidden">
-				<Sparkles className="absolute top-4 right-16 h-3 w-3 text-primary/60 animate-pulse" />
-				<Sparkles className="absolute bottom-4 left-8 h-2 w-2 text-primary/40 animate-pulse delay-300" />
-			</div>
-
-			{/* Background gradient dinámico */}
-			<div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+		<StockWarningWrapper
+			hasWarning={isOutOfStock}
+			warningTitle={"Sin stock suficiente"}
+			warningMessage={"No existen existencias del perfume"}
+			warningDetails={
+				!isOutOfStock ? "Reduce la cantidad para continuar" : undefined
+			}
+		>
 			<Button
 				variant="ghost"
 				size="sm"
@@ -69,6 +64,7 @@ export default function PerfumeShopCartCard({
 							src={
 								shopCartPerfume.perfume.image ||
 								perfumeImagePlaceHolder ||
+								"/placeholder.svg" ||
 								"/placeholder.svg"
 							}
 							alt="image"
@@ -124,6 +120,6 @@ export default function PerfumeShopCartCard({
 					</div>
 				</div>
 			</div>
-		</div>
+		</StockWarningWrapper>
 	)
 }
