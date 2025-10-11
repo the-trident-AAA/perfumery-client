@@ -11,7 +11,7 @@ import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-cont
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { toast } from "react-toastify"
 
 interface Props {
@@ -31,7 +31,7 @@ export default function CreateOrderButton({
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
 	const { fetchUserTotalOrders } = useContext(UserTotalOrdersContext)
-	const { createOrder, loading } = useCreateOrder({
+	const { createOrder, loading, error } = useCreateOrder({
 		onCreateAction: () => {
 			toast.success("Pedido creado exitosamente")
 			revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
@@ -40,17 +40,26 @@ export default function CreateOrderButton({
 			// update the shop cart state
 			fetchShopCartTotalItems()
 			fetchShopCart()
+			if (handleCloseContainer) handleCloseContainer()
+			else if (variant === "modal")
+				handleCloseModal(modalTypes.shopCartModal.name)
 		},
 	})
+
+	useEffect(() => {
+		if (error) toast.error(error)
+	}, [error])
+
 	return (
 		<Button
 			onClick={() => {
 				if (session) createOrder()
-				else router.push(paths.sign_in.root)
-
-				if (handleCloseContainer) handleCloseContainer()
-				else if (variant === "modal")
-					handleCloseModal(modalTypes.shopCartModal.name)
+				else {
+					router.push(paths.sign_in.root)
+					if (handleCloseContainer) handleCloseContainer()
+					else if (variant === "modal")
+						handleCloseModal(modalTypes.shopCartModal.name)
+				}
 			}}
 			variant={"secondary"}
 			className="text-primary lg:text-lg"
