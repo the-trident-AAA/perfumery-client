@@ -48,7 +48,7 @@ export default function PerfumeShopCartCard({
 				size="sm"
 				onClick={onDeleteShopCartPerfume}
 				disabled={loadingDelete}
-				className="absolute top-2 right-2 z-10 h-8 w-8 p-0 transition-opacity duration-200 hover:bg-red-50 hover:text-red-600 rounded-full"
+				className="absolute z-30 top-2 right-2 h-8 w-8 p-0 transition-opacity duration-200 hover:bg-red-50 hover:text-red-600 rounded-full"
 				aria-label="Eliminar producto"
 			>
 				<Trash2 className="h-4 w-4" />
