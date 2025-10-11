@@ -6,7 +6,6 @@ import { RHFQuantityInput } from "@/src/components/form/rhf-components/rhf-quant
 import { fCurrency } from "@/src/lib/utils/format-number"
 import StockWarningWrapper from "@/src/components/stock-warning-wrapper/stock-warning-wrapper"
 import { useFormContext } from "react-hook-form"
-import { useEffect, useState } from "react"
 
 interface Props {
 	index: number
