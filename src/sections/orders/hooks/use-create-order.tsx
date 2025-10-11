@@ -20,7 +20,7 @@ export default function useCreateOrder({ onCreateAction }: Props) {
 			setError(null)
 			const res = await createOrderService()
 			if (!res.response || res.error)
-				setError("Error en la creación del pedido")
+				setError(res.error?.reason || "Error en la creación del pedido")
 			else {
 				sendWhatsappMessage(formatOrderMessage(res.response))
 				onCreateAction()
