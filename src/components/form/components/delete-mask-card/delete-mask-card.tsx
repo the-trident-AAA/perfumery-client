@@ -10,10 +10,11 @@ interface Props {
 export default function DeleteMaskCard({ children, handleRemove }: Props) {
 	return (
 		<div className="relative group">
-			<div className="absolute inset-0 z-10 transition-all duration-200 rounded-lg bg-transparent group-hover:bg-black/5 flex items-center justify-center">
+			{/* Overlay visual pero no bloquea clics */}
+			<div className="absolute inset-0 z-10 transition-all duration-200 rounded-lg bg-transparent group-hover:bg-black/5 flex items-center justify-center pointer-events-none">
 				<Button
 					type="button"
-					className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600"
+					className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600 pointer-events-auto"
 					onClick={e => {
 						e.stopPropagation()
 						handleRemove()
