@@ -18,11 +18,6 @@ export default function PerfumesOrderContainer() {
 					label: "Precio",
 					type: "number",
 				},
-				{
-					key: "milliliters",
-					label: "Mililitros",
-					type: "number",
-				},
 			]}
 			defaultSort="price"
 			onSortChange={(sortKey: string, direction: "asc" | "desc") => {
