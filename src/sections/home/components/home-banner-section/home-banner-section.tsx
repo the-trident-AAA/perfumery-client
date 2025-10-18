@@ -78,14 +78,14 @@ export default function HomeBannerSection({
 			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary via-secondary/80 to-secondary/40 opacity-80" />
 
 			{/* Contenido principal */}
-			<div className="relative py-6 z-10 container mx-auto px-6 h-full flex items-center">
-				<div className="items-center gap-4 sm:gap-12 flex lg:flex-row flex-col-reverse w-full">
+			<div className="relative 2xs:py-6 z-10 2xs:container 2xs:mx-auto 2xs:px-6 h-full flex items-center">
+				<div className="items-center gap-4 lg:gap-12 flex lg:flex-row flex-col-reverse w-full">
 					{/* Contenido de texto */}
 					<div
-						className={`space-y-4 sm:space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
+						className={`space-y-4 px-6 2xs:px-0 sm:space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
 					>
-						<div className="hidden lg:flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 items-center">
-							<Avatar className="h-40 w-40">
+						<div className="hidden lg:flex flex-col sm:flex-row gap-4 items-center">
+							<Avatar className="xl:h-40 h-20 w-20 xl:w-40">
 								<AvatarImage src="/icons/logo-icon.png" />
 								<AvatarFallback className="">
 									<div className="flex items-center gap-2">
@@ -96,7 +96,7 @@ export default function HomeBannerSection({
 
 							{/* Título principal */}
 							<div className="space-y-4">
-								<h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-secondary animate-slide-up">
+								<h1 className="text-5xl md:text-6xl lg:text-3xl xl:text-5xl 2xl:text-7xl font-black leading-tight text-secondary animate-slide-up">
 									<span className="block">
 										{title.split(" ").slice(0, 2).join(" ")}
 									</span>
@@ -111,7 +111,7 @@ export default function HomeBannerSection({
 						</div>
 
 						{/* Descripción */}
-						<p className="text-base sm:text-xl lg:text-2xl text-secondary leading-relaxed max-w-2xl animate-fade-in delay-300">
+						<p className="text-base sm:text-xl lg:text-xl xl:text-2xl text-secondary leading-relaxed max-w-2xl animate-fade-in delay-300">
 							{description}
 						</p>
 
@@ -122,7 +122,7 @@ export default function HomeBannerSection({
 									<div className="text-secondary/70 text-sm">
 										{statisticalTip.statistics}
 									</div>
-									<div className="text-base sm:text-3xl font-bold text-secondary">
+									<div className="text-base sm:text-3xl lg:text-xl 2xl:text-3xl font-bold text-secondary">
 										{statisticalTip.info}
 									</div>
 								</div>

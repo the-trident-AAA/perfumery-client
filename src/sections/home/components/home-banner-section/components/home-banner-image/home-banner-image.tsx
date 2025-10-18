@@ -8,7 +8,7 @@ interface Props {
 
 export default function HomeBannerImage({ image: { id, image } }: Props) {
 	return (
-		<div className="aspect-square w-full lg:h-[80vh] rounded-xl overflow-hidden bg-gray-100">
+		<div className="aspect-square w-full lg:h-[60vh] xl:h-[80vh] 2xs:rounded-xl overflow-hidden bg-gray-100">
 			<Image
 				src={image || homeBannerImagePlaceHolder}
 				alt={id}
