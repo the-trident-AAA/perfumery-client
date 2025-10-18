@@ -82,7 +82,7 @@ export default function HomeBannerSection({
 				<div className="items-center gap-4 lg:gap-12 flex lg:flex-row flex-col-reverse w-full">
 					{/* Contenido de texto */}
 					<div
-						className={`space-y-4 px-6 2xs:px-0 sm:space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
+						className={`space-y-4 px-6 2xs:px-0 py-6 2xs:py-0 sm:space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
 					>
 						<div className="hidden lg:flex flex-col sm:flex-row gap-4 items-center">
 							<Avatar className="xl:h-40 h-20 w-20 xl:w-40">
