@@ -5,6 +5,7 @@
 	--breakpoint-xs: 360px;
 	--breakpoint-2xs: 480px;
 	--breakpoint-sm: 640px;
+	--breakpoint-2md: 835px;
   }
 
 @custom-variant dark (&:is(.dark *));
