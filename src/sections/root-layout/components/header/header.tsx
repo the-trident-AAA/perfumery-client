@@ -25,15 +25,7 @@ const Header = () => {
 					: "bg-gradient-to-r from-[#eef6e7] via-[#ecf7f0] to-[#e4f5f4] backdrop-blur-sm"
 			}`}
 		>
-			<div
-				className={`absolute inset-y-0 left-0 w-1/2 bg-primary transition-opacity duration-300 ${
-					isScrolled ? "opacity-20" : "opacity-90"
-				}`}
-				style={{
-					clipPath: "polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%)",
-				}}
-			/>
-			<div className="px-6 py-4 flex items-center justify-between">
+			<div className="px-6 py-4 flex sm:gap-4 items-center justify-between">
 				<AppLogo avatarClassName="h-10 w-10 sm:h-12 sm:w-12" />
 				<div className="flex-1 mx-2 max-w-2xl">
 					<Suspense fallback={<div>Cargando...</div>}>
