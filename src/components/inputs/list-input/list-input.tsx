@@ -40,7 +40,7 @@ export default function ListInput({
 					No hay opciones disponibles
 				</p>
 			) : (
-				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-4 gap-x-1 overflow-y-auto max-h-[200px] px-4">
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-4 gap-x-2 overflow-y-auto max-h-[200px] px-4">
 					{options.map((option, index) => (
 						<div
 							key={index}
