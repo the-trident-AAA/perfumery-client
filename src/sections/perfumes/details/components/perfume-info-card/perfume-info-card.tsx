@@ -1,6 +1,5 @@
 "use client"
-import { Card, CardContent } from "@/src/components/ui/card"
-import React, { ReactNode } from "react"
+import type { ReactNode } from "react"
 import { motion } from "framer-motion"
 
 interface Props {
@@ -11,29 +10,45 @@ interface Props {
 
 export default function PerfumeInfoCard({ info, title, icon }: Props) {
 	return (
-		<motion.div
-			whileHover={{
-				scale: 1.05,
-				boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
-			}}
-			transition={{ type: "spring", stiffness: 200, damping: 15 }}
-		>
-			<Card className="bg-primary h-full border-t-6 border-b-6 border-secondary rounded-xl overflow-hidden cursor-pointer">
-				<CardContent className="p-4 text-center flex flex-col items-center gap-2 transition-colors duration-300 hover:bg-primary/90">
+		<div className="h-full overflow-hidden relative">
+			{/* Diagonal stripes pattern */}
+			<div
+				className="absolute inset-0 opacity-[0.03]"
+				style={{
+					backgroundImage: `repeating-linear-gradient(
+            45deg,
+            hsl(var(--primary)),
+            hsl(var(--primary)) 10px,
+            hsl(var(--secondary)) 10px,
+            hsl(var(--secondary)) 20px
+          )`,
+				}}
+			/>
+
+			{/* Gradient overlay for depth */}
+
+			<div className="text-center rounded-0 flex flex-col justify-center items-center gap-1 h-full justify-center relative z-10">
+				<div className="flex items-center gap-2">
 					<motion.div
-						whileHover={{ rotate: 5 }}
-						transition={{ type: "spring", stiffness: 300 }}
+						whileHover={{ scale: 1.1, rotate: 5 }}
+						transition={{
+							type: "spring",
+							stiffness: 400,
+							damping: 10,
+						}}
+						className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mb-1 border-2 border-primary shadow-sm"
 					>
-						{icon}
+						<div className="text-primary mt-1 [&>svg]:w-4 [&>svg]:h-4">
+							{icon}
+						</div>
 					</motion.div>
-					<p className="text-sm font-semibold text-secondary">
-						{info}
-					</p>
-					<p className="text-xs font-semibold text-secondary">
+
+					<p className="text-sm font-bold text-foreground uppercase tracking-wider">
 						{title}
 					</p>
-				</CardContent>
-			</Card>
-		</motion.div>
+				</div>
+				<p className="text-sm text-foreground">{info}</p>
+			</div>
+		</div>
 	)
 }
