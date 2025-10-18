@@ -1,6 +1,8 @@
 "use client"
 import SheetFilters from "@/src/components/filters/sheet-filters"
 import SidePanelFilters from "@/src/components/filters/side-panel-filters"
+import { Button } from "@/src/components/ui/button"
+import SheetContainer from "@/src/components/ui/sheet-container"
 import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
 import useBrands from "@/src/sections/brands/hooks/use-brands"
 import useOffers from "@/src/sections/offers/hooks/use-offers"
@@ -9,6 +11,7 @@ import { PerfumesFiltersContext } from "@/src/sections/perfumes/filters/context/
 import usePerfumesFilters from "@/src/sections/perfumes/filters/hooks/use-perfumes-filters"
 import PerfumesFilters from "@/src/sections/perfumes/filters/perfumes-filters/perfumes-filters"
 import useScents from "@/src/sections/scents/hooks/use-scents"
+import { SlidersHorizontal } from "lucide-react"
 import React, { useContext } from "react"
 
 export default function PerfumesFiltersContainer() {
@@ -31,7 +34,15 @@ export default function PerfumesFiltersContainer() {
 			breakpoint === "md" ||
 			breakpoint === "sm" ||
 			breakpoint === "xs" ? (
-				<SheetFilters title="Filtros de Perfumes">
+				<SheetContainer
+					title="Filtros de Proyectos"
+					trigger={
+						<Button className="flex items-center gap-2">
+							{" "}
+							<SlidersHorizontal /> Filtros
+						</Button>
+					}
+				>
 					<PerfumesFilters
 						filters={filters}
 						brands={{ data: brands, loading: loadingBrands }}
@@ -43,7 +54,7 @@ export default function PerfumesFiltersContainer() {
 						offers={{ data: offers, loading: loadingOffers }}
 						handleChangeFilters={handleChangeFilters}
 					/>
-				</SheetFilters>
+				</SheetContainer>
 			) : (
 				<SidePanelFilters title="Filtros de Perfumes">
 					<PerfumesFilters
