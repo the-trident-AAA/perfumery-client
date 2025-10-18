@@ -37,7 +37,10 @@ export default function PerfumesFiltersContainer() {
 				<SheetContainer
 					title="Filtros de Perfumes"
 					trigger={
-						<Button className="flex items-center gap-2">
+						<Button
+							variant={"secondary"}
+							className="flex text-primary items-center gap-2"
+						>
 							{" "}
 							<SlidersHorizontal /> Filtros
 						</Button>
