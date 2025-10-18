@@ -1,3 +1,4 @@
+import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { Instagram, Mail, MapPin, Phone } from "lucide-react"
 import React from "react"
 
@@ -8,9 +9,21 @@ export default function ContactInformation() {
 				Contact
 			</h4>
 			<ul className="space-y-3 text-sm">
-				<li className="flex items-center">
-					<Instagram size={18} className="mr-2 text-secondary" />
-					<span className="text-secondary">perfumes_del_puro</span>
+				<li>
+					<NavigationComponent
+						className="cursor-pointer"
+						href="https://www.instagram.com/perfumes_del_puro/"
+					>
+						<div className="flex items-center">
+							<Instagram
+								size={18}
+								className="mr-2 text-secondary"
+							/>
+							<span className="text-secondary">
+								perfumes_del_puro
+							</span>
+						</div>
+					</NavigationComponent>
 				</li>
 				<li className="flex items-center">
 					<Phone size={18} className="mr-2 text-secondary" />
