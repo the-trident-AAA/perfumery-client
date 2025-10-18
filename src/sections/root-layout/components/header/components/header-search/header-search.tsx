@@ -4,7 +4,7 @@ import useHeaderSearch from "@/src/sections/root-layout/components/header/compon
 import SearchInput from "@/src/components/inputs/search-input/search-input"
 import { useRouter, useSearchParams } from "next/navigation"
 import { paths } from "@/src/lib/routes/paths"
-import { useState, useEffect } from "react"
+import { useState, useEffect, ChangeEvent } from "react"
 import { Gender } from "@/src/lib/types/perfumes"
 import PopoverContainer from "@/src/components/ui/popover-container"
 
@@ -19,41 +19,42 @@ const HeaderSearch = () => {
 		setSearch(nameParam || "")
 	}, [searchParams])
 
+	const changeSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
+		setSearch(e.target.value)
+		const limit = searchParams.get("limit")
+		// get the current filters
+		const perfumTypeParam = searchParams.get("perfumeTypeId")
+		const brandParam = searchParams.get("brandId")
+		const genderParam = searchParams.get("gender") as Gender | null
+		const offerParam = searchParams.get("offerId")
+		const availableParam = searchParams.get("available")
+		router.push(
+			paths.perfumes({
+				...(e.target.value && { name: e.target.value }),
+				...(brandParam && { brandId: brandParam }),
+				...(offerParam && { offerId: offerParam }),
+				...(perfumTypeParam && {
+					perfumeTypeId: perfumTypeParam,
+				}),
+				...(genderParam && {
+					gender: genderParam,
+				}),
+				...(availableParam !== null && {
+					available: availableParam === "true" ? "true" : "false",
+				}),
+				...(limit && {
+					limit,
+				}),
+			}).root,
+		)
+	}
+
 	return !isMobile ? (
 		<SearchInput
 			id="name"
 			value={search}
 			placeHolder="Comience a buscar perfumes..."
-			onChange={e => {
-				setSearch(e.target.value)
-				const limit = searchParams.get("limit")
-				// get the current filters
-				const perfumTypeParam = searchParams.get("perfumeTypeId")
-				const brandParam = searchParams.get("brandId")
-				const genderParam = searchParams.get("gender") as Gender | null
-				const offerParam = searchParams.get("offerId")
-				const availableParam = searchParams.get("available")
-				router.push(
-					paths.perfumes({
-						...(e.target.value && { name: e.target.value }),
-						...(brandParam && { brandId: brandParam }),
-						...(offerParam && { offerId: offerParam }),
-						...(perfumTypeParam && {
-							perfumeTypeId: perfumTypeParam,
-						}),
-						...(genderParam && {
-							gender: genderParam,
-						}),
-						...(availableParam !== null && {
-							available:
-								availableParam === "true" ? "true" : "false",
-						}),
-						...(limit && {
-							limit,
-						}),
-					}).root,
-				)
-			}}
+			onChange={changeSearchInput}
 		/>
 	) : (
 		<PopoverContainer
@@ -65,16 +66,7 @@ const HeaderSearch = () => {
 				id="name"
 				value={search}
 				placeHolder="Comience a buscar perfumes..."
-				onChange={e => {
-					setSearch(e.target.value)
-					router.push(
-						paths.perfumes({
-							...(e.target.value && {
-								name: e.target.value,
-							}),
-						}).root,
-					)
-				}}
+				onChange={changeSearchInput}
 			/>
 		</PopoverContainer>
 	)
