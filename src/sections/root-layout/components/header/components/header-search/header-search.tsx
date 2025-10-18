@@ -6,12 +6,13 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { paths } from "@/src/lib/routes/paths"
 import { useState, useEffect } from "react"
 import { Gender } from "@/src/lib/types/perfumes"
+import PopoverContainer from "@/src/components/ui/popover-container"
 
 const HeaderSearch = () => {
 	const [search, setSearch] = useState("")
 	const router = useRouter()
 	const searchParams = useSearchParams()
-	const { isMobile, toggleSearch, searchRef, showSearch } = useHeaderSearch()
+	const { isMobile } = useHeaderSearch()
 
 	useEffect(() => {
 		const nameParam = searchParams.get("name")
@@ -55,34 +56,27 @@ const HeaderSearch = () => {
 			}}
 		/>
 	) : (
-		<div className="relative" ref={searchRef}>
-			<button
-				onClick={toggleSearch}
-				className={`p-2 rounded-full hover:bg-gray-100`}
-				aria-label="Buscar"
-			>
-				<SearchIcon className="size-8 sm:size-12 text-secondary" />
-			</button>
-			{showSearch && (
-				<div className="absolute top-full right-[-142px] mt-2 w-[288px] text-black bg-white shadow-lg rounded-lg p-2 z-10 border border-gray-200">
-					<SearchInput
-						id="name"
-						value={search}
-						placeHolder="Comience a buscar perfumes..."
-						onChange={e => {
-							setSearch(e.target.value)
-							router.push(
-								paths.perfumes({
-									...(e.target.value && {
-										name: e.target.value,
-									}),
-								}).root,
-							)
-						}}
-					/>
-				</div>
-			)}
-		</div>
+		<PopoverContainer
+			trigger={
+				<SearchIcon className="size-8 lg:size-12 text-secondary" />
+			}
+		>
+			<SearchInput
+				id="name"
+				value={search}
+				placeHolder="Comience a buscar perfumes..."
+				onChange={e => {
+					setSearch(e.target.value)
+					router.push(
+						paths.perfumes({
+							...(e.target.value && {
+								name: e.target.value,
+							}),
+						}).root,
+					)
+				}}
+			/>
+		</PopoverContainer>
 	)
 }
 
