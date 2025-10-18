@@ -35,7 +35,7 @@ export default function PerfumesFiltersContainer() {
 			breakpoint === "sm" ||
 			breakpoint === "xs" ? (
 				<SheetContainer
-					title="Filtros de Proyectos"
+					title="Filtros de Perfumes"
 					trigger={
 						<Button className="flex items-center gap-2">
 							{" "}
