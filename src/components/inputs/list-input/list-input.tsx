@@ -1,7 +1,6 @@
 "use client"
 import { Checkbox } from "@/src/components/ui/checkbox"
 import { Label } from "@/src/components/ui/label"
-import React from "react"
 
 interface Props {
 	id: string
@@ -21,7 +20,7 @@ export default function ListInput({
 	loading = false,
 }: Props) {
 	return (
-		<div className="space-y-3 px-4 pr-12">
+		<div className="space-y-3 ">
 			{label && <Label className="text-secondary">{label}</Label>}
 
 			{loading ? (
@@ -41,11 +40,11 @@ export default function ListInput({
 					No hay opciones disponibles
 				</p>
 			) : (
-				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-4 gap-x-1 ">
 					{options.map((option, index) => (
 						<div
 							key={index}
-							className="flex items-center space-x-2"
+							className="flex items-center gap-2 min-w-0"
 						>
 							<Checkbox
 								id={`${id}-${option.value}`}
@@ -59,7 +58,8 @@ export default function ListInput({
 							/>
 							<Label
 								htmlFor={`${id}-${option.value}`}
-								className="text-sm text-secondary font-normal cursor-pointer"
+								className="text-sm text-secondary font-normal leading-tight cursor-pointer min-w-0 block truncate"
+								title={option.label}
 							>
 								{option.label}
 							</Label>
