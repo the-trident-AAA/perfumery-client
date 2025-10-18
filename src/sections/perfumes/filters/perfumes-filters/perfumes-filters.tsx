@@ -111,8 +111,8 @@ export default function PerfumesFilterss({
 
 				{/* PerfumeType */}
 				<SelectInput
-					label="Tipo de Perfume"
-					placeHolder="Seleccione un tipo de perfume..."
+					label="Perfumes"
+					placeHolder="Seleccione un perfume..."
 					value={filters.perfumeTypeId}
 					onValueChange={value => {
 						handleChangeFilters({
