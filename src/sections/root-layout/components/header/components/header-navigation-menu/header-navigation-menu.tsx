@@ -16,7 +16,7 @@ import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
 import { paths } from "@/src/lib/routes/paths"
 import { PerfumeType } from "@/src/lib/types/perfume-types"
 import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-types"
-import { ShoppingCartIcon } from "lucide-react"
+import { ShoppingCartIcon, SprayCan } from "lucide-react"
 import Link from "next/link"
 import React, { ReactNode } from "react"
 
@@ -62,14 +62,12 @@ export default function HeaderNavigationMenu() {
 	const navigationItem = {
 		label: "Ver Perfumes",
 		path: paths.perfumes().root,
-		icon: <ShoppingCartIcon className="size-4 text-primrary sm:size-6" />,
+		icon: <SprayCan className="size-4 text-primrary sm:size-6" />,
 		childrens: perfumeTypes.map((perfumeType: PerfumeType) => ({
 			label: perfumeType.name,
 			path: paths.perfumes({ perfumeTypeId: perfumeType.id.toString() })
 				.root,
-			icon: (
-				<ShoppingCartIcon className="size-4 text-primrary sm:size-6" />
-			),
+			icon: <SprayCan className="size-4 text-primrary sm:size-6" />,
 		})),
 	}
 
