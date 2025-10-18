@@ -12,6 +12,7 @@ export default function ContactInformation() {
 				<li>
 					<NavigationComponent
 						className="cursor-pointer"
+						inAnotherTab
 						href="https://www.instagram.com/perfumes_del_puro/"
 					>
 						<div className="flex items-center">
