@@ -20,7 +20,7 @@ export default function ListInput({
 	loading = false,
 }: Props) {
 	return (
-		<div className="space-y-3 ">
+		<div className="space-y-3">
 			{label && <Label className="text-secondary">{label}</Label>}
 
 			{loading ? (
@@ -40,7 +40,7 @@ export default function ListInput({
 					No hay opciones disponibles
 				</p>
 			) : (
-				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-4 gap-x-1 ">
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-4 gap-x-1 overflow-y-auto max-h-[200px] px-4">
 					{options.map((option, index) => (
 						<div
 							key={index}
