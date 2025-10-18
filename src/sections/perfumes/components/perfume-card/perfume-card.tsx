@@ -154,7 +154,7 @@ export default function PerfumeCard({ perfume }: Props) {
 						>
 							<Badge className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 py-2 shadow-xl border-2 border-white/20">
 								<Zap className="h-3 w-3 mr-1" />-
-								{perfume.discountOffer}%
+								{perfume.discountOffer * 100}%
 							</Badge>
 							{/* Efecto de brillo */}
 							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded shine-effect" />
