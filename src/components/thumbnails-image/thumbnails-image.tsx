@@ -12,12 +12,13 @@ export default function ThumbnailsImage({ images, altName }: Props) {
 	return (
 		<div className="flex flex-col gap-4">
 			{/* Imagen principal */}
-			<div className="aspect-square w-full md:h-[52vh] rounded-xl overflow-hidden bg-gray-100">
+			<div className="aspect-square w-full md:h-[52vh] border-3 border-secondary rounded-xl overflow-hidden bg-gray-100">
 				<Image
 					src={images[selectedImageIndex] || "/placeholder.svg"}
 					alt={altName}
-					width={600}
-					height={600}
+					width={1920}
+					height={1080}
+					quality={100}
 					className="w-full h-full object-center"
 				/>
 			</div>
