@@ -79,12 +79,12 @@ export default function HomeBannerSection({
 
 			{/* Contenido principal */}
 			<div className="relative py-6 z-10 container mx-auto px-6 h-full flex items-center">
-				<div className="grid items-center gap-12 lg:grid-cols-2 w-full">
+				<div className="items-center gap-4 sm:gap-12 flex lg:flex-row flex-col-reverse w-full">
 					{/* Contenido de texto */}
 					<div
-						className={`space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
+						className={`space-y-4 sm:space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
 					>
-						<div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 items-center">
+						<div className="hidden lg:flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 items-center">
 							<Avatar className="h-40 w-40">
 								<AvatarImage src="/icons/logo-icon.png" />
 								<AvatarFallback className="">
@@ -111,7 +111,7 @@ export default function HomeBannerSection({
 						</div>
 
 						{/* Descripción */}
-						<p className="text-xl lg:text-2xl text-secondary leading-relaxed max-w-2xl animate-fade-in delay-300">
+						<p className="text-base sm:text-xl lg:text-2xl text-secondary leading-relaxed max-w-2xl animate-fade-in delay-300">
 							{description}
 						</p>
 
@@ -122,7 +122,7 @@ export default function HomeBannerSection({
 									<div className="text-secondary/70 text-sm">
 										{statisticalTip.statistics}
 									</div>
-									<div className="text-3xl font-bold text-secondary">
+									<div className="text-base sm:text-3xl font-bold text-secondary">
 										{statisticalTip.info}
 									</div>
 								</div>
@@ -134,7 +134,7 @@ export default function HomeBannerSection({
 							<NavigationComponent href={paths.perfumes().root}>
 								<Button
 									variant={"secondary"}
-									className="group bg-secondary w-full sm:w-auto text-primary text-lg font-bold px-8 py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
+									className="group bg-secondary text-primary text-base sm:text-lg font-bold px-6 sm:px-8 py-4 sm:py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
 								>
 									<ShoppingBag className="w-5 h-5 mr-3" />
 									Explorar Colección
