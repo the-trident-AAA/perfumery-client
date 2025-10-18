@@ -20,7 +20,7 @@ export default function Footer() {
 					<ContactInformation />
 
 					{/* Youtube Promotion */}
-					<Promotion />
+					{/* <Promotion /> */}
 				</div>
 				{/* Bottom Section */}
 				<BottomSection />

@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react"
+import { Instagram, Mail, MapPin, Phone } from "lucide-react"
 import React from "react"
 
 export default function ContactInformation() {
@@ -8,23 +8,18 @@ export default function ContactInformation() {
 				Contact
 			</h4>
 			<ul className="space-y-3 text-sm">
-				<li className="flex items-start">
-					<MapPin
-						size={18}
-						className="mr-2 text-secondary flex-shrink-0 mt-0.5"
-					/>
-					<span className="text-secondary">
-						123 Fragrance Avenue, Perfume City, 10001
-					</span>
+				<li className="flex items-center">
+					<Instagram size={18} className="mr-2 text-secondary" />
+					<span className="text-secondary">perfumes_del_puro</span>
 				</li>
 				<li className="flex items-center">
 					<Phone size={18} className="mr-2 text-secondary" />
-					<span className="text-secondary">+1 (555) 123-4567</span>
+					<span className="text-secondary">+53 63229014</span>
 				</li>
 				<li className="flex items-center">
 					<Mail size={18} className="mr-2 text-secondary" />
 					<span className="text-secondary">
-						contact@essenceperfumes.com
+						perfumesdelpuro@gmail.com
 					</span>
 				</li>
 			</ul>
