@@ -15,7 +15,12 @@ export default function BrandSection() {
 					<Facebook size={20} />
 					<span className="sr-only">Facebook</span>
 				</Link>
-				<Link href="#" className="text-secondary hover:text-white">
+				<Link
+					href="https://www.instagram.com/perfumes_del_puro/"
+					className="text-secondary hover:text-white"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<Instagram size={20} />
 					<span className="sr-only">Instagram</span>
 				</Link>
