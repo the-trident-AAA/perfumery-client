@@ -6,7 +6,7 @@ export default function ConfirmEmailContainer() {
 	return (
 		<div className="sm:max-w-md">
 			<div className="text-center space-y-4">
-				<div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+				<div className="mx-auto w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
 					<Mail className="w-8 h-8 text-primary" />
 				</div>
 
