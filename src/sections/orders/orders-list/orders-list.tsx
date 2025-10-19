@@ -1,6 +1,7 @@
 import EmptyContent from "@/src/components/empty-content/empty-content"
 import { getOrdersList } from "@/src/lib/services/orders"
 import { SearchParamsPagination } from "@/src/lib/types/pagination"
+import OrdersFiltersContainer from "@/src/sections/orders/filters/orders-filters-container"
 import OrderCard from "@/src/sections/orders/order-card/order-card"
 import React from "react"
 
@@ -21,17 +22,24 @@ export default async function OrdersList({
 	const orders = res.response.data
 
 	return (
-		<div className="grid grid-cols-1 gap-4 p-2">
-			{orders.length > 0 ? (
-				orders.map(order => (
-					<OrderCard key={order.id} order={order} variant={variant} />
-				))
-			) : (
-				<EmptyContent
-					title="No se han registrado pedidos"
-					description="Llene su carrito y cree un pedido !!!"
-				/>
-			)}
+		<div className="flex flex-col gap-4">
+			<OrdersFiltersContainer />
+			<div className="grid grid-cols-1 gap-4 p-2">
+				{orders.length > 0 ? (
+					orders.map(order => (
+						<OrderCard
+							key={order.id}
+							order={order}
+							variant={variant}
+						/>
+					))
+				) : (
+					<EmptyContent
+						title="No se han registrado pedidos"
+						description="Llene su carrito y cree un pedido !!!"
+					/>
+				)}
+			</div>
 		</div>
 	)
 }
