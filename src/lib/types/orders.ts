@@ -30,14 +30,14 @@ export enum OrderState {
 	COMPLETED = "completado",
 }
 
-export const getOrderText = (orderState: OrderState) => {
+export const getOrderStateText = (orderState: OrderState) => {
 	if (orderState === OrderState.PENDING) return "Pendiente"
 	else if (orderState === OrderState.CANCELED) return "Cancelada"
 	else if (orderState === OrderState.COMPLETED) return "Aceptada"
 	else return "Desconocida"
 }
 
-export const getOrderVariant = (orderState: OrderState) => {
+export const getOrderStateVariant = (orderState: OrderState) => {
 	if (orderState === OrderState.PENDING) return "bg-[#ffb703] text-secondary"
 	else if (orderState === OrderState.CANCELED)
 		return "bg-destructive text-white"
