@@ -9,7 +9,11 @@ import {
 import { Badge } from "@/src/components/ui/badge"
 import { Card } from "@/src/components/ui/card"
 import { Package, Box } from "lucide-react"
-import { Order } from "@/src/lib/types/orders"
+import {
+	getOrderStateText,
+	getOrderStateVariant,
+	Order,
+} from "@/src/lib/types/orders"
 import PerfumeOrdersListContainer from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list-container"
 import { fCurrency } from "@/src/lib/utils/format-number"
 
@@ -47,10 +51,10 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 									</span>
 
 									<Badge
-										className={`bg-secondary text-primary mt-2 flex items-center gap-1 px-3 py-1`}
+										className={`${getOrderStateVariant(order.state)} mt-2 flex items-center gap-1 px-3 py-1`}
 									>
 										<Box className="h-3 w-3" />
-										{order.state}
+										{getOrderStateText(order.state)}
 									</Badge>
 								</div>
 							</div>
