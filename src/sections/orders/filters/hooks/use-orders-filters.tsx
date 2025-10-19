@@ -1,11 +1,12 @@
 "use client"
 
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
+import { OrderState } from "@/src/lib/types/orders"
 import { Pagination } from "@/src/lib/types/pagination"
 import { Dispatch, SetStateAction, useState } from "react"
 
 export interface OrdersFilters {
-	id?: string
+	state?: OrderState
 }
 
 interface Props {
@@ -45,7 +46,7 @@ export default function useOrdersFilters({
 
 	const getActiveFiltersCount = () => {
 		let count = 0
-		if (filters.id) count++
+		if (filters.state) count++
 
 		return count
 	}
