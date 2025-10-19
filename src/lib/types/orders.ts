@@ -42,6 +42,6 @@ export const getOrderStateVariant = (orderState: OrderState) => {
 	else if (orderState === OrderState.CANCELED)
 		return "bg-destructive text-white"
 	else if (orderState === OrderState.COMPLETED)
-		return "bg-[#058c42] text-secondary"
+		return "bg-[#058c42] text-white"
 	else return "bg-destructive text-white"
 }
