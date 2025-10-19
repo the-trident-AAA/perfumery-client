@@ -5,7 +5,7 @@ import { ConfirmEmailSchema } from "@/src/sections/confirm-email/form/schemas/co
 import { useCallback, useState } from "react"
 
 interface Props {
-	onVerifyEmailAction: () => void
+	onVerifyEmailAction: (userId: string) => void
 }
 
 export default function useVerifyEmail({ onVerifyEmailAction }: Props) {
@@ -27,7 +27,7 @@ export default function useVerifyEmail({ onVerifyEmailAction }: Props) {
 							"Error en la verificación del email",
 					)
 				else {
-					onVerifyEmailAction()
+					onVerifyEmailAction(res.response.userId)
 				}
 			} catch (error) {
 				console.log(error)
