@@ -23,8 +23,6 @@ interface Props {
 }
 
 export default function OrderCard({ order, variant = "default" }: Props) {
-	const statusConfig = order.state
-
 	return (
 		<Card className="w-full mb-4 bg-muted overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
 			{/* Gradient header bar */}
