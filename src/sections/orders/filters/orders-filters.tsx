@@ -11,7 +11,7 @@ export default function OrdersFilters({ filters, handleChangeFilters }: Props) {
 	return (
 		<div className="flex p-2">
 			<SelectInput
-				label="Estado"
+				label="Filtro de Estado"
 				fullWidth
 				placeHolder="Seleccione un estado por el que filtrar..."
 				value={filters.state}
