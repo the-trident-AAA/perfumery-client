@@ -12,7 +12,7 @@ export default function OrdersModalButton() {
 	const { totalOrders } = useContext(UserTotalOrdersContext)
 
 	return (
-		<NavigationComponent href={paths.profile.root}>
+		<NavigationComponent href={paths.orders.root}>
 			<Button
 				variant="default"
 				size="icon"

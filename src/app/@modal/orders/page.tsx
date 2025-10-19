@@ -2,7 +2,7 @@ import ModalWrapper from "@/src/sections/modal-page/components/modal-wrapper/mod
 import OrdersContent from "@/src/sections/orders/orders-content"
 import React from "react"
 
-export default function OrdersProfileModalPage() {
+export default function OrdersModalPage() {
 	return (
 		<ModalWrapper>
 			<OrdersContent variant="modal" />

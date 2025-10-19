@@ -23,6 +23,7 @@ interface ApplicationPath {
 	confirm_email: Path
 	perfumes: (query?: Record<string, string>) => Path
 	profile: Path
+	orders: Path
 }
 
 function buildQueryString(query: Record<string, string> = {}): string {
@@ -77,6 +78,10 @@ export const paths: ApplicationPath = {
 	},
 	editProfile: {
 		root: "/edit-profile",
+		isProtected: true,
+	},
+	orders: {
+		root: "/orders",
 		isProtected: true,
 	},
 	verificationCode: (params = {}, query = {}) => {
