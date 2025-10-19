@@ -7,6 +7,7 @@ import {
 	CredentialsDTO,
 	ForgotPasswordDTO,
 	RegisterDTO,
+	VerifyEmailDTO,
 } from "@/src/lib/types/auth"
 import { User as UserType } from "@/src/lib/types/users"
 import { User } from "next-auth"
@@ -142,6 +143,18 @@ export async function resetPassword(forgotPasswordDTO: ForgotPasswordDTO) {
 			"content-type": "application/json",
 		},
 		body: JSON.stringify(forgotPasswordDTO),
+	})
+
+	return await buildApiResponse<{ message: string }>(res)
+}
+
+export async function verifyEmail(verifyEmailDTO: VerifyEmailDTO) {
+	const res = await fetch(apiRoutes.auth.verifyEmail, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(verifyEmailDTO),
 	})
 
 	return await buildApiResponse<{ message: string }>(res)
