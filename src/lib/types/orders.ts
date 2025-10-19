@@ -3,6 +3,7 @@ import {
 	OrderPerfumeEditDto,
 } from "@/src/lib/types/orders-perfumes"
 import { User } from "@/src/lib/types/users"
+import { OrdersFilters } from "@/src/sections/orders/filters/hooks/use-orders-filters"
 import { OrderEdit } from "@/src/sections/orders/form/edit/schemas/order-edit-schema"
 
 export interface Order {
@@ -18,9 +19,21 @@ export interface OrderEditDto {
 	perfumes: OrderPerfumeEditDto[]
 }
 
+export interface OrdersFiltersDto {
+	state?: OrderState
+}
+
 export const convertOrderEditDto = (orderEdit: OrderEdit): OrderEditDto => {
 	return {
 		...orderEdit,
+	}
+}
+
+export const convertOrdersFiltersDto = (
+	ordersFilters: OrdersFilters,
+): OrdersFiltersDto => {
+	return {
+		...ordersFilters,
 	}
 }
 
