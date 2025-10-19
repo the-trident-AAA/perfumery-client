@@ -3,7 +3,8 @@
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import { OrderState } from "@/src/lib/types/orders"
 import { Pagination } from "@/src/lib/types/pagination"
-import { Dispatch, SetStateAction, useState } from "react"
+import { useSearchParams } from "next/navigation"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 export interface OrdersFilters {
 	state?: OrderState
@@ -20,8 +21,18 @@ export default function useOrdersFilters({
 	defaultsFilters = {},
 	urlFilters = false,
 }: Props) {
+	const searchParams = useSearchParams()
 	const { updateFiltersInUrl } = useUrlFilters()
 	const [filters, setFilters] = useState<OrdersFilters>(defaultsFilters)
+
+	useEffect(() => {
+		const stateParam = (searchParams.get("state") as OrderState) || null
+
+		setFilters(oldFilters => ({
+			...oldFilters,
+			state: stateParam || undefined,
+		}))
+	}, [searchParams])
 
 	async function handleChangeFilters(updatedFilters: Partial<OrdersFilters>) {
 		const newFilters = {
