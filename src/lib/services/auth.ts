@@ -157,5 +157,5 @@ export async function verifyEmail(verifyEmailDTO: VerifyEmailDTO) {
 		body: JSON.stringify(verifyEmailDTO),
 	})
 
-	return await buildApiResponse<{ message: string }>(res)
+	return await buildApiResponse<{ userId: string }>(res)
 }
