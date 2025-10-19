@@ -23,7 +23,7 @@ export async function getOrdersList(params: IQueryable) {
 			status: 401,
 		}
 	const url = new QueryParamsURLFactory(
-		{ ...params, userId: session?.user.id as string },
+		{ ...params, userId: session?.user.id as string, limit: "100" },
 		apiRoutes.orders.get,
 	).build()
 
