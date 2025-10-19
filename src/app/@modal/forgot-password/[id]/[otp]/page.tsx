@@ -1,5 +1,6 @@
 import { checkOtp } from "@/src/lib/services/auth"
 import ForgotPasswordContainer from "@/src/sections/forgot-password/forgot-password-container"
+import ModalWrapper from "@/src/sections/modal-page/components/modal-wrapper/modal-wrapper"
 import React from "react"
 
 type Props = {
@@ -16,8 +17,10 @@ export default async function ForgotPasswordPage({ params }: Props) {
 		return <div>No dispone del permiso para accerder a esta página</div>
 
 	return (
-		<div>
-			<ForgotPasswordContainer userId={id} otp={otp} />
-		</div>
+		<ModalWrapper>
+			<div>
+				<ForgotPasswordContainer userId={id} otp={otp} />
+			</div>
+		</ModalWrapper>
 	)
 }

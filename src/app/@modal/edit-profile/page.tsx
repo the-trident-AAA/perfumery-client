@@ -1,4 +1,5 @@
 import { getUserProfile } from "@/src/lib/services/users"
+import ModalWrapper from "@/src/sections/modal-page/components/modal-wrapper/modal-wrapper"
 import ProfileUserFormContainer from "@/src/sections/users/form/profile/profile-user-form-container"
 import React from "react"
 
@@ -15,8 +16,10 @@ export default async function EditProfilePage({ params }: Props) {
 		throw new Error("Error en la obtención del perfil de usuario")
 
 	return (
-		<div className="max-w-3xl overflow-auto">
-			<ProfileUserFormContainer user={res.response} />
-		</div>
+		<ModalWrapper>
+			<div className="max-w-3xl overflow-auto">
+				<ProfileUserFormContainer user={res.response} />
+			</div>
+		</ModalWrapper>
 	)
 }

@@ -1,3 +1,4 @@
+import ModalWrapper from "@/src/sections/modal-page/components/modal-wrapper/modal-wrapper"
 import VerificationCodeContainer from "@/src/sections/verification-code/verification-code-container"
 import React from "react"
 
@@ -9,8 +10,13 @@ export default async function VerificationCodePage({ params }: Props) {
 	const { id: userId, objective } = await params
 
 	return (
-		<>
-			<VerificationCodeContainer userId={userId} objective={objective} />
-		</>
+		<ModalWrapper>
+			<>
+				<VerificationCodeContainer
+					userId={userId}
+					objective={objective}
+				/>
+			</>
+		</ModalWrapper>
 	)
 }
