@@ -9,9 +9,10 @@ interface Props {
 
 export default function OrdersFilters({ filters, handleChangeFilters }: Props) {
 	return (
-		<div className="p-2">
+		<div className="flex p-2">
 			<SelectInput
 				label="Estado"
+				fullWidth
 				placeHolder="Seleccione un estado por el que filtrar..."
 				value={filters.state}
 				onValueChange={value => {
