@@ -7,7 +7,7 @@ export default function ConfirmEmailForm() {
 			<RHFTextField
 				name="email"
 				label="Email"
-				description="Introduzca el email a verificar..."
+				placeholder="Introduzca el email a verificar..."
 			/>
 		</div>
 	)
