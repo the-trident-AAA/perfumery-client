@@ -1,15 +1,20 @@
 import { TabsContainer } from "@/src/components/ui/tabs-panel"
+import { SearchParamsPagination } from "@/src/lib/types/pagination"
 import OrdersContent from "@/src/sections/orders/orders-content"
 import ShopCartContent from "@/src/sections/shop-cart/shop-cart-content"
 import React, { useMemo } from "react"
 
-export default function ProfileAdditionalInformation() {
+interface Props {
+	searchParams: SearchParamsPagination
+}
+
+export default function ProfileAdditionalInformation({ searchParams }: Props) {
 	const tabs = useMemo(
 		() => [
 			{
 				label: "Pedidos",
 				value: "orders",
-				component: <OrdersContent />,
+				component: <OrdersContent searchParams={searchParams} />,
 			},
 			{
 				label: "Carrito de Compras",

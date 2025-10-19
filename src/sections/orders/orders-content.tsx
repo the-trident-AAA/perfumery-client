@@ -1,13 +1,18 @@
 import { CardSkeletonGroup } from "@/src/components/card-skeleton-group/card-skeleton-group"
+import { SearchParamsPagination } from "@/src/lib/types/pagination"
 import OrdersList from "@/src/sections/orders/orders-list/orders-list"
 import { ListOrderedIcon } from "lucide-react"
 import React, { Suspense } from "react"
 
 interface Props {
 	variant?: "modal" | "default"
+	searchParams: SearchParamsPagination
 }
 
-export default function OrdersContent({ variant = "default" }: Props) {
+export default function OrdersContent({
+	variant = "default",
+	searchParams,
+}: Props) {
 	return (
 		<div className="flex flex-col gap-2 mt-2">
 			<div className="flex bg-secondary p-2 rounded-2xl justify-center gap-2">
@@ -24,7 +29,7 @@ export default function OrdersContent({ variant = "default" }: Props) {
 					/>
 				}
 			>
-				<OrdersList variant={variant} />
+				<OrdersList searchParams={searchParams} variant={variant} />
 			</Suspense>
 		</div>
 	)
