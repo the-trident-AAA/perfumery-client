@@ -12,13 +12,13 @@ export interface OrdersFilters {
 interface Props {
 	setPagination?: Dispatch<SetStateAction<Pagination>>
 	defaultsFilters?: OrdersFilters
-	urlPagination?: boolean
+	urlFilters?: boolean
 }
 
 export default function useOrdersFilters({
 	setPagination,
 	defaultsFilters = {},
-	urlPagination = false,
+	urlFilters = false,
 }: Props) {
 	const { updateFiltersInUrl } = useUrlFilters()
 	const [filters, setFilters] = useState<OrdersFilters>(defaultsFilters)
@@ -32,14 +32,14 @@ export default function useOrdersFilters({
 			...prev,
 			...updatedFilters,
 		}))
-		if (urlPagination) updateFiltersInUrl(newFilters)
+		if (urlFilters) updateFiltersInUrl(newFilters)
 		if (setPagination)
 			setPagination(oldPagination => ({ ...oldPagination, page: 1 }))
 	}
 
 	function handleResetFilters() {
 		setFilters({})
-		if (urlPagination) updateFiltersInUrl({})
+		if (urlFilters) updateFiltersInUrl({})
 		if (setPagination)
 			setPagination(oldPagination => ({ ...oldPagination, page: 1 }))
 	}
