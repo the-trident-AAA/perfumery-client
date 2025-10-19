@@ -1,6 +1,6 @@
 import ModalLayoutContainer from "@/src/sections/modal-layout/modal-layout-container"
 
-export default function ModalLayout({
+export default function ModalWrapper({
 	children,
 }: {
 	children: React.ReactNode
