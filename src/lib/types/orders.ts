@@ -32,8 +32,8 @@ export enum OrderState {
 
 export const getOrderStateText = (orderState: OrderState) => {
 	if (orderState === OrderState.PENDING) return "Pendiente"
-	else if (orderState === OrderState.CANCELED) return "Cancelada"
-	else if (orderState === OrderState.COMPLETED) return "Aceptada"
+	else if (orderState === OrderState.CANCELED) return "Cancelado"
+	else if (orderState === OrderState.COMPLETED) return "Aceptado"
 	else return "Desconocida"
 }
 
