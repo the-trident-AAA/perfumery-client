@@ -1,3 +1,4 @@
+import { ConfirmEmailSchema } from "@/src/sections/confirm-email/form/schemas/confirm-email-schema"
 import { ForgotPassword } from "@/src/sections/forgot-password/form/schemas/forgot-password-schema"
 import { Register } from "@/src/sections/registration/form/schemas/register-schema"
 import { Credentials } from "@/src/sections/sign-in/form/schemas/credentials-schema"
@@ -23,6 +24,10 @@ export interface RegisterDTO {
 	username: string
 	email: string
 	password: string
+}
+
+export interface VerifyEmailDTO {
+	email: string
 }
 
 export const convertRegisterDTO = (register: Register): RegisterDTO => {
@@ -59,5 +64,13 @@ export const convertForgotPasswordDTO = (
 		...forgotPassword,
 		userId,
 		otp,
+	}
+}
+
+export const convertVerifyEmailDTO = (
+	confirmEmail: ConfirmEmailSchema,
+): VerifyEmailDTO => {
+	return {
+		...confirmEmail,
 	}
 }
