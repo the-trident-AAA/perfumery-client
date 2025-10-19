@@ -20,6 +20,7 @@ interface ApplicationPath {
 		params?: Record<string, string>,
 		query?: Record<string, string>,
 	) => Path
+	confirm_email: Path
 	perfumes: (query?: Record<string, string>) => Path
 	profile: Path
 }
@@ -99,6 +100,10 @@ export const paths: ApplicationPath = {
 				: pathWithParams,
 			isProtected: false,
 		}
+	},
+	confirm_email: {
+		root: "/confirm-email",
+		isProtected: false,
 	},
 } as const
 
