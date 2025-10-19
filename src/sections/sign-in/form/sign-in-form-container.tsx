@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/src/components/ui/button"
 import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 import useVerifyStateAccount from "@/src/sections/auth/hooks/use-verify-state-account"
+import Link from "next/link"
 
 export default function SignInFormContainer() {
 	const {
@@ -62,6 +63,14 @@ export default function SignInFormContainer() {
 					className="w-full flex flex-col gap-6"
 				>
 					<SignInForm />
+					<div className="text-right">
+						<Link
+							href={paths.confirm_email.root}
+							className="text-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
+						>
+							¿Olvidaste tu contraseña?
+						</Link>
+					</div>
 					<Button
 						type="submit"
 						variant={"secondary"}
