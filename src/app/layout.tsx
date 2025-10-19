@@ -14,7 +14,6 @@ import ShopCartTotalItemsProviderContainer from "@/src/sections/shop-cart/contex
 import { ToastContainer } from "react-toastify"
 import ClearShopCartModalContainer from "@/src/sections/shop-cart/clear-shop-cart/clear-shop-cart-modal-container"
 import { ShopCartProvider } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
-import OrdersContent from "@/src/sections/orders/orders-content"
 import { UserTotalOrdersProvider } from "@/src/sections/orders/context/user-total-orders-context"
 import ProgressBar from "@/src/components/providers/progress-bar."
 import { ProfileProvider } from "@/src/sections/auth/context/profile-context/profile-context"
@@ -104,15 +103,6 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 													maxWidth="max-w-xl"
 												>
 													<ClearShopCartModalContainer />
-												</Modal>
-												<Modal
-													formPath={
-														modalTypes.ordersModal
-															.name
-													}
-													maxWidth="max-w-3xl"
-												>
-													<OrdersContent variant="modal" />
 												</Modal>
 											</main>
 										</ProgressBar>
