@@ -3,6 +3,7 @@ import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 import { Button } from "@/src/components/ui/button"
 import { Form } from "@/src/components/ui/form"
 import { paths } from "@/src/lib/routes/paths"
+import useSendOtp from "@/src/sections/auth/hooks/use-send-otp"
 import ConfirmEmailForm from "@/src/sections/confirm-email/form/confirm-email-form"
 import {
 	confirmEmailSchema,
@@ -17,6 +18,7 @@ import { toast } from "react-toastify"
 
 export default function ConfirmEmailFormContainer() {
 	const router = useRouter()
+	const { sendOtp, loading: loadingSendOtp } = useSendOtp({})
 	const {
 		verifyEmail,
 		loading: loadingVerifyEmail,
@@ -24,6 +26,7 @@ export default function ConfirmEmailFormContainer() {
 	} = useVerifyEmail({
 		onVerifyEmailAction: userId => {
 			toast.success("Identidad verificada con éxito")
+			sendOtp(userId)
 			router.push(
 				paths.verificationCode({
 					id: userId,
@@ -55,7 +58,7 @@ export default function ConfirmEmailFormContainer() {
 				<ConfirmEmailForm />
 				<Button
 					type="submit"
-					disabled={loadingVerifyEmail}
+					disabled={loadingVerifyEmail || loadingSendOtp}
 					variant={"secondary"}
 					className="w-full text-primary"
 				>
