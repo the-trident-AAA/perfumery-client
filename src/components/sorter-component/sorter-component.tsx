@@ -14,6 +14,7 @@ interface Props {
 	sortOptions: SortOption[]
 	onSortChange: (sortKey: string, direction: "asc" | "desc") => void
 	defaultSort?: string
+	defaultSortValue?: "asc" | "desc"
 	className?: string
 }
 
@@ -21,13 +22,16 @@ export default function SorterComponent({
 	sortOptions = [],
 	onSortChange,
 	defaultSort,
+	defaultSortValue = "asc",
 	className = "",
 }: Props) {
 	// Add safety check for empty sortOptions
 	const initialSort =
 		defaultSort || (sortOptions.length > 0 ? sortOptions[0].key : "")
 	const [currentSort, setCurrentSort] = useState(initialSort)
-	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
+	const [sortDirection, setSortDirection] = useState<"asc" | "desc">(
+		defaultSortValue,
+	)
 
 	// Add early return if no sort options
 	if (!sortOptions || sortOptions.length === 0) {
