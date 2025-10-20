@@ -11,7 +11,7 @@ export default function OrdersOrderContainer() {
 				{
 					key: "lastUpdateDate",
 					label: "Fecha de actualización",
-					type: "string",
+					type: "date",
 				},
 			]}
 			defaultSort="lastUpdateDate"
