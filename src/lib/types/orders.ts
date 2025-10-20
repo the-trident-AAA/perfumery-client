@@ -8,6 +8,7 @@ import { OrderEdit } from "@/src/sections/orders/form/edit/schemas/order-edit-sc
 
 export interface Order {
 	id: string
+	code: string
 	state: OrderState
 	creationDate: string
 	lastUpdateDate: string
