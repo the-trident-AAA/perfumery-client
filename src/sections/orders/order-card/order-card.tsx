@@ -16,6 +16,7 @@ import {
 } from "@/src/lib/types/orders"
 import PerfumeOrdersListContainer from "@/src/sections/orders/perfume-orders/perfume-orders-list/perfume-orders-list-container"
 import { fCurrency } from "@/src/lib/utils/format-number"
+import { formatDate } from "@/src/lib/format-date"
 
 interface Props {
 	order: Order
@@ -41,12 +42,28 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 										Pedido #{order.id}
 									</span>
 
-									<Badge
-										className={`${getOrderStateVariant(order.state)} mt-2 flex items-center gap-1 px-3 py-1`}
-									>
-										<Box className="h-3 w-3" />
-										{getOrderStateText(order.state)}
-									</Badge>
+									<div className="flex items-center gap-4">
+										<Badge
+											className={`${getOrderStateVariant(order.state)} mt-2 flex items-center gap-1 px-3 py-1`}
+										>
+											<Box className="h-3 w-3" />
+											{getOrderStateText(order.state)}
+										</Badge>
+										<div
+											className="flex flex-col gap-1
+										"
+										>
+											<p className="text-sm text-primary">
+												Creado:
+											</p>
+											<Badge
+												variant={"default"}
+												className="text-secondary"
+											>
+												{formatDate(order.creationDate)}
+											</Badge>
+										</div>
+									</div>
 								</div>
 							</div>
 
