@@ -36,7 +36,7 @@ export default function PerfumeOrdersList({
 	return (
 		<div className="space-y-4">
 			<Badge variant={"secondary"} className="text-primary text-base">
-				<p className="text-primary">
+				<p className="text-primary text-sm sm:text-base">
 					Costo del pedido actualizado:{" "}
 					{fCurrency(
 						perfumes.reduce((total, perfume) => {

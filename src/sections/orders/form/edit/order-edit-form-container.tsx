@@ -81,7 +81,7 @@ export default function OrderEditFormContainer({
 					<div className="flex gap-2 items-center rounded-2xl bg-secondary p-2">
 						<Sparkles className="h-5 w-5 text-primary" />
 
-						<h3 className="font-bold text-lg text-primary">
+						<h3 className="font-bold text-sm sm:text-lg text-primary">
 							Perfumes en este pedido
 						</h3>
 					</div>
@@ -102,7 +102,7 @@ export default function OrderEditFormContainer({
 							disabled={submitLoading}
 							className="text-primary"
 						>
-							Descartar Cambios
+							Descartar
 						</Button>
 					</div>
 				</div>
