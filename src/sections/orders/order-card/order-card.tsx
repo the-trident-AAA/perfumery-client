@@ -31,7 +31,7 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 			<Accordion type="single" collapsible className="w-full">
 				<AccordionItem value={order.id} className="border-0 px-2">
 					<AccordionTrigger className="px-6 py-4 bg-secondary  relative hover:no-underline group">
-						<div className="flex flex-col z-10 md:flex-row w-full items-start md:items-center justify-between gap-4">
+						<div className="z-10 w-full grid 2xs:grid-cols-2 gap-4">
 							<div className="flex items-center gap-4">
 								<div className="bg-primary p-3 rounded-full">
 									<Package className="h-6 w-6 text-secondary" />
