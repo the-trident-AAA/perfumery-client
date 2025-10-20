@@ -103,7 +103,9 @@ export default function SorterComponent({
 					onClick={() => handleSortClick(option.key)}
 					className={`flex items-center ${currentSort === option.key && "text-primary"} gap-1`}
 				>
-					<p className="text-base">{getSortLabel(option)}</p>
+					<p className="text-sm sm:text-base">
+						{getSortLabel(option)}
+					</p>
 					{getSortIcon(option.key)}
 				</Button>
 			))}
