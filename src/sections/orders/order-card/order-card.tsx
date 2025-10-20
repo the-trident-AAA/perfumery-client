@@ -42,7 +42,7 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 										Pedido #{order.id}
 									</span>
 
-									<div className="flex items-center gap-4">
+									<div className="flex flex-wrap items-center gap-4">
 										<Badge
 											className={`${getOrderStateVariant(order.state)} mt-2 flex items-center gap-1 px-3 py-1`}
 										>
@@ -54,13 +54,15 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 										"
 										>
 											<p className="text-sm text-primary">
-												Creado:
+												Última actualización:
 											</p>
 											<Badge
 												variant={"default"}
 												className="text-secondary"
 											>
-												{formatDate(order.creationDate)}
+												{formatDate(
+													order.lastUpdateDate,
+												)}
 											</Badge>
 										</div>
 									</div>
