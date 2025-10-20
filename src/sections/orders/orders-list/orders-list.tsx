@@ -3,6 +3,7 @@ import { getOrdersList } from "@/src/lib/services/orders"
 import { SearchParamsPagination } from "@/src/lib/types/pagination"
 import OrdersFiltersContainer from "@/src/sections/orders/filters/orders-filters-container"
 import OrderCard from "@/src/sections/orders/order-card/order-card"
+import OrdersOrderContainer from "@/src/sections/orders/order/orders-order-container"
 import React from "react"
 
 interface Props {
@@ -24,6 +25,7 @@ export default async function OrdersList({
 	return (
 		<div className="flex flex-col gap-4">
 			<OrdersFiltersContainer />
+			<OrdersOrderContainer />
 			<div className="grid grid-cols-1 gap-4 p-2">
 				{orders.length > 0 ? (
 					orders.map(order => (
