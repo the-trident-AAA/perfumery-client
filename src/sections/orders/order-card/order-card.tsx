@@ -28,15 +28,8 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 			{/* Gradient header bar */}
 
 			<Accordion type="single" collapsible className="w-full">
-				<AccordionItem value={order.id} className="border-0">
-					<AccordionTrigger className="px-6 py-4 relative hover:no-underline group">
-						<div
-							className="absolute inset-y-0 left-0 w-1/2 bg-secondary"
-							style={{
-								clipPath:
-									"polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%)",
-							}}
-						/>
+				<AccordionItem value={order.id} className="border-0 px-2">
+					<AccordionTrigger className="px-6 py-4 bg-secondary  relative hover:no-underline group">
 						<div className="flex flex-col z-10 md:flex-row w-full items-start md:items-center justify-between gap-4">
 							<div className="flex items-center gap-4">
 								<div className="bg-primary p-3 rounded-full">
@@ -58,11 +51,11 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 							</div>
 
 							<div className="flex flex-col gap-2 w-full justify-center text-right">
-								<span className="font-black text-black text-2xl">
+								<span className="font-black text-primary text-2xl">
 									{fCurrency(order.totalMount)}
 								</span>
 
-								<p className="text-sm text-black">
+								<p className="text-sm text-primary">
 									Total del pedido
 								</p>
 							</div>
