@@ -39,7 +39,7 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 
 								<div className="flex flex-col items-start">
 									<span className="font-bold text-xl text-primary group-hover:text-primary/80 transition-colors">
-										Pedido #{order.id}
+										Pedido {order.code}
 									</span>
 
 									<div className="flex flex-wrap items-center gap-4">
