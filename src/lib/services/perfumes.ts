@@ -14,10 +14,13 @@ export async function getBestSellersPerfumes() {
 
 	params.append("limit", "10")
 
-	const res = await fetch(apiRoutes.perfumes.get + "?" + params.toString(), {
-		method: "GET",
-		next: { tags: [tagsCacheByRoutes.perfumes.multipleTag] },
-	})
+	const res = await fetch(
+		apiRoutes.perfumes.getBestSellers + "?" + params.toString(),
+		{
+			method: "GET",
+			next: { tags: [tagsCacheByRoutes.perfumes.multipleTag] },
+		},
+	)
 
 	return await buildApiResponse<Perfume[]>(res)
 }
