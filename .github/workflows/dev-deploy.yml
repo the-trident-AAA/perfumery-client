@@ -34,13 +34,13 @@ jobs:
             rm -rf perfumery-client &&
             git clone https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/the-trident-AAA/perfumery-client.git || true &&
             cd perfumery-client &&
-            rm -f .env.dev &&
-            echo 'NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}' > .env.dev &&
-            echo 'AUTH_SECRET=${{ secrets.AUTH_SECRET }}' >> .env.dev &&
-            echo 'AUTH_MODE=${{ secrets.AUTH_MODE }}' >> .env.dev &&
-            echo 'NEXT_PUBLIC_IMAGE_HOST=${{ secrets.NEXT_PUBLIC_IMAGE_HOST }}' >> .env.dev &&
-            echo 'NEXT_PUBLIC_IMAGE_PORT=${{ secrets.NEXT_PUBLIC_IMAGE_PORT }}' >> .env.dev &&
-            echo 'NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER=${{ secrets.NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER }}' >> .env.dev &&
+            rm -f .env &&
+            echo 'NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}' > .env &&
+            echo 'AUTH_SECRET=${{ secrets.AUTH_SECRET }}' >> .env &&
+            echo 'AUTH_MODE=${{ secrets.AUTH_MODE }}' >> .env &&
+            echo 'NEXT_PUBLIC_IMAGE_HOST=${{ secrets.NEXT_PUBLIC_IMAGE_HOST }}' >> .env &&
+            echo 'NEXT_PUBLIC_IMAGE_PORT=${{ secrets.NEXT_PUBLIC_IMAGE_PORT }}' >> .env &&
+            echo 'NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER=${{ secrets.NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER }}' >> .env &&
             git pull origin develop &&
             docker-compose -f docker-compose.dev.yml pull &&
             docker-compose -f docker-compose.dev.yml build --no-cache &&

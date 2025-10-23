@@ -3,8 +3,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.dev
-        env_file:
-            - .env.dev
         extra_hosts:
             - "minio.perfumesdelpuro.com:172.17.0.1"
         container_name: perfumery-client
