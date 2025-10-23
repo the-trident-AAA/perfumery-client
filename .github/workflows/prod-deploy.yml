@@ -41,6 +41,7 @@ jobs:
             echo 'NEXT_PUBLIC_IMAGE_HOST=${{ secrets.NEXT_PUBLIC_IMAGE_HOST }}' >> .env &&
             echo 'NEXT_PUBLIC_IMAGE_PORT=${{ secrets.NEXT_PUBLIC_IMAGE_PORT }}' >> .env &&
             echo 'NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER=${{ secrets.NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER }}' >> .env &&
+            git checkout main &&
             git pull origin main &&
             docker-compose -f docker-compose.prod.yml pull &&
             docker-compose -f docker-compose.prod.yml build --no-cache &&
