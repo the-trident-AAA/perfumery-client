@@ -9,6 +9,19 @@ import { PaginationResponse } from "@/src/lib/types/pagination"
 import { Perfume, PerfumeDetails } from "@/src/lib/types/perfumes"
 import { IQueryable } from "@/src/lib/types/request"
 
+export async function getBestSellersPerfumes() {
+	const params = new URLSearchParams()
+
+	params.append("limit", "10")
+
+	const res = await fetch(apiRoutes.perfumes.get + "?" + params.toString(), {
+		method: "GET",
+		next: { tags: [tagsCacheByRoutes.perfumes.multipleTag] },
+	})
+
+	return await buildApiResponse<Perfume[]>(res)
+}
+
 export async function getPerfumesList(params: IQueryable) {
 	const url = new QueryParamsURLFactory(
 		params,

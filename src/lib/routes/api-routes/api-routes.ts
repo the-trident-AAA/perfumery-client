@@ -13,6 +13,7 @@ export const apiRoutes = {
 	},
 	perfumes: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}perfume`,
+		getBestSellers: `${process.env.NEXT_PUBLIC_API_URL}perfume/best-sellers`,
 		getById: `${process.env.NEXT_PUBLIC_API_URL}perfume/:id`,
 	},
 	brands: {
