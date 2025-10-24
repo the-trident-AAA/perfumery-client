@@ -15,7 +15,12 @@ export default function PerfumesOrderContainer() {
 				},
 				{
 					key: "price",
-					label: "Precio",
+					label: "Precio Base",
+					type: "number",
+				},
+				{
+					key: "totalPrice",
+					label: "Precio con Descuento",
 					type: "number",
 				},
 			]}
