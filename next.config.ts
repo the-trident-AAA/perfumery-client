@@ -11,9 +11,12 @@ const nextConfig: NextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: "http",
+				protocol:
+					(process.env.NEXT_PUBLIC_IMAGE_PROTOCOL as
+						| "http"
+						| "https") || "http",
 				hostname: process.env.NEXT_PUBLIC_IMAGE_HOST || "localhost",
-				pathname: "/perfumery/**",
+				pathname: process.env.NEXT_PUBLIC_IMAGE_PATH || "/perfumery/**",
 			},
 		],
 	},
