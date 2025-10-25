@@ -15,6 +15,7 @@ export interface PerfumesFilters {
 	perfumeTypeId?: string
 	available?: boolean
 	priceRange: [number, number]
+	totalPriceRange: [number, number]
 	cant?: number
 	offerId?: string
 }
@@ -28,6 +29,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 	const searchParams = useSearchParams()
 	const [filters, setFilters] = useState<PerfumesFilters>({
 		priceRange: [0, 300],
+		totalPriceRange: [0, 300],
 		scentsIds: [],
 	})
 
@@ -75,6 +77,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 	function handleResetFilters() {
 		setFilters({
 			priceRange: [0, 300],
+			totalPriceRange: [0, 300],
 			scentsIds: [],
 		})
 		updateFiltersInUrl({ page: 1 })
