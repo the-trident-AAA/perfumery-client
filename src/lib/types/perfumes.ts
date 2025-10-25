@@ -53,6 +53,8 @@ export interface PerfumesFiltersDTO {
 	price?: number
 	cant?: number
 	offerId?: string
+	totalPriceMin?: number
+	totalPriceMax?: number
 }
 
 export enum Gender {
@@ -87,11 +89,13 @@ export const genderMapInverted: Map<string, Gender> = new Map(
 export const convertPerfumesFiltersDTO = (
 	perfumesFilters: PerfumesFilters,
 ): PerfumesFiltersDTO => {
-	const { priceRange, ...rest } = perfumesFilters
+	const { priceRange, totalPriceRange, ...rest } = perfumesFilters
 	return {
 		...rest,
 		priceMin: priceRange[0],
 		priceMax: priceRange[1],
+		totalPriceMin: totalPriceRange[0],
+		totalPriceMax: totalPriceRange[1],
 		available: perfumesFilters.available ? true : undefined,
 		scentsIds:
 			perfumesFilters.scentsIds.length > 0
