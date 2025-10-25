@@ -7,12 +7,11 @@ import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
 import useBrands from "@/src/sections/brands/hooks/use-brands"
 import useOffers from "@/src/sections/offers/hooks/use-offers"
 import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-types"
-import { PerfumesFiltersContext } from "@/src/sections/perfumes/filters/context/perfumes-filters-context"
 import usePerfumesFilters from "@/src/sections/perfumes/filters/hooks/use-perfumes-filters"
 import PerfumesFilters from "@/src/sections/perfumes/filters/perfumes-filters/perfumes-filters"
 import useScents from "@/src/sections/scents/hooks/use-scents"
 import { SlidersHorizontal } from "lucide-react"
-import React, { useContext } from "react"
+import React from "react"
 
 export default function PerfumesFiltersContainer() {
 	const breakpoint = useBreakpoint()
