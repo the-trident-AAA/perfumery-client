@@ -40,6 +40,11 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 		const genderParam = searchParams.get("gender") as Gender | null
 		const offerParam = searchParams.get("offerId")
 		const availableParam = searchParams.get("available")
+		const priceMinParam = searchParams.get("priceMin")
+		const priceMaxParam = searchParams.get("priceMax")
+		const totalPriceMinParam = searchParams.get("totalPriceMin")
+		const totalPriceMaxParam = searchParams.get("totalPriceMax")
+
 		setFilters(oldFilters => ({
 			...oldFilters,
 			name: nameParam || undefined,
@@ -52,6 +57,14 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 					? true
 					: undefined
 				: undefined,
+			priceRange: [
+				priceMinParam ? Number(priceMinParam) : 0,
+				priceMaxParam ? Number(priceMaxParam) : 300,
+			],
+			totalPriceRange: [
+				totalPriceMinParam ? Number(totalPriceMinParam) : 0,
+				totalPriceMaxParam ? Number(totalPriceMaxParam) : 300,
+			],
 		}))
 	}, [searchParams])
 
