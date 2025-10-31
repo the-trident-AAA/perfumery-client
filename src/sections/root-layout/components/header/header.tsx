@@ -37,8 +37,9 @@ const Header = () => {
 					<HeaderNavbar />
 				</div>
 			</header>
-
-			<HeaderQuickLinks />
+			<Suspense fallback={<div>Cargando...</div>}>
+				<HeaderQuickLinks />
+			</Suspense>
 		</div>
 	)
 }
