@@ -260,13 +260,13 @@ export default function PerfumeCard({ perfume }: Props) {
 							>
 								<Badge
 									variant={"default"}
-									className="text-black font-bold"
+									className="text-black max-w-[80px] sm:max-w-[120px] block truncate leading-tight text-[10px] sm:text-xs font-bold"
 								>
 									{perfume.brand}
 								</Badge>
 								<Badge
 									variant={"default"}
-									className="text-black font-bold"
+									className="text-black max-w-[80px] sm:max-w-[120px] block truncate leading-tight text-[10px] sm:text-xs font-bold"
 								>
 									{perfume.perfumeType}
 								</Badge>
@@ -274,10 +274,10 @@ export default function PerfumeCard({ perfume }: Props) {
 
 							{/* Title mejorado */}
 							<div
-								className="space-y-3"
+								className="space-y-1 sm:space-y-3"
 								style={{ animation: "fadeIn 0.5s 200ms both" }}
 							>
-								<h3 className="font-bold text-xl text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
+								<h3 className="font-bold text-lg sm:text-xl text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
 									{perfume.name}
 								</h3>
 								<p className="text-sm text-white line-clamp-2 leading-relaxed">
@@ -290,7 +290,7 @@ export default function PerfumeCard({ perfume }: Props) {
 								className="flex items-center justify-between text-sm"
 								style={{ animation: "fadeIn 0.5s 300ms both" }}
 							>
-								<div className="flex items-center gap-3">
+								<div className="flex items-center gap-1 sm:gap-3">
 									<div
 										className={`w-3 h-3 rounded-full bg-gradient-to-r ${getGenderColor(
 											perfume.gender,
@@ -300,16 +300,16 @@ export default function PerfumeCard({ perfume }: Props) {
 										{perfume.gender}
 									</span>
 								</div>
-								<div className="flex items-center gap-2 bg-muted px-3 py-1 rounded-full">
+								<div className="flex items-center gap-2 bg-muted px-[4px] sm:px-3 py-1 rounded-full">
 									<Gift className="h-3 w-3 text-black" />
-									<span className="text-black font-bold">
+									<span className="text-black text-xs sm:text-base font-bold">
 										{perfume.milliliters}ml
 									</span>
 								</div>
 							</div>
 						</div>
 
-						<div className="flex flex-col  gap-2 p-4">
+						<div className="flex flex-col  gap-2 px-4">
 							{/* Price Section súper mejorada */}
 							<div
 								className="flex items-center justify-between pt-4 border-t border-border/50"
@@ -318,7 +318,7 @@ export default function PerfumeCard({ perfume }: Props) {
 								<div className="flex flex-col space-y-1">
 									{perfume.discountOffer ? (
 										<>
-											<span className="text-2xl font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+											<span className="text-base sm:text-2xl font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
 												{fCurrency(perfume.totalPrice)}
 											</span>
 											<span className="text-sm text-muted-foreground line-through opacity-75">
@@ -326,7 +326,7 @@ export default function PerfumeCard({ perfume }: Props) {
 											</span>
 										</>
 									) : (
-										<span className="text-2xl font-black text-primary">
+										<span className="text-base sm:text-2xl font-black text-primary">
 											{fCurrency(perfume.price)}
 										</span>
 									)}
@@ -354,7 +354,7 @@ export default function PerfumeCard({ perfume }: Props) {
 									</span>
 								</div>
 								{perfume.available && perfume.cant <= 5 && (
-									<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-2 py-1 rounded-full animate-pulse">
+									<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-2  rounded-full animate-pulse">
 										<Zap className="h-3 w-3" />
 										<span className="text-xs font-bold">
 											¡Solo {perfume.cant}!
