@@ -1,160 +1,157 @@
 "use client"
-import { cn } from "@/src/lib/utils/utils"
-import Autoplay from "embla-carousel-autoplay"
-import React, { useContext } from "react"
-import { StandardCarouselContext } from "./context/standard-carousel-context"
-import useStandardCarousel from "./hooks/use-standard-carousel"
+
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import type React from "react"
+import { useCallback, useEffect, useState } from "react"
 import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselPrevious,
-	CarouselNext,
-} from "../carousel"
+	type CarouselApi,
+} from "@/src/components/ui/carousel"
+import { Button } from "@/src/components/ui/button"
+import { cn } from "@/src/lib/utils/utils"
 
 interface Props<T> {
 	items: T[]
-	dimension: string
-	itemsStyles: string
-	withStylesContent?: boolean
-	withProgressBar?: boolean
-	variantProgressBar?: "onCarouselItem" | "belowCarouselItem"
-	autoPlay?: boolean
 	renderCard: (item: T) => React.ReactNode
 	className?: string
+	itemClassName?: string
+	autoPlay?: boolean
+	autoPlayDelay?: number
 	loop?: boolean
-	withArrows?: boolean
-	arrowsPosition?: "inside" | "outside"
-	arrowsLocation?: "normal" | "bottom"
-	arrowsClassName?: string
-	shouldCenter?: (breakpoint: string, cantElements: number) => boolean
+	slidesToScroll?: number
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
 	items,
-	dimension,
 	renderCard,
-	itemsStyles,
 	className,
-	withStylesContent = true,
-	withProgressBar = false,
-	variantProgressBar = "onCarouselItem",
+	itemClassName,
 	autoPlay = false,
-	loop = false,
-	withArrows = false,
-	arrowsPosition = "inside",
-	arrowsLocation = "normal",
-	arrowsClassName = "",
-	shouldCenter,
+	autoPlayDelay = 5000,
+	loop = true,
+	slidesToScroll = 1,
 }: Props<T>) {
-	const { isCentered } = useStandardCarousel({
-		cantElements: items.length,
-		shouldCenter,
-	})
+	const [api, setApi] = useState<CarouselApi>()
 
-	const { current, count, handleClick, setApi } = useContext(
-		StandardCarouselContext,
+	const [canScrollPrev, setCanScrollPrev] = useState(false)
+	const [canScrollNext, setCanScrollNext] = useState(false)
+
+	// Calculate sections based on visible slides
+	const updateSections = useCallback(() => {
+		if (!api) return
+
+		// Update navigation button states
+		setCanScrollPrev(api.canScrollPrev())
+		setCanScrollNext(api.canScrollNext())
+	}, [api, items.length])
+
+	useEffect(() => {
+		if (!api) return
+
+		updateSections()
+		api.on("select", updateSections)
+		api.on("resize", updateSections)
+
+		return () => {
+			api.off("select", updateSections)
+			api.off("resize", updateSections)
+		}
+	}, [api, updateSections])
+
+	// Auto-play functionality
+	useEffect(() => {
+		if (!api || !autoPlay) return
+
+		const interval = setInterval(() => {
+			if (api.canScrollNext()) {
+				api.scrollNext()
+			} else if (loop) {
+				api.scrollTo(0)
+			}
+		}, autoPlayDelay)
+
+		return () => clearInterval(interval)
+	}, [api, autoPlay, autoPlayDelay, loop])
+
+	const scrollPrev = useCallback(() => {
+		api?.scrollPrev()
+	}, [api])
+
+	const scrollNext = useCallback(() => {
+		api?.scrollNext()
+	}, [api])
+
+	const scrollToSection = useCallback(
+		(sectionIndex: number) => {
+			if (!api) return
+			const slidesInView = api.slidesInView().length
+			const targetSlide = sectionIndex * slidesInView
+			api.scrollTo(targetSlide)
+		},
+		[api],
 	)
-
-	const plugins = autoPlay
-		? [Autoplay({ delay: 10000, stopOnInteraction: true })]
-		: undefined
 
 	return (
 		<div className="relative w-full">
 			<Carousel
-				plugins={plugins}
 				setApi={setApi}
 				opts={{
-					align: "center",
+					align: "start",
 					loop,
+					slidesToScroll,
 				}}
-				style={{
-					maxWidth: dimension,
-				}}
-				className="relative"
+				className={cn("w-full", className)}
 			>
-				<CarouselContent
-					className={
-						withStylesContent
-							? cn(
-									"flex pb-9 pt-6",
-									isCentered
-										? "justify-center"
-										: "justify-start",
-									className,
-									arrowsLocation === "bottom" ? "pb-12" : "",
-								)
-							: ""
-					}
-				>
+				<CarouselContent className="-ml-2 md:-ml-4">
 					{items.map(item => (
-						<CarouselItem key={item.id} className={itemsStyles}>
+						<CarouselItem
+							key={item.id}
+							className={cn("pl-2 md:pl-4 ", itemClassName)}
+						>
 							{renderCard(item)}
 						</CarouselItem>
 					))}
 				</CarouselContent>
-				{withArrows && arrowsLocation === "normal" && (
-					<div className="hidden sm:flex">
-						<CarouselPrevious
-							className={cn(
-								"absolute left-2 h-8 w-8 rounded-full",
-								arrowsPosition === "inside"
-									? "top-1/2 -translate-y-1/2"
-									: "-left-10 top-1/2 -translate-y-1/2 -translate-x-1/2",
-								arrowsClassName,
-							)}
-						/>
-						<CarouselNext
-							className={cn(
-								"absolute right-2 h-8 w-8 rounded-full",
-								arrowsPosition === "inside"
-									? "top-1/2 -translate-y-1/2"
-									: "-right-9 2xl:right-0 top-1/2 -translate-y-1/2 translate-x-1/2",
-								arrowsClassName,
-							)}
-						/>
-					</div>
-				)}
-				{withArrows && arrowsLocation === "bottom" && (
-					<div className="absolute bottom-2 left-0 w-full justify-between px-2 z-10">
-						<CarouselPrevious
-							className={cn(
-								"2xs:h-12 2xs:w-12 rounded-full left-[36%] 2xs:left-[38%] sm:left-[42%] lg:left-[45%] 2xl:left-[43%]",
-								arrowsClassName,
-							)}
-						/>
-						<CarouselNext
-							className={cn(
-								"2xs:h-12 2xs:w-12 rounded-full right-[36%] 2xs:right-[38%] sm:right-[42%] lg:right-[45%] 2xl:right-[48%]",
-								arrowsClassName,
-							)}
-						/>
-					</div>
-				)}
-			</Carousel>
-			{withProgressBar && (
-				<div
-					className={`absolute ${
-						variantProgressBar === "onCarouselItem"
-							? "bottom-4"
-							: "bottom-0"
-					} left-1/2 flex -translate-x-1/2 gap-2`}
-				>
-					{Array.from({ length: count }).map((_, index) => (
-						<span
-							key={index}
-							onClick={handleClick(index)}
-							className={cn(
-								"size-2 cursor-pointer rounded-full transition-colors sm:size-3",
-								current === index
-									? "bg-yellow-400"
-									: "bg-muted",
-							)}
-						/>
-					))}
+
+				{/* Navigation Buttons */}
+				<div className="absolute -left-4 -right-4 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
+					<Button
+						variant="outline"
+						size="icon"
+						className={cn(
+							"pointer-events-auto h-10 w-10 rounded-full shadow-lg transition-all duration-300",
+							"bg-background/95 backdrop-blur-sm border-2",
+							"hover:scale-110 hover:shadow-xl",
+							"disabled:opacity-0 disabled:pointer-events-none",
+							canScrollPrev ? "opacity-100" : "opacity-0",
+						)}
+						onClick={scrollPrev}
+						disabled={!canScrollPrev}
+						aria-label="Previous slide"
+					>
+						<ChevronLeft className="h-5 w-5" />
+					</Button>
+
+					<Button
+						variant="outline"
+						size="icon"
+						className={cn(
+							"pointer-events-auto h-10 w-10 rounded-full shadow-lg transition-all duration-300",
+							"bg-background/95 backdrop-blur-sm border-2",
+							"hover:scale-110 hover:shadow-xl",
+							"disabled:opacity-0 disabled:pointer-events-none",
+							canScrollNext ? "opacity-100" : "opacity-0",
+						)}
+						onClick={scrollNext}
+						disabled={!canScrollNext}
+						aria-label="Next slide"
+					>
+						<ChevronRight className="h-5 w-5" />
+					</Button>
 				</div>
-			)}
+			</Carousel>
 		</div>
 	)
 }
