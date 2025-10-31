@@ -4,7 +4,7 @@ import { Perfume, PerfumeDetails } from "@/src/lib/types/perfumes"
 import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
 import { ShopCartTotalItemsContext } from "@/src/sections/shop-cart/context/shop-cart-total-items-context/shop-cart-total-items-context"
 import useCreateShopCartPerfume from "@/src/sections/shop-cart/hooks/use-create-shop-cart-perfume"
-import { ShoppingCart } from "lucide-react"
+import { Ban, ShoppingCart } from "lucide-react"
 import React, { useCallback, useContext, useEffect } from "react"
 import { toast } from "react-toastify"
 
@@ -53,19 +53,19 @@ export default function AddShopCartPerfumeButton({
 			variant={variant === "large" ? "secondary" : "default"}
 			className={`${
 				variant === "large" ? "text-primary flex-1" : "text-secondary"
-			} transition-all duration-300  p-4`}
+			} transition-all duration-300 size-4 2xs:size-9  p-4`}
 			disabled={loading || !perfume.available || perfume.cant === 0}
 			onClick={handleAddShopCartPerfume}
 		>
 			{perfume.available && perfume.cant > 0 ? (
 				<div className="flex justify-center items-center gap-2">
-					<ShoppingCart className="size-6 sm:size-6 " />
+					<ShoppingCart className="size-4 2xs:size-6 sm:size-6" />
 					<p className="hidden sm:flex">Añadir</p>
 				</div>
 			) : !perfume.available ? (
-				"No disponible"
+				<Ban className="size-4 2xs:size-6 sm:size-6" />
 			) : (
-				"Agotado"
+				<Ban className="size-4 2xs:size-6 sm:size-6" />
 			)}
 		</Button>
 	)
