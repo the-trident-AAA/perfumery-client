@@ -67,7 +67,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 		const interval = setInterval(() => {
 			if (api.canScrollNext()) {
 				api.scrollNext()
-			} else if (loop) {
+			} else {
 				api.scrollTo(0)
 			}
 		}, autoPlayDelay)
