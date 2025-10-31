@@ -36,7 +36,7 @@ export default function HomeBannerSection({
 	return (
 		<section
 			id="home-hero"
-			className="relative border-t-16 sm:border-t-0 border-primary w-full h-full overflow-hidden bg-primary"
+			className="relative w-full h-full overflow-hidden bg-primary"
 			onMouseMove={handleMouseMove}
 		>
 			{/* Elementos decorativos de fondo animados */}
