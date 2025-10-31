@@ -55,7 +55,7 @@ export default async function BestSellingProducts() {
 						{/* Título principal con efectos */}
 						<div className="space-y-6">
 							<h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-								<span className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-secondary animate-slide-up">
+								<span className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight text-secondary animate-slide-up">
 									Los favoritos de
 								</span>
 								<span className="block text-secondary">
@@ -107,14 +107,14 @@ export default async function BestSellingProducts() {
 					</div>
 
 					{/* Elementos decorativos inferiores */}
-					<div className="flex justify-center mt-12">
+					<div className="flex justify-center px-6 mt-12">
 						<div className="flex items-center gap-4 text-secondary">
 							<div className="w-2 h-2 bg-secondary rounded-full" />
-							<span className="text-sm font-semibold">
+							<span className="text-xs 2xs:text-sm font-semibold">
 								Productos auténticos garantizados
 							</span>
 							<div className="w-2 h-2 bg-secondary rounded-full" />
-							<span className="text-sm font-semibold">
+							<span className="text-xs 2xs:text-sm font-semibold">
 								Envío gratuito en pedidos
 							</span>
 						</div>
