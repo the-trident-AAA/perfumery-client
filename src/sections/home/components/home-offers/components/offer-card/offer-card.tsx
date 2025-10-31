@@ -23,7 +23,7 @@ export default function OfferCard({
 
 	return (
 		<Card
-			className="group w-full h-full max-w-md overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:rotate-1 bg-gradient-to-br from-white to-gray-50"
+			className="group pb-0 w-full h-full max-w-md overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:rotate-1 bg-gradient-to-br from-white to-gray-50"
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>
@@ -142,29 +142,30 @@ export default function OfferCard({
 				</div>
 
 				{/* Sección inferior mejorada */}
-				<div className="p-6 bg-gradient-to-r from-white to-gray-50/50 relative overflow-hidden">
+				<div className="p-6 pb-6 bg-gradient-to-r from-white to-gray-50/50 relative overflow-hidden">
 					{/* Patrón de fondo sutil */}
 					<div className="absolute inset-0 opacity-5">
 						<div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/10 via-transparent to-primary/10" />
 					</div>
 
-					<div className="relative z-10 flex items-center justify-between">
-						<div className="space-y-2">
-							<div className="flex items-center gap-2">
-								<Sparkles className="h-4 w-4 text-secondary" />
-								<p className="text-sm text-secondary font-medium">
-									Fragancias seleccionadas
-								</p>
+					<div className="relative w-full z-10 flex items-center justify-between">
+						<div className="space-y-2 w-full">
+							<div className="flex items-center w-full justify-between gap-2">
+								<div className="flex items-center gap-2">
+									<Sparkles className="h-4 w-4 text-secondary" />
+									<p className="text-sm text-secondary font-medium">
+										Fragancias seleccionadas
+									</p>
+								</div>
+								<div className="transform transition-all duration-300 group-hover:scale-110">
+									<Badge className="bg-gradient-to-r from-secondary/10 to-secondary/20 text-secondary border-secondary/30 font-semibold px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300">
+										{offerType}
+									</Badge>
+								</div>
 							</div>
 							<p className="text-base font-semibold text-secondary group-hover:text-black transition-colors duration-300">
 								{scope}
 							</p>
-						</div>
-
-						<div className="transform transition-all duration-300 group-hover:scale-110">
-							<Badge className="bg-gradient-to-r from-secondary/10 to-secondary/20 text-secondary border-secondary/30 font-semibold px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300">
-								{offerType}
-							</Badge>
 						</div>
 					</div>
 				</div>
