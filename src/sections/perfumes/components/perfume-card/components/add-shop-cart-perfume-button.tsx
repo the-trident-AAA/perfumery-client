@@ -50,19 +50,18 @@ export default function AddShopCartPerfumeButton({
 
 	return (
 		<Button
-			size={variant === "large" ? "lg" : "default"}
 			variant={variant === "large" ? "secondary" : "default"}
 			className={`${
 				variant === "large" ? "text-primary flex-1" : "text-secondary"
-			} transition-all duration-300 px-6`}
+			} transition-all duration-300  p-4`}
 			disabled={loading || !perfume.available || perfume.cant === 0}
 			onClick={handleAddShopCartPerfume}
 		>
 			{perfume.available && perfume.cant > 0 ? (
-				<>
-					<ShoppingCart className="size-6 mr-2" />
-					Añadir
-				</>
+				<div className="flex justify-center items-center gap-2">
+					<ShoppingCart className="size-6 sm:size-6 " />
+					<p className="hidden sm:flex">Añadir</p>
+				</div>
 			) : !perfume.available ? (
 				"No disponible"
 			) : (
