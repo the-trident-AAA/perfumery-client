@@ -41,7 +41,7 @@ export default async function BestSellingProducts() {
 
 			{/* Contenido principal */}
 			<div className="relative z-10 pt-20 pb-24">
-				<div className="lg:container lg:mx-auto px-6">
+				<div className="lg:container lg:mx-auto 2xs:px-6 px-4">
 					{/* Header de la sección mejorado */}
 					<div className="text-center space-y-8 mb-16">
 						{/* Badge superior */}
