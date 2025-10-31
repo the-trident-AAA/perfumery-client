@@ -1,13 +1,7 @@
 "use client"
 
 import type React from "react"
-import {
-	Home,
-	ShoppingBag,
-	TrendingUp,
-	SprayCan,
-	HandCoins,
-} from "lucide-react"
+
 import Link from "next/link"
 import { useMemo, useState } from "react"
 import { Link as LinkScrollReact } from "react-scroll"
@@ -15,7 +9,6 @@ import { paths } from "@/src/lib/routes/paths"
 import { usePathname } from "next/navigation"
 
 interface QuickLink {
-	icon: React.ReactNode
 	label: string
 	href: string
 	isScrollReact: boolean
@@ -28,7 +21,6 @@ const HeaderQuickLinks = () => {
 	const quickLinks: QuickLink[] = useMemo(
 		() => [
 			{
-				icon: <Home className="h-4 w-4" />,
 				label: "Inicio",
 				href:
 					pathname === paths.home.root
@@ -37,7 +29,6 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <HandCoins className="h-4 w-4" />,
 				label: "Ofertas",
 				href:
 					pathname === paths.home.root
@@ -46,7 +37,6 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <TrendingUp className="h-4 w-4" />,
 				label: "Más vendidos",
 				href:
 					pathname === paths.home.root
@@ -55,7 +45,6 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <SprayCan className="h-4 w-4" />,
 				label: "Tipos de Perfumes",
 				href:
 					pathname === paths.home.root
@@ -64,7 +53,6 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <ShoppingBag className="h-4 w-4" />,
 				label: "Perfumes",
 				href: paths.perfumes().root,
 				isScrollReact: false,
@@ -139,17 +127,6 @@ function LinkContent({
 }) {
 	return (
 		<>
-			{/* Icon container with gradient background on hover */}
-			<div
-				className={`relative  transition-all duration-300 bg-white/60`}
-			>
-				<div
-					className={`transition-colors duration-300 text-text-secondary`}
-				>
-					{link.icon}
-				</div>
-			</div>
-
 			{/* Label */}
 			<span
 				className={`text-[10px] 2xs:text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
