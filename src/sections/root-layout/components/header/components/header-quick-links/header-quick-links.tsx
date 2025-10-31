@@ -99,6 +99,7 @@ const HeaderQuickLinks = () => {
 										link={link}
 										index={index}
 										hoveredIndex={hoveredIndex}
+										pathname={pathname}
 									/>
 								</LinkScrollReact>
 							) : (
@@ -113,6 +114,7 @@ const HeaderQuickLinks = () => {
 										link={link}
 										index={index}
 										hoveredIndex={hoveredIndex}
+										pathname={pathname}
 									/>
 								</Link>
 							),
@@ -128,10 +130,12 @@ function LinkContent({
 	link,
 	index,
 	hoveredIndex,
+	pathname,
 }: {
 	link: QuickLink
 	index: number
 	hoveredIndex: number | null
+	pathname: string
 }) {
 	return (
 		<>
@@ -149,7 +153,7 @@ function LinkContent({
 			{/* Label */}
 			<span
 				className={`text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
-					hoveredIndex === index
+					hoveredIndex === index || pathname === link.href
 						? "font-bold"
 						: "text-secondary font-semibold"
 				}`}
@@ -160,7 +164,9 @@ function LinkContent({
 			{/* Bottom indicator line */}
 			<div
 				className={`absolute -bottom-2 group-[.active]:w-full left-1/2 -translate-x-1/2 h-0.5 bg-secondary transition-all duration-300 ${
-					hoveredIndex === index ? "w-full" : "w-0"
+					hoveredIndex === index || pathname === link.href
+						? "w-full"
+						: "w-0"
 				}`}
 			/>
 		</>
