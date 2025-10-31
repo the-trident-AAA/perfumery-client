@@ -1,7 +1,7 @@
 import { CardSkeletonGroup } from "@/src/components/card-skeleton-group/card-skeleton-group"
 import BestSellingProductsList from "@/src/sections/home/components/best-selling-products/list/best-selling-products-list"
 import { Suspense } from "react"
-import { Sparkles, TrendingUp, Award, Star } from "lucide-react"
+import { TrendingUp, Award, Star } from "lucide-react"
 
 export default async function BestSellingProducts() {
 	return (
@@ -43,7 +43,7 @@ export default async function BestSellingProducts() {
 			<div className="relative z-10 pt-20 pb-24">
 				<div className="lg:container lg:mx-auto 2xs:px-6 px-4">
 					{/* Header de la sección mejorado */}
-					<div className="text-center space-y-8 mb-16">
+					<div className="text-center space-y-8 mb-10">
 						{/* Badge superior */}
 						<div className="flex justify-center">
 							<div className="inline-flex items-center text-primary gap-2 bg-secondary border border-secondary/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold">
@@ -80,39 +80,6 @@ export default async function BestSellingProducts() {
 								seleccionada por su calidad excepcional y
 								popularidad entre nuestros clientes
 							</p>
-						</div>
-
-						{/* Estadísticas decorativas */}
-						<div className="flex justify-center mx-4 items-center gap-8 pt-4">
-							<div className="text-center">
-								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-secondary">
-									<Award className="w-6 h-6 text-secondary" />
-									#1
-								</div>
-								<div className="text-secondary text-sm font-semibold">
-									En Ventas
-								</div>
-							</div>
-							<div className="w-px h-12 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
-							<div className="text-center">
-								<div className="flex items-center justify-center gap-2 text-2xl font-bold text-secondary">
-									<Sparkles className="w-6 h-6 text-secondary" />
-									98%
-								</div>
-								<div className="text-secondary text-sm font-semibold">
-									Satisfacción
-								</div>
-							</div>
-							<div className="w-px h-12 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
-							<div className="text-center">
-								<div className="text-2xl flex gap-1 justify-center w-full items-center font-bold text-secondary">
-									5
-									<Star className="w-6 h-6 text-secondary" />
-								</div>
-								<div className="text-secondary text-sm font-semibold">
-									Calificación
-								</div>
-							</div>
 						</div>
 					</div>
 
