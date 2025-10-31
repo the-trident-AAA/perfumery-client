@@ -3,9 +3,10 @@
 import type React from "react"
 import { Home, ShoppingBag, Users, TrendingUp } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { Link as LinkScrollReact } from "react-scroll"
 import { paths } from "@/src/lib/routes/paths"
+import { usePathname } from "next/navigation"
 
 interface QuickLink {
 	icon: React.ReactNode
@@ -14,41 +15,57 @@ interface QuickLink {
 	isScrollReact: boolean
 }
 
-const quickLinks: QuickLink[] = [
-	{
-		icon: <Home className="h-4 w-4" />,
-		label: "Inicio",
-		href: "home-hero",
-		isScrollReact: true,
-	},
-	{
-		icon: <Home className="h-4 w-4" />,
-		label: "Ofertas",
-		href: "home-offers",
-		isScrollReact: true,
-	},
-	{
-		icon: <ShoppingBag className="h-4 w-4" />,
-		label: "Más vendidos",
-		href: "best-selling",
-		isScrollReact: true,
-	},
-	{
-		icon: <TrendingUp className="h-4 w-4" />,
-		label: "Tipos de Perfumes",
-		href: "home-perfume-groups",
-		isScrollReact: true,
-	},
-	{
-		icon: <Users className="h-4 w-4" />,
-		label: "Perfumes",
-		href: paths.perfumes().root,
-		isScrollReact: false,
-	},
-]
-
 const HeaderQuickLinks = () => {
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+	const pathname = usePathname()
+
+	const quickLinks: QuickLink[] = useMemo(
+		() => [
+			{
+				icon: <Home className="h-4 w-4" />,
+				label: "Inicio",
+				href:
+					pathname === paths.home.root
+						? "home-hero"
+						: paths.home.root + "#home-hero",
+				isScrollReact: pathname === paths.home.root ? true : false,
+			},
+			{
+				icon: <Home className="h-4 w-4" />,
+				label: "Ofertas",
+				href:
+					pathname === paths.home.root
+						? "home-offers"
+						: paths.home.root + "#home-offers",
+				isScrollReact: pathname === paths.home.root ? true : false,
+			},
+			{
+				icon: <ShoppingBag className="h-4 w-4" />,
+				label: "Más vendidos",
+				href:
+					pathname === paths.home.root
+						? "best-selling"
+						: paths.home.root + "#best-selling",
+				isScrollReact: pathname === paths.home.root ? true : false,
+			},
+			{
+				icon: <TrendingUp className="h-4 w-4" />,
+				label: "Tipos de Perfumes",
+				href:
+					pathname === paths.home.root
+						? "home-perfume-groups"
+						: paths.home.root + "#home-perfume-groups",
+				isScrollReact: pathname === paths.home.root ? true : false,
+			},
+			{
+				icon: <Users className="h-4 w-4" />,
+				label: "Perfumes",
+				href: paths.perfumes().root,
+				isScrollReact: false,
+			},
+		],
+		[pathname, paths],
+	)
 
 	return (
 		<div className="relative">
