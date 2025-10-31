@@ -104,7 +104,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				}}
 				className={cn("w-full", className)}
 			>
-				<CarouselContent className="-ml-2 md:-ml-4">
+				<CarouselContent className="-ml-2 p-1 md:-ml-4">
 					{items.map(item => (
 						<CarouselItem
 							key={item.id}
@@ -121,7 +121,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						variant="outline"
 						size="icon"
 						className={cn(
-							"pointer-events-auto h-10 w-10 rounded-full shadow-lg transition-all duration-300",
+							"pointer-events-auto size-7 2xs:size-9 rounded-full shadow-lg transition-all duration-300",
 							"bg-background/95 backdrop-blur-sm border-2",
 							"hover:scale-110 hover:shadow-xl",
 							"disabled:opacity-0 disabled:pointer-events-none",
@@ -138,7 +138,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						variant="outline"
 						size="icon"
 						className={cn(
-							"pointer-events-auto h-10 w-10 rounded-full shadow-lg transition-all duration-300",
+							"pointer-events-auto size-7 2xs:size-9 rounded-full shadow-lg transition-all duration-300",
 							"bg-background/95 backdrop-blur-sm border-2",
 							"hover:scale-110 hover:shadow-xl",
 							"disabled:opacity-0 disabled:pointer-events-none",
