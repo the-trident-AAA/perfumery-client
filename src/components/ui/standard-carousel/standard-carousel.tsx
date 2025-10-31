@@ -104,7 +104,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				}}
 				className={cn("w-full", className)}
 			>
-				<CarouselContent className="-ml-2 p-1 md:-ml-4">
+				<CarouselContent className="-ml-2 pr-2 py-6 md:-ml-4">
 					{items.map(item => (
 						<CarouselItem
 							key={item.id}
@@ -116,7 +116,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				</CarouselContent>
 
 				{/* Navigation Buttons */}
-				<div className="absolute -left-4 -right-4 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
+				<div className="hidden sm:flex absolute -left-4 -right-4 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
 					<Button
 						variant="outline"
 						size="icon"
