@@ -16,7 +16,6 @@ export default function HomeOffersListCarousel({ data }: Props) {
 		<StandardCarousel
 			items={data}
 			itemClassName=" sm:basis-[70%] md:basis-1/2 xl:basis-1/3 "
-			className="pl-4 mr-4"
 			loop={false}
 			renderCard={item => <OfferCard offer={item} />}
 		/>
