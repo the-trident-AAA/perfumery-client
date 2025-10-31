@@ -34,8 +34,8 @@ export default function HomeBannerSection({
 	}
 
 	return (
-		<div
-			id={id}
+		<section
+			id="home-hero"
 			className="relative border-t-16 sm:border-t-0 border-primary w-full h-full overflow-hidden bg-primary"
 			onMouseMove={handleMouseMove}
 		>
@@ -175,6 +175,6 @@ export default function HomeBannerSection({
 					<div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse" />
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }

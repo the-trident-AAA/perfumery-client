@@ -4,7 +4,7 @@ import React, { Suspense } from "react"
 
 export default function HomeOffers() {
 	return (
-		<div className="bg-muted pt-12 pb-20">
+		<section id="home-offers" className="bg-muted pt-12 pb-20">
 			<div className="sm:container sm:mx-auto flex flex-col gap-12 pt-4">
 				<div className="text-center space-y-4 px-4">
 					<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
@@ -27,6 +27,6 @@ export default function HomeOffers() {
 					<HomeOffersList />
 				</Suspense>
 			</div>
-		</div>
+		</section>
 	)
 }

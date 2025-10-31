@@ -5,7 +5,10 @@ import { TrendingUp } from "lucide-react"
 
 export default async function BestSellingProducts() {
 	return (
-		<section className="relative w-full overflow-hidden bg-primary">
+		<section
+			id="best-selling"
+			className="relative w-full overflow-hidden bg-primary"
+		>
 			{/* Elementos decorativos de fondo */}
 			<div className="absolute inset-0 overflow-hidden">
 				{/* Círculos decorativos grandes */}
