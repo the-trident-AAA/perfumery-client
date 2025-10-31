@@ -36,7 +36,7 @@ export default function HomeBannerSection({
 	return (
 		<div
 			id={id}
-			className="relative mt-4 2xs:mt-0 w-full h-full overflow-hidden bg-primary"
+			className="relative border-t-16 sm:border-t-0 border-primary w-full h-full overflow-hidden bg-primary"
 			onMouseMove={handleMouseMove}
 		>
 			{/* Elementos decorativos de fondo animados */}
@@ -75,7 +75,6 @@ export default function HomeBannerSection({
 			</div>
 
 			{/* Franja superior decorativa */}
-			<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary via-secondary/80 to-secondary/40 opacity-80" />
 
 			{/* Contenido principal */}
 			<div className="relative 2xs:py-6 z-10 2xs:container 2xs:mx-auto 2xs:px-6 h-full flex items-center">
