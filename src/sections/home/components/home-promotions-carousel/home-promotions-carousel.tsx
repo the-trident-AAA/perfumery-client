@@ -16,6 +16,7 @@ export default function HomePromotionsCarousel({ data }: Props) {
 			items={data}
 			itemClassName="basis-[50%] 2xs:basis-[50%]  sm:basis-[40%] md:basis-1/3 lg:basis-1/4 xl:basis-1/5 "
 			loop={false}
+			autoPlay
 			renderCard={item => <PerfumeCard perfume={item} />}
 		/>
 	)
