@@ -65,7 +65,7 @@ const HeaderQuickLinks = () => {
 			},
 			{
 				icon: <ShoppingBag className="h-4 w-4" />,
-				label: "Ir a Comprar",
+				label: "Perfumes",
 				href: paths.perfumes().root,
 				isScrollReact: false,
 			},
