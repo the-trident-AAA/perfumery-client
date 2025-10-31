@@ -169,7 +169,7 @@ export default function PerfumeCard({ perfume }: Props) {
 					<NavigationComponent
 						href={paths.perfume({ id: perfume.id }).root}
 					>
-						<div className="relative h-54 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
+						<div className="relative h-32 2xs:h-54 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
 							<div className="absolute inset-0 flex items-center justify-center">
 								<Image
 									src={
@@ -260,16 +260,22 @@ export default function PerfumeCard({ perfume }: Props) {
 							>
 								<Badge
 									variant={"default"}
-									className="text-black max-w-[80px] sm:max-w-[120px] block truncate leading-tight text-[10px] sm:text-xs font-bold"
+									className="text-black hidden  max-w-[80px] sm:max-w-[120px] 2xs:block truncate leading-tight text-[10px] sm:text-xs font-bold"
 								>
 									{perfume.brand}
 								</Badge>
 								<Badge
 									variant={"default"}
-									className="text-black max-w-[80px] sm:max-w-[120px] block truncate leading-tight text-[10px] sm:text-xs font-bold"
+									className="text-black hidden  max-w-[80px] sm:max-w-[120px] 2xs:block truncate leading-tight text-[10px] sm:text-xs font-bold"
 								>
 									{perfume.perfumeType}
 								</Badge>
+								<p className="block 2xs:hidden max-w-[70px] truncate leading-tight text-muted line-clamp-1 text-[10px] 2xs:text-sm">
+									{perfume.brand}
+								</p>
+								<p className="flex 2xs:hidden max-w-[70px] truncate leading-tight text-muted truncate leading-tight text-[10px] 2xs:text-sm">
+									{perfume.perfumeType}
+								</p>
 							</div>
 
 							{/* Title mejorado */}
@@ -277,10 +283,10 @@ export default function PerfumeCard({ perfume }: Props) {
 								className="space-y-1 sm:space-y-3"
 								style={{ animation: "fadeIn 0.5s 200ms both" }}
 							>
-								<h3 className="font-bold text-lg sm:text-xl text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
+								<h3 className="font-bold text-sm 2xs:text-lg sm:text-xl text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
 									{perfume.name}
 								</h3>
-								<p className="text-sm text-white line-clamp-2 leading-relaxed">
+								<p className="text-xs 2xs:text-sm text-white line-clamp-2 leading-relaxed">
 									{perfume.description}
 								</p>
 							</div>
@@ -292,17 +298,23 @@ export default function PerfumeCard({ perfume }: Props) {
 							>
 								<div className="flex items-center gap-1 sm:gap-3">
 									<div
-										className={`w-3 h-3 rounded-full bg-gradient-to-r ${getGenderColor(
+										className={`w-2 h-2 2xs:w-3 2xs:h-3 rounded-full bg-gradient-to-r ${getGenderColor(
 											perfume.gender,
 										)} border-2 border-white shadow-lg animate-pulse`}
 									/>
-									<span className="text-white font-semibold">
+									<span className="text-white text-xs 2xs:text-sm font-semibold">
 										{perfume.gender}
 									</span>
 								</div>
-								<div className="flex items-center gap-2 bg-muted px-[4px] sm:px-3 py-1 rounded-full">
+								<div className="hidden 2xs:flex items-center gap-2 bg-muted px-[4px] sm:px-3 py-1 rounded-full">
 									<Gift className="h-3 w-3 text-black" />
 									<span className="text-black text-xs sm:text-base font-bold">
+										{perfume.milliliters}ml
+									</span>
+								</div>
+								<div className="flex 2xs:hidden items-center gap-1">
+									<Gift className="h-3 w-3 text-primary" />
+									<span className="text-primary text-xs sm:text-base font-bold">
 										{perfume.milliliters}ml
 									</span>
 								</div>
@@ -339,24 +351,24 @@ export default function PerfumeCard({ perfume }: Props) {
 								className="flex items-center justify-between pt-3"
 								style={{ animation: "fadeIn 0.5s 500ms both" }}
 							>
-								<div className="flex items-center gap-2">
+								<div className="flex items-center gap-1 2xs:gap-2">
 									<div
-										className={`w-2.5 h-2.5 rounded-full ${
+										className={`2xs:w-2.5 2xs:h-2.5 w-1.5 h-1.5 rounded-full ${
 											perfume.available
 												? "bg-green-500 animate-pulse"
 												: "bg-red-500"
 										} shadow-lg`}
 									/>
-									<span className="text-xs font-medium text-primary">
+									<span className="2xs:text-xs text-[10px] font-medium text-primary">
 										{perfume.available
 											? "En stock"
 											: "No disponible"}
 									</span>
 								</div>
 								{perfume.available && perfume.cant <= 5 && (
-									<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-2  rounded-full animate-pulse">
-										<Zap className="h-3 w-3" />
-										<span className="text-xs font-bold">
+									<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-1 2xs:px-2  rounded-full animate-pulse">
+										<Zap className="2xs:h-3 h-2 2xs:w-3 w-2" />
+										<span className="text-[12px] 2x:text-xs font-bold">
 											¡Solo {perfume.cant}!
 										</span>
 									</div>
