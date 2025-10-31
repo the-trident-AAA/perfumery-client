@@ -1,7 +1,13 @@
 "use client"
 
 import type React from "react"
-import { Home, ShoppingBag, Users, TrendingUp } from "lucide-react"
+import {
+	Home,
+	ShoppingBag,
+	TrendingUp,
+	SprayCan,
+	HandCoins,
+} from "lucide-react"
 import Link from "next/link"
 import { useMemo, useState } from "react"
 import { Link as LinkScrollReact } from "react-scroll"
@@ -31,7 +37,7 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <Home className="h-4 w-4" />,
+				icon: <HandCoins className="h-4 w-4" />,
 				label: "Ofertas",
 				href:
 					pathname === paths.home.root
@@ -40,7 +46,7 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <ShoppingBag className="h-4 w-4" />,
+				icon: <TrendingUp className="h-4 w-4" />,
 				label: "Más vendidos",
 				href:
 					pathname === paths.home.root
@@ -49,7 +55,7 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <TrendingUp className="h-4 w-4" />,
+				icon: <SprayCan className="h-4 w-4" />,
 				label: "Tipos de Perfumes",
 				href:
 					pathname === paths.home.root
@@ -58,8 +64,8 @@ const HeaderQuickLinks = () => {
 				isScrollReact: pathname === paths.home.root ? true : false,
 			},
 			{
-				icon: <Users className="h-4 w-4" />,
-				label: "Perfumes",
+				icon: <ShoppingBag className="h-4 w-4" />,
+				label: "Ir a Comprar",
 				href: paths.perfumes().root,
 				isScrollReact: false,
 			},
