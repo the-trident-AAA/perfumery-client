@@ -41,9 +41,9 @@ export default async function BestSellingProducts() {
 
 			{/* Contenido principal */}
 			<div className="relative z-10 pt-20 pb-24">
-				<div className="lg:container lg:mx-auto 2xs:px-6 px-4">
+				<div className="lg:container lg:mx-auto">
 					{/* Header de la sección mejorado */}
-					<div className="text-center space-y-8 mb-10">
+					<div className="text-center space-y-8 2xs:px-6 px-4 mb-10">
 						{/* Badge superior */}
 						<div className="flex justify-center">
 							<div className="inline-flex items-center text-primary gap-2 bg-secondary border border-secondary/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold">
@@ -84,7 +84,7 @@ export default async function BestSellingProducts() {
 					</div>
 
 					{/* Contenedor de productos con efectos */}
-					<div className="relative">
+					<div className="relative pl-2 sm:pl-6 sm:px-6">
 						{/* Elementos decorativos alrededor del contenedor */}
 						<div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-primary/10 to-yellow-400/10 rounded-full blur-xl" />
 						<div className="absolute -bottom-8 -right-8 w-20 h-20 bg-gradient-to-tl from-yellow-400/10 to-primary/10 rounded-full blur-xl" />
