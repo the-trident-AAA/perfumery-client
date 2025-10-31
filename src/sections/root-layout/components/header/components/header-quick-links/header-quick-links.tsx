@@ -93,7 +93,7 @@ const HeaderQuickLinks = () => {
 									activeClass="active"
 									onMouseEnter={() => setHoveredIndex(index)}
 									onMouseLeave={() => setHoveredIndex(null)}
-									className="group relative cursor-pointer flex items-center gap-1.5 transition-all duration-300 hover:scale-110"
+									className="group relative cursor-pointer flex flex-col-reverse 2xs:flex-row items-center gap-1.5 transition-all duration-300 hover:scale-110"
 								>
 									<LinkContent
 										link={link}
@@ -108,7 +108,7 @@ const HeaderQuickLinks = () => {
 									href={link.href}
 									onMouseEnter={() => setHoveredIndex(index)}
 									onMouseLeave={() => setHoveredIndex(null)}
-									className="group relative flex items-center gap-1.5 transition-all duration-300 hover:scale-110"
+									className="group relative flex flex-col-reverse 2xs:flex-row items-center gap-1.5 transition-all duration-300 hover:scale-110"
 								>
 									<LinkContent
 										link={link}
@@ -152,7 +152,7 @@ function LinkContent({
 
 			{/* Label */}
 			<span
-				className={`text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
+				className={`text-[10px] 2xs:text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
 					hoveredIndex === index || pathname === link.href
 						? "font-bold"
 						: "text-secondary font-semibold"
