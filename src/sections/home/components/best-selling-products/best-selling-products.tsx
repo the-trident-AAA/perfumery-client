@@ -1,7 +1,7 @@
 import { CardSkeletonGroup } from "@/src/components/card-skeleton-group/card-skeleton-group"
 import BestSellingProductsList from "@/src/sections/home/components/best-selling-products/list/best-selling-products-list"
 import { Suspense } from "react"
-import { TrendingUp, Award, Star } from "lucide-react"
+import { TrendingUp } from "lucide-react"
 
 export default async function BestSellingProducts() {
 	return (
