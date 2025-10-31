@@ -36,10 +36,10 @@ const Header = () => {
 					</div>
 					<HeaderNavbar />
 				</div>
+				<Suspense fallback={<div>Cargando...</div>}>
+					<HeaderQuickLinks />
+				</Suspense>
 			</header>
-			<Suspense fallback={<div>Cargando...</div>}>
-				<HeaderQuickLinks />
-			</Suspense>
 		</div>
 	)
 }
