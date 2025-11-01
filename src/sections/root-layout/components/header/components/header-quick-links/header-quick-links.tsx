@@ -81,7 +81,7 @@ function LinkContent({
 		<>
 			{/* Label */}
 			<span
-				className={`text-[10px] 2xs:text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
+				className={`text-[10.5px] 2xs:text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
 					hoveredIndex === index || pathname === link.href
 						? "font-bold"
 						: "text-secondary font-semibold"
