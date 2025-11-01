@@ -3,63 +3,15 @@
 import type React from "react"
 
 import Link from "next/link"
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { Link as LinkScrollReact } from "react-scroll"
-import { paths } from "@/src/lib/routes/paths"
-import { usePathname } from "next/navigation"
-
-interface QuickLink {
-	label: string
-	href: string
-	isScrollReact: boolean
-}
+import useQuickLinks, {
+	QuickLink,
+} from "@/src/lib/hooks/quick-links/use-quick-links"
 
 const HeaderQuickLinks = () => {
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-	const pathname = usePathname()
-
-	const quickLinks: QuickLink[] = useMemo(
-		() => [
-			{
-				label: "Inicio",
-				href:
-					pathname === paths.home.root
-						? "home-hero"
-						: paths.home.root + "#home-hero",
-				isScrollReact: pathname === paths.home.root ? true : false,
-			},
-			{
-				label: "Ofertas",
-				href:
-					pathname === paths.home.root
-						? "home-offers"
-						: paths.home.root + "#home-offers",
-				isScrollReact: pathname === paths.home.root ? true : false,
-			},
-			{
-				label: "Más vendidos",
-				href:
-					pathname === paths.home.root
-						? "best-selling"
-						: paths.home.root + "#best-selling",
-				isScrollReact: pathname === paths.home.root ? true : false,
-			},
-			{
-				label: "Tipos de Perfumes",
-				href:
-					pathname === paths.home.root
-						? "home-perfume-groups"
-						: paths.home.root + "#home-perfume-groups",
-				isScrollReact: pathname === paths.home.root ? true : false,
-			},
-			{
-				label: "Perfumes",
-				href: paths.perfumes().root,
-				isScrollReact: false,
-			},
-		],
-		[pathname, paths],
-	)
+	const { quickLinks, pathname } = useQuickLinks()
 
 	return (
 		<div className="relative">
