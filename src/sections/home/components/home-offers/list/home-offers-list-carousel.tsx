@@ -19,6 +19,7 @@ export default function HomeOffersListCarousel({ data }: Props) {
 				itemClassName=" 2xs:basis-[70%] sm:basis-1/2 md:basis-1/2 xl:basis-1/3 "
 				loop={false}
 				autoPlay
+				showDots
 				renderCard={item => <OfferCard offer={item} />}
 			/>
 		</div>
