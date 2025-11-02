@@ -354,25 +354,28 @@ export default function PerfumeCard({ perfume }: Props) {
 								<div className="flex items-center gap-1 2xs:gap-2">
 									<div
 										className={`2xs:w-2.5 2xs:h-2.5 w-1.5 h-1.5 rounded-full ${
-											perfume.available
+											perfume.available &&
+											perfume.cant > 0
 												? "bg-green-500 animate-pulse"
 												: "bg-red-500"
 										} shadow-lg`}
 									/>
 									<span className="2xs:text-xs text-[10px] font-medium text-primary">
-										{perfume.available
+										{perfume.available && perfume.cant > 0
 											? "En stock"
 											: "No disponible"}
 									</span>
 								</div>
-								{perfume.available && perfume.cant <= 5 && (
-									<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-1 2xs:px-2  rounded-full animate-pulse">
-										<Zap className="2xs:h-3 h-2 2xs:w-3 w-2" />
-										<span className="text-[12px] 2x:text-xs font-bold">
-											¡Solo {perfume.cant}!
-										</span>
-									</div>
-								)}
+								{perfume.available &&
+									perfume.cant <= 5 &&
+									perfume.cant > 0 && (
+										<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-1 2xs:px-2  rounded-full animate-pulse">
+											<Zap className="2xs:h-3 h-2 2xs:w-3 w-2" />
+											<span className="text-[10px] 2x:text-xs font-bold">
+												¡Solo {perfume.cant}!
+											</span>
+										</div>
+									)}
 							</div>
 						</div>
 					</div>
