@@ -21,6 +21,7 @@ interface Props<T> {
 	autoPlayDelay?: number
 	loop?: boolean
 	slidesToScroll?: number
+	showDots?: boolean
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
@@ -32,66 +33,48 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	autoPlayDelay = 5000,
 	loop = true,
 	slidesToScroll = 1,
+	showDots = false,
 }: Props<T>) {
 	const [api, setApi] = useState<CarouselApi>()
-
 	const [canScrollPrev, setCanScrollPrev] = useState(false)
 	const [canScrollNext, setCanScrollNext] = useState(false)
+	const [currentIndex, setCurrentIndex] = useState(0)
+	const [totalSections, setTotalSections] = useState(0)
 
-	// Calculate sections based on visible slides
-	const updateSections = useCallback(() => {
+	// Actualiza estado de navegación y secciones
+	const updateState = useCallback(() => {
 		if (!api) return
 
-		// Update navigation button states
 		setCanScrollPrev(api.canScrollPrev())
 		setCanScrollNext(api.canScrollNext())
-	}, [api, items.length])
+		setCurrentIndex(api.selectedScrollSnap())
+		setTotalSections(api.scrollSnapList().length)
+	}, [api])
 
 	useEffect(() => {
 		if (!api) return
-
-		updateSections()
-		api.on("select", updateSections)
-		api.on("resize", updateSections)
-
+		updateState()
+		api.on("select", updateState)
+		api.on("resize", updateState)
 		return () => {
-			api.off("select", updateSections)
-			api.off("resize", updateSections)
+			api.off("select", updateState)
+			api.off("resize", updateState)
 		}
-	}, [api, updateSections])
+	}, [api, updateState])
 
-	// Auto-play functionality
+	// Auto-play
 	useEffect(() => {
 		if (!api || !autoPlay) return
-
 		const interval = setInterval(() => {
-			if (api.canScrollNext()) {
-				api.scrollNext()
-			} else {
-				api.scrollTo(0)
-			}
+			if (api.canScrollNext()) api.scrollNext()
+			else api.scrollTo(0)
 		}, autoPlayDelay)
-
 		return () => clearInterval(interval)
-	}, [api, autoPlay, autoPlayDelay, loop])
+	}, [api, autoPlay, autoPlayDelay])
 
-	const scrollPrev = useCallback(() => {
-		api?.scrollPrev()
-	}, [api])
-
-	const scrollNext = useCallback(() => {
-		api?.scrollNext()
-	}, [api])
-
-	const scrollToSection = useCallback(
-		(sectionIndex: number) => {
-			if (!api) return
-			const slidesInView = api.slidesInView().length
-			const targetSlide = sectionIndex * slidesInView
-			api.scrollTo(targetSlide)
-		},
-		[api],
-	)
+	const scrollPrev = useCallback(() => api?.scrollPrev(), [api])
+	const scrollNext = useCallback(() => api?.scrollNext(), [api])
+	const scrollTo = useCallback((index: number) => api?.scrollTo(index), [api])
 
 	return (
 		<div className="relative w-full">
@@ -108,15 +91,15 @@ export default function StandardCarousel<T extends { id: number | string }>({
 					{items.map(item => (
 						<CarouselItem
 							key={item.id}
-							className={cn("pl-2 md:pl-4 ", itemClassName)}
+							className={cn("pl-2 md:pl-4", itemClassName)}
 						>
 							{renderCard(item)}
 						</CarouselItem>
 					))}
 				</CarouselContent>
 
-				{/* Navigation Buttons */}
-				<div className="hidden sm:flex absolute -left-4 -right-4 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
+				{/* Botones de navegación */}
+				<div className="hidden sm:flex absolute -left-4 -right-4 top-1/2 -translate-y-1/2 justify-between pointer-events-none">
 					<Button
 						variant="outline"
 						size="icon"
@@ -152,6 +135,25 @@ export default function StandardCarousel<T extends { id: number | string }>({
 					</Button>
 				</div>
 			</Carousel>
+
+			{/* Bolitas de navegación */}
+			{showDots && totalSections > 1 && (
+				<div className="flex justify-center gap-2 mt-3">
+					{Array.from({ length: totalSections }).map((_, index) => (
+						<button
+							key={index}
+							onClick={() => scrollTo(index)}
+							className={cn(
+								"h-2.5 w-2.5 rounded-full transition-all duration-300",
+								currentIndex === index
+									? "bg-secondary scale-125"
+									: "bg-muted-foreground/30 hover:bg-muted-foreground/50",
+							)}
+							aria-label={`Go to section ${index + 1}`}
+						/>
+					))}
+				</div>
+			)}
 		</div>
 	)
 }
