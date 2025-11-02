@@ -4,6 +4,7 @@ import QuickLinks from "@/src/sections/root-layout/components/footer/components/
 import ContactInformation from "@/src/sections/root-layout/components/footer/components/contact-information/contact-information"
 import BottomSection from "@/src/sections/root-layout/components/footer/components/bottom-section/bottom-section"
 import Promotion from "@/src/sections/root-layout/components/footer/components/promotion/promotion"
+import { Suspense } from "react"
 
 export default function Footer() {
 	return (
@@ -14,7 +15,9 @@ export default function Footer() {
 					<BrandSection />
 
 					{/* Quick Links */}
-					<QuickLinks />
+					<Suspense fallback={<div>Cargando...</div>}>
+						<QuickLinks />
+					</Suspense>
 
 					{/* Contact Information */}
 					<ContactInformation />
