@@ -67,7 +67,7 @@ export default function useQuickLinks() {
 					})),
 				},
 			] as QuickLink[],
-		[pathname, paths],
+		[pathname, paths, perfumeTypes],
 	)
 
 	return { quickLinks, pathname, loadingDataPerfumesType }
