@@ -8,7 +8,7 @@ export interface QuickLink {
 	label: string
 	href: string
 	isScrollReact: boolean
-	children?: QuickLink[]
+	children?: Omit<QuickLink, "children">[]
 }
 
 export default function useQuickLinks() {
