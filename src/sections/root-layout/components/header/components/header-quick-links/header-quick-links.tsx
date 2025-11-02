@@ -16,9 +16,9 @@ const HeaderQuickLinks = () => {
 	return (
 		<div className="relative">
 			{/* Gradient overlay effect */}
-			<div className="absolute inset-0 bg-primary pointer-events-none" />
+			<div className="absolute inset-0 bg-secondary pointer-events-none" />
 
-			<nav className="relative bg-primary backdrop-blur-sm shadow-lg">
+			<nav className="relative bg-secondary backdrop-blur-sm shadow-lg">
 				<div className="px-4 sm:px-6 py-2">
 					<div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 ">
 						{quickLinks.map((link, index) =>
@@ -81,10 +81,10 @@ function LinkContent({
 		<>
 			{/* Label */}
 			<span
-				className={`text-[10.5px] 2xs:text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
+				className={`text-[10.5px] text-primary 2xs:text-xs sm:text-sm transition-all duration-300 text-center whitespace-nowrap ${
 					hoveredIndex === index || pathname === link.href
 						? "font-bold"
-						: "text-secondary font-semibold"
+						: "font-semibold"
 				}`}
 			>
 				{link.label}
@@ -92,7 +92,7 @@ function LinkContent({
 
 			{/* Bottom indicator line */}
 			<div
-				className={`absolute -bottom-2 group-[.active]:w-full left-1/2 -translate-x-1/2 h-0.5 bg-secondary transition-all duration-300 ${
+				className={`absolute -bottom-2 group-[.active]:w-full left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 ${
 					hoveredIndex === index || pathname === link.href
 						? "w-full"
 						: "w-0"
