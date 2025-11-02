@@ -6,13 +6,16 @@ import { Link as LinkScrollReact } from "react-scroll"
 
 export default function QuickLinks() {
 	const { quickLinks } = useQuickLinks()
+	const quickLinksFiltered = quickLinks.filter(
+		quickLink => !quickLink.children,
+	)
 	return (
 		<div className="space-y-4">
 			<h4 className="font-medium text-secondary text-sm uppercase tracking-wider">
 				Tienda
 			</h4>
 			<ul className="space-y-2 text-sm">
-				{quickLinks.map((quickLink, index) => (
+				{quickLinksFiltered.map((quickLink, index) => (
 					<li key={index}>
 						{quickLink.isScrollReact ? (
 							<LinkScrollReact
