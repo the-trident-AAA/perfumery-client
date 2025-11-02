@@ -1,7 +1,7 @@
 "use client"
 import { paths } from "@/src/lib/routes/paths"
 import usePerfumeTypes from "@/src/sections/perfume-types/hooks/use-perfume-types"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { useMemo } from "react"
 
 export interface QuickLink {
@@ -9,10 +9,12 @@ export interface QuickLink {
 	href: string
 	isScrollReact: boolean
 	children?: Omit<QuickLink, "children">[]
+	isActive?: boolean
 }
 
 export default function useQuickLinks() {
 	const pathname = usePathname()
+	const searchParams = useSearchParams()
 	const { perfumeTypes, loadingData: loadingDataPerfumesType } =
 		usePerfumeTypes()
 	const quickLinks: QuickLink[] = useMemo(
@@ -54,20 +56,36 @@ export default function useQuickLinks() {
 					label: "Perfumes",
 					href: paths.perfumes().root,
 					isScrollReact: false,
+					isActive: pathname === paths.perfumes().root,
 				},
 				{
 					label: "Fragancias",
 					href: paths.perfumes().root,
 					isScrollReact: false,
-					children: perfumeTypes.map(perfumeType => ({
-						label: perfumeType.name,
-						href: paths.perfumes({ perfumeTypeId: perfumeType.id })
-							.root,
-						isScrollReact: false,
-					})),
+					isActive: pathname === paths.perfumes().root,
+					children: [
+						...perfumeTypes.map(perfumeType => ({
+							label: perfumeType.name,
+							href: paths.perfumes({
+								perfumeTypeId: perfumeType.id,
+							}).root,
+							isScrollReact: false,
+							isActive:
+								searchParams.get("perfumeTypeId") ===
+								perfumeType.id,
+						})),
+						{
+							label: "Todas",
+							href: paths.perfumes().root,
+							isScrollReact: false,
+							isActive:
+								pathname === paths.perfumes().root &&
+								!searchParams.get("perfumeTypeId"),
+						},
+					],
 				},
 			] as QuickLink[],
-		[pathname, paths, perfumeTypes],
+		[pathname, paths, perfumeTypes, searchParams],
 	)
 
 	return { quickLinks, pathname, loadingDataPerfumesType }
