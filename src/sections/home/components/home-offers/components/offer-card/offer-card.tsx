@@ -23,7 +23,7 @@ export default function OfferCard({
 
 	return (
 		<Card
-			className="group pb-0 w-full h-full max-w-md overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:rotate-1 bg-gradient-to-br from-white to-gray-50"
+			className="group pb-0 gap-0 w-full h-full max-w-md overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:rotate-1 bg-gradient-to-br from-white to-gray-50"
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>
@@ -40,7 +40,7 @@ export default function OfferCard({
 			</div>
 
 			{/* Banner superior mejorado */}
-			<div className="relative h-36 bg-gradient-to-br from-secondary via-secondary/90 to-secondary/90 p-6 text-primary-foreground overflow-hidden">
+			<div className="relative  bg-gradient-to-br from-secondary via-secondary/90 to-secondary/90 p-6 text-primary-foreground overflow-hidden">
 				{/* Patrón de fondo animado */}
 				<div className="absolute inset-0 opacity-10">
 					<div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-y-12 animate-pulse" />
@@ -59,10 +59,10 @@ export default function OfferCard({
 					</div>
 
 					<div className="flex items-baseline gap-2">
-						<h2 className="text-2xl font-bold tracking-tight animate-slide-up">
+						<h2 className="text-xl 2xs:text-2xl font-bold tracking-tight animate-slide-up">
 							HASTA
 						</h2>
-						<span className="text-5xl font-black bg-primary bg-clip-text text-transparent animate-bounce-subtle">
+						<span className="text-3xl 2xs:text-5xl font-black bg-primary bg-clip-text text-transparent animate-bounce-subtle">
 							{discount * 100}%
 						</span>
 					</div>
@@ -86,9 +86,9 @@ export default function OfferCard({
 							<Image
 								src={image || offerImagePlaceHolder}
 								width={600}
-								height={400}
+								height={600}
 								alt="Colección de perfumes de lujo"
-								className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+								className="object-cover h-full transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
 							/>
 						</div>
 
@@ -100,7 +100,7 @@ export default function OfferCard({
 						</div>
 
 						{/* Overlay con gradiente mejorado */}
-						<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+						<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
 
 						{/* Contenido del overlay */}
 						<div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
@@ -108,7 +108,7 @@ export default function OfferCard({
 								<h3 className="text-2xl font-bold mb-2 animate-fade-in-up">
 									{name}
 								</h3>
-								<p className="line-clamp-3 text-sm text-gray-200 leading-relaxed mb-4 animate-fade-in-up delay-100">
+								<p className="line-clamp-3 text-white leading-relaxed mb-4 animate-fade-in-up delay-100">
 									{description}
 								</p>
 
@@ -163,7 +163,7 @@ export default function OfferCard({
 									</Badge>
 								</div>
 							</div>
-							<p className="text-base font-semibold text-secondary group-hover:text-black transition-colors duration-300">
+							<p className="text-sm 2xs:text-base font-semibold text-secondary group-hover:text-black transition-colors duration-300">
 								{scope}
 							</p>
 						</div>
