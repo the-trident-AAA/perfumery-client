@@ -29,10 +29,6 @@ export default function OrdersFilters({ filters, handleChangeFilters }: Props) {
 						label: getOrderStateText(OrderState.PENDING),
 						value: OrderState.PENDING,
 					},
-					{
-						label: getOrderStateText(OrderState.CANCELED),
-						value: OrderState.CANCELED,
-					},
 				]}
 				clearable={{
 					handleClear: () => {
