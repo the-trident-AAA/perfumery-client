@@ -2,7 +2,7 @@
 
 import type React from "react"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link as LinkScrollReact } from "react-scroll"
 import useQuickLinks, {
 	QuickLink,
@@ -15,6 +15,19 @@ const HeaderQuickLinks = () => {
 	const quickLinksFiltered = quickLinks.filter(
 		quickLink => quickLink.label !== "Perfumes",
 	)
+
+	// useEffect para limpiar el hover en móviles
+	useEffect(() => {
+		const isTouchDevice =
+			"ontouchstart" in window || navigator.maxTouchPoints > 0
+		if (!isTouchDevice) return
+
+		const handleTouchAnywhere = () => setHoveredIndex(null)
+
+		window.addEventListener("touchstart", handleTouchAnywhere)
+		return () =>
+			window.removeEventListener("touchstart", handleTouchAnywhere)
+	}, [])
 
 	return (
 		<div className="relative">
