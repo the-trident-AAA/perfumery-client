@@ -7,7 +7,7 @@ import { paths } from "@/src/lib/routes/paths"
 
 export default function SignInContainer() {
 	return (
-		<div className="flex w-full h-screen">
+		<div className="flex w-full">
 			{/* Left Side - Form */}
 			<div className="w-full md:w-1/2 flex items-center justify-center flex-col gap-12 p-10">
 				<AppLogo withText={false} avatarClassName="h-42 w-42" />
