@@ -6,7 +6,7 @@ import {
 	apiRoutes,
 	tagsCacheByRoutes,
 } from "@/src/lib/routes/api-routes/api-routes"
-import { Order, OrderEditDto } from "@/src/lib/types/orders"
+import { Order, OrderEditDto, OrderState } from "@/src/lib/types/orders"
 import { OrderPerfume } from "@/src/lib/types/orders-perfumes"
 import { PaginationResponse } from "@/src/lib/types/pagination"
 import { IQueryable } from "@/src/lib/types/request"
@@ -23,7 +23,12 @@ export async function getOrdersList(params: IQueryable) {
 			status: 401,
 		}
 	const url = new QueryParamsURLFactory(
-		{ ...params, userId: session?.user.id as string, limit: "100" },
+		{
+			...params,
+			userId: session?.user.id as string,
+			limit: "100",
+			excludeState: OrderState.CANCELED,
+		},
 		apiRoutes.orders.get,
 	).build()
 
