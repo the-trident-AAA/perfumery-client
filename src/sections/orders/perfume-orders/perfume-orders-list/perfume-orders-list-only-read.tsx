@@ -18,9 +18,10 @@ export default function PerfumeOrdersListOnlyRead({
 				<div
 					className={`grid ${variant === "default" ? "grid-cols-1 xl:grid-cols-2" : "grid-cols-1"} gap-4 pb-6`}
 				>
-					{perfumesOrder.map(orderPerfume => {
+					{perfumesOrder.map((orderPerfume, index) => {
 						return (
 							<PerfumeOrderCardOnlyRead
+								key={index}
 								perfumeOrder={orderPerfume}
 							/>
 						)
