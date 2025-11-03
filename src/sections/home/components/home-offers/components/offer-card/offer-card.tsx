@@ -53,26 +53,26 @@ export default function OfferCard({
 				<div className="relative z-10">
 					<div className="flex items-center gap-2 mb-2">
 						<Tag className="h-4 w-4" />
-						<p className="text-sm font-semibold tracking-wider animate-fade-in">
+						<p className="text-xs 2xs:text-sm font-semibold tracking-wider animate-fade-in">
 							EN TIENDA Y ONLINE
 						</p>
 					</div>
 
 					<div className="flex items-baseline gap-2">
-						<h2 className="text-xl 2xs:text-2xl font-bold tracking-tight animate-slide-up">
+						<h2 className="text-sm 2xs:text-lg sm:text-xl 2xs:text-2xl font-bold tracking-tight animate-slide-up">
 							HASTA
 						</h2>
-						<span className="text-3xl 2xs:text-5xl font-black bg-primary bg-clip-text text-transparent animate-bounce-subtle">
+						<span className="2xs:text-lg sm;text-3xl 2xs:text-5xl font-black bg-primary bg-clip-text text-transparent animate-bounce-subtle">
 							{discount * 100}%
 						</span>
 					</div>
-					<p className="text-lg font-bold tracking-wide animate-slide-up delay-100">
+					<p className="text-sm 2xs:text-lg font-bold tracking-wide animate-slide-up delay-100">
 						DESCUENTO
 					</p>
 				</div>
 
 				{/* Indicador de tiempo limitado */}
-				<div className="absolute bottom-2 right-4 flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+				<div className="absolute bottom-2 right-4 flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-2 2xs:px-3 py-1">
 					<Clock className="h-3 w-3" />
 					<span className="text-xs font-medium">Oferta limitada</span>
 				</div>
@@ -81,7 +81,7 @@ export default function OfferCard({
 			<CardContent className="p-0">
 				<div className="relative">
 					{/* Imagen de fondo mejorada */}
-					<div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
+					<div className="relative h-68 sm:h-72 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
 						<div className="absolute inset-0 flex items-center justify-center">
 							<Image
 								src={image || offerImagePlaceHolder}
@@ -105,10 +105,10 @@ export default function OfferCard({
 						{/* Contenido del overlay */}
 						<div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
 							<div className="transform transition-all duration-300 group-hover:translate-y-[-4px]">
-								<h3 className="text-2xl font-bold mb-2 animate-fade-in-up">
+								<h3 className=" text-lg 2xs:text-xl sm:text-2xl font-bold mb-2 animate-fade-in-up">
 									{name}
 								</h3>
-								<p className="line-clamp-3 text-white leading-relaxed mb-4 animate-fade-in-up delay-100">
+								<p className="line-clamp-3 text-sm 2xs:text-base text-white leading-relaxed mb-4 animate-fade-in-up delay-100">
 									{description}
 								</p>
 
@@ -153,17 +153,17 @@ export default function OfferCard({
 							<div className="flex items-center w-full justify-between gap-2">
 								<div className="flex items-center gap-2">
 									<Sparkles className="h-4 w-4 text-secondary" />
-									<p className="text-sm text-secondary font-medium">
+									<p className="text-xs 2xs:text-sm text-secondary font-medium">
 										Fragancias seleccionadas
 									</p>
 								</div>
 								<div className="transform transition-all duration-300 group-hover:scale-110">
-									<Badge className="bg-gradient-to-r from-secondary/10 to-secondary/20 text-secondary border-secondary/30 font-semibold px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300">
+									<Badge className="bg-gradient-to-r text-[11px] 2xs:text-base from-secondary/10 to-secondary/20 text-secondary border-secondary/30 font-semibold px-2 2xs:px-4 py-1 2x:py-2 shadow-sm hover:shadow-md transition-all duration-300">
 										{offerType}
 									</Badge>
 								</div>
 							</div>
-							<p className="text-sm 2xs:text-base font-semibold text-secondary group-hover:text-black transition-colors duration-300">
+							<p className="text-xs 2xs:text-base font-semibold text-secondary group-hover:text-black transition-colors duration-300">
 								{scope}
 							</p>
 						</div>
