@@ -9,7 +9,7 @@ export function formatOrderMessage(
 			? `Hola, soy *${order.user.username}* y deseo el siguiente pedido:\n\n`
 			: `Hola, soy *${order.user.username}* y aquí presento una edición de mi Pedido:\n\n`
 
-	const header = `*Pedido*: ${order.id}\n*Email*: ${order.user.email}\n\n`
+	const header = `*Pedido*: ${order.code}\n*Email*: ${order.user.email}\n\n`
 
 	const items = order.orderPerfumes
 		.map((item, index) => {
