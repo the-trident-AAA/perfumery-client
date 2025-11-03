@@ -42,7 +42,7 @@ export default function HeaderNavbar() {
 					</NavigationComponent>
 				)}
 				{!session && (
-					<NavigationComponent href={paths.sign_in.root}>
+					<NavigationComponent href={paths.registration.root}>
 						<Button
 							className="text-[10px] xs:text-[12px] px-2 2xs:px-3 h-5 xs:h-6 2xs:h-8 sm:text-base"
 							variant="outline"
