@@ -8,7 +8,6 @@ import { paths } from "@/src/lib/routes/paths"
 import { Button } from "@/src/components/ui/button"
 import UserMenu from "@/src/sections/root-layout/components/header/components/user-menu/user-menu"
 import LittleCar from "@/src/sections/root-layout/components/header/components/little-car/little-car"
-import HeaderNavigationMenu from "@/src/sections/root-layout/components/header/components/header-navigation-menu/header-navigation-menu"
 import OrdersModalButton from "@/src/sections/root-layout/components/header/components/orders-modal-button/orders-modal-button"
 import { useBreakpoint } from "@/src/lib/hooks/screen/use-breakpoint"
 import PopoverContainer from "@/src/components/ui/popover-container"
@@ -31,11 +30,10 @@ export default function HeaderNavbar() {
 	return (
 		<nav className="flex items-center gap-2 sm:gap-4">
 			<div className="flex items-center gap-2 sm:gap-4">
-				<HeaderNavigationMenu />
 				{!session && (
 					<NavigationComponent href={paths.sign_in.root}>
 						<Button
-							className="text-xs text-primary sm:text-base"
+							className="text-[10px] px-2 2xs:px-3 h-5 2xs:h-8 text-primary sm:text-base"
 							variant="secondary"
 							size="sm"
 						>
@@ -43,9 +41,25 @@ export default function HeaderNavbar() {
 						</Button>
 					</NavigationComponent>
 				)}
+				{!session && (
+					<NavigationComponent href={paths.sign_in.root}>
+						<Button
+							className="text-[10px] px-2 2xs:px-3 h-5 2xs:h-8 sm:text-base"
+							variant="outline"
+							size="sm"
+						>
+							Registrarse
+						</Button>
+					</NavigationComponent>
+				)}
 			</div>
 			{breakpoint == "sm" || breakpoint == "xs" ? (
-				<PopoverContainer contentClassName="w-12" trigger={<Menu />}>
+				<PopoverContainer
+					contentClassName="w-12"
+					trigger={
+						<Menu className="size-4 mt-1.5 2xs:mt-1 2xs:size-6" />
+					}
+				>
 					<div className="flex flex-col items-center gap-2 sm:gap-4">
 						<LittleCar />
 						{session && <OrdersModalButton />}
