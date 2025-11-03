@@ -33,7 +33,7 @@ export default function HeaderNavbar() {
 				{!session && (
 					<NavigationComponent href={paths.sign_in.root}>
 						<Button
-							className="text-[10px] px-2 2xs:px-3 h-5 2xs:h-8 text-primary sm:text-base"
+							className="text-[10px] xs:text-[12px] px-2 2xs:px-3 h-5 xs:h-6 2xs:h-8 text-primary sm:text-base"
 							variant="secondary"
 							size="sm"
 						>
@@ -44,7 +44,7 @@ export default function HeaderNavbar() {
 				{!session && (
 					<NavigationComponent href={paths.sign_in.root}>
 						<Button
-							className="text-[10px] px-2 2xs:px-3 h-5 2xs:h-8 sm:text-base"
+							className="text-[10px] xs:text-[12px] px-2 2xs:px-3 h-5 xs:h-6 2xs:h-8 sm:text-base"
 							variant="outline"
 							size="sm"
 						>
@@ -57,7 +57,7 @@ export default function HeaderNavbar() {
 				<PopoverContainer
 					contentClassName="w-12"
 					trigger={
-						<Menu className="size-4 mt-1.5 2xs:mt-1 2xs:size-6" />
+						<Menu className="size-4 xs:size-5 mt-1.5 xs:mt-1 2xs:mt-1 2xs:size-6" />
 					}
 				>
 					<div className="flex flex-col items-center gap-2 sm:gap-4">

@@ -83,7 +83,7 @@ const Header = () => {
 				}`}
 			>
 				<div className="px-6 py-4 flex sm:gap-4 items-center justify-between">
-					<AppLogo avatarClassName="h-10 w-10 sm:h-12 sm:w-12" />
+					<AppLogo avatarClassName="h-8 w-8 xs:h-10 xs:w-10 sm:h-12 sm:w-12" />
 					<div className="flex-1 mx-2 max-w-2xl">
 						<Suspense fallback={<div>Cargando...</div>}>
 							<HeaderSearch />
