@@ -17,7 +17,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 	const genderInfo = genderMap.get(perfume.gender)
 
 	return (
-		<div className="min-h-screen bg-background">
+		<article className="min-h-screen bg-background">
 			<div className="px-4 md:px-8 pt-6 pb-4">
 				<BackButton />
 			</div>
@@ -33,12 +33,6 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 
 					<div className="space-y-6">
 						<div className="flex flex-wrap items-center gap-2">
-							<Badge
-								variant="secondary"
-								className="text-sm text-primary font-medium"
-							>
-								{perfume.brand.name}
-							</Badge>
 							{perfume.offer && (
 								<Badge
 									variant="destructive"
@@ -78,32 +72,41 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 
 						<div className="grid md:grid-cols-2 items-center justify-center lg:grid-cols-1 xl:grid-cols-[40%_60%] gap-4">
 							<div className="flex flex-col gap-4">
-								<h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight text-balance">
-									{perfume.name}
-								</h1>
-
+								<div className="flex flex-col ">
+									<h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight text-balance">
+										{perfume.name}
+									</h1>
+									<h2 className="text-sm md:text-xl font-bold text-foreground leading-tight text-balance">
+										{perfume.brand.name}
+									</h2>
+								</div>
 								<div className="space-y-3">
-									<h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+									<h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
 										<Palette className="w-4 h-4" />
 										Notas aromáticas
-									</h3>
+									</h2>
 									<div className="flex flex-wrap gap-2">
 										{perfume.scents.map(scent => (
-											<Badge
+											<h3
 												key={scent.id}
-												variant="secondary"
-												className="text-primary text-sm"
+												className="text-sm font-semibold text-foreground"
 											>
-												{scent.name}
-											</Badge>
+												<Badge
+													asChild
+													variant="secondary"
+													className="text-primary text-sm"
+												>
+													<span>{scent.name}</span>
+												</Badge>
+											</h3>
 										))}
 									</div>
 								</div>
 								<div className="space-y-3">
-									<h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+									<h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
 										<Info className="w-4 h-4" />
 										Información general
-									</h3>
+									</h2>
 									<div className="flex flex-wrap gap-8">
 										<PerfumeInfoCard
 											title="Género"
@@ -131,12 +134,12 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 								</div>
 							</div>
 							<div className="space-y-3">
-								<h3 className="text-lg font-semibold text-foreground">
+								<h2 className="text-lg font-semibold text-foreground">
 									Descripción
-								</h3>
-								<p className="text-foreground xl:text-lg leading-relaxed text-pretty">
+								</h2>
+								<h3 className="text-foreground xl:text-lg leading-relaxed text-pretty">
 									{perfume.description}
-								</p>
+								</h3>
 							</div>
 						</div>
 
@@ -184,6 +187,6 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</article>
 	)
 }
