@@ -77,14 +77,14 @@ export default function HomeBannerSection({
 			{/* Franja superior decorativa */}
 
 			{/* Contenido principal */}
-			<div className="relative 2xs:py-6 z-10 2xs:container 2xs:mx-auto 2xs:px-6 h-full flex items-center">
-				<div className="items-center gap-4 lg:gap-12 flex lg:flex-row flex-col-reverse w-full">
+			<div className="relative 2xs:py-8 2xl:py-2 z-10 2xs:container 2xs:mx-auto 2xs:px-6 h-full flex items-center">
+				<div className="items-center lg:gap-12 flex lg:flex-row flex-col-reverse w-full">
 					{/* Contenido de texto */}
 					<div
-						className={`space-y-4 px-6 2xs:px-0 py-6 2xs:py-0 sm:space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
+						className={`space-y-4 px-6 2xs:px-0 py-0 pb-4 sm:space-y-8 ${isLoaded ? "animate-fade-in-left" : "opacity-0"}`}
 					>
-						<div className="hidden lg:flex flex-col sm:flex-row gap-4 items-center">
-							<Avatar className="xl:h-40 h-20 w-20 xl:w-40">
+						<div className="flex flex-col 2xs:gap-4 sm:flex-row gap-4 sm:items-center">
+							<Avatar className="hidden lg:flex xl:h-40 h-20 w-20 xl:w-40">
 								<AvatarImage src="/icons/logo-icon.png" />
 								<AvatarFallback className="">
 									<div className="flex items-center gap-2">
@@ -94,8 +94,8 @@ export default function HomeBannerSection({
 							</Avatar>
 
 							{/* Título principal */}
-							<div className="space-y-4">
-								<h1 className="text-5xl md:text-6xl lg:text-3xl xl:text-5xl 2xl:text-7xl font-black leading-tight text-secondary animate-slide-up">
+							<div className="space-y-2 lg:space-y-4">
+								<h1 className="text-lg md:text-6xl lg:text-3xl xl:text-5xl 2xl:text-7xl font-black leading-tight text-secondary animate-slide-up">
 									<span className="block">
 										{title.split(" ").slice(0, 2).join(" ")}
 									</span>
@@ -105,7 +105,7 @@ export default function HomeBannerSection({
 								</h1>
 
 								{/* Línea decorativa */}
-								<div className="w-24 h-1 bg-secondary animate-expand-width" />
+								<div className="w-24 h-[2px] lg:h-1 bg-secondary animate-expand-width" />
 							</div>
 						</div>
 
@@ -133,7 +133,7 @@ export default function HomeBannerSection({
 							<NavigationComponent href={paths.perfumes().root}>
 								<Button
 									variant={"secondary"}
-									className="group bg-secondary text-primary text-base sm:text-lg font-bold px-6 sm:px-8 py-4 sm:py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
+									className="group bg-secondary text-primary text-sm 2xs:text-base sm:text-lg font-bold px-4 sm:px-8 py-2.5 sm:py-4 h-auto rounded-full shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105"
 								>
 									<ShoppingBag className="w-5 h-5 mr-3" />
 									Explorar Colección
@@ -152,7 +152,9 @@ export default function HomeBannerSection({
 									className="flex items-center gap-2 text-secondary"
 								>
 									<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-									<span className="text-sm">{infoTip}</span>
+									<span className="text-xs 2xs:text-sm">
+										{infoTip}
+									</span>
 								</div>
 							))}
 						</div>
