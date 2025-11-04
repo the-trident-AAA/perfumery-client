@@ -16,6 +16,7 @@ export default function HomeBannerImagesCarousel({ images }: Props) {
 				image,
 			}))}
 			itemClassName="basis-full"
+			contentClassName="pr-0"
 			autoPlay
 			loop
 			renderCard={item => <HomeBannerImage image={item} />}
