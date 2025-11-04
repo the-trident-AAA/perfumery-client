@@ -5,6 +5,7 @@ import { Button } from "@/src/components/ui/button"
 import { revalidateServerTags } from "@/src/lib/cache"
 import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 import { paths } from "@/src/lib/routes/paths"
+import { OrdersNotSeenByUserContext } from "@/src/sections/orders/context/orders-not-seen-by-user-context"
 import { UserTotalOrdersContext } from "@/src/sections/orders/context/user-total-orders-context"
 import useCreateOrder from "@/src/sections/orders/hooks/use-create-order"
 import { ShopCartContext } from "@/src/sections/shop-cart/context/shop-cart-context/shop-cart-context"
@@ -31,12 +32,14 @@ export default function CreateOrderButton({
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
 	const { fetchUserTotalOrders } = useContext(UserTotalOrdersContext)
+	const { fetchOrdersNotSeenByUser } = useContext(OrdersNotSeenByUserContext)
 	const { createOrder, loading, error } = useCreateOrder({
 		onCreateAction: () => {
 			toast.success("Pedido creado exitosamente")
 			revalidateServerTags(tagsCacheByRoutes.orders.multipleTag)
 			// update the user total orders
 			fetchUserTotalOrders()
+			fetchOrdersNotSeenByUser()
 			// update the shop cart state
 			fetchShopCartTotalItems()
 			fetchShopCart()
