@@ -16,8 +16,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 	const perfume = res.response
 	return {
-		title: perfume ? perfume.name : "Perfume no encontrado",
-		description: perfume?.description,
+		title: `${perfume.name} - ${perfume.brand.name} | Perfumes del Puro`,
+		description: perfume.description.slice(0, 160),
+		openGraph: {
+			title: `${perfume.name} - ${perfume.brand.name}`,
+			description: perfume.description,
+			images: [perfume.image],
+			type: "website",
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: perfume.name,
+			description: perfume.description,
+			images: [perfume.image],
+		},
 	}
 }
 
