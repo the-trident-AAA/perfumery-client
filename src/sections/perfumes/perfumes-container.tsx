@@ -12,7 +12,7 @@ interface Props {
 
 export default function PerfumesContainer({ searchParams }: Props) {
 	return (
-		<div className="flex flex-col lg:flex-row justify-center p-3 py-8 sm:p-12 sm:py-8 gap-6">
+		<main className="flex flex-col lg:flex-row justify-center p-3 py-8 sm:p-12 sm:py-8 gap-6">
 			<PerfumesFiltersContainer />
 			<div className="flex flex-col w-full gap-8">
 				<DetailsSectionHeader
@@ -30,6 +30,6 @@ export default function PerfumesContainer({ searchParams }: Props) {
 					<PerfumesListContainer searchParams={searchParams} />
 				</Suspense>
 			</div>
-		</div>
+		</main>
 	)
 }
