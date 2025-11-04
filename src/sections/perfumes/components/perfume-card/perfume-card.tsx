@@ -17,7 +17,18 @@ interface Props {
 
 export default function PerfumeCard({ perfume }: Props) {
 	return (
-		<>
+		<article itemScope itemType="https://schema.org/Product">
+			<meta itemProp="brand" content={perfume.brand} />
+			<meta itemProp="category" content={perfume.perfumeType} />
+			<meta itemProp="sku" content={perfume.id.toString()} />
+			{perfume.discountOffer && (
+				<meta
+					itemProp="priceValidUntil"
+					content={new Date(
+						Date.now() + 1000 * 60 * 60 * 24 * 30,
+					).toISOString()}
+				/>
+			)}
 			<style jsx>{`
 				@keyframes fadeInUp {
 					from {
@@ -170,17 +181,21 @@ export default function PerfumeCard({ perfume }: Props) {
 						href={paths.perfume({ id: perfume.id }).root}
 					>
 						<div className="relative h-32 2xs:h-54 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
-							<div className="absolute inset-0 flex items-center justify-center">
+							<figure className="absolute inset-0 flex items-center justify-center">
 								<Image
 									src={
 										perfume.image || perfumeImagePlaceHolder
 									}
 									width={600}
 									height={400}
-									alt="Colección de perfumes de lujo"
+									alt={`Perfume ${perfume.name} de ${perfume.brand}`}
+									itemProp="image"
 									className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
 								/>
-							</div>
+								<figcaption className="sr-only">
+									{perfume.name} – {perfume.perfumeType}
+								</figcaption>
+							</figure>
 
 							{/* Partículas flotantes */}
 							<div className="absolute inset-0 pointer-events-none">
@@ -283,9 +298,9 @@ export default function PerfumeCard({ perfume }: Props) {
 								className="space-y-1 sm:space-y-3"
 								style={{ animation: "fadeIn 0.5s 200ms both" }}
 							>
-								<h3 className="font-bold text-sm 2xs:text-lg sm:text-xl text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
+								<h2 className="font-bold text-sm 2xs:text-lg sm:text-xl text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
 									{perfume.name}
-								</h3>
+								</h2>
 								<p className="text-xs 2xs:text-sm text-white line-clamp-2 leading-relaxed">
 									{perfume.description}
 								</p>
@@ -381,6 +396,6 @@ export default function PerfumeCard({ perfume }: Props) {
 					</div>
 				</CardContent>
 			</Card>
-		</>
+		</article>
 	)
 }
