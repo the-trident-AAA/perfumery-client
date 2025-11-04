@@ -70,11 +70,20 @@ export async function getOrderPerfumes(id: string) {
 
 export async function createOrder() {
 	const session = await auth()
+	if (!session)
+		return {
+			error: {
+				name: "Unauthorized",
+				reason: "No está autorizado para usar este recurso",
+				code: "401",
+			},
+			status: 401,
+		}
 
 	const res = await fetch(apiRoutes.orders.get, {
 		method: "POST",
 		headers: {
-			Authorization: "Bearer " + session?.accessToken,
+			Authorization: "Bearer " + session.accessToken,
 			"content-type": "application/json",
 		},
 	})
@@ -127,10 +136,21 @@ export async function getOrdersNotSeenByUser() {
 }
 
 export async function editOrder(id: string, orderEditDTO: OrderEditDto) {
+	const session = await auth()
+	if (!session)
+		return {
+			error: {
+				name: "Unauthorized",
+				reason: "No está autorizado para usar este recurso",
+				code: "401",
+			},
+			status: 401,
+		}
+
 	const res = await fetch(apiRoutes.orders.getById.replace(":id", id), {
 		method: "PATCH",
 		headers: {
-			Authorization: "Bearer " + "token",
+			Authorization: "Bearer " + session?.accessToken,
 			"content-type": "application/json",
 		},
 		body: JSON.stringify(orderEditDTO),
