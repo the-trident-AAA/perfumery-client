@@ -104,6 +104,28 @@ export async function getUserTotalOrders() {
 	return await buildApiResponse<{ total: number }>(res)
 }
 
+export async function getOrdersNotSeenByUser() {
+	const session = await auth()
+	if (!session)
+		return {
+			error: {
+				name: "Unauthorized",
+				reason: "No está autorizado para usar este recurso",
+				code: "401",
+			},
+			status: 401,
+		}
+	const res = await fetch(apiRoutes.orders.getOrdersNotSeenByUser, {
+		method: "GET",
+		headers: {
+			Authorization: "Bearer " + session?.accessToken,
+		},
+		next: { tags: [tagsCacheByRoutes.orders.singleTag] },
+	})
+
+	return await buildApiResponse<{ total: number }>(res)
+}
+
 export async function editOrder(id: string, orderEditDTO: OrderEditDto) {
 	const res = await fetch(apiRoutes.orders.getById.replace(":id", id), {
 		method: "PATCH",
