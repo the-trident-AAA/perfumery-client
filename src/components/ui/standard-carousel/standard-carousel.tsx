@@ -16,6 +16,7 @@ interface Props<T> {
 	items: T[]
 	renderCard: (item: T) => React.ReactNode
 	className?: string
+	contentClassName?: string
 	itemClassName?: string
 	autoPlay?: boolean
 	autoPlayDelay?: number
@@ -28,6 +29,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	items,
 	renderCard,
 	className,
+	contentClassName,
 	itemClassName,
 	autoPlay = false,
 	autoPlayDelay = 5000,
@@ -87,7 +89,9 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				}}
 				className={cn("w-full", className)}
 			>
-				<CarouselContent className="-ml-2 pr-2 py-6 md:-ml-4">
+				<CarouselContent
+					className={cn("-ml-2 pr-2 py-6 md:-ml-4", contentClassName)}
+				>
 					{items.map(item => (
 						<CarouselItem
 							key={item.id}
