@@ -19,6 +19,7 @@ import ProgressBar from "@/src/components/providers/progress-bar."
 import { ProfileProvider } from "@/src/sections/auth/context/profile-context/profile-context"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Metadata } from "next"
+import { OrdersNotSeenByUserProvider } from "@/src/sections/orders/context/orders-not-seen-by-user-context"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -47,66 +48,69 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 						<ShopCartProvider>
 							<ModalProvider>
 								<ShopCartTotalItemsProviderContainer>
-									<UserTotalOrdersProvider>
-										<ToastContainer />
-										<ProgressBar>
-											<main className="flex min-h-screen flex-col">
-												<Header />
-												{modal}
-												{children}
-												<Footer />
-												<Modal
-													formPath={
-														modalTypes.loginModal
-															.name
-													}
-													maxWidth="max-w-sm"
-												>
-													<LoginPanel />
-												</Modal>
-												<Modal
-													formPath={
-														modalTypes
-															.registrationModal
-															.name
-													}
-													maxWidth="max-w-6xl"
-												>
-													<RegistrationPanel />
-												</Modal>
-												<Modal
-													formPath={
-														modalTypes.shopCartModal
-															.name
-													}
-													maxWidth="max-w-6xl"
-												>
-													<ShopCartContent variant="modal" />
-												</Modal>
-												<Modal
-													formPath={
-														modalTypes
-															.changePasswordModal
-															.name
-													}
-													maxWidth="max-w-xl"
-												>
-													Modal de olvido de
-													contraseña
-												</Modal>
-												<Modal
-													formPath={
-														modalTypes
-															.clearShopCartModal
-															.name
-													}
-													maxWidth="max-w-xl"
-												>
-													<ClearShopCartModalContainer />
-												</Modal>
-											</main>
-										</ProgressBar>
-									</UserTotalOrdersProvider>
+									<OrdersNotSeenByUserProvider>
+										<UserTotalOrdersProvider>
+											<ToastContainer />
+											<ProgressBar>
+												<main className="flex min-h-screen flex-col">
+													<Header />
+													{modal}
+													{children}
+													<Footer />
+													<Modal
+														formPath={
+															modalTypes
+																.loginModal.name
+														}
+														maxWidth="max-w-sm"
+													>
+														<LoginPanel />
+													</Modal>
+													<Modal
+														formPath={
+															modalTypes
+																.registrationModal
+																.name
+														}
+														maxWidth="max-w-6xl"
+													>
+														<RegistrationPanel />
+													</Modal>
+													<Modal
+														formPath={
+															modalTypes
+																.shopCartModal
+																.name
+														}
+														maxWidth="max-w-6xl"
+													>
+														<ShopCartContent variant="modal" />
+													</Modal>
+													<Modal
+														formPath={
+															modalTypes
+																.changePasswordModal
+																.name
+														}
+														maxWidth="max-w-xl"
+													>
+														Modal de olvido de
+														contraseña
+													</Modal>
+													<Modal
+														formPath={
+															modalTypes
+																.clearShopCartModal
+																.name
+														}
+														maxWidth="max-w-xl"
+													>
+														<ClearShopCartModalContainer />
+													</Modal>
+												</main>
+											</ProgressBar>
+										</UserTotalOrdersProvider>
+									</OrdersNotSeenByUserProvider>
 								</ShopCartTotalItemsProviderContainer>
 							</ModalProvider>
 						</ShopCartProvider>
