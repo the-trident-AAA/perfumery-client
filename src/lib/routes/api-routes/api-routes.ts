@@ -54,6 +54,7 @@ export const apiRoutes = {
 		getUserTotalOrders: `${process.env.NEXT_PUBLIC_API_URL}order/user-total-orders`,
 		getOrderPerfumes: `${process.env.NEXT_PUBLIC_API_URL}order/get-order-perfumes/:id`,
 		getOrdersNotSeenByUser: `${process.env.NEXT_PUBLIC_API_URL}order/orders-not-seen-by-user`,
+		updateUserOrdersAsViews: `${process.env.NEXT_PUBLIC_API_URL}order/update-user-orders-as-views`,
 	},
 	users: {
 		getById: `${process.env.NEXT_PUBLIC_API_URL}users/:id`,
