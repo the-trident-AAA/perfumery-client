@@ -110,9 +110,9 @@ export default function HomeBannerSection({
 						</div>
 
 						{/* Descripción */}
-						<p className="text-base sm:text-xl lg:text-xl xl:text-2xl text-secondary leading-relaxed max-w-2xl animate-fade-in delay-300">
+						<h2 className="text-base sm:text-xl lg:text-xl xl:text-2xl text-secondary leading-relaxed max-w-2xl animate-fade-in delay-300">
 							{description}
-						</p>
+						</h2>
 
 						{/* Estadísticas */}
 						<div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-8 animate-fade-in delay-500">
