@@ -18,7 +18,10 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 
 	return (
 		<main className="min-h-screen bg-background">
-			<article>
+			<article itemScope itemType="https://schema.org/Product">
+				<meta itemProp="sku" content={perfume.id.toString()} />
+				<meta itemProp="brand" content={perfume.brand.name} />
+				<meta itemProp="category" content={perfume.perfumeType.name} />
 				<div className="px-4 md:px-8 pt-6 pb-4">
 					<BackButton />
 				</div>
