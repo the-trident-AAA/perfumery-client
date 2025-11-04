@@ -17,7 +17,11 @@ interface Props {
 
 export default function PerfumeCard({ perfume }: Props) {
 	return (
-		<article itemScope itemType="https://schema.org/Product">
+		<article
+			className="h-full"
+			itemScope
+			itemType="https://schema.org/Product"
+		>
 			<meta itemProp="brand" content={perfume.brand} />
 			<meta itemProp="category" content={perfume.perfumeType} />
 			<meta itemProp="sku" content={perfume.id.toString()} />
@@ -127,7 +131,7 @@ export default function PerfumeCard({ perfume }: Props) {
 				}
 			`}</style>
 
-			<Card className="group card relative overflow-hidden h-full border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4">
+			<Card className="group pb-4 pt-2 card relative overflow-hidden h-full border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4">
 				{/* Franjas decorativas superiores animadas */}
 				<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/60 via-secondary to-secondary/60 z-20" />
 
@@ -180,7 +184,7 @@ export default function PerfumeCard({ perfume }: Props) {
 					<NavigationComponent
 						href={paths.perfume({ id: perfume.id }).root}
 					>
-						<div className="relative h-32 2xs:h-54 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
+						<div className="relative h-38 2xs:h-54 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
 							<figure className="absolute inset-0 flex items-center justify-center">
 								<Image
 									src={
