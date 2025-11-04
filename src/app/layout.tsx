@@ -32,8 +32,44 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-	title: "Perfumes del Puro",
-	description: "Tienda de Perfumes",
+	title: "Perfumes del Puro | Fragancias originales y exclusivas",
+	description:
+		"Descubre Perfumes del Puro, tu tienda online de fragancias auténticas. Compra perfumes de diseñador con descuentos y envíos rápidos.",
+	keywords: [
+		"perfumes originales",
+		"tienda de perfumes online",
+		"fragancias exclusivas",
+		"Perfumes del Puro",
+	],
+	openGraph: {
+		type: "website",
+		url: "https://perfumesdelpuro.com/",
+		title: "Perfumes del Puro | Fragancias originales y exclusivas",
+		description:
+			"Explora nuestra colección de perfumes auténticos de diseñador. Envíos rápidos y descuentos exclusivos.",
+		siteName: "Perfumes del Puro",
+		images: [
+			{
+				url: "https://perfumesdelpuro.com/images/og-image-home.png",
+				width: 1200,
+				height: 630,
+				alt: "Perfumes del Puro - tienda online de fragancias",
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		site: "@perfumesdelpuro",
+		title: "Perfumes del Puro | Fragancias originales y exclusivas",
+		description:
+			"Tu tienda online de perfumes originales. Descubre fragancias únicas para cada estilo.",
+		images: ["https://perfumesdelpuro.com/images/og-image-home.png"],
+	},
+	icons: {
+		icon: "/favicon.ico",
+		apple: "/apple-touch-icon.png",
+	},
+	metadataBase: new URL("https://perfumesdelpuro.com"),
 }
 
 const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
