@@ -6,7 +6,7 @@ export default function ContactInformation() {
 	return (
 		<div className="space-y-4">
 			<h4 className="font-medium text-secondary text-sm uppercase tracking-wider">
-				Contact
+				Contacto
 			</h4>
 			<ul className="space-y-3 text-sm">
 				<li>
