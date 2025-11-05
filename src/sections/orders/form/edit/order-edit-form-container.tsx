@@ -64,7 +64,6 @@ export default function OrderEditFormContainer({
 	}
 
 	useEffect(() => {
-		console.log("Entre")
 		form.reset({
 			perfumes: orderPerfumes.map(orderPerfume => ({
 				id: orderPerfume.id,
@@ -79,9 +78,9 @@ export default function OrderEditFormContainer({
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
 				<div className="flex items-center gap-3 pb-2">
 					<div className="flex gap-2 items-center rounded-2xl bg-secondary p-2">
-						<Sparkles className="h-5 w-5 text-primary" />
+						<Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
 
-						<h3 className="font-bold text-sm sm:text-lg text-primary">
+						<h3 className="font-bold text-xs 2xs:text-sm sm:text-lg text-primary">
 							Perfumes en este pedido
 						</h3>
 					</div>
