@@ -19,7 +19,7 @@ export default function ModalLayoutContainer({ children }: Props) {
 	else if (pathname.includes(paths.orders.root)) maxWidth = "max-w-3xl"
 	return (
 		<div
-			className={`flex flex-col w-full max-h-[100vh] ${maxWidth} gap-4 bg-muted p-4 rounded-2xl shadow-xl`}
+			className={`flex flex-col w-full max-h-[94vh] ${maxWidth} gap-4 bg-muted p-4 rounded-2xl shadow-xl`}
 		>
 			{/* Botón de cerrar */}
 			<div className="flex w-full gap-2 justify-between items-center">
