@@ -8,6 +8,8 @@ import { fCurrency } from "@/src/lib/utils/format-number"
 import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume-card/components/add-shop-cart-perfume-button"
 import BackButton from "@/src/components/back-button/back-button"
 import ThumbnailsImage from "@/src/components/thumbnails-image/thumbnails-image"
+import SocialShareButton from "@/src/components/social-share-button/social-share-button"
+import { paths } from "@/src/lib/routes/paths"
 
 interface Props {
 	perfume: PerfumeDetails
@@ -189,10 +191,19 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 									</p>
 								)}
 
-								<AddShopCartPerfumeButton
-									variant="large"
-									perfume={perfume}
-								/>
+								<div className="flex items-center gap-2 w-max">
+									<AddShopCartPerfumeButton
+										variant="large"
+										perfume={perfume}
+									/>
+									<SocialShareButton
+										title="Deitate con la siguiente fragancia: "
+										url={
+											paths.perfume({ id: perfume.id })
+												.root
+										}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
