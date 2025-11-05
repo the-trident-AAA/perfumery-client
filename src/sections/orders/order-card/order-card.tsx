@@ -33,18 +33,19 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 					<AccordionTrigger className="px-6 py-4 bg-secondary  relative hover:no-underline group">
 						<div className="z-10 w-full grid 2xs:grid-cols-2 gap-4">
 							<div className="flex items-center gap-4">
-								<div className="bg-primary p-3 rounded-full">
-									<Package className="h-6 w-6 text-secondary" />
-								</div>
-
 								<div className="flex flex-col items-start">
-									<span className="font-bold text-xl text-primary group-hover:text-primary/80 transition-colors">
-										Pedido {order.code}
-									</span>
+									<div className="flex items-center gap-2">
+										<div className="bg-primary p-1 sm:p-2 rounded-full">
+											<Package className="h-5 w-5 sm:h-6 sm:w-6 text-secondary" />
+										</div>
+										<span className="font-bold text-sm sm:text-xl text-primary group-hover:text-primary/80 transition-colors">
+											Pedido {order.code}
+										</span>
+									</div>
 
 									<div className="flex flex-wrap items-center gap-4">
 										<Badge
-											className={`${getOrderStateVariant(order.state)} mt-2 flex items-center gap-1 px-3 py-1`}
+											className={`${getOrderStateVariant(order.state)} mt-2 flex items-center gap-1 px-1 sm:px-3 py-1`}
 										>
 											<Box className="h-3 w-3" />
 											{getOrderStateText(order.state)}
@@ -53,7 +54,7 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 											className="flex flex-col gap-1
 										"
 										>
-											<p className="text-sm text-primary">
+											<p className="text-xs sm:text-sm text-primary">
 												Última actualización:
 											</p>
 											<Badge
@@ -62,6 +63,7 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 											>
 												{formatDate(
 													order.lastUpdateDate,
+													"yymmdd",
 												)}
 											</Badge>
 										</div>
@@ -69,14 +71,13 @@ export default function OrderCard({ order, variant = "default" }: Props) {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 w-full justify-center text-right">
-								<span className="font-black text-primary text-2xl">
+							<div className="flex gap-2 items-center w-full sm:justify-end justify-start text-right">
+								<p className="text-sm text-primary">
+									Total del pedido:
+								</p>
+								<span className="font-black text-primary text-lg sm:text-2xl">
 									{fCurrency(order.totalMount)}
 								</span>
-
-								<p className="text-sm text-primary">
-									Total del pedido
-								</p>
 							</div>
 						</div>
 					</AccordionTrigger>
