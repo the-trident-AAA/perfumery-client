@@ -54,7 +54,7 @@ export default function OfferCard({
 							<h2 className="text-sm 2xs:text-lg sm:text-xl 2xs:text-2xl font-bold tracking-tight animate-slide-up">
 								HASTA
 							</h2>
-							<span className="2xs:text-lg sm;text-3xl 2xs:text-5xl font-black bg-primary bg-clip-text text-transparent animate-bounce-subtle">
+							<span className="2xs:text-lg sm:text-3xl font-black bg-primary bg-clip-text text-transparent animate-bounce-subtle">
 								{discount * 100}%
 							</span>
 						</div>
