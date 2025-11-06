@@ -91,6 +91,24 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 }) => {
 	return (
 		<html>
+			<head>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "Organization",
+							name: "Perfumes del Puro",
+							url: "https://perfumesdelpuro.com",
+							logo: "https://perfumesdelpuro.com/favicon.ico",
+							sameAs: [
+								"https://www.facebook.com/perfumesdelpuro",
+								"https://www.instagram.com/perfumesdelpuro",
+							],
+						}),
+					}}
+				/>
+			</head>
 			<body className={`${roboto.className} antialiased`}>
 				<SessionProvider>
 					<ProfileProvider>
