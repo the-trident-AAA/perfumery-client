@@ -40,5 +40,34 @@ export default async function PerfumeDetailsPage({ params }: Props) {
 	if (!res.response || res.error)
 		throw new Error("Error al cargar al información del perfume")
 
-	return <PerfumeDetailsContent perfume={res.response} />
+	const perfume = res.response
+
+	const jsonLd = {
+		"@context": "https://schema.org",
+		"@type": "Product",
+		name: perfume.name,
+		image: [perfume.image],
+		description: perfume.description,
+		brand: {
+			"@type": "Brand",
+			name: perfume.brand.name,
+		},
+		offers: {
+			"@type": "Offer",
+			url: `https://perfumesdelpuro.com/perfumes/${perfume.id}`,
+			priceCurrency: "USD",
+			price: perfume.price,
+			availability: "https://schema.org/InStock",
+		},
+	}
+
+	return (
+		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
+			<PerfumeDetailsContent perfume={perfume} />
+		</>
+	)
 }
