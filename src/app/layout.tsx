@@ -69,6 +69,19 @@ export const metadata: Metadata = {
 		icon: "/favicon.ico",
 		apple: "/apple-touch-icon.png",
 	},
+	other: {
+		"application/ld+json": JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			name: "Perfumes del Puro",
+			url: "https://perfumesdelpuro.com",
+			logo: "https://perfumesdelpuro.com/favicon.ico",
+			sameAs: [
+				"https://www.facebook.com/perfumesdelpuro",
+				"https://www.instagram.com/perfumesdelpuro",
+			],
+		}),
+	},
 	metadataBase: new URL("https://perfumesdelpuro.com"),
 }
 
