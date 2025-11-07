@@ -7,8 +7,8 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
+} from "@/src/components/ui/dialog"
+import { Button } from "@/src/components/ui/button"
 import { AlertCircle, CheckCircle2, Info, XCircle } from "lucide-react"
 
 export type AlertType = "info" | "success" | "warning" | "error"
