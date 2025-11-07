@@ -22,6 +22,7 @@ export default function PerfumeCard({ perfume }: Props) {
 			itemScope
 			itemType="https://schema.org/Product"
 		>
+			<meta itemProp="name" content={perfume.name} />
 			<meta itemProp="brand" content={perfume.brand} />
 			<meta itemProp="category" content={perfume.perfumeType} />
 			<meta itemProp="sku" content={perfume.id.toString()} />
