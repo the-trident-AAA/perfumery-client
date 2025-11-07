@@ -3,7 +3,8 @@
 import { Checkbox } from "@/src/components/ui/checkbox"
 import { Label } from "@/src/components/ui/label"
 import { Input } from "@/src/components/ui/input"
-import { Search, AlertCircleIcon } from "lucide-react"
+import { Button } from "@/src/components/ui/button"
+import { Search, AlertCircleIcon, X } from "lucide-react"
 import React, { useEffect, useRef } from "react"
 
 interface Option {
@@ -17,12 +18,13 @@ interface Props {
 	values: string[]
 	options: Option[]
 	handleValuesChange: (value: string, checked: boolean) => void
+	handleDeselectAll?: () => void
 	loading?: boolean
-	// nuevas props de filtrado
 	filterValue?: string
 	onFilterChange?: (value: string) => void
 	filterPlaceholder?: string
 	emptyText?: string
+	deselectAllText?: string
 }
 
 export default function ListInput({
@@ -31,11 +33,13 @@ export default function ListInput({
 	values,
 	options,
 	handleValuesChange,
+	handleDeselectAll,
 	loading = false,
 	filterValue,
 	onFilterChange,
 	filterPlaceholder = "Buscar...",
 	emptyText = "No hay opciones disponibles",
+	deselectAllText = "Deseleccionar todos",
 }: Props) {
 	const inputRef = useRef<HTMLInputElement>(null)
 
@@ -54,6 +58,9 @@ export default function ListInput({
 					.toLowerCase()
 					.includes((filterValue || "").toLowerCase()),
 			)
+
+	// Verificar si hay elementos seleccionados para mostrar el botón
+	const hasSelectedItems = values.length > 0
 
 	return (
 		<div className="space-y-3">
@@ -79,6 +86,22 @@ export default function ListInput({
 								}}
 							/>
 						</div>
+					</div>
+				)}
+
+				{/* Botón para deseleccionar todos */}
+				{hasSelectedItems && handleDeselectAll && (
+					<div className="px-4 py-2 border-b">
+						<Button
+							type="button"
+							variant="secondary"
+							size="sm"
+							onClick={handleDeselectAll}
+							className="w-full justify-start items-center text-primary gap-2 text-sm lg:text-sm xl:text-sm h-7 lg:h-7 xl:h-7"
+						>
+							<X className="h-3 w-3" />
+							{deselectAllText}
+						</Button>
 					</div>
 				)}
 
