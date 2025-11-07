@@ -2,10 +2,11 @@
 
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import { convertOfferFiltersDTO } from "@/src/lib/types/offers"
+import { OrderDto } from "@/src/lib/types/order"
 import { Pagination } from "@/src/lib/types/pagination"
 import { Dispatch, SetStateAction, useState } from "react"
 
-export interface OffersFilters {
+export interface OffersFilters extends OrderDto {
 	name?: string
 	description?: string
 	scope?: string

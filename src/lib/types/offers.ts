@@ -1,3 +1,4 @@
+import { OrderDto } from "@/src/lib/types/order"
 import { OffersFilters } from "@/src/sections/offers/filters/hooks/use-offers-filters"
 
 export interface Offer {
@@ -10,7 +11,7 @@ export interface Offer {
 	offerType: string
 }
 
-export interface OfferFiltersDTO {
+export interface OfferFiltersDTO extends OrderDto {
 	name?: string
 	description?: string
 	scope?: string
