@@ -1,6 +1,8 @@
 import { getPerfumesList } from "@/src/lib/services/perfumes"
 import type { MetadataRoute } from "next"
 
+export const revalidate = 0
+
 const baseUrl = "https://perfumesdelpuro.com"
 
 async function getPerfumeUrls() {
