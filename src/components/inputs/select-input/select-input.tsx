@@ -35,8 +35,8 @@ interface Props {
 	filterValue?: string
 	onFilterChange?: (value: string) => void
 	filterPlaceholder?: string
-	sortDirection?: "asc" | "desc"
-	onSortChange?: (direction: "asc" | "desc") => void
+	sortDirection?: "ASC" | "asc" | "DESC" | "desc"
+	onSortChange?: (direction: "ASC" | "asc" | "DESC" | "desc") => void
 }
 
 export default function SelectInput({
