@@ -56,7 +56,7 @@ export default async function PerfumeDetailsPage({ params }: Props) {
 			"@type": "Offer",
 			url: `https://perfumesdelpuro.com/perfumes/${perfume.id}`,
 			priceCurrency: "USD",
-			price: perfume.price,
+			price: perfume.totalPrice,
 			availability:
 				perfume.available && perfume.cant > 0
 					? "https://schema.org/InStock"
