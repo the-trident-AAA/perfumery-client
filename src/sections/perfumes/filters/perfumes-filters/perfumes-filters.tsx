@@ -10,16 +10,20 @@ import { Offer } from "@/src/lib/types/offers"
 import { PerfumeType } from "@/src/lib/types/perfume-types"
 import { Gender, genderMap } from "@/src/lib/types/perfumes"
 import { Scent } from "@/src/lib/types/scents"
+import { BrandsFilters } from "@/src/sections/brands/filters/hooks/use-brands-filters"
+import { OffersFilters } from "@/src/sections/offers/filters/hooks/use-offers-filters"
+import { PerfumeTypesFilters } from "@/src/sections/perfume-types/filters/hooks/use-perfume-types-filters"
 import { PerfumesFilters as PerfumesFiltersType } from "@/src/sections/perfumes/filters/hooks/use-perfumes-filters"
+import { ScentsFilters } from "@/src/sections/scents/filters/hooks/use-scents-filters"
 import { useCallback } from "react"
 
 interface Props {
 	filters: PerfumesFiltersType
 	handleChangeFilters: (filters: Partial<PerfumesFiltersType>) => void
-	brands: OptionData<Brand>
-	perfumeTypes: OptionData<PerfumeType>
-	scents: OptionData<Scent>
-	offers: OptionData<Offer>
+	brands: OptionData<Brand, BrandsFilters>
+	perfumeTypes: OptionData<PerfumeType, PerfumeTypesFilters>
+	scents: OptionData<Scent, ScentsFilters>
+	offers: OptionData<Offer, OffersFilters>
 }
 
 export default function PerfumesFilterss({
@@ -76,6 +80,12 @@ export default function PerfumesFilterss({
 							handleChangeFilters({ brandId: undefined })
 						},
 					}}
+					filterValue={brands.filters.name}
+					onFilterChange={value => {
+						brands.handleChangeFilters({ name: value || undefined })
+					}}
+					filterPlaceholder="Busque alguna marca..."
+					emptyText="No se encontraron marcas"
 				/>
 
 				{/* Gender */}
@@ -129,6 +139,14 @@ export default function PerfumesFilterss({
 							handleChangeFilters({ perfumeTypeId: undefined })
 						},
 					}}
+					filterValue={perfumeTypes.filters.name}
+					onFilterChange={value => {
+						perfumeTypes.handleChangeFilters({
+							name: value || undefined,
+						})
+					}}
+					filterPlaceholder="Busque algún perfume..."
+					emptyText="No se encontraron perfumes"
 				/>
 			</div>
 			<Separator className="bg-secondary" />
@@ -165,6 +183,14 @@ export default function PerfumesFilterss({
 							handleChangeFilters({ offerId: undefined })
 						},
 					}}
+					filterValue={offers.filters.name}
+					onFilterChange={value => {
+						offers.handleChangeFilters({
+							name: value || undefined,
+						})
+					}}
+					filterPlaceholder="Busque alguna oferta..."
+					emptyText="No se encontraron ofertas"
 				/>
 			</div>
 			<Separator className="bg-secondary" />
@@ -196,6 +222,14 @@ export default function PerfumesFilterss({
 				}))}
 				loading={scents.loading}
 				handleValuesChange={handleScentChange}
+				filterValue={scents.filters.name}
+				onFilterChange={value => {
+					scents.handleChangeFilters({
+						name: value || undefined,
+					})
+				}}
+				filterPlaceholder="Busque algún aroma..."
+				emptyText="No se encontraron aromas"
 			/>
 		</div>
 	)
