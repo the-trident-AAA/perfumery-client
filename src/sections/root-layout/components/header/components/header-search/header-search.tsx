@@ -59,7 +59,7 @@ const HeaderSearch = () => {
 	) : (
 		<PopoverContainer
 			trigger={
-				<SearchIcon className="size-6 sm:size-8 lg:size-12 text-secondary" />
+				<SearchIcon className="size-7 sm:size-8 lg:size-12 text-secondary" />
 			}
 		>
 			<SearchInput
