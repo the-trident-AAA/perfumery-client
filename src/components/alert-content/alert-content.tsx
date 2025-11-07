@@ -1,20 +1,12 @@
 "use client"
 
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-} from "@/src/components/ui/dialog"
+import { DialogDescription, DialogTitle } from "@/src/components/ui/dialog"
 import { Button } from "@/src/components/ui/button"
 import { AlertCircle, CheckCircle2, Info, XCircle } from "lucide-react"
 
 export type AlertType = "info" | "success" | "warning" | "error"
 
-interface AlertModalProps {
-	isOpen: boolean
+interface Props {
 	onClose: () => void
 	title: string
 	description: string
@@ -45,22 +37,21 @@ const alertConfig = {
 	},
 }
 
-export function AlertModal({
-	isOpen,
+export function AlertContent({
 	onClose,
 	title,
 	description,
 	type = "info",
 	buttonText = "Continuar",
-}: AlertModalProps) {
+}: Props) {
 	const config = alertConfig[type]
 	const Icon = config.icon
 
 	return (
-		<Dialog open={isOpen} onOpenChange={onClose}>
-			<DialogContent className="sm:max-w-md">
-				<DialogHeader>
-					<div className="flex items-start mt-6 gap-4">
+		<div>
+			<div className="flex flex-col gap-6 p-4 pb-1">
+				<div>
+					<div className="flex items-start gap-4">
 						<div className={`rounded-full p-2 ${config.bgColor}`}>
 							<Icon className={`h-6 w-6 ${config.iconColor}`} />
 						</div>
@@ -73,8 +64,8 @@ export function AlertModal({
 							</DialogDescription>
 						</div>
 					</div>
-				</DialogHeader>
-				<DialogFooter className="sm:justify-end">
+				</div>
+				<div className="flex sm:justify-end">
 					<Button
 						variant={"secondary"}
 						onClick={onClose}
@@ -82,8 +73,8 @@ export function AlertModal({
 					>
 						{buttonText}
 					</Button>
-				</DialogFooter>
-			</DialogContent>
-		</Dialog>
+				</div>
+			</div>
+		</div>
 	)
 }
