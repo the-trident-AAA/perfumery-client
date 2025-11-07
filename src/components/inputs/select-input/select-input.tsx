@@ -1,76 +1,185 @@
 "use client"
 
 import { Label } from "@/src/components/ui/label"
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/src/components/ui/select"
-import { XIcon } from "lucide-react"
-import React from "react"
+import { Input } from "@/src/components/ui/input"
+import { Search, ChevronDown, XIcon, AlertCircleIcon } from "lucide-react"
+import React, { useState, useRef, useEffect } from "react"
+import { cn } from "@/src/lib/utils/utils"
+
+interface Option {
+	label: string
+	value: string
+}
 
 interface Props {
 	label?: string
-	placeHolder?: string
 	labelClassName?: string
+	placeHolder?: string
 	value?: string
 	onValueChange?: (value: string) => void
-	options: { value: string; label: string }[]
+	options: Option[]
 	loading?: boolean
 	clearable?: {
 		handleClear: () => void
 	}
 	fullWidth?: boolean
+	emptyText?: string
+	// 🔍 nuevas props de filtrado
+	filterValue?: string
+	onFilterChange?: (value: string) => void
+	filterPlaceholder?: string
 }
 
 export default function SelectInput({
 	label,
-	placeHolder = "Seleccione elemento",
 	labelClassName,
+	placeHolder = "Selecciona un elemento",
 	value,
 	onValueChange,
 	options,
 	loading = false,
 	clearable,
 	fullWidth = true,
+	emptyText = "No hay datos",
+	filterValue,
+	onFilterChange,
+	filterPlaceholder = "Buscar...",
 }: Props) {
+	const [isOpen, setIsOpen] = useState(false)
+	const selectRef = useRef<HTMLDivElement>(null)
+	const inputRef = useRef<HTMLInputElement>(null)
+
+	// Opción seleccionada
+	const selectedOption = options.find(opt => opt.value === value)
+
+	// Cerrar dropdown al hacer click fuera
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				selectRef.current &&
+				!selectRef.current.contains(event.target as Node)
+			) {
+				setIsOpen(false)
+			}
+		}
+		document.addEventListener("mousedown", handleClickOutside)
+		return () =>
+			document.removeEventListener("mousedown", handleClickOutside)
+	}, [])
+
+	// Focus en el input de búsqueda al abrir
+	useEffect(() => {
+		if (isOpen && onFilterChange && inputRef.current) {
+			setTimeout(() => inputRef.current?.focus(), 100)
+		}
+	}, [isOpen, onFilterChange])
+
+	// Filtrado local si no se pasa `onFilterChange`
+	const filteredOptions = onFilterChange
+		? options
+		: options.filter(opt =>
+				opt.label
+					.toLowerCase()
+					.includes((filterValue || "").toLowerCase()),
+			)
+
+	const handleSelect = (val: string) => {
+		onValueChange?.(val)
+		setIsOpen(false)
+	}
+
 	return (
-		<div className="space-y-2 z-10">
+		<div className={cn("space-y-2", fullWidth && "w-full")} ref={selectRef}>
 			{label && <Label className={labelClassName}>{label}</Label>}
-			<div className="relative flex items-center">
-				<Select
-					value={value || ""}
-					onValueChange={onValueChange}
+
+			<div className="relative">
+				{/* Trigger personalizado */}
+				<button
+					type="button"
+					onClick={() => setIsOpen(!isOpen)}
 					disabled={loading}
+					className={cn(
+						"flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+						fullWidth && "w-full",
+						!selectedOption && "text-muted-foreground",
+					)}
 				>
-					<SelectTrigger
-						className={`
-							${fullWidth ? "w-full" : ""} 
-							bg-muted
-							${clearable && value ? "pr-10" : ""}
-							flex-1
-						`}
-					>
-						<SelectValue
-							placeholder={loading ? "Cargando..." : placeHolder}
-						/>
-					</SelectTrigger>
-					<SelectContent>
-						{options.map((option, index) => (
-							<SelectItem key={index} value={option.value}>
-								{option.label}
-							</SelectItem>
-						))}
-					</SelectContent>
-				</Select>
+					<span>
+						{loading
+							? "Cargando..."
+							: selectedOption
+								? selectedOption.label
+								: placeHolder}
+					</span>
+					<ChevronDown className="h-4 w-4 opacity-50" />
+				</button>
+
+				{/* Dropdown personalizado */}
+				{isOpen && (
+					<div className="absolute z-50 w-full mt-1 border border-input bg-background rounded-md shadow-md max-h-60 overflow-auto">
+						{/* Input de búsqueda */}
+						{onFilterChange && (
+							<div className="p-2 border-b">
+								<div className="relative">
+									<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+									<Input
+										ref={inputRef}
+										placeholder={filterPlaceholder}
+										value={filterValue || ""}
+										onChange={e =>
+											onFilterChange(e.target.value)
+										}
+										className="pl-10"
+										onKeyDown={e => {
+											if (e.key === "Escape")
+												setIsOpen(false)
+										}}
+									/>
+								</div>
+							</div>
+						)}
+
+						{/* Lista de opciones */}
+						<div className="py-1">
+							{filteredOptions.length > 0 ? (
+								filteredOptions.map(option => (
+									<button
+										key={option.value}
+										type="button"
+										onClick={() =>
+											handleSelect(option.value)
+										}
+										className={cn(
+											"relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+											value === option.value &&
+												"bg-accent text-accent-foreground",
+										)}
+									>
+										<span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+											{value === option.value && (
+												<span className="h-2 w-2 rounded-full bg-current" />
+											)}
+										</span>
+										{option.label}
+									</button>
+								))
+							) : (
+								<div className="flex gap-2 p-2 text-sm text-muted-foreground">
+									<AlertCircleIcon className="h-4 w-4" />
+									{emptyText}
+								</div>
+							)}
+						</div>
+					</div>
+				)}
+
+				{/* Botón clear */}
 				{clearable && value && (
 					<button
 						type="button"
 						onClick={clearable.handleClear}
-						className="absolute right-2 rounded-sm p-1 text-muted-foreground hover:bg-muted hover:text-foreground ml-1"
-						title="Clear selection"
+						className="absolute right-8 top-1/2 -translate-y-1/2 rounded-sm p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+						title="Limpiar selección"
 					>
 						<XIcon className="h-4 w-4" />
 					</button>
