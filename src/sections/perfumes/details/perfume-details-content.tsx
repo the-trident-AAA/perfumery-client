@@ -21,6 +21,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 	return (
 		<main className="min-h-screen bg-background">
 			<article itemScope itemType="https://schema.org/Product">
+				<meta itemProp="name" content={perfume.name} />
 				<meta itemProp="sku" content={perfume.id.toString()} />
 				<meta itemProp="brand" content={perfume.brand.name} />
 				<meta itemProp="category" content={perfume.perfumeType.name} />
