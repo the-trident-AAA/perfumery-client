@@ -2,9 +2,17 @@
 
 import { Label } from "@/src/components/ui/label"
 import { Input } from "@/src/components/ui/input"
-import { Search, ChevronDown, XIcon, AlertCircleIcon } from "lucide-react"
+import {
+	Search,
+	ChevronDown,
+	XIcon,
+	AlertCircleIcon,
+	ArrowDownAZ,
+	ArrowUpZA,
+} from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
 import { cn } from "@/src/lib/utils/utils"
+import { Button } from "@/src/components/ui/button"
 
 interface Option {
 	label: string
@@ -24,10 +32,11 @@ interface Props {
 	}
 	fullWidth?: boolean
 	emptyText?: string
-	// 🔍 nuevas props de filtrado
 	filterValue?: string
 	onFilterChange?: (value: string) => void
 	filterPlaceholder?: string
+	sortDirection?: "asc" | "desc"
+	onSortChange?: (direction: "asc" | "desc") => void
 }
 
 export default function SelectInput({
@@ -44,6 +53,8 @@ export default function SelectInput({
 	filterValue,
 	onFilterChange,
 	filterPlaceholder = "Buscar...",
+	sortDirection = "asc",
+	onSortChange,
 }: Props) {
 	const [isOpen, setIsOpen] = useState(false)
 	const selectRef = useRef<HTMLDivElement>(null)
@@ -83,9 +94,23 @@ export default function SelectInput({
 					.includes((filterValue || "").toLowerCase()),
 			)
 
+	// Aplicar ordenamiento local si no se pasa handler
+	const sortedOptions = onSortChange
+		? filteredOptions
+		: [...filteredOptions].sort((a, b) =>
+				sortDirection === "asc"
+					? a.label.localeCompare(b.label)
+					: b.label.localeCompare(a.label),
+			)
+
 	const handleSelect = (val: string) => {
 		onValueChange?.(val)
 		setIsOpen(false)
+	}
+
+	const handleSortToggle = () => {
+		const next = sortDirection === "asc" ? "desc" : "asc"
+		onSortChange?.(next)
 	}
 
 	return (
@@ -93,7 +118,7 @@ export default function SelectInput({
 			{label && <Label className={labelClassName}>{label}</Label>}
 
 			<div className="relative">
-				{/* Trigger personalizado */}
+				{/* Trigger principal */}
 				<button
 					type="button"
 					onClick={() => setIsOpen(!isOpen)}
@@ -117,10 +142,10 @@ export default function SelectInput({
 				{/* Dropdown personalizado */}
 				{isOpen && (
 					<div className="absolute z-50 w-full mt-1 border border-input bg-background rounded-md shadow-md max-h-60 overflow-auto">
-						{/* Input de búsqueda */}
+						{/* 🔍 Input de búsqueda con botón de orden */}
 						{onFilterChange && (
-							<div className="p-2 border-b">
-								<div className="relative">
+							<div className="p-2 border-b flex items-center gap-2">
+								<div className="relative flex-1">
 									<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
 									<Input
 										ref={inputRef}
@@ -129,20 +154,42 @@ export default function SelectInput({
 										onChange={e =>
 											onFilterChange(e.target.value)
 										}
-										className="pl-10"
+										className="pl-10 pr-9"
 										onKeyDown={e => {
 											if (e.key === "Escape")
 												setIsOpen(false)
 										}}
 									/>
 								</div>
+
+								{/* Botón de ordenamiento */}
+								{onSortChange && (
+									<Button
+										type="button"
+										size={"icon"}
+										variant={"secondary"}
+										onClick={handleSortToggle}
+										className="flex-shrink-0 p-2 rounded-md text-primary transition"
+										title={
+											sortDirection === "asc"
+												? "Ordenar Z→A"
+												: "Ordenar A→Z"
+										}
+									>
+										{sortDirection === "asc" ? (
+											<ArrowDownAZ className="h-4 w-4" />
+										) : (
+											<ArrowUpZA className="h-4 w-4" />
+										)}
+									</Button>
+								)}
 							</div>
 						)}
 
 						{/* Lista de opciones */}
 						<div className="py-1">
-							{filteredOptions.length > 0 ? (
-								filteredOptions.map(option => (
+							{sortedOptions.length > 0 ? (
+								sortedOptions.map(option => (
 									<button
 										key={option.value}
 										type="button"
