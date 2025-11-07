@@ -86,6 +86,13 @@ export default function PerfumesFilterss({
 					}}
 					filterPlaceholder="Busque alguna marca..."
 					emptyText="No se encontraron marcas"
+					sortDirection={brands.filters.order}
+					onSortChange={value => {
+						brands.handleChangeFilters({
+							order: value,
+							orderBy: "name",
+						})
+					}}
 				/>
 
 				{/* Gender */}
@@ -147,6 +154,13 @@ export default function PerfumesFilterss({
 					}}
 					filterPlaceholder="Busque algún perfume..."
 					emptyText="No se encontraron perfumes"
+					sortDirection={perfumeTypes.filters.order}
+					onSortChange={value => {
+						perfumeTypes.handleChangeFilters({
+							order: value,
+							orderBy: "name",
+						})
+					}}
 				/>
 			</div>
 			<Separator className="bg-secondary" />
@@ -191,6 +205,13 @@ export default function PerfumesFilterss({
 					}}
 					filterPlaceholder="Busque alguna oferta..."
 					emptyText="No se encontraron ofertas"
+					sortDirection={offers.filters.order}
+					onSortChange={value => {
+						offers.handleChangeFilters({
+							order: value,
+							orderBy: "name",
+						})
+					}}
 				/>
 			</div>
 			<Separator className="bg-secondary" />
@@ -234,6 +255,13 @@ export default function PerfumesFilterss({
 				filterPlaceholder="Busque algún aroma..."
 				emptyText="No se encontraron aromas"
 				deselectAllText="Deseleccionar todas"
+				sortDirection={scents.filters.order}
+				onSortChange={value => {
+					scents.handleChangeFilters({
+						order: value,
+						orderBy: "name",
+					})
+				}}
 			/>
 		</div>
 	)
