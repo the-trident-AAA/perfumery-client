@@ -1,3 +1,4 @@
+import { OrderDto } from "@/src/lib/types/order"
 import { ScentsFilters } from "@/src/sections/scents/filters/hooks/use-scents-filters"
 
 export interface Scent {
@@ -5,7 +6,7 @@ export interface Scent {
 	name: string
 }
 
-export interface ScentFiltersDTO {
+export interface ScentFiltersDTO extends OrderDto {
 	name?: string
 }
 
