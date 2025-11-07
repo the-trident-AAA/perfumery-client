@@ -5,7 +5,7 @@ interface Path {
 
 interface ApplicationPath {
 	home: Path
-	sign_in: Path
+	sign_in: (query?: Record<string, string>) => Path
 	registration: Path
 	perfume: (
 		params?: Record<string, string>,
@@ -45,9 +45,13 @@ export const paths: ApplicationPath = {
 		root: "/",
 		isProtected: false,
 	},
-	sign_in: {
-		root: "/sign-in",
-		isProtected: false,
+	sign_in: (query = {}) => {
+		const basePath = "/sign-in"
+		const queryString = buildQueryString(query)
+		return {
+			root: queryString ? `${basePath}?${queryString}` : basePath,
+			isProtected: false,
+		}
 	},
 	registration: {
 		root: "/registration",
