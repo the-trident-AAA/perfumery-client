@@ -53,7 +53,7 @@ export default function SelectInput({
 	filterValue,
 	onFilterChange,
 	filterPlaceholder = "Buscar...",
-	sortDirection = "asc",
+	sortDirection = "desc",
 	onSortChange,
 }: Props) {
 	const [isOpen, setIsOpen] = useState(false)
