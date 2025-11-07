@@ -168,11 +168,11 @@ export default function PerfumesFilterss({
 				/>
 			</div>
 			<Separator className="bg-secondary" />
-			{/* Price and Total Price */}
+			{/* Price and Mililiters */}
 			<div className="flex flex-col gap-4">
 				{/* Price */}
 				<SliderInput
-					label="Precio Base"
+					label="Precio"
 					meansure="$"
 					value={filters.priceRange}
 					step={5}
@@ -180,19 +180,6 @@ export default function PerfumesFilterss({
 					handleChangeFilters={value => {
 						handleChangeFilters({
 							priceRange: value as [number, number],
-						})
-					}}
-				/>
-				{/* Total Price */}
-				<SliderInput
-					label="Precio Total"
-					meansure="$"
-					value={filters.totalPriceRange}
-					step={5}
-					max={300}
-					handleChangeFilters={value => {
-						handleChangeFilters({
-							totalPriceRange: value as [number, number],
 						})
 					}}
 				/>

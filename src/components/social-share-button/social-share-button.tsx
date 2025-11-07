@@ -1,6 +1,13 @@
 "use client"
 
-import { Share2, Facebook, MessageCircle, Copy, Check } from "lucide-react"
+import {
+	Share2,
+	Facebook,
+	MessageCircle,
+	Copy,
+	Check,
+	Share,
+} from "lucide-react"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -23,11 +30,14 @@ export default function SocialShareButton({
 }: SocialShareButtonProps) {
 	const [copied, setCopied] = useState(false)
 	const [shareUrl, setShareUrl] = useState(url)
+	const [canUseNativeShare, setCanUseNativeShare] = useState(false)
 
 	const shareText = `${title}${description ? ` - ${description}` : ""}`
 
 	useEffect(() => {
 		setShareUrl(window.location.origin + url)
+		// Verificar si el navegador soporta la Web Share API
+		setCanUseNativeShare(!!navigator.share)
 	}, [url])
 
 	const handleCopyLink = async () => {
@@ -40,12 +50,40 @@ export default function SocialShareButton({
 		}
 	}
 
+	const handleNativeShare = async () => {
+		try {
+			await navigator.share({
+				title: title,
+				text: shareText,
+				url: shareUrl,
+			})
+		} catch (err) {
+			// El usuario canceló el share o ocurrió un error
+			console.log("Share cancelled or failed:", err)
+		}
+	}
+
 	const shareLinks = {
 		whatsapp: `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`,
 		facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
 		twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
 	}
 
+	// Si el dispositivo soporta native share, mostramos SOLO el botón nativo
+	if (canUseNativeShare) {
+		return (
+			<Button
+				variant={"secondary"}
+				className={"text-primary"}
+				onClick={handleNativeShare}
+			>
+				<Share className="w-4 h-4 mr-2" />
+				Compartir
+			</Button>
+		)
+	}
+
+	// Fallback para dispositivos que no soportan native share
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
