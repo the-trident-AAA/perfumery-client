@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState, useRef } from "react"
 import { debounce } from "lodash"
 import useClientPagination from "@/src/lib/hooks/use-client-pagination"
-import { Offer } from "@/src/lib/types/offers"
+import { convertOfferFiltersDTO, Offer } from "@/src/lib/types/offers"
 import useOffersFilters from "@/src/sections/offers/filters/hooks/use-offers-filters"
 import { getOffersList } from "@/src/lib/services/offers"
 import { Pagination } from "@/src/lib/types/pagination"
@@ -19,7 +19,10 @@ export default function useOffers() {
 	} = useClientPagination()
 	const [pagination, setPagination] = useState<Pagination>(clientPagination)
 	const { filters, handleChangeFilters, handleResetFilters } =
-		useOffersFilters({ setPagination: setClientPagination })
+		useOffersFilters({
+			setPagination: setClientPagination,
+			urlFilters: false,
+		})
 
 	const debouncedFetchRef = useRef(
 		debounce(async (filters, clientPagination) => {
@@ -27,11 +30,7 @@ export default function useOffers() {
 			setError(null)
 			try {
 				const res = await getOffersList({
-					pagination: {
-						page: clientPagination.page,
-						perPage: clientPagination.pageSize,
-					},
-					search: filters.search,
+					...convertOfferFiltersDTO(filters),
 				})
 
 				if (!res.response || res.error)
