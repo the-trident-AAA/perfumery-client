@@ -74,6 +74,7 @@ export const metadata: Metadata = {
 			"@context": "https://schema.org",
 			"@type": "Organization",
 			name: "Perfumes del Puro",
+			image: "https://perfumesdelpuro.com/images/og-image-home.png",
 			url: "https://perfumesdelpuro.com",
 			logo: "https://perfumesdelpuro.com/favicon.ico",
 			sameAs: [
@@ -99,6 +100,7 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 							"@context": "https://schema.org",
 							"@type": "Organization",
 							name: "Perfumes del Puro",
+							image: "https://perfumesdelpuro.com/images/og-image-home.png",
 							url: "https://perfumesdelpuro.com",
 							logo: "https://perfumesdelpuro.com/favicon.ico",
 							sameAs: [
