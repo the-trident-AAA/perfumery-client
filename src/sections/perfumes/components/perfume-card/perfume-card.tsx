@@ -48,14 +48,6 @@ export default function PerfumeCard({ perfume }: Props) {
 					__html: JSON.stringify(jsonLd),
 				}}
 			/>
-			{perfume.discountOffer && (
-				<meta
-					itemProp="priceValidUntil"
-					content={new Date(
-						Date.now() + 1000 * 60 * 60 * 24 * 30,
-					).toISOString()}
-				/>
-			)}
 			<style jsx>{`
 				@keyframes fadeInUp {
 					from {
