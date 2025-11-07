@@ -217,7 +217,7 @@ export default function PerfumeCard({ perfume }: Props) {
 									height={400}
 									alt={`Perfume ${perfume.name} de ${perfume.brand}`}
 									itemProp="image"
-									className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+									className="object-contain w-full h-full max-h-[90%] md:max-w-[90%] md:max-h-[90%] transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
 								/>
 								<figcaption className="sr-only">
 									{perfume.name} – {perfume.perfumeType}
