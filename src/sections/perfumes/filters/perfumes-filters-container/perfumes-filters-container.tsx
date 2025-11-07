@@ -22,10 +22,30 @@ export default function PerfumesFiltersContainer() {
 		handleResetFilters,
 		getActiveFiltersCount,
 	} = usePerfumesFilters({})
-	const { brands, loadingData: loadingBrands } = useBrands()
-	const { perfumeTypes, loadingData: loadingPerfumeTypes } = usePerfumeTypes()
-	const { scents, loadingData: loadingScents } = useScents()
-	const { offers, loadingData: loadingOffers } = useOffers()
+	const {
+		brands,
+		loadingData: loadingBrands,
+		filters: brandFilters,
+		handleChangeFilters: handleChangeFiltersBrands,
+	} = useBrands()
+	const {
+		perfumeTypes,
+		loadingData: loadingPerfumeTypes,
+		filters: perfumeTypesFilters,
+		handleChangeFilters: handleChangeFiltersPerfumeTypes,
+	} = usePerfumeTypes()
+	const {
+		scents,
+		loadingData: loadingScents,
+		filters: scentsFilters,
+		handleChangeFilters: handleChangeFiltersScents,
+	} = useScents()
+	const {
+		offers,
+		loadingData: loadingOffers,
+		filters: offersFilters,
+		handleChangeFilters: handleChangeFiltersOffers,
+	} = useOffers()
 
 	return (
 		<div>
@@ -47,13 +67,31 @@ export default function PerfumesFiltersContainer() {
 				>
 					<PerfumesFilters
 						filters={filters}
-						brands={{ data: brands, loading: loadingBrands }}
+						brands={{
+							data: brands,
+							loading: loadingBrands,
+							filters: brandFilters,
+							handleChangeFilters: handleChangeFiltersBrands,
+						}}
 						perfumeTypes={{
 							data: perfumeTypes,
 							loading: loadingPerfumeTypes,
+							filters: perfumeTypesFilters,
+							handleChangeFilters:
+								handleChangeFiltersPerfumeTypes,
 						}}
-						scents={{ data: scents, loading: loadingScents }}
-						offers={{ data: offers, loading: loadingOffers }}
+						scents={{
+							data: scents,
+							loading: loadingScents,
+							filters: scentsFilters,
+							handleChangeFilters: handleChangeFiltersScents,
+						}}
+						offers={{
+							data: offers,
+							loading: loadingOffers,
+							filters: offersFilters,
+							handleChangeFilters: handleChangeFiltersOffers,
+						}}
 						handleChangeFilters={handleChangeFilters}
 					/>
 				</SheetContainer>
@@ -61,13 +99,31 @@ export default function PerfumesFiltersContainer() {
 				<SidePanelFilters title="Filtros de Perfumes">
 					<PerfumesFilters
 						filters={filters}
-						brands={{ data: brands, loading: loadingBrands }}
+						brands={{
+							data: brands,
+							loading: loadingBrands,
+							filters: brandFilters,
+							handleChangeFilters: handleChangeFiltersBrands,
+						}}
 						perfumeTypes={{
 							data: perfumeTypes,
 							loading: loadingPerfumeTypes,
+							filters: perfumeTypesFilters,
+							handleChangeFilters:
+								handleChangeFiltersPerfumeTypes,
 						}}
-						scents={{ data: scents, loading: loadingScents }}
-						offers={{ data: offers, loading: loadingOffers }}
+						scents={{
+							data: scents,
+							loading: loadingScents,
+							filters: scentsFilters,
+							handleChangeFilters: handleChangeFiltersScents,
+						}}
+						offers={{
+							data: offers,
+							loading: loadingOffers,
+							filters: offersFilters,
+							handleChangeFilters: handleChangeFiltersOffers,
+						}}
 						handleChangeFilters={handleChangeFilters}
 					/>
 				</SidePanelFilters>
