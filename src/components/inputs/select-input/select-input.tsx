@@ -35,8 +35,8 @@ interface Props {
 	filterValue?: string
 	onFilterChange?: (value: string) => void
 	filterPlaceholder?: string
-	sortDirection?: "ASC" | "asc" | "DESC" | "desc"
-	onSortChange?: (direction: "ASC" | "asc" | "DESC" | "desc") => void
+	sortDirection?: "ASC" | "DESC"
+	onSortChange?: (direction: "ASC" | "DESC") => void
 }
 
 export default function SelectInput({
@@ -53,7 +53,7 @@ export default function SelectInput({
 	filterValue,
 	onFilterChange,
 	filterPlaceholder = "Buscar...",
-	sortDirection = "asc",
+	sortDirection = "ASC",
 	onSortChange,
 }: Props) {
 	const [isOpen, setIsOpen] = useState(false)
@@ -98,7 +98,7 @@ export default function SelectInput({
 	const sortedOptions = onSortChange
 		? filteredOptions
 		: [...filteredOptions].sort((a, b) =>
-				sortDirection === "asc"
+				sortDirection === "ASC"
 					? a.label.localeCompare(b.label)
 					: b.label.localeCompare(a.label),
 			)
@@ -109,7 +109,7 @@ export default function SelectInput({
 	}
 
 	const handleSortToggle = () => {
-		const next = sortDirection === "asc" ? "desc" : "asc"
+		const next = sortDirection === "ASC" ? "DESC" : "ASC"
 		onSortChange?.(next)
 	}
 
@@ -171,12 +171,12 @@ export default function SelectInput({
 										onClick={handleSortToggle}
 										className="flex-shrink-0 p-2 rounded-md text-primary transition"
 										title={
-											sortDirection === "asc"
+											sortDirection === "ASC"
 												? "Ordenar Z→A"
 												: "Ordenar A→Z"
 										}
 									>
-										{sortDirection === "asc" ? (
+										{sortDirection === "ASC" ? (
 											<ArrowDownAZ className="h-4 w-4" />
 										) : (
 											<ArrowUpZA className="h-4 w-4" />
