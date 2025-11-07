@@ -32,6 +32,7 @@ export default function useUrlFilters() {
 					Object.keys(updatedFilters).length > 0
 						? `${pathname}?${searchUrl.toString()}`
 						: pathname,
+					{ scroll: false },
 				)
 			}, 300),
 		[searchParams, pathname, replace],
