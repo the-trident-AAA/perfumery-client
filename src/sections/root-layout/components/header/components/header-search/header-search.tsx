@@ -65,7 +65,7 @@ const HeaderSearch = () => {
 			<SearchInput
 				id="name"
 				value={search}
-				placeHolder="Comience a buscar perfumes..."
+				placeHolder="Comience a buscar..."
 				onChange={changeSearchInput}
 			/>
 		</PopoverContainer>
