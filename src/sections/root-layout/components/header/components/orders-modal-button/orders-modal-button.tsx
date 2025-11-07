@@ -16,11 +16,11 @@ export default function OrdersModalButton() {
 			<Button
 				variant="default"
 				size="icon"
-				className="relative h-10 w-10 rounded-full hover:bg-accent/50 transition-colors duration-200"
+				className="relative h-9.5 w-9.5 sm:h-10 sm:w-10 rounded-full hover:bg-accent/50 transition-colors duration-200"
 			>
-				<Avatar className="h-10 w-10 shadow-sm">
+				<Avatar className="h-9.5 w-9.5 sm:h-10 sm:w-10 shadow-sm">
 					<AvatarFallback className="bg-secondary text-primary font-semibold text-sm">
-						<ShoppingBag className="size-5" />
+						<ShoppingBag className="size-5 sm:size-5" />
 					</AvatarFallback>
 				</Avatar>
 				{totalOrders > 0 && (

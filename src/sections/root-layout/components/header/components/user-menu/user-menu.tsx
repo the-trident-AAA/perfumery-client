@@ -53,7 +53,7 @@ export default function UserMenu() {
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
-				<div className="relative h-10 w-10 rounded-full overflow-hidden shadow-sm bg-secondary">
+				<div className="relative h-9.5 w-9.5 sm:h-10 sm:w-10 rounded-full overflow-hidden shadow-sm bg-secondary">
 					{user.avatar ? (
 						<Image
 							src={user.avatar || "/placeholder.svg"}
