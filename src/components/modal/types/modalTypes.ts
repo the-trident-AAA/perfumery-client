@@ -27,6 +27,7 @@ export interface ModalTypes {
 	}
 	ordersModal: SectionModal
 	profileUserModal: SectionModal
+	alertCreateOrderModal: SectionModal
 }
 
 export const modalTypes: ModalTypes = {
@@ -70,5 +71,9 @@ export const modalTypes: ModalTypes = {
 	profileUserModal: {
 		name: "profileUserModal",
 		title: "Información de Perfil",
+	},
+	alertCreateOrderModal: {
+		name: "alertCreateOrderModal",
+		title: "Error en la creación de orden",
 	},
 }
