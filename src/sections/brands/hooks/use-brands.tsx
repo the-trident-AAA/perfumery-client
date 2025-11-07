@@ -1,7 +1,7 @@
 "use client"
 import { useCallback, useEffect, useState, useRef } from "react"
 import { debounce } from "lodash"
-import { Brand } from "@/src/lib/types/brands"
+import { Brand, convertBrandFiltersDTO } from "@/src/lib/types/brands"
 import useClientPagination from "@/src/lib/hooks/use-client-pagination"
 import useBrandsFilters from "@/src/sections/brands/filters/hooks/use-brands-filters"
 import { getBrandsList } from "@/src/lib/services/brands"
@@ -19,7 +19,10 @@ export default function useBrands() {
 	} = useClientPagination()
 	const [pagination, setPagination] = useState<Pagination>(clientPagination)
 	const { filters, handleChangeFilters, handleResetFilters } =
-		useBrandsFilters({ setPagination: setClientPagination })
+		useBrandsFilters({
+			setPagination: setClientPagination,
+			urlFilters: false,
+		})
 
 	const debouncedFetchRef = useRef(
 		debounce(async (filters, clientPagination) => {
@@ -31,11 +34,13 @@ export default function useBrands() {
 						page: clientPagination.page,
 						perPage: clientPagination.pageSize,
 					},
-					name: filters.name,
+					...convertBrandFiltersDTO(filters),
 				})
 
 				if (!res.response || res.error)
-					throw new Error("Error al cargar las brands")
+					throw new Error(
+						"Error al cargar la información de las marcas",
+					)
 
 				const brands = res.response
 				setBrands(brands)
