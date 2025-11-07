@@ -1,6 +1,11 @@
 import SignInContainer from "@/src/sections/sign-in/sign-in-container"
 import React from "react"
 
-export default function SignInPage() {
-	return <SignInContainer />
+type Props = {
+	searchParams: Promise<{ objective?: "createOrder" }>
+}
+
+export default async function SignInPage({ searchParams }: Props) {
+	const { objective } = await searchParams
+	return <SignInContainer objective={objective} />
 }

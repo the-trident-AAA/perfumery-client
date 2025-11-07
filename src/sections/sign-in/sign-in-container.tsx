@@ -4,10 +4,16 @@ import SignInFormContainer from "./form/sign-in-form-container"
 import AppLogo from "@/src/components/app-logo/app-logo"
 import Link from "next/link"
 import { paths } from "@/src/lib/routes/paths"
+import AlertModalSignIn from "@/src/sections/sign-in/components/alert-modal-sign-in"
 
-export default function SignInContainer() {
+interface Props {
+	objective?: "createOrder"
+}
+
+export default function SignInContainer({ objective }: Props) {
 	return (
 		<div className="flex w-full">
+			{objective === "createOrder" && <AlertModalSignIn />}
 			{/* Left Side - Form */}
 			<div className="w-full md:w-1/2 flex items-center justify-center flex-col gap-12 p-10">
 				<AppLogo withText={false} avatarClassName="h-42 w-42" />
