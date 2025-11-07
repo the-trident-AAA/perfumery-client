@@ -58,7 +58,7 @@ export default async function PerfumeDetailsPage({ params }: Props) {
 			priceCurrency: "USD",
 			price: perfume.price,
 			availability:
-				perfume.cant > 0
+				perfume.available && perfume.cant > 0
 					? "https://schema.org/InStock"
 					: "https://schema.org/OutOfStock",
 		},
