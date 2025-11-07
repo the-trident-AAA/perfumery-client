@@ -16,7 +16,7 @@ export default function UserNavigationOptions() {
 	) : (
 		<div className="flex flex-col gap-1">
 			{!session && (
-				<NavigationComponent href={paths.sign_in.root}>
+				<NavigationComponent href={paths.sign_in().root}>
 					<Button className="w-full">Iniciar Sesión</Button>
 				</NavigationComponent>
 			)}

@@ -31,7 +31,7 @@ export default function HeaderNavbar() {
 		<nav className="flex items-center gap-2 sm:gap-4">
 			<div className="flex items-center gap-2 sm:gap-4">
 				{!session && (
-					<NavigationComponent href={paths.sign_in.root}>
+					<NavigationComponent href={paths.sign_in().root}>
 						<Button
 							className="text-[10px] xs:text-[12px] px-2 2xs:px-3 h-5 xs:h-6 2xs:h-8 text-primary sm:text-base"
 							variant="secondary"
