@@ -1,7 +1,7 @@
 "use client"
 import { useCallback, useEffect, useState, useRef } from "react"
 import { debounce } from "lodash"
-import { Scent } from "@/src/lib/types/scents"
+import { convertScentFiltersDTO, Scent } from "@/src/lib/types/scents"
 import useClientPagination from "@/src/lib/hooks/use-client-pagination"
 import { Pagination } from "@/src/lib/types/pagination"
 import useScentsFilters from "@/src/sections/scents/filters/hooks/use-scents-filters"
@@ -19,7 +19,10 @@ export default function useScents() {
 	} = useClientPagination()
 	const [pagination, setPagination] = useState<Pagination>(clientPagination)
 	const { filters, handleChangeFilters, handleResetFilters } =
-		useScentsFilters({ setPagination: setClientPagination })
+		useScentsFilters({
+			setPagination: setClientPagination,
+			urlFilters: false,
+		})
 
 	const debouncedFetchRef = useRef(
 		debounce(async (filters, clientPagination) => {
@@ -31,7 +34,7 @@ export default function useScents() {
 						page: clientPagination.page,
 						perPage: clientPagination.pageSize,
 					},
-					search: filters.search,
+					...convertScentFiltersDTO(filters),
 				})
 
 				if (!res.response || res.error)
