@@ -1,3 +1,5 @@
+import { OffersFilters } from "@/src/sections/offers/filters/hooks/use-offers-filters"
+
 export interface Offer {
 	id: string
 	name: string
@@ -6,4 +8,20 @@ export interface Offer {
 	scope: string
 	discount: number
 	offerType: string
+}
+
+export interface OfferFiltersDTO {
+	name?: string
+	description?: string
+	scope?: string
+	minDiscount?: number
+	maxDiscount?: number
+	offerType?: string
+}
+
+export const convertOfferFiltersDTO = (
+	offersFilters: OffersFilters,
+): OfferFiltersDTO => {
+	const { discount, ...rest } = offersFilters
+	return { ...rest, minDiscount: discount[0], maxDiscount: discount[1] }
 }
