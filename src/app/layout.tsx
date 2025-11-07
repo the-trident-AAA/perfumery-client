@@ -32,7 +32,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-	title: "Perfumes del Puro | Fragancias originales y exclusivas",
+	title: "Perfumes del Puro | Fragancias originales y exclusivas en La Habana",
 	description:
 		"Descubre Perfumes del Puro, tu tienda online de fragancias auténticas. Compra perfumes de diseñador con descuentos y envíos rápidos.",
 	keywords: [
