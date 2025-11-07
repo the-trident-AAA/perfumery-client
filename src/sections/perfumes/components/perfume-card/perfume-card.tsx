@@ -10,22 +10,44 @@ import AddShopCartPerfumeButton from "@/src/sections/perfumes/components/perfume
 import { perfumeImagePlaceHolder } from "@/src/sections/perfumes/lib/image-place-holder"
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { paths } from "@/src/lib/routes/paths"
+import Script from "next/script"
 
 interface Props {
 	perfume: Perfume
 }
 
 export default function PerfumeCard({ perfume }: Props) {
+	const jsonLd = {
+		"@context": "https://schema.org",
+		"@type": "Product",
+		name: perfume.name,
+		image: [perfume.image],
+		description: perfume.description,
+		brand: {
+			"@type": "Brand",
+			name: perfume.brand,
+		},
+		offers: {
+			"@type": "Offer",
+			url: `https://perfumesdelpuro.com/perfumes/${perfume.id}`,
+			priceCurrency: "USD",
+			price: perfume.totalPrice,
+			availability:
+				perfume.available && perfume.cant > 0
+					? "https://schema.org/InStock"
+					: "https://schema.org/OutOfStock",
+		},
+	}
+
 	return (
-		<article
-			className="h-full"
-			itemScope
-			itemType="https://schema.org/Product"
-		>
-			<meta itemProp="name" content={perfume.name} />
-			<meta itemProp="brand" content={perfume.brand} />
-			<meta itemProp="category" content={perfume.perfumeType} />
-			<meta itemProp="sku" content={perfume.id.toString()} />
+		<article className="h-full">
+			<Script
+				id={`product-structured-data-${perfume.id}`}
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(jsonLd),
+				}}
+			/>
 			{perfume.discountOffer && (
 				<meta
 					itemProp="priceValidUntil"
