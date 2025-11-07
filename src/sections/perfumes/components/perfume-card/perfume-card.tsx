@@ -235,7 +235,7 @@ export default function PerfumeCard({ perfume }: Props) {
 							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
 							{/* Contenido del overlay */}
-							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-6 transition-all duration-500 opacity-0 group-hover:opacity-100 overlay-content">
+							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-2.5 transition-all duration-500 opacity-0 group-hover:opacity-100 overlay-content">
 								<Button
 									className="text-secondary flex gap-2 items-center cursor-pointer"
 									variant={"default"}
