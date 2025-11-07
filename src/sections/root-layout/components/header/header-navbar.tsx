@@ -53,26 +53,11 @@ export default function HeaderNavbar() {
 					</NavigationComponent>
 				)}
 			</div>
-			{breakpoint == "sm" || breakpoint == "xs" ? (
-				<PopoverContainer
-					contentClassName="w-12"
-					trigger={
-						<Menu className="size-4 xs:size-5 mt-1.5 xs:mt-1 2xs:mt-1 2xs:size-6" />
-					}
-				>
-					<div className="flex flex-col items-center gap-2 sm:gap-4">
-						<LittleCar />
-						{session && <OrdersModalButton />}
-						{session && <UserMenu />}
-					</div>
-				</PopoverContainer>
-			) : (
-				<div className="flex items-center gap-2 sm:gap-4">
-					<LittleCar />
-					{session && <OrdersModalButton />}
-					{session && <UserMenu />}
-				</div>
-			)}
+			<div className="flex items-center gap-2 sm:gap-4">
+				<LittleCar />
+				{session && <OrdersModalButton />}
+				{session && <UserMenu />}
+			</div>
 		</nav>
 	)
 }
