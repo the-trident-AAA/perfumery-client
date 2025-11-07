@@ -1,7 +1,10 @@
 "use client"
 import { useCallback, useEffect, useState, useRef } from "react"
 import { debounce } from "lodash"
-import { PerfumeType } from "@/src/lib/types/perfume-types"
+import {
+	convertPerfumeTypeFiltersDTO,
+	PerfumeType,
+} from "@/src/lib/types/perfume-types"
 import useClientPagination from "@/src/lib/hooks/use-client-pagination"
 import usePerfumeTTypesFilters from "@/src/sections/perfume-types/filters/hooks/use-perfume-types-filters"
 import { getPerfumeTypesList } from "@/src/lib/services/perfume-types"
@@ -19,7 +22,10 @@ export default function usePerfumeTypes() {
 	} = useClientPagination()
 	const [pagination, setPagination] = useState<Pagination>(clientPagination)
 	const { filters, handleChangeFilters, handleResetFilters } =
-		usePerfumeTTypesFilters({ setPagination: setClientPagination })
+		usePerfumeTTypesFilters({
+			setPagination: setClientPagination,
+			urlFilters: false,
+		})
 
 	const debouncedFetchRef = useRef(
 		debounce(async (filters, clientPagination) => {
@@ -31,7 +37,7 @@ export default function usePerfumeTypes() {
 						page: clientPagination.page,
 						perPage: clientPagination.pageSize,
 					},
-					search: filters.search,
+					...convertPerfumeTypeFiltersDTO(filters),
 				})
 
 				if (!res.response || res.error)
