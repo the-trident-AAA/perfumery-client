@@ -1,11 +1,12 @@
 "use client"
 
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
+import { OrderDto } from "@/src/lib/types/order"
 import { Pagination } from "@/src/lib/types/pagination"
 import { convertPerfumeTypeFiltersDTO } from "@/src/lib/types/perfume-types"
 import { Dispatch, SetStateAction, useState } from "react"
 
-export interface PerfumeTypesFilters {
+export interface PerfumeTypesFilters extends OrderDto {
 	name?: string
 }
 
