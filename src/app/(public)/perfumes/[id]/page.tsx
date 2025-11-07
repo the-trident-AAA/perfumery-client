@@ -57,7 +57,10 @@ export default async function PerfumeDetailsPage({ params }: Props) {
 			url: `https://perfumesdelpuro.com/perfumes/${perfume.id}`,
 			priceCurrency: "USD",
 			price: perfume.price,
-			availability: "https://schema.org/InStock",
+			availability:
+				perfume.cant > 0
+					? "https://schema.org/InStock"
+					: "https://schema.org/OutOfStock",
 		},
 	}
 
