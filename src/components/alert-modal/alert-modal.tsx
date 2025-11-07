@@ -60,7 +60,7 @@ export function AlertModal({
 		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent className="sm:max-w-md">
 				<DialogHeader>
-					<div className="flex items-start gap-4">
+					<div className="flex items-start mt-6 gap-4">
 						<div className={`rounded-full p-2 ${config.bgColor}`}>
 							<Icon className={`h-6 w-6 ${config.iconColor}`} />
 						</div>
@@ -75,7 +75,11 @@ export function AlertModal({
 					</div>
 				</DialogHeader>
 				<DialogFooter className="sm:justify-end">
-					<Button onClick={onClose} className="w-full sm:w-auto">
+					<Button
+						variant={"secondary"}
+						onClick={onClose}
+						className="w-full text-primary sm:w-auto"
+					>
 						{buttonText}
 					</Button>
 				</DialogFooter>
