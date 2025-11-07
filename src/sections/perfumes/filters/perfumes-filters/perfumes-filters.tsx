@@ -222,6 +222,9 @@ export default function PerfumesFilterss({
 				}))}
 				loading={scents.loading}
 				handleValuesChange={handleScentChange}
+				handleDeselectAll={() => {
+					handleChangeFilters({ scentsIds: [] })
+				}}
 				filterValue={scents.filters.name}
 				onFilterChange={value => {
 					scents.handleChangeFilters({
@@ -230,6 +233,7 @@ export default function PerfumesFilterss({
 				}}
 				filterPlaceholder="Busque algún aroma..."
 				emptyText="No se encontraron aromas"
+				deselectAllText="Deseleccionar todas"
 			/>
 		</div>
 	)
