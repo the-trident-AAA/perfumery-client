@@ -10,11 +10,12 @@ async function getPerfumeUrls() {
 
 	const perfumes = res.response.data
 
-	return perfumes.map((p: { id: string }) => ({
+	return perfumes.map(p => ({
 		url: `${baseUrl}/perfumes/${p.id}`,
 		lastModified: new Date(),
 		changeFrequency: "monthly" as const,
 		priority: 0.7,
+		images: [p.image],
 	}))
 }
 
@@ -25,6 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			lastModified: new Date(),
 			changeFrequency: "monthly",
 			priority: 1,
+			images: [`${baseUrl}/images/og-image-home.png`],
 		},
 		{
 			url: `${baseUrl}/perfumes`,
