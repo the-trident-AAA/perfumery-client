@@ -1,3 +1,4 @@
+import { OrderDto } from "@/src/lib/types/order"
 import { BrandsFilters } from "@/src/sections/brands/filters/hooks/use-brands-filters"
 
 export interface Brand {
@@ -5,7 +6,7 @@ export interface Brand {
 	name: string
 }
 
-export interface BrandFiltersDTO {
+export interface BrandFiltersDTO extends OrderDto {
 	name?: string
 }
 

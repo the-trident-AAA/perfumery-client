@@ -2,9 +2,10 @@
 
 import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import { convertBrandFiltersDTO } from "@/src/lib/types/brands"
+import { OrderDto } from "@/src/lib/types/order"
 import { Pagination } from "@/src/lib/types/pagination"
 import { Dispatch, SetStateAction, useState } from "react"
-export interface BrandsFilters {
+export interface BrandsFilters extends OrderDto {
 	name?: string
 }
 
