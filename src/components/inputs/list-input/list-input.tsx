@@ -41,15 +41,6 @@ export default function ListInput({
 	emptyText = "No hay opciones disponibles",
 	deselectAllText = "Deseleccionar todos",
 }: Props) {
-	const inputRef = useRef<HTMLInputElement>(null)
-
-	// Autofocus del input cuando hay onFilterChange
-	useEffect(() => {
-		if (onFilterChange && inputRef.current) {
-			setTimeout(() => inputRef.current?.focus(), 100)
-		}
-	}, [onFilterChange])
-
 	// Filtrado local si no se pasa onFilterChange
 	const filteredOptions = onFilterChange
 		? options
@@ -75,15 +66,10 @@ export default function ListInput({
 						<div className="relative">
 							<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
 							<Input
-								ref={inputRef}
 								placeholder={filterPlaceholder}
 								value={filterValue || ""}
 								onChange={e => onFilterChange(e.target.value)}
 								className="pl-10"
-								onKeyDown={e => {
-									if (e.key === "Escape")
-										inputRef.current?.blur()
-								}}
 							/>
 						</div>
 					</div>
