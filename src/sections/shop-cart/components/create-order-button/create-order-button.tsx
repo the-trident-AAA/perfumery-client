@@ -28,7 +28,7 @@ export default function CreateOrderButton({
 }: Props) {
 	const { data: session } = useSession()
 	const router = useRouter()
-	const { handleCloseModal } = useContext(ModalContext)
+	const { handleCloseModal, handleOpenModal } = useContext(ModalContext)
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
 	const { fetchUserTotalOrders } = useContext(UserTotalOrdersContext)
@@ -58,9 +58,10 @@ export default function CreateOrderButton({
 			onClick={() => {
 				if (session) createOrder()
 				else {
-					router.push(
-						paths.sign_in({ objective: "createOrder" }).root,
-					)
+					router.push(paths.sign_in().root)
+					handleOpenModal({
+						name: modalTypes.alertCreateOrderModal.name,
+					})
 					if (handleCloseContainer) handleCloseContainer()
 					else if (variant === "modal")
 						handleCloseModal(modalTypes.shopCartModal.name)
