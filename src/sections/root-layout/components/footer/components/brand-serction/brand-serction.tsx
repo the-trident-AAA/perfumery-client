@@ -13,22 +13,14 @@ export default function BrandSection() {
 				los mejores ingredientes de todo el mundo.
 			</p>
 			<div className="flex space-x-4">
-				<Link href="#" className="text-secondary hover:text-white">
-					<Facebook size={20} />
-					<span className="sr-only">Facebook</span>
-				</Link>
 				<Link
 					href="https://www.instagram.com/perfumes_del_puro/"
-					className="text-secondary hover:text-white"
+					className="text-secondary"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					<Instagram size={20} />
 					<span className="sr-only">Instagram</span>
-				</Link>
-				<Link href="#" className="text-secondary hover:text-white">
-					<Twitter size={20} />
-					<span className="sr-only">Twitter</span>
 				</Link>
 			</div>
 		</div>
