@@ -58,7 +58,9 @@ export default function CreateOrderButton({
 			onClick={() => {
 				if (session) createOrder()
 				else {
-					router.push(paths.sign_in().root)
+					router.push(
+						paths.sign_in({ objective: "createOrder" }).root,
+					)
 					if (handleCloseContainer) handleCloseContainer()
 					else if (variant === "modal")
 						handleCloseModal(modalTypes.shopCartModal.name)
