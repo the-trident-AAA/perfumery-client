@@ -5,29 +5,42 @@ interface Path {
 
 interface ApplicationPath {
 	home: Path
-	sign_in: (query?: Record<string, string>) => Path
+	sign_in: (query?: Record<string, string | string[]>) => Path
 	registration: Path
 	perfume: (
 		params?: Record<string, string>,
-		query?: Record<string, string>,
+		query?: Record<string, string | string[]>,
 	) => Path
 	editProfile: Path
 	verificationCode: (
 		params?: Record<string, string>,
-		query?: Record<string, string>,
+		query?: Record<string, string | string[]>,
 	) => Path
 	forgotPassword: (
 		params?: Record<string, string>,
-		query?: Record<string, string>,
+		query?: Record<string, string | string[]>,
 	) => Path
 	confirm_email: Path
-	perfumes: (query?: Record<string, string>) => Path
+	perfumes: (query?: Record<string, string | string[]>) => Path
 	profile: Path
 	orders: Path
 }
 
-function buildQueryString(query: Record<string, string> = {}): string {
-	const params = new URLSearchParams(query)
+function buildQueryString(
+	query: Record<string, string | string[]> = {},
+): string {
+	const params = new URLSearchParams()
+
+	for (const [key, value] of Object.entries(query)) {
+		if (Array.isArray(value)) {
+			for (const v of value) {
+				params.append(key, v)
+			}
+		} else if (value !== undefined && value !== null) {
+			params.append(key, value)
+		}
+	}
+
 	return params.toString()
 }
 
