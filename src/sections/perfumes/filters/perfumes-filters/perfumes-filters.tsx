@@ -235,7 +235,7 @@ export default function PerfumesFilterss({
 			{/* Scents */}
 			<ListInput
 				id="scents"
-				label="Aromas"
+				label="Acordes"
 				values={filters.scentsIds}
 				options={scents.data.map(scent => ({
 					value: scent.id,
@@ -252,9 +252,9 @@ export default function PerfumesFilterss({
 						name: value || undefined,
 					})
 				}}
-				filterPlaceholder="Busque algún aroma..."
-				emptyText="No se encontraron aromas"
-				deselectAllText="Deseleccionar todas"
+				filterPlaceholder="Busque algún acorde..."
+				emptyText="No se encontraron acordes"
+				deselectAllText="Deseleccionar todos"
 				sortDirection={scents.filters.order}
 				onSortChange={value => {
 					scents.handleChangeFilters({

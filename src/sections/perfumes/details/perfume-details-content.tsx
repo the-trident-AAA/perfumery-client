@@ -85,7 +85,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 								<div className="space-y-3">
 									<h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
 										<Palette className="w-4 h-4" />
-										Notas aromáticas
+										Acordes
 									</h2>
 									<div className="flex flex-wrap gap-2">
 										{perfume.scents.map(scent => (

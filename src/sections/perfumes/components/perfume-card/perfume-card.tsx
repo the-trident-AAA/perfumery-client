@@ -250,7 +250,7 @@ export default function PerfumeCard({ perfume }: Props) {
 											}}
 										/>
 										<span className="text-sm font-semibold text-white">
-											Notas aromáticas
+											Acordes
 										</span>
 									</div>
 									<div className="flex flex-wrap gap-2">
