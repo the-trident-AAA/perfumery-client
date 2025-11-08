@@ -44,6 +44,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 		const priceMaxParam = searchParams.get("priceMax")
 		const totalPriceMinParam = searchParams.get("totalPriceMin")
 		const totalPriceMaxParam = searchParams.get("totalPriceMax")
+		const scentsParams = searchParams.getAll("scentsIds")
 
 		setFilters(oldFilters => ({
 			...oldFilters,
@@ -65,6 +66,7 @@ export default function usePerfumesFilters({ setPagination }: Props) {
 				totalPriceMinParam ? Number(totalPriceMinParam) : 0,
 				totalPriceMaxParam ? Number(totalPriceMaxParam) : 300,
 			],
+			scentsIds: scentsParams,
 		}))
 	}, [searchParams])
 
