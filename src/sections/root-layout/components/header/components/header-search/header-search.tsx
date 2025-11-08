@@ -28,6 +28,12 @@ const HeaderSearch = () => {
 		const genderParam = searchParams.get("gender") as Gender | null
 		const offerParam = searchParams.get("offerId")
 		const availableParam = searchParams.get("available")
+		const priceMinParam = searchParams.get("priceMin")
+		const priceMaxParam = searchParams.get("priceMax")
+		const totalPriceMinParam = searchParams.get("totalPriceMin")
+		const totalPriceMaxParam = searchParams.get("totalPriceMax")
+		const scentsParams = searchParams.getAll("scentsIds")
+
 		router.push(
 			paths.perfumes({
 				...(e.target.value && { name: e.target.value }),
@@ -44,6 +50,21 @@ const HeaderSearch = () => {
 				}),
 				...(limit && {
 					limit,
+				}),
+				...(priceMinParam && {
+					priceMin: priceMinParam,
+				}),
+				...(priceMaxParam && {
+					priceMax: priceMaxParam,
+				}),
+				...(totalPriceMinParam && {
+					totalPriceMin: totalPriceMinParam,
+				}),
+				...(totalPriceMaxParam && {
+					totalPriceMax: totalPriceMaxParam,
+				}),
+				...(scentsParams.length > 0 && {
+					scentsIds: scentsParams,
 				}),
 			}).root,
 		)
