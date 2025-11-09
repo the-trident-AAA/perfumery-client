@@ -1,5 +1,7 @@
 import { getMainHomeBanner } from "@/src/lib/services/home-banners"
-import HomeBannerSection from "@/src/sections/home/components/home-banner-section/home-banner-section"
+import { HomeBannerSectionDekstop } from "@/src/sections/home/components/home-banner-section/components/home-banner-section-dekstop"
+import HomeBannerSectionMobile from "@/src/sections/home/components/home-banner-section/home-banner-section-mobile"
+
 import React from "react"
 
 export default async function HomeBannerSectionContainer() {
@@ -8,5 +10,14 @@ export default async function HomeBannerSectionContainer() {
 	if (!res.response || res.error)
 		throw new Error("Problemas en la carga del main home banner")
 
-	return <HomeBannerSection homeBanner={res.response} />
+	return (
+		<section id="home-hero">
+			<div className="flex lg:hidden">
+				<HomeBannerSectionMobile homeBanner={res.response} />
+			</div>
+			<div className="hidden lg:flex">
+				<HomeBannerSectionDekstop homeBanner={res.response} />
+			</div>
+		</section>
+	)
 }
