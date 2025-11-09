@@ -10,7 +10,7 @@ export default function HomePerfumeGroups() {
 					<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
 						Descubre nuestras colecciones de perfumes
 					</h2>
-					<p className="text-xl text-secondary font-semibold max-w-2xl mx-auto">
+					<p className="max-w-2xl font-serif mx-auto text-lg md:text-xl text-foreground leading-relaxed text-pretty">
 						Explora los grupos de fragancias disponibles y encuentra
 						el aroma perfecto para cada ocasión
 					</p>

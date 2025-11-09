@@ -15,20 +15,13 @@ export default async function BestSellingProducts() {
 			{/* Content */}
 			<div className="relative z-10">
 				{/* Header */}
-				<div className="text-center space-y-2 mb-12 lg:mb-16 px-4 sm:px-6 lg:px-8">
+				<div className="text-center space-y-4 px-4">
 					{/* Title */}
 					<div className="space-y-4">
-						<h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground text-balance leading-tight">
+						<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
 							Los favoritos de{" "}
-							<span className="italic font-medium">
-								nuestros clientes
-							</span>
+							<span className="">nuestros clientes</span>
 						</h2>
-
-						{/* Decorative line */}
-						<div className="flex justify-center">
-							<div className="w-20 h-px bg-accent" />
-						</div>
 					</div>
 
 					{/* Description */}

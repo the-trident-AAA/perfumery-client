@@ -10,7 +10,7 @@ export default function HomeOffers() {
 					<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
 						Aromas irresistibles a precios especiales
 					</h2>
-					<p className="text-xl text-secondary font-semibold max-w-2xl mx-auto">
+					<p className="max-w-2xl font-serif mx-auto text-lg md:text-xl text-foreground leading-relaxed text-pretty">
 						Aprovecha nuestras ofertas exclusivas en perfumes
 						seleccionados y encuentra tu fragancia ideal al mejor
 						precio
