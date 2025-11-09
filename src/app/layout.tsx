@@ -122,7 +122,7 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 										<UserTotalOrdersProvider>
 											<ToastContainer />
 											<ProgressBar>
-												<main className="flex min-h-screen flex-col">
+												<main className="flex min-h-screen font-serif text-balance leading-tight flex-col">
 													<Header />
 													{modal}
 													{children}
