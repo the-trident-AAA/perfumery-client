@@ -20,7 +20,6 @@ import { ProfileProvider } from "@/src/sections/auth/context/profile-context/pro
 import { Geist, Geist_Mono } from "next/font/google"
 import { Metadata } from "next"
 import { OrdersNotSeenByUserProvider } from "@/src/sections/orders/context/orders-not-seen-by-user-context"
-import AlertModalSignInContainer from "@/src/sections/sign-in/components/alert-modal-sign-in-container"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -176,15 +175,6 @@ const RootLayout: FC<PropsWithChildren & { modal: React.ReactNode }> = ({
 														maxWidth="max-w-xl"
 													>
 														<ClearShopCartModalContainer />
-													</Modal>
-													<Modal
-														formPath={
-															modalTypes
-																.alertCreateOrderModal
-																.name
-														}
-													>
-														<AlertModalSignInContainer />
 													</Modal>
 												</main>
 											</ProgressBar>

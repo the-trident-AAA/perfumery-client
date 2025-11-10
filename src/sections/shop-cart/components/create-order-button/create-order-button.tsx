@@ -28,7 +28,7 @@ export default function CreateOrderButton({
 }: Props) {
 	const { data: session } = useSession()
 	const router = useRouter()
-	const { handleCloseModal, handleOpenModal } = useContext(ModalContext)
+	const { handleCloseModal } = useContext(ModalContext)
 	const { fetchShopCartTotalItems } = useContext(ShopCartTotalItemsContext)
 	const { fetchShopCart } = useContext(ShopCartContext)
 	const { fetchUserTotalOrders } = useContext(UserTotalOrdersContext)
@@ -62,9 +62,9 @@ export default function CreateOrderButton({
 					if (handleCloseContainer) handleCloseContainer()
 					else if (variant === "modal")
 						handleCloseModal(modalTypes.shopCartModal.name)
-					handleOpenModal({
-						name: modalTypes.alertCreateOrderModal.name,
-					})
+					toast.error(
+						"Para continuar con su pedido debe iniciar sesión o crease una cuenta",
+					)
 				}
 			}}
 			variant={"secondary"}
