@@ -5,7 +5,7 @@ import React, { Suspense } from "react"
 export default function HomePerfumeGroups() {
 	return (
 		<section id="home-perfume-groups" className="bg-muted pt-12 pb-20">
-			<div className="container mx-auto flex flex-col px-4 gap-12 pt-4">
+			<div className="xl:mx-auto xl:max-w-7xl flex flex-col px-4 gap-12 pt-4">
 				<div className="text-center space-y-4 ">
 					<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
 						Descubre nuestras colecciones de perfumes
