@@ -342,13 +342,13 @@ export default function PerfumeCard({ perfume }: Props) {
 								</div>
 								<div className="hidden 2xs:flex items-center gap-2 bg-muted px-[4px] sm:px-3 py-1 rounded-full">
 									<Gift className="h-3 w-3 text-black" />
-									<span className="text-black text-xs sm:text-base font-bold">
+									<span className="text-black text-[10px] 2xs:text-xs sm:text-base font-bold">
 										{perfume.milliliters}ml
 									</span>
 								</div>
 								<div className="flex 2xs:hidden items-center gap-1">
 									<Gift className="h-3 w-3 text-primary" />
-									<span className="text-primary text-xs sm:text-base font-bold">
+									<span className="text-primary text-[10px] 2xs:text-xs sm:text-base font-bold">
 										{perfume.milliliters}ml
 									</span>
 								</div>
@@ -403,7 +403,7 @@ export default function PerfumeCard({ perfume }: Props) {
 								{perfume.available &&
 									perfume.cant <= 5 &&
 									perfume.cant > 0 && (
-										<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-1 2xs:px-2  rounded-full animate-pulse">
+										<div className="flex items-center gap-1 bg-amber-100 text-amber-800 px-1 2xs:px-2 py-1  rounded-full animate-pulse">
 											<Zap className="2xs:h-3 h-2 2xs:w-3 w-2" />
 											<span className="text-[10px] 2x:text-xs font-bold">
 												¡Solo {perfume.cant}!
