@@ -59,12 +59,12 @@ export default function CreateOrderButton({
 				if (session) createOrder()
 				else {
 					router.push(paths.sign_in().root)
-					handleOpenModal({
-						name: modalTypes.alertCreateOrderModal.name,
-					})
 					if (handleCloseContainer) handleCloseContainer()
 					else if (variant === "modal")
 						handleCloseModal(modalTypes.shopCartModal.name)
+					handleOpenModal({
+						name: modalTypes.alertCreateOrderModal.name,
+					})
 				}
 			}}
 			variant={"secondary"}
