@@ -25,7 +25,7 @@ export default function PerfumesList({ perfumes, apiPagination }: Props) {
 	return perfumes.length > 0 ? (
 		<div className="flex flex-col gap-4 justify-between">
 			<PerfumesOrderContainer />
-			<div className="grid grid-cols-2 2md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 sm:gap-6">
+			<div className="grid grid-cols-2 md:grid-cols-3 2md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 sm:gap-4">
 				{perfumes.map(perfume => (
 					<PerfumeCard key={perfume.id} perfume={perfume} />
 				))}
