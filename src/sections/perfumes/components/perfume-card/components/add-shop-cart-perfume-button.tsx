@@ -62,11 +62,6 @@ export default function AddShopCartPerfumeButton({
 					<ShoppingCart
 						className={`${variant === "default" ? "size-4 2xs:size-6 sm:size-6" : "size-6"}`}
 					/>
-					<p
-						className={`${variant == "default" ? "hidden sm:flex text-lg" : "text-lg"}`}
-					>
-						Añadir
-					</p>
 				</div>
 			) : !perfume.available ? (
 				variant === "default" ? (
