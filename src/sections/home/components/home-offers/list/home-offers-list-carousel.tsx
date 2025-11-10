@@ -2,9 +2,7 @@
 
 import StandardCarousel from "@/src/components/ui/standard-carousel/standard-carousel"
 import { Offer } from "@/src/lib/types/offers"
-
-import OfferCard from "@/src/sections/home/components/home-offers/components/offer-card/offer-card"
-
+import OfferBanner from "@/src/sections/home/components/home-offers/components/offer-banner/offer-banner"
 import React from "react"
 
 interface Props {
@@ -13,15 +11,17 @@ interface Props {
 
 export default function HomeOffersListCarousel({ data }: Props) {
 	return (
-		<div className="pl-2 sm:pl-4 sm:px-4 ">
+		<div className="w-full sm:px-12">
 			<StandardCarousel
 				items={data}
-				itemClassName=" 2xs:basis-[70%] sm:basis-1/2 md:basis-1/2 xl:basis-1/3 "
+				itemClassName="basis-full "
+				className="shadow-2xl rounded-3xl"
+				contentClassName="py-0 px-0 "
 				loop={false}
 				autoPlay
 				autoPlayDelay={10000}
 				showDots
-				renderCard={item => <OfferCard offer={item} />}
+				renderCard={item => <OfferBanner offer={item} />}
 			/>
 		</div>
 	)
