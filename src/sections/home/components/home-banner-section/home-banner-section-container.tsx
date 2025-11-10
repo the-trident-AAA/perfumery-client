@@ -12,12 +12,7 @@ export default async function HomeBannerSectionContainer() {
 
 	return (
 		<section id="home-hero">
-			<div className="flex lg:hidden">
-				<HomeBannerSectionMobile homeBanner={res.response} />
-			</div>
-			<div className="hidden lg:flex">
-				<HomeBannerSectionDekstop homeBanner={res.response} />
-			</div>
+			<HomeBannerSectionDekstop homeBanner={res.response} />
 		</section>
 	)
 }

@@ -27,10 +27,10 @@ export function HomeBannerSectionDekstop({
 			{/* Contenido del banner (puede ser server-side) */}
 			<div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
 				<div className="max-w-3xl space-y-6">
-					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white">
+					<h1 className="text-3xl 2xs:text-4xl md:text-6xl lg:text-7xl font-bold text-white">
 						{homeBanner.title}
 					</h1>
-					<p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
+					<p className="text-base 2xs:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
 						{homeBanner.description}
 					</p>
 
@@ -41,7 +41,7 @@ export function HomeBannerSectionDekstop({
 									<div className="text-sm">
 										{tip.statistics}
 									</div>
-									<div className="text-2xl font-bold">
+									<div className="text-base 2xs:text-2xl font-bold">
 										{tip.info}
 									</div>
 								</div>
@@ -68,7 +68,9 @@ export function HomeBannerSectionDekstop({
 									className="flex items-center gap-2 text-white"
 								>
 									<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-									<span className="text-sm">{tip}</span>
+									<span className="text-xs lg:text-sm">
+										{tip}
+									</span>
 								</div>
 							))}
 						</div>
