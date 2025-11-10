@@ -23,6 +23,7 @@ export default function OfferBanner({
 					src={image || offerImagePlaceHolder}
 					width={1920}
 					height={600}
+					quality={100}
 					alt={`Oferta ${name}: ${description.slice(0, 60)}...`}
 					className="object-cover w-full h-full transition-all duration-700 group-hover:scale-105"
 				/>
