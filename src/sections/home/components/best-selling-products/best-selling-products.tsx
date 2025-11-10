@@ -7,13 +7,13 @@ export default async function BestSellingProducts() {
 	return (
 		<section
 			id="best-selling"
-			className="relative w-full overflow-hidden bg-primary py-16 md:py-24 lg:py-16"
+			className="relative w-full overflow-hidden bg-primary pt-12 pb-12"
 		>
 			{/* Subtle background accent */}
 			<div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
 
 			{/* Content */}
-			<div className="relative flex flex-col gap-6 z-10">
+			<div className="relative flex flex-col gap-4 z-10">
 				{/* Header */}
 				<div className="text-center space-y-4 px-4">
 					{/* Title */}
@@ -46,7 +46,7 @@ export default async function BestSellingProducts() {
 				</div>
 
 				{/* Trust indicators */}
-				<div className="flex px-4 sm:px-6 lg:px-8 flex-wrap items-center justify-center gap-6 md:gap-8 mt-12 md:mt-16 pt-12 border-t border-border">
+				<div className="flex px-4 sm:px-6 lg:px-8 flex-wrap items-center justify-center gap-6 md:gap-8 mt-4 md:mt-4 pt-12 border-t border-border">
 					<div className="flex items-center gap-2 text-sm text-foreground">
 						<div className="w-1.5 h-1.5 rounded-full bg-green-400" />
 						<span>Productos auténticos</span>
