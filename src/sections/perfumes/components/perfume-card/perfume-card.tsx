@@ -146,7 +146,7 @@ export default function PerfumeCard({ perfume }: Props) {
 				}
 			`}</style>
 
-			<Card className="group pb-4 pt-2 card relative overflow-hidden h-full border-0 bg-primary shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4">
+			<Card className="group pb-4 pt-2 card relative overflow-hidden h-full border-0 bg-primary shadow-lg hover:shadow-xl transition-all duration-700 transform hover:-translate-y-4">
 				{/* Franjas decorativas superiores animadas */}
 				<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/60 via-secondary to-secondary/60 z-20" />
 
