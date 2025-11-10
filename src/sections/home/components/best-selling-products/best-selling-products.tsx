@@ -13,7 +13,7 @@ export default async function BestSellingProducts() {
 			<div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
 
 			{/* Content */}
-			<div className="relative z-10">
+			<div className="relative flex flex-col gap-6 z-10">
 				{/* Header */}
 				<div className="text-center space-y-4 px-4">
 					{/* Title */}
@@ -32,7 +32,7 @@ export default async function BestSellingProducts() {
 				</div>
 
 				{/* Products Grid */}
-				<div className="relative pl-2 sm:pl-6 sm:px-6 lg:px-8">
+				<div className="relative pl-2 sm:pl-6 sm:px-6 lg:px-12">
 					<Suspense
 						fallback={
 							<CardSkeletonGroup
