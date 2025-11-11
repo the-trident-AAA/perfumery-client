@@ -16,7 +16,7 @@ export function HomeBannerSectionDekstop({
 	autoPlayInterval,
 }: HomeBannerProps) {
 	return (
-		<div className="relative h-[500px] 2xl:h-[600px] w-full overflow-hidden">
+		<div className="relative h-[330px] 2xs:h-[400px] 2xl:h-[400px] w-full overflow-hidden">
 			{/* Carrusel encapsulado (client-side) */}
 			<HomeBannerImagesCarouselDekstop
 				title={homeBanner.title}
@@ -25,12 +25,12 @@ export function HomeBannerSectionDekstop({
 			/>
 
 			{/* Contenido del banner (puede ser server-side) */}
-			<div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
-				<div className="max-w-3xl space-y-6">
-					<h1 className="text-3xl 2xs:text-4xl md:text-6xl lg:text-7xl font-bold text-white">
+			<div className="relative z-10 h-full px-6 md:px-8 flex flex-col justify-center">
+				<div className="max-w-3xl space-y-3 2xs:space-y-6">
+					<h1 className="text-3xl 2xs:text-4xl md:text-5xl font-bold text-white">
 						{homeBanner.title}
 					</h1>
-					<p className="text-base 2xs:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
+					<p className="text-sm 2xs:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
 						{homeBanner.description}
 					</p>
 
@@ -41,7 +41,7 @@ export function HomeBannerSectionDekstop({
 									<div className="text-sm">
 										{tip.statistics}
 									</div>
-									<div className="text-base 2xs:text-2xl font-bold">
+									<div className="text-sm 2xs:text-2xl font-bold">
 										{tip.info}
 									</div>
 								</div>
@@ -52,7 +52,7 @@ export function HomeBannerSectionDekstop({
 					<NavigationComponent href={paths.perfumes().root}>
 						<Button
 							variant={"secondary"}
-							className="group bg-secondary text-primary text-sm 2xs:text-base sm:text-lg font-bold px-4 sm:px-8 py-2.5 sm:py-4 h-auto cursor-pointer rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-secondary"
+							className="group bg-secondary text-primary text-xs 2xs:text-base sm:text-base font-bold px-2 2xs:px-4 sm:px-4 py-2 2xs:py-2.5 sm:py-2.5 h-auto cursor-pointer rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-secondary"
 						>
 							<ShoppingBag className="w-5 h-5 mr-3" />
 							Explorar Colección
@@ -68,7 +68,7 @@ export function HomeBannerSectionDekstop({
 									className="flex items-center gap-2 text-white"
 								>
 									<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-									<span className="text-xs lg:text-sm">
+									<span className="text-[10px] 2xs:text-xs lg:text-sm">
 										{tip}
 									</span>
 								</div>
