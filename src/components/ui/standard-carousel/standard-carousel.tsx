@@ -23,6 +23,8 @@ interface Props<T> {
 	loop?: boolean
 	slidesToScroll?: number
 	showDots?: boolean
+	/** Variante para la posición de los botones laterales */
+	navVariant?: "default" | "spaced"
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
@@ -36,6 +38,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	loop = true,
 	slidesToScroll = 1,
 	showDots = false,
+	navVariant = "default",
 }: Props<T>) {
 	const [api, setApi] = useState<CarouselApi>()
 	const [canScrollPrev, setCanScrollPrev] = useState(false)
@@ -43,10 +46,8 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [totalSections, setTotalSections] = useState(0)
 
-	// Actualiza estado de navegación y secciones
 	const updateState = useCallback(() => {
 		if (!api) return
-
 		setCanScrollPrev(api.canScrollPrev())
 		setCanScrollNext(api.canScrollNext())
 		setCurrentIndex(api.selectedScrollSnap())
@@ -64,7 +65,6 @@ export default function StandardCarousel<T extends { id: number | string }>({
 		}
 	}, [api, updateState])
 
-	// Auto-play
 	useEffect(() => {
 		if (!api || !autoPlay) return
 		const interval = setInterval(() => {
@@ -77,6 +77,12 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	const scrollPrev = useCallback(() => api?.scrollPrev(), [api])
 	const scrollNext = useCallback(() => api?.scrollNext(), [api])
 	const scrollTo = useCallback((index: number) => api?.scrollTo(index), [api])
+
+	// Posición de los botones según la variante
+	const navPosition =
+		navVariant === "spaced"
+			? "absolute -left-7 -right-5"
+			: "absolute -left-4 -right-4"
 
 	return (
 		<div className="relative w-full">
@@ -102,8 +108,13 @@ export default function StandardCarousel<T extends { id: number | string }>({
 					))}
 				</CarouselContent>
 
-				{/* Botones de navegación */}
-				<div className="hidden sm:flex absolute -left-4 -right-4 top-1/2 -translate-y-1/2 justify-between pointer-events-none">
+				{/* Botones laterales */}
+				<div
+					className={cn(
+						"hidden sm:flex top-1/2 -translate-y-1/2 justify-between pointer-events-none",
+						navPosition,
+					)}
+				>
 					<Button
 						variant="outline"
 						size="icon"
