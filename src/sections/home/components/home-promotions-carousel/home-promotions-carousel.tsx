@@ -18,6 +18,7 @@ export default function HomePromotionsCarousel({ data }: Props) {
 			loop={false}
 			autoPlay
 			autoPlayDelay={10000}
+			navVariant="spaced"
 			showDots
 			renderCard={item => <PerfumeCard perfume={item} />}
 		/>
