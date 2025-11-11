@@ -32,7 +32,7 @@ export default async function BestSellingProducts() {
 				</div>
 
 				{/* Products Grid */}
-				<div className="relative pl-2 sm:pl-6 sm:px-6 lg:px-12 xl:mx-auto xl:max-w-7xl">
+				<div className="relative pl-2 sm:pl-6 sm:px-6 lg:px-12 xl:mx-auto xl:max-w-6xl 2xl:max-w-7xl">
 					<Suspense
 						fallback={
 							<CardSkeletonGroup
