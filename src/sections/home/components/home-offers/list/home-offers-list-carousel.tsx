@@ -11,7 +11,7 @@ interface Props {
 
 export default function HomeOffersListCarousel({ data }: Props) {
 	return (
-		<div className="w-full sm:px-12 xl:mx-auto xl:max-w-7xl">
+		<div className="w-full px-4 sm:px-12 xl:mx-auto xl:max-w-7xl">
 			<StandardCarousel
 				items={data}
 				itemClassName="basis-full "
