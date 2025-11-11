@@ -146,7 +146,7 @@ export default function PerfumeCard({ perfume }: Props) {
 				}
 			`}</style>
 
-			<Card className="group pb-4 pt-2 card relative overflow-hidden h-full border-0 bg-primary shadow-lg hover:shadow-xl transition-all duration-700 transform hover:-translate-y-4">
+			<Card className="group pb-2.5 pt-2 card relative overflow-hidden h-full border-0 bg-primary shadow-lg hover:shadow-xl transition-all duration-700 transform hover:-translate-y-4">
 				{/* Franjas decorativas superiores animadas */}
 				<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/60 via-secondary to-secondary/60 z-20" />
 
@@ -182,7 +182,7 @@ export default function PerfumeCard({ perfume }: Props) {
 							className="relative"
 							style={{ animation: "bounceSubtle 2s infinite" }}
 						>
-							<Badge className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 py-2 md:px-3 md:py-1.5 lg:px-3 lg:py-1.5 md:text-xs lg:text-xs shadow-xl border-2 border-white/20">
+							<Badge className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 py-2 md:px-3 md:py-1.5 lg:px-1 lg:py-1 md:text-xs lg:text-xs shadow-xl border-2 border-white/20">
 								<Zap className="h-3 w-3 md:h-2.5 md:w-2.5 lg:h-2.5 lg:w-2.5 mr-1" />
 								-{perfume.discountOffer * 100}%
 							</Badge>
@@ -199,7 +199,7 @@ export default function PerfumeCard({ perfume }: Props) {
 					<NavigationComponent
 						href={paths.perfume({ id: perfume.id }).root}
 					>
-						<div className="relative h-38 2xs:h-54 md:h-44 lg:h-48 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
+						<div className="relative h-38 2xs:h-54 md:h-38 lg:h-38 2xl:h-44 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
 							<figure className="absolute inset-0 flex items-center justify-center">
 								<Image
 									src={
@@ -286,26 +286,26 @@ export default function PerfumeCard({ perfume }: Props) {
 						{/* Franja decorativa interna */}
 						<div className="absolute top-0 left-6 right-6 h-0.5 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 internal-stripe" />
 
-						<div className="flex flex-col p-4 md:p-3 lg:p-3 gap-2 md:gap-1.5 lg:gap-1.5">
+						<div className="flex flex-col p-4 pb-2 md:p-3 lg:p-3 gap-1.5 md:gap-1 lg:gap-1 2xl:gap-1.5">
 							{/* Brand and Type mejorados */}
 							<div
 								className="flex items-center justify-between"
 								style={{ animation: "fadeIn 0.5s 100ms both" }}
 							>
-								<p className="block  max-w-[70px] lg:max-w-[90px] truncate leading-tight text-muted line-clamp-1 text-[10px] 2xs:text-sm">
+								<p className="block  max-w-[70px] lg:max-w-[90px] truncate leading-tight text-muted line-clamp-1 text-[10px] 2xs:text-xs">
 									{perfume.brand}
 								</p>
-								<p className="flex  max-w-[70px] truncate leading-tight text-muted truncate leading-tight text-[10px] 2xs:text-sm">
+								<p className="flex  max-w-[70px] truncate leading-tight text-muted truncate leading-tight text-[10px] 2xs:text-xs">
 									{perfume.perfumeType}
 								</p>
 							</div>
 
 							{/* Title mejorado */}
 							<div
-								className="space-y-1 sm:space-y-3 md:space-y-1.5 lg:space-y-2"
+								className="space-y-1 sm:space-y-1 md:space-y-1 lg:space-y-1 2xl:space-y-2"
 								style={{ animation: "fadeIn 0.5s 200ms both" }}
 							>
-								<h2 className="font-bold text-sm 2xs:text-lg sm:text-xl md:text-base lg:text-lg text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
+								<h2 className="font-bold text-sm 2xs:text-lg sm:text-xl md:text-sm lg:text-sm 2xl:text-lg text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
 									{perfume.name}
 								</h2>
 								<p className="text-xs 2xs:text-sm md:text-xs lg:text-xs text-white line-clamp-2 leading-relaxed">
@@ -320,18 +320,18 @@ export default function PerfumeCard({ perfume }: Props) {
 							>
 								<div className="flex items-center gap-0.5 xs:gap-1 sm:gap-3 md:gap-1.5 lg:gap-2">
 									<div
-										className={`w-2 h-2 2xs:w-3 2xs:h-3 md:w-2.5 md:h-2.5 lg:w-2.5 lg:h-2.5 rounded-full bg-gradient-to-r ${getGenderColor(
+										className={`w-2 h-2 2xs:w-3 2xs:h-3 md:w-2.5 md:h-2.5 lg:w-2 lg:h-2 2xl:w-2.5 2xl:h-2.5 rounded-full bg-gradient-to-r ${getGenderColor(
 											perfume.gender,
 										)} border-2 border-white shadow-lg animate-pulse`}
 									/>
-									<span className="text-white text-[10px] 2xs:text-xs 2xs:text-sm md:text-xs lg:text-xs font-semibold">
+									<span className="text-white text-[10px] 2xs:text-xs 2xs:text-sm md:text-xs lg:text-[11px] 2xl:text-xs font-semibold">
 										{perfume.gender}
 									</span>
 								</div>
 
 								<div className="flex  items-center gap-0.5 lg:gap-1">
 									<Gift className="h-3 w-3 text-primary" />
-									<span className="text-primary text-[10px] 2xs:text-xs sm:text-xs font-bold">
+									<span className="text-primary text-[10px] 2xs:text-xs sm:text-xs lg:text-[11px] 2xl:text-xs font-bold">
 										{perfume.milliliters}ml
 									</span>
 								</div>
@@ -341,21 +341,21 @@ export default function PerfumeCard({ perfume }: Props) {
 						<div className="flex flex-col gap-2 md:gap-1.5 lg:gap-1.5 px-4 md:px-3 lg:px-3">
 							{/* Price Section súper mejorada */}
 							<div
-								className="flex items-center justify-between pt-4 md:pt-3 lg:pt-3 border-t border-border/50"
+								className="flex items-center justify-between pt-2 md:pt-3 lg:pt-3 border-t border-border/50"
 								style={{ animation: "fadeIn 0.5s 400ms both" }}
 							>
 								<div className="flex flex-col space-y-1 md:space-y-0.5 lg:space-y-0.5">
 									{perfume.discountOffer ? (
-										<>
-											<span className="text-base sm:text-2xl md:text-lg lg:text-xl font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+										<div className="flex items-center gap-1">
+											<span className="text-sm sm:text-sm md:text-sm lg:text-sm 2xl:text-lg font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
 												{fCurrency(perfume.totalPrice)}
 											</span>
 											<span className="text-sm md:text-xs lg:text-xs text-muted-foreground line-through opacity-75">
 												{fCurrency(perfume.price)}
 											</span>
-										</>
+										</div>
 									) : (
-										<span className="text-base sm:text-2xl md:text-lg lg:text-xl font-black text-primary">
+										<span className="text-sm sm:text-sm md:text-sm lg:text-sm 2xl:text-lg font-black text-primary">
 											{fCurrency(perfume.price)}
 										</span>
 									)}
