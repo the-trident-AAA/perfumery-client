@@ -14,7 +14,7 @@ export default function HomePromotionsCarousel({ data }: Props) {
 	return (
 		<StandardCarousel
 			items={data}
-			itemClassName="basis-[50%] 2xs:basis-[50%] sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 2xl:basis-1/5"
+			itemClassName="basis-[50%] 2xs:basis-[50%] sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/5 2xl:basis-1/5"
 			loop={false}
 			autoPlay
 			autoPlayDelay={10000}
