@@ -18,14 +18,14 @@ export default async function BestSellingProducts() {
 				<div className="text-center space-y-1 px-4">
 					{/* Title */}
 					<div>
-						<h2 className="text-3xl lg:text-3xl font-bold text-secondary">
+						<h2 className="text-xl lg:text-3xl font-bold text-secondary">
 							Los favoritos de{" "}
 							<span className="">nuestros clientes</span>
 						</h2>
 					</div>
 
 					{/* Description */}
-					<p className="max-w-2xl font-serif mx-auto text-lg md:text-lg text-foreground leading-relaxed text-pretty">
+					<p className="max-w-2xl font-serif mx-auto text-sm md:text-lg text-foreground leading-relaxed text-pretty">
 						Descubre las fragancias más amadas. Cada perfume ha sido
 						seleccionado por su calidad excepcional y popularidad
 					</p>
