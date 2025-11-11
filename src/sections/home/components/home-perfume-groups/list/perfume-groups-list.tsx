@@ -10,7 +10,7 @@ export default async function PerfumeGroupsList() {
 
 	const groups = res.response
 	return groups.length > 0 ? (
-		<div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
+		<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full px-4 sm:px-12 xl:mx-auto lg:max-w-6xl 2xl:max-w-7xl">
 			{groups.map((group, index) => (
 				<PerfumeGroupCard key={index} perfumeGroup={group} />
 			))}
