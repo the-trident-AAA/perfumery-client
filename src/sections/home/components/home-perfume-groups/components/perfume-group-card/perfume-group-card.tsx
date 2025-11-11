@@ -17,15 +17,12 @@ export default function PerfumeGroupCard({
 	return (
 		<motion.div
 			whileHover={{
-				scale: 1.05,
+				scale: 1.04,
 				boxShadow:
-					"0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+					"0 16px 20px -5px rgba(0, 0, 0, 0.15), 0 8px 8px -5px rgba(0, 0, 0, 0.05)",
 			}}
-			whileTap={{ scale: 0.95 }}
-			className={
-				"relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-300 ease-in-out " +
-				w
-			}
+			whileTap={{ scale: 0.96 }}
+			className={`relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 ease-in-out ${w}`}
 		>
 			<NavigationComponent
 				href={paths.perfumes({ perfumeTypeId: id.toString() }).root}
@@ -36,18 +33,20 @@ export default function PerfumeGroupCard({
 					fill
 					className="absolute inset-0 object-cover z-0"
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-					priority={false}
 				/>
-				<div className="absolute inset-0 bg-gradient-to-b bg-black/40 z-10 transition-opacity duration-500 ease-in-out group-hover:opacity-0" />
-				<div className="relative z-20 flex flex-col items-center justify-center h-64 p-6 text-white">
-					<h3 className="text-xl sm:text-3xl font-bold text-center mb-2">
+				{/* Sombra más sutil */}
+				<div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40 z-10" />
+
+				{/* Contenido más compacto */}
+				<div className="relative z-20 flex flex-col items-center justify-center h-48 sm:h-44 2xl:h-48 p-4 text-white">
+					<h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-center mb-1">
 						{name}
 					</h3>
 					<motion.div
 						initial={{ width: 0 }}
-						whileHover={{ width: "80%" }}
+						whileHover={{ width: "70%" }}
 						transition={{ duration: 0.3 }}
-						className="h-1 bg-white rounded-full"
+						className="h-0.5 bg-white rounded-full"
 					/>
 				</div>
 			</NavigationComponent>
