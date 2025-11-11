@@ -4,18 +4,8 @@ import React, { Suspense } from "react"
 
 export default function HomeOffers() {
 	return (
-		<section id="home-offers" className="bg-muted pt-12 pb-12">
-			<div className="flex flex-col gap-8 pt-4">
-				<div className="text-center space-y-4 px-4">
-					<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
-						Aromas irresistibles a precios especiales
-					</h2>
-					<p className="max-w-2xl font-serif mx-auto text-lg md:text-xl text-foreground leading-relaxed text-pretty">
-						Aprovecha nuestras ofertas exclusivas en perfumes
-						seleccionados y encuentra tu fragancia ideal al mejor
-						precio
-					</p>
-				</div>
+		<section id="home-offers" className="bg-muted pt-4 pb-12">
+			<div className="pt-4">
 				<Suspense
 					fallback={
 						<CardSkeletonGroup
