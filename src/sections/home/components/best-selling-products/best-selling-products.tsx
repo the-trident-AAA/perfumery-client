@@ -13,19 +13,19 @@ export default async function BestSellingProducts() {
 			<div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
 
 			{/* Content */}
-			<div className="relative flex flex-col gap-4 z-10">
+			<div className="relative flex flex-col gap-1 z-10">
 				{/* Header */}
-				<div className="text-center space-y-4 px-4">
+				<div className="text-center space-y-1 px-4">
 					{/* Title */}
-					<div className="space-y-4">
-						<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
+					<div>
+						<h2 className="text-3xl lg:text-3xl font-bold text-secondary">
 							Los favoritos de{" "}
 							<span className="">nuestros clientes</span>
 						</h2>
 					</div>
 
 					{/* Description */}
-					<p className="max-w-2xl font-serif mx-auto text-lg md:text-xl text-foreground leading-relaxed text-pretty">
+					<p className="max-w-2xl font-serif mx-auto text-lg md:text-lg text-foreground leading-relaxed text-pretty">
 						Descubre las fragancias más amadas. Cada perfume ha sido
 						seleccionado por su calidad excepcional y popularidad
 					</p>
