@@ -292,10 +292,10 @@ export default function PerfumeCard({ perfume }: Props) {
 								className="flex items-center justify-between"
 								style={{ animation: "fadeIn 0.5s 100ms both" }}
 							>
-								<p className="block  max-w-[70px] lg:max-w-[90px] truncate leading-tight text-muted line-clamp-1 text-[10px] 2xs:text-xs">
+								<p className="block  max-w-[70px] lg:max-w-[70px] 2xl:max-w-[80px] truncate leading-tight text-muted line-clamp-1 text-[10px] 2xs:text-[11px] 2xl:text-xs">
 									{perfume.brand}
 								</p>
-								<p className="flex  max-w-[70px] truncate leading-tight text-muted truncate leading-tight text-[10px] 2xs:text-xs">
+								<p className="flex  max-w-[70px] truncate leading-tight text-muted truncate leading-tight text-[10px] 2xs:text-[11px] 2xl:text-xs">
 									{perfume.perfumeType}
 								</p>
 							</div>
