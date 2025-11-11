@@ -96,7 +96,10 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				className={cn("w-full", className)}
 			>
 				<CarouselContent
-					className={cn("-ml-2 pr-2 py-6 md:-ml-4", contentClassName)}
+					className={cn(
+						"-ml-2 pr-2 pt-6 pb-4 md:-ml-4",
+						contentClassName,
+					)}
 				>
 					{items.map(item => (
 						<CarouselItem
