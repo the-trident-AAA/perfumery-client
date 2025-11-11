@@ -47,15 +47,15 @@ export default async function BestSellingProducts() {
 
 				{/* Trust indicators */}
 				<div className="flex px-4 sm:px-6 lg:px-8 flex-wrap items-center justify-center gap-6 md:gap-8 mt-4 md:mt-4 pt-12 border-t border-border">
-					<div className="flex items-center gap-2 text-sm text-foreground">
+					<div className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
 						<div className="w-1.5 h-1.5 rounded-full bg-green-400" />
 						<span>Productos auténticos</span>
 					</div>
-					<div className="flex items-center gap-2 text-sm text-foreground">
+					<div className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
 						<div className="w-1.5 h-1.5 rounded-full bg-green-400" />
 						<span>Envío gratuito</span>
 					</div>
-					<div className="flex items-center gap-2 text-sm text-foreground">
+					<div className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
 						<div className="w-1.5 h-1.5 rounded-full bg-green-400" />
 						<span>Garantía de calidad</span>
 					</div>
