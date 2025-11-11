@@ -25,7 +25,7 @@ export function HomeBannerSectionDekstop({
 			/>
 
 			{/* Contenido del banner (puede ser server-side) */}
-			<div className="relative z-10 h-full px-6 md:px-8 flex flex-col justify-center">
+			<div className="relative z-10 h-full lg:max-w-6xl 2xl:max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
 				<div className="max-w-3xl space-y-3 2xs:space-y-6">
 					<h1 className="text-3xl 2xs:text-4xl md:text-5xl font-bold text-white">
 						{homeBanner.title}
