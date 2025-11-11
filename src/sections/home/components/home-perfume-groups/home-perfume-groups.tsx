@@ -4,13 +4,13 @@ import React, { Suspense } from "react"
 
 export default function HomePerfumeGroups() {
 	return (
-		<section id="home-perfume-groups" className="bg-muted pt-12 pb-12">
-			<div className="xl:mx-auto xl:max-w-7xl flex flex-col px-4 gap-12 pt-4">
-				<div className="text-center space-y-4 ">
-					<h2 className="text-3xl lg:text-4xl font-bold text-secondary">
+		<section id="home-perfume-groups" className="bg-muted pt-4 pb-8">
+			<div className="flex flex-col px-4 gap-6 pt-4">
+				<div className="text-center space-y-1">
+					<h2 className="text-3xl lg:text-3xl font-bold text-secondary">
 						Descubre nuestras colecciones de perfumes
 					</h2>
-					<p className="max-w-2xl font-serif mx-auto text-lg md:text-xl text-foreground leading-relaxed text-pretty">
+					<p className="max-w-2xl font-serif mx-auto text-lg md:text-lg text-foreground leading-relaxed text-pretty">
 						Explora los grupos de fragancias disponibles y encuentra
 						el aroma perfecto para cada ocasión
 					</p>

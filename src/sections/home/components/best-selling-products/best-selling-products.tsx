@@ -7,7 +7,7 @@ export default async function BestSellingProducts() {
 	return (
 		<section
 			id="best-selling"
-			className="relative w-full overflow-hidden bg-primary pt-12 pb-12"
+			className="relative w-full overflow-hidden bg-primary pt-8 pb-8"
 		>
 			{/* Subtle background accent */}
 			<div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
