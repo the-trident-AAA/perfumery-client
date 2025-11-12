@@ -13,7 +13,7 @@ interface HomeBannerProps {
 
 export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 	return (
-		<div className="relative min-h-[180px] 2xs:min-h-[400px] 2xl:min-h-[400px] py-4 2xs:py-8 w-full overflow-hidden">
+		<div className="relative min-h-[200px] 2xs:min-h-[400px] 2xl:min-h-[400px] py-4 2xs:py-8 w-full overflow-hidden">
 			<div className={cn("absolute inset-0")}>
 				<Image
 					src={homeBanner.image}
