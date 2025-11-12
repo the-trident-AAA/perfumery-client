@@ -18,6 +18,7 @@ export default async function HomeBannerSectionContainer() {
 			<StandardCarousel
 				contentClassName="py-0 px-0"
 				navVariant="banner"
+				dotsVariant="banner"
 				loop={false}
 				autoPlay
 				autoPlayDelay={20000}
