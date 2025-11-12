@@ -107,21 +107,21 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						{children}
 					</CarouselContent>
 
-					{/* Variante “banner” de los dots */}
+					{/* Variante “banner” de los dots (dentro del contenido) */}
 					{showDots &&
 						dotsVariant === "banner" &&
 						totalSections > 1 && (
-							<div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+							<div className="absolute bottom-1 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 sm:gap-2">
 								{Array.from({ length: totalSections }).map(
 									(_, index) => (
 										<button
 											key={index}
 											onClick={() => scrollTo(index)}
 											className={cn(
-												"h-1.5 rounded-full transition-all duration-300",
+												"h-1 sm:h-1.5 rounded-full transition-all duration-300",
 												currentIndex === index
-													? "w-8 bg-white"
-													: "w-1.5 bg-white/50 hover:bg-white/70",
+													? "w-6 sm:w-8 bg-white"
+													: "w-1 sm:w-1.5 bg-white/50 hover:bg-white/70",
 											)}
 											aria-label={`Ir a la sección ${index + 1}`}
 										/>
@@ -142,7 +142,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						variant="outline"
 						size="icon"
 						className={cn(
-							"pointer-events-auto size-7 2xs:size-9 rounded-full shadow-lg transition-all duration-300",
+							"pointer-events-auto size-7 sm:size-9 rounded-full shadow-lg transition-all duration-300",
 							"bg-background/95 backdrop-blur-sm border-2",
 							"hover:scale-110 hover:shadow-xl",
 							"disabled:opacity-0 disabled:pointer-events-none",
@@ -152,14 +152,14 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						disabled={!canScrollPrev}
 						aria-label="Anterior"
 					>
-						<ChevronLeft className="h-5 w-5" />
+						<ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
 					</Button>
 
 					<Button
 						variant="outline"
 						size="icon"
 						className={cn(
-							"pointer-events-auto size-7 2xs:size-9 rounded-full shadow-lg transition-all duration-300",
+							"pointer-events-auto size-7 sm:size-9 rounded-full shadow-lg transition-all duration-300",
 							"bg-background/95 backdrop-blur-sm border-2",
 							"hover:scale-110 hover:shadow-xl",
 							"disabled:opacity-0 disabled:pointer-events-none",
@@ -169,22 +169,22 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						disabled={!canScrollNext}
 						aria-label="Siguiente"
 					>
-						<ChevronRight className="h-5 w-5" />
+						<ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
 					</Button>
 				</div>
 			</Carousel>
 
-			{/* Variante “default” de los dots */}
+			{/* Variante “default” de los dots (debajo del carrusel) */}
 			{showDots && dotsVariant === "default" && totalSections > 1 && (
-				<div className="flex justify-center gap-2 mt-3">
+				<div className="flex justify-center gap-1.5 sm:gap-2 mt-2 sm:mt-3">
 					{Array.from({ length: totalSections }).map((_, index) => (
 						<button
 							key={index}
 							onClick={() => scrollTo(index)}
 							className={cn(
-								"h-2.5 w-2.5 rounded-full transition-all duration-300",
+								"h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full transition-all duration-300",
 								currentIndex === index
-									? "bg-secondary scale-125"
+									? "bg-secondary scale-110 sm:scale-125"
 									: "bg-muted-foreground/30 hover:bg-muted-foreground/50",
 							)}
 							aria-label={`Ir a la sección ${index + 1}`}
