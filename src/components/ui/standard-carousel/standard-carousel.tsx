@@ -22,7 +22,7 @@ interface Props<T> {
 	slidesToScroll?: number
 	showDots?: boolean
 	/** Variante para la posición de los botones laterales */
-	navVariant?: "default" | "spaced"
+	navVariant?: "default" | "spaced" | "banner"
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
@@ -78,7 +78,9 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	const navPosition =
 		navVariant === "spaced"
 			? "absolute -left-7 -right-5"
-			: "absolute -left-4 -right-4"
+			: navVariant === "default"
+				? "absolute -left-4 -right-4"
+				: "absolute left-3 right-3"
 
 	return (
 		<div className="relative w-full">
