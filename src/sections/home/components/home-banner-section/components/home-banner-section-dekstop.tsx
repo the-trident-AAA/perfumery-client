@@ -2,27 +2,30 @@ import NavigationComponent from "@/src/components/navigation-component/navigatio
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
 import { HomeBanner } from "@/src/lib/types/home-banners"
-import { HomeBannerImagesCarouselDekstop } from "@/src/sections/home/components/home-banner-section/components/home-banner-images-carousel/home-banner-images-carousel-dekstop"
-
+import { cn } from "@/src/lib/utils/utils"
 import { ArrowRight, ShoppingBag } from "lucide-react"
+import Image from "next/image"
 
 interface HomeBannerProps {
 	homeBanner: HomeBanner
 	autoPlayInterval?: number
 }
 
-export function HomeBannerSectionDekstop({
-	homeBanner,
-	autoPlayInterval,
-}: HomeBannerProps) {
+export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 	return (
 		<div className="relative py-4 2xs:py-8 w-full overflow-hidden">
-			{/* Carrusel encapsulado (client-side) */}
-			<HomeBannerImagesCarouselDekstop
-				title={homeBanner.title}
-				images={homeBanner.images}
-				autoPlayInterval={autoPlayInterval}
-			/>
+			<div className={cn("absolute inset-0 duration-1000")}>
+				<Image
+					src={homeBanner.image}
+					width={1920}
+					height={1080}
+					quality={100}
+					alt={`${homeBanner.title}`}
+					className="h-full w-full object-cover"
+				/>
+				{/* Overlay oscuro para mejor legibilidad del texto */}
+				<div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+			</div>
 
 			{/* Contenido del banner (puede ser server-side) */}
 			<div className="relative z-10 h-full lg:max-w-6xl 2xl:max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
