@@ -1,10 +1,8 @@
-import { PerfumeDetails } from "./perfumes"
-
 export interface HomeBanner {
 	id: string
 	title: string
 	description: string
-	images: string[]
+	image: string
 	statisticalTips: {
 		statistics: string
 
@@ -17,7 +15,7 @@ export interface HomeBannerDetails {
 	id: string
 	title: string
 	description: string
-	images: string[]
+	image: string
 	statisticalTips: {
 		statistics: string
 
