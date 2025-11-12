@@ -19,6 +19,7 @@ export default async function HomeBannerSectionContainer() {
 				contentClassName="py-0 px-0"
 				navVariant="banner"
 				dotsVariant="banner"
+				contentVariant="banner"
 				loop={false}
 				autoPlay
 				autoPlayDelay={20000}
