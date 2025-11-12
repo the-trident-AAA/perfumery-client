@@ -111,7 +111,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 					{showDots &&
 						dotsVariant === "banner" &&
 						totalSections > 1 && (
-							<div className="absolute bottom-1 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 sm:gap-2">
+							<div className="absolute bottom-1.5 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 sm:gap-2">
 								{Array.from({ length: totalSections }).map(
 									(_, index) => (
 										<button
