@@ -16,7 +16,7 @@ export function HomeBannerSectionDekstop({
 	autoPlayInterval,
 }: HomeBannerProps) {
 	return (
-		<div className="relative h-[180px] 2xs:h-[400px] 2xl:h-[400px] w-full overflow-hidden">
+		<div className="relative py-4 2xs:py-8 w-full overflow-hidden">
 			{/* Carrusel encapsulado (client-side) */}
 			<HomeBannerImagesCarouselDekstop
 				title={homeBanner.title}
