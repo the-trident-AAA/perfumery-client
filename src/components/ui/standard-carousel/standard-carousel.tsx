@@ -23,6 +23,8 @@ interface Props<T> {
 	showDots?: boolean
 	/** Variante para la posición de los botones laterales */
 	navVariant?: "default" | "spaced" | "banner"
+	/** Variante de estilo de los indicadores (bolitas) */
+	dotsVariant?: "default" | "banner"
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
@@ -35,6 +37,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	slidesToScroll = 1,
 	showDots = false,
 	navVariant = "default",
+	dotsVariant = "default",
 }: Props<T>) {
 	const [api, setApi] = useState<CarouselApi>()
 	const [canScrollPrev, setCanScrollPrev] = useState(false)
@@ -93,14 +96,40 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				}}
 				className={cn("w-full", className)}
 			>
-				<CarouselContent
-					className={cn(
-						"-ml-2 pr-2 pt-6 pb-4 md:-ml-4",
-						contentClassName,
-					)}
-				>
-					{children}
-				</CarouselContent>
+				{/* Contenido del carrusel */}
+				<div className="relative">
+					<CarouselContent
+						className={cn(
+							"-ml-2 pr-2 pt-6 pb-4 md:-ml-4",
+							contentClassName,
+						)}
+					>
+						{children}
+					</CarouselContent>
+
+					{/* Variante “banner” de los dots */}
+					{showDots &&
+						dotsVariant === "banner" &&
+						totalSections > 1 && (
+							<div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+								{Array.from({ length: totalSections }).map(
+									(_, index) => (
+										<button
+											key={index}
+											onClick={() => scrollTo(index)}
+											className={cn(
+												"h-1.5 rounded-full transition-all duration-300",
+												currentIndex === index
+													? "w-8 bg-white"
+													: "w-1.5 bg-white/50 hover:bg-white/70",
+											)}
+											aria-label={`Ir a la sección ${index + 1}`}
+										/>
+									),
+								)}
+							</div>
+						)}
+				</div>
 
 				{/* Botones laterales */}
 				<div
@@ -121,7 +150,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						)}
 						onClick={scrollPrev}
 						disabled={!canScrollPrev}
-						aria-label="Previous slide"
+						aria-label="Anterior"
 					>
 						<ChevronLeft className="h-5 w-5" />
 					</Button>
@@ -138,15 +167,15 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						)}
 						onClick={scrollNext}
 						disabled={!canScrollNext}
-						aria-label="Next slide"
+						aria-label="Siguiente"
 					>
 						<ChevronRight className="h-5 w-5" />
 					</Button>
 				</div>
 			</Carousel>
 
-			{/* Bolitas de navegación */}
-			{showDots && totalSections > 1 && (
+			{/* Variante “default” de los dots */}
+			{showDots && dotsVariant === "default" && totalSections > 1 && (
 				<div className="flex justify-center gap-2 mt-3">
 					{Array.from({ length: totalSections }).map((_, index) => (
 						<button
@@ -158,7 +187,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 									? "bg-secondary scale-125"
 									: "bg-muted-foreground/30 hover:bg-muted-foreground/50",
 							)}
-							aria-label={`Go to section ${index + 1}`}
+							aria-label={`Ir a la sección ${index + 1}`}
 						/>
 					))}
 				</div>
