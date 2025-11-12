@@ -22,7 +22,7 @@ export default async function HomeBannerSectionContainer() {
 				contentVariant="banner"
 				loop={false}
 				autoPlay
-				autoPlayDelay={20000}
+				autoPlayDelay={15000}
 				showDots
 			>
 				{homeBanners.map((homeBanner, index) => (
