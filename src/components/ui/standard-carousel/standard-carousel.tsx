@@ -25,6 +25,7 @@ interface Props<T> {
 	navVariant?: "default" | "spaced" | "banner"
 	/** Variante de estilo de los indicadores (bolitas) */
 	dotsVariant?: "default" | "banner"
+	contentVariant?: "default" | "banner"
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
@@ -38,6 +39,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	showDots = false,
 	navVariant = "default",
 	dotsVariant = "default",
+	contentVariant = "default",
 }: Props<T>) {
 	const [api, setApi] = useState<CarouselApi>()
 	const [canScrollPrev, setCanScrollPrev] = useState(false)
@@ -100,7 +102,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				<div className="relative">
 					<CarouselContent
 						className={cn(
-							"-ml-2 pr-2 pt-6 pb-4 md:-ml-4",
+							`${contentVariant === "default" ? "-ml-2 pr-2 pt-6 pb-4 md:-ml-4" : ""}`,
 							contentClassName,
 						)}
 					>
