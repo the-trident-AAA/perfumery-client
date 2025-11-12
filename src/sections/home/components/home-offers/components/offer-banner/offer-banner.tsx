@@ -42,12 +42,12 @@ export default function OfferBanner({
 			>
 				{/* Columna izquierda */}
 				<div className="flex flex-col justify-between space-y-4 sm:space-y-4 text-white lg:max-w-2xl">
-					<div className="flex flex-col h-full space-y-4 sm:space-y-4 text-white">
+					<div className="flex flex-col h-full space-y-2 2xs:space-y-4 sm:space-y-4 text-white">
 						{/* Badge superior */}
 						<div className="flex gap-2 items-center justify-between">
 							<div className="flex items-center gap-2 sm:gap-3 animate-fade-in">
 								<Tag className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
-								<Badge className="bg-white/10 backdrop-blur-sm border-secondary/30 font-semibold px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm shadow-lg">
+								<Badge className="bg-white/10 backdrop-blur-sm border-secondary/30 font-semibold px-3 sm:px-4 py-1 2xs:py-1.5 sm:py-2 text-[9px] 2xs:text-[10px] sm:text-sm shadow-lg">
 									{offerType}
 								</Badge>
 							</div>
@@ -60,19 +60,19 @@ export default function OfferBanner({
 						<div className="space-y-1 sm:space-y-2 animate-fade-in-up">
 							<h2
 								className="
-							text-lg 2xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl 
+							text-base 2xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl 
 							font-black tracking-tight text-balance
 						"
 							>
 								{name}
 							</h2>
-							<div className="h-1 w-16 sm:w-24 bg-white rounded-full" />
+							<div className="h-0.5 2xs:h-1 w-16 sm:w-24 bg-white rounded-full" />
 						</div>
 
 						{/* Descripción */}
 						<p
 							className="
-						text-sm 2xs:text-base sm:text-lg md:text-lg 
+						text-xs 2xs:text-base sm:text-lg md:text-lg 
 						text-gray-200 line-clamp-3 leading-relaxed text-pretty animate-fade-in-up
 					"
 						>
@@ -81,15 +81,15 @@ export default function OfferBanner({
 
 						{/* Alcance */}
 						<div className="flex items-center gap-2 animate-fade-in-up">
-							<Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
-							<p className="text-xs 2xs:text-sm sm:text-base md:text-base font-semibold">
+							<Sparkles className="h-3 w-3 sm:h-5 sm:w-5 text-yellow-400" />
+							<p className="text-[10px] 2xs:text-sm sm:text-base md:text-base font-semibold">
 								{scope}
 							</p>
 						</div>
 					</div>
 
 					{/* Botón CTA */}
-					<div className="pt-2 sm:pt-4 animate-fade-in-up">
+					<div className="sm:pt-4 animate-fade-in-up">
 						<NavigationComponent
 							href={
 								paths.perfumes({ offerId: id.toString() }).root
@@ -99,15 +99,15 @@ export default function OfferBanner({
 								size="lg"
 								variant="secondary"
 								className="
-									text-primary px-5 sm:px-8 py-4 sm:py-6 
-									text-sm sm:text-base lg:text-lg font-bold 
+									text-primary px-2 2xs:px-5 sm:px-8 h-auto py-1.5 2xs:py-4 sm:py-6 
+									text-[10px] 2xs:text-sm sm:text-base lg:text-lg font-bold 
 									group/btn shadow-2xl hover:shadow-secondary/50 
 									transition-all duration-300 transform hover:scale-105 relative overflow-hidden
 								"
 							>
-								<span className="relative z-10 flex items-center gap-2 sm:gap-3">
+								<span className="relative z-10 flex items-center gap-1 sm:gap-3">
 									Comprar Ahora
-									<ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 group-hover/btn:translate-x-2" />
+									<ArrowRight className="size-3 2xs:size-4 sm:size-4 transition-all duration-300 group-hover/btn:translate-x-2" />
 								</span>
 
 								<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
@@ -188,12 +188,12 @@ function TargetDiscount({ discount }: { discount: number }) {
 				className="
 					flex lg:hidden items-center justify-center 
 					bg-secondary text-primary-foreground 
-					rounded-full p-2  gap-1 shadow-md 
-					text-[9px] xs:text-[10px] font-bold uppercase tracking-wider
+					rounded-full py-1 2xs:py-2 px-2 2xs:px-2  gap-1 shadow-md 
+					text-[9px] 2xs:text-[10px] font-bold uppercase 
 					animate-fade-in
 				"
 			>
-				<Sparkles className="h-3 w-3 text-yellow-300 animate-pulse" />
+				<Sparkles className="size-2.5 2xs:size-3 text-yellow-300 animate-pulse" />
 				<span>{discount * 100}% OFF</span>
 			</div>
 		</>
