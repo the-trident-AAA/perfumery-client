@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type React from "react"
-import { useCallback, useEffect, useState } from "react"
+import { ReactNode, useCallback, useEffect, useState } from "react"
 import {
 	Carousel,
 	CarouselContent,
@@ -13,11 +13,9 @@ import { Button } from "@/src/components/ui/button"
 import { cn } from "@/src/lib/utils/utils"
 
 interface Props<T> {
-	items: T[]
-	renderCard: (item: T) => React.ReactNode
+	children: ReactNode
 	className?: string
 	contentClassName?: string
-	itemClassName?: string
 	autoPlay?: boolean
 	autoPlayDelay?: number
 	loop?: boolean
@@ -28,11 +26,9 @@ interface Props<T> {
 }
 
 export default function StandardCarousel<T extends { id: number | string }>({
-	items,
-	renderCard,
+	children,
 	className,
 	contentClassName,
-	itemClassName,
 	autoPlay = false,
 	autoPlayDelay = 5000,
 	loop = true,
@@ -101,14 +97,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 						contentClassName,
 					)}
 				>
-					{items.map(item => (
-						<CarouselItem
-							key={item.id}
-							className={cn("pl-2 md:pl-4", itemClassName)}
-						>
-							{renderCard(item)}
-						</CarouselItem>
-					))}
+					{children}
 				</CarouselContent>
 
 				{/* Botones laterales */}
