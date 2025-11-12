@@ -23,11 +23,10 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 					alt={`${homeBanner.title}`}
 					className="h-full w-full object-cover"
 				/>
-				{/* Overlay oscuro para mejor legibilidad del texto */}
+
 				<div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 			</div>
 
-			{/* Contenido del banner (puede ser server-side) */}
 			<div className="relative z-10 h-full lg:max-w-6xl 2xl:max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
 				<div className="max-w-3xl space-y-2 2xs:space-y-6">
 					<div className="">
