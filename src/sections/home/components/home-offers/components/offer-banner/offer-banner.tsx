@@ -93,30 +93,23 @@ export default function OfferBanner({
 
 						{/* Botón CTA */}
 						<div className="sm:pt-4 animate-fade-in-up">
-							<NavigationComponent
-								href={
-									paths.perfumes({ offerId: id.toString() })
-										.root
-								}
-							>
-								<Button
-									size="lg"
-									variant="secondary"
-									className="
+							<Button
+								size="lg"
+								variant="secondary"
+								className="
 									text-primary px-2 2xs:px-5 sm:px-8 h-auto 2xs:h-9 py-1.5 2xs:py-4 sm:py-6 
 									text-[10px] 2xs:text-sm sm:text-base lg:text-lg font-bold 
 									group/btn shadow-2xl cursor-pointer hover:shadow-secondary/50 
 									transition-all duration-300 transform hover:scale-105 relative overflow-hidden
 								"
-								>
-									<span className="relative z-10 flex items-center gap-1 sm:gap-3">
-										Comprar Ahora
-										<ArrowRight className="size-3 2xs:size-4 sm:size-4 transition-all duration-300 group-hover/btn:translate-x-2" />
-									</span>
+							>
+								<span className="relative z-10 flex items-center gap-1 sm:gap-3">
+									Comprar Ahora
+									<ArrowRight className="size-3 2xs:size-4 sm:size-4 transition-all duration-300 group-hover/btn:translate-x-2" />
+								</span>
 
-									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
-								</Button>
-							</NavigationComponent>
+								<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
+							</Button>
 						</div>
 					</div>
 
