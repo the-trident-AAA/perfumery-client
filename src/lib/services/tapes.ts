@@ -7,8 +7,8 @@ import {
 } from "@/src/lib/routes/api-routes/api-routes"
 import { Tape } from "@/src/lib/types/tapes"
 
-export async function getMainTape(id: string) {
-	const res = await fetch(apiRoutes.tapes.getById.replace(":id", id), {
+export async function getMainTape() {
+	const res = await fetch(apiRoutes.tapes.getMainTape, {
 		method: "GET",
 		next: { tags: [tagsCacheByRoutes.tapes.singleTag] },
 	})
