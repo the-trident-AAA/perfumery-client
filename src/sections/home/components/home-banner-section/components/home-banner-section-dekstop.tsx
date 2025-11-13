@@ -42,7 +42,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 						<div className="grid grid-cols-3 items-center">
 							{homeBanner.statisticalTips.map((tip, i) => (
 								<div key={i} className="text-center text-white">
-									<div className="text-xs 2xs:text-sm">
+									<div className="text-xs 2xs:text-lg">
 										{tip.statistics}
 									</div>
 									<div className="text-xs 2xs:text-2xl font-bold">
