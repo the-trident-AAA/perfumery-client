@@ -50,7 +50,7 @@ export default function OfferBanner({
 							<div className="flex gap-2 items-center justify-between">
 								<div className="flex items-center gap-2 sm:gap-3 animate-fade-in">
 									<Tag className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
-									<Badge className="bg-white/10 backdrop-blur-sm border-secondary/30 font-semibold px-3 sm:px-4 py-1 2xs:py-1.5 sm:py-2 text-[9px] 2xs:text-[10px] sm:text-sm shadow-lg">
+									<Badge className="bg-white/10 backdrop-blur-sm border-secondary/30 font-semibold px-3 sm:px-4 py-1 2xs:py-1.5 sm:py-2 text-[11px] 2xs:text-[11px] sm:text-sm shadow-lg">
 										{offerType}
 									</Badge>
 								</div>
@@ -63,7 +63,7 @@ export default function OfferBanner({
 							<div className="space-y-1 sm:space-y-2 animate-fade-in-up">
 								<h2
 									className="
-							text-base 2xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl 
+							text-xl 2xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl 
 							font-black tracking-tight text-balance
 						"
 								>
@@ -75,7 +75,7 @@ export default function OfferBanner({
 							{/* Descripción */}
 							<p
 								className="
-						text-xs 2xs:text-base sm:text-lg md:text-lg 
+						text-sm 2xs:text-base sm:text-lg md:text-lg 
 						text-gray-200 line-clamp-3 leading-relaxed text-pretty animate-fade-in-up
 					"
 							>
@@ -85,7 +85,7 @@ export default function OfferBanner({
 							{/* Alcance */}
 							<div className="flex items-center gap-2 animate-fade-in-up">
 								<Sparkles className="h-3 w-3 sm:h-5 sm:w-5 text-yellow-400" />
-								<p className="text-[10px] 2xs:text-sm sm:text-base md:text-base font-semibold">
+								<p className="text-[11px] 2xs:text-sm sm:text-base md:text-base font-semibold">
 									{scope}
 								</p>
 							</div>
@@ -98,7 +98,7 @@ export default function OfferBanner({
 								variant="secondary"
 								className="
 									text-primary px-2 2xs:px-5 sm:px-8 h-auto 2xs:h-9 py-1.5 2xs:py-4 sm:py-6 
-									text-[10px] 2xs:text-sm sm:text-base lg:text-lg font-bold 
+									text-sm 2xs:text-sm sm:text-base lg:text-lg font-bold 
 									group/btn shadow-2xl cursor-pointer hover:shadow-secondary/50 
 									transition-all duration-300 transform hover:scale-105 relative overflow-hidden
 								"
