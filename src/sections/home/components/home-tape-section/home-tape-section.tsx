@@ -9,7 +9,7 @@ interface Props {
 
 export default function HomeTapeSection({ tape }: Props) {
 	return (
-		<div className="relative mx-4 mt-4 xl:w-full xl:mx-auto xl:max-w-6xl 2xl:max-w-7xl h-[50px] sm:h-[100px]">
+		<div className="relative w-full h-[40px] sm:h-[100px]">
 			<div className={cn("absolute inset-0")}>
 				<Image
 					src={tape.image}
@@ -17,7 +17,7 @@ export default function HomeTapeSection({ tape }: Props) {
 					height={1080}
 					quality={100}
 					alt={`${tape.name}`}
-					className="h-full w-full object-center sm:rounded-3xl"
+					className="h-full w-full object-center"
 				/>
 			</div>
 		</div>
