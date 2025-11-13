@@ -4,6 +4,7 @@ import HomeOffers from "@/src/sections/home/components/home-offers/home-offers"
 import BestSellingProducts from "@/src/sections/home/components/best-selling-products/best-selling-products"
 import HomeBannerSectionContainer from "@/src/sections/home/components/home-banner-section/home-banner-section-container"
 import { CardSkeletonGroup } from "@/src/components/card-skeleton-group/card-skeleton-group"
+import HomeTapeSectionContainer from "@/src/sections/home/components/home-tape-section/home-tape-section-container"
 
 export default function HomeContainer() {
 	return (
@@ -17,6 +18,16 @@ export default function HomeContainer() {
 				}
 			>
 				<HomeBannerSectionContainer />
+			</Suspense>
+			<Suspense
+				fallback={
+					<CardSkeletonGroup
+						containerClassName="grid grid-cols-1 h-[100px] w-full"
+						count={1}
+					/>
+				}
+			>
+				<HomeTapeSectionContainer />
 			</Suspense>
 			<HomeOffers />
 			<BestSellingProducts />
