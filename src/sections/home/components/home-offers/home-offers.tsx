@@ -4,7 +4,7 @@ import React, { Suspense } from "react"
 
 export default function HomeOffers() {
 	return (
-		<section id="home-offers" className="bg-muted pt-4 pb-8">
+		<section id="home-offers" className="bg-muted pb-8">
 			<div className="pt-4">
 				<Suspense
 					fallback={
