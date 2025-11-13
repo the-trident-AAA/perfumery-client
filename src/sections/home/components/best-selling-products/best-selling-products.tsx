@@ -23,12 +23,6 @@ export default async function BestSellingProducts() {
 							<span className="">nuestros clientes</span>
 						</h2>
 					</div>
-
-					{/* Description */}
-					<p className="max-w-2xl font-serif mx-auto text-sm md:text-lg text-foreground leading-relaxed text-pretty">
-						Descubre las fragancias más amadas. Cada perfume ha sido
-						seleccionado por su calidad excepcional y popularidad
-					</p>
 				</div>
 
 				{/* Products Grid */}
@@ -43,22 +37,6 @@ export default async function BestSellingProducts() {
 					>
 						<BestSellingProductsList />
 					</Suspense>
-				</div>
-
-				{/* Trust indicators */}
-				<div className="flex px-4 sm:px-6 lg:px-8 flex-wrap items-center justify-center gap-6 md:gap-8 mt-4 md:mt-4 pt-12 border-t border-border">
-					<div className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
-						<div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-						<span>Productos auténticos</span>
-					</div>
-					<div className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
-						<div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-						<span>Envío gratuito</span>
-					</div>
-					<div className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
-						<div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-						<span>Garantía de calidad</span>
-					</div>
 				</div>
 			</div>
 		</section>
