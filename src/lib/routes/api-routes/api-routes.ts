@@ -61,6 +61,11 @@ export const apiRoutes = {
 		getByIdWithoutRelations: `${process.env.NEXT_PUBLIC_API_URL}users/find-one-without-relations/:id`,
 		edit: `${process.env.NEXT_PUBLIC_API_URL}users/:id`,
 	},
+	tapes: {
+		get: `${process.env.NEXT_PUBLIC_API_URL}tape`,
+		getById: `${process.env.NEXT_PUBLIC_API_URL}tape/:id`,
+		getMainTape: `${process.env.NEXT_PUBLIC_API_URL}tape/find-main-tape`,
+	},
 } as const
 
 export const tagsCacheByRoutes = {
@@ -102,5 +107,9 @@ export const tagsCacheByRoutes = {
 	users: {
 		singleTag: "user",
 		multipleTag: "users",
+	},
+	tapes: {
+		singleTag: "tape",
+		multipleTag: "tapes",
 	},
 } as const
