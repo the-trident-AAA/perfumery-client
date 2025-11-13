@@ -13,7 +13,7 @@ interface HomeBannerProps {
 
 export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 	return (
-		<div className="relative min-h-[250px] 2xs:min-h-[400px] 2xl:min-h-[400px] py-6 2xs:py-8 2xl:py-14 w-full overflow-hidden">
+		<div className="relative h-full py-6 2xs:py-8 2xl:py-14 w-full overflow-hidden">
 			<div className={cn("absolute inset-0")}>
 				<Image
 					src={homeBanner.image}
@@ -33,7 +33,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 						<h1 className="text-xl 2xs:text-4xl md:text-5xl font-bold text-white">
 							{homeBanner.title}
 						</h1>
-						<p className="text-base 2xs:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
+						<p className="text-sm 2xs:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
 							{homeBanner.description}
 						</p>
 					</div>
@@ -72,7 +72,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 									className="flex items-center gap-2 text-white"
 								>
 									<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-									<span className="text-[11px] 2xs:text-xs lg:text-sm">
+									<span className="text-[10px] 2xs:text-xs lg:text-sm">
 										{tip}
 									</span>
 								</div>
