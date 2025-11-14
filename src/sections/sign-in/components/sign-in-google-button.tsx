@@ -15,7 +15,7 @@ export default function SignInGoogleButton() {
 	return (
 		<Button
 			variant="outline"
-			className="w-full flex items-center gap-2"
+			className="w-full bg-primary flex items-center gap-2"
 			disabled={loadingGoogle}
 			onClick={() => {
 				signInWithGoogle()
