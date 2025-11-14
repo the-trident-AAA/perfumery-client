@@ -1,7 +1,7 @@
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
-import { HomeBanner } from "@/src/lib/types/home-banners"
+import { groupFilters, HomeBanner } from "@/src/lib/types/home-banners"
 import { cn } from "@/src/lib/utils/utils"
 import { ArrowRight, ShoppingBag } from "lucide-react"
 import Image from "next/image"
@@ -54,7 +54,12 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 					)}
 
 					{homeBanner.buttonText && (
-						<NavigationComponent href={paths.perfumes().root}>
+						<NavigationComponent
+							href={
+								paths.perfumes(groupFilters(homeBanner.filters))
+									.root
+							}
+						>
 							<Button
 								variant={"secondary"}
 								className="group bg-secondary text-primary text-sm 2xs:text-base sm:text-base font-bold px-1 2xs:px-4 sm:px-4 py-1.5 2xs:py-2.5 sm:py-2.5 h-auto cursor-pointer rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-secondary"
