@@ -45,6 +45,7 @@ jobs:
             echo 'NEXT_PUBLIC_IMAGE_PROTOCOL=${{ secrets.NEXT_PUBLIC_IMAGE_PROTOCOL }}' >> .env &&
             echo 'GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}' >> .env &&
             echo 'GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}' >> .env &&
+            echo 'NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}' >> .env &&
             git checkout main &&
             git pull origin main &&
             docker-compose -f docker-compose.prod.yml pull &&
