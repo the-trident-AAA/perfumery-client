@@ -4,6 +4,7 @@ import SignInFormContainer from "./form/sign-in-form-container"
 import AppLogo from "@/src/components/app-logo/app-logo"
 import Link from "next/link"
 import { paths } from "@/src/lib/routes/paths"
+import SignInGoogleButton from "@/src/sections/sign-in/components/sign-in-google-button"
 
 export default function SignInContainer() {
 	return (
@@ -12,6 +13,9 @@ export default function SignInContainer() {
 			<div className="w-full md:w-1/2 flex items-center justify-center flex-col gap-12 p-10">
 				<AppLogo withText={false} avatarClassName="h-42 w-42" />
 				<SignInFormContainer />
+				<div className="max-w-xl mx-auto">
+					<SignInGoogleButton />
+				</div>
 				<div className="space-y-4">
 					<div className="relative">
 						<div className="absolute inset-0 flex items-center">
