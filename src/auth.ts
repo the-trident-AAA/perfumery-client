@@ -71,23 +71,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		async signIn({ account }) {
 			if (account?.provider === "google") {
 				const googleToken = account.id_token
+				console.log("El google id es")
+				console.log(account.id_token)
 
-				// Llamar a tu API Nest
-				const res = await fetch(
-					process.env.API_URL + "/auth/google-login",
-					{
-						method: "POST",
-						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify({ googleToken }),
-					},
-				)
-
-				const data = await res.json()
-				if (!res.ok || data.error)
-					return false
-
-					// Guardamos temporalmente la info en el account
-				;(account as any).backendUser = data.user
+				// Guardamos temporalmente la info en el account
+				//;(account as any).backendUser = {id}
 			}
 
 			return true
