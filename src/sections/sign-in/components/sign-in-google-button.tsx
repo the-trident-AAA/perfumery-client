@@ -5,7 +5,7 @@ import useGoogleSignIn from "@/src/sections/sign-in/form/hooks/use-google-sign-i
 import { FcGoogle } from "react-icons/fc"
 import { toast } from "react-toastify"
 
-export default function GoogleButton() {
+export default function SignInGoogleButton() {
 	const { signInWithGoogle, loading: loadingGoogle } = useGoogleSignIn({
 		onSignInAction: () => {
 			toast.success("Inicio de sesión con Google exitoso")
