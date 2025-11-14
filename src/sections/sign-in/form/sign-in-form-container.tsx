@@ -11,6 +11,7 @@ import { Button } from "@/src/components/ui/button"
 import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 import useVerifyStateAccount from "@/src/sections/auth/hooks/use-verify-state-account"
 import Link from "next/link"
+import AppLogo from "@/src/components/app-logo/app-logo"
 
 export default function SignInFormContainer() {
 	const {
@@ -50,10 +51,15 @@ export default function SignInFormContainer() {
 	return (
 		<FormProvider {...form}>
 			<div className=" flex flex-col gap-4 justify-center max-w-md mx-auto w-full">
-				<h1 className="text-3xl font-bold">Inicie sesión</h1>
-				<p className="text-secondary font-semibold">
-					Ingrese el correo electrónico asociado a su cuenta
-				</p>
+				<div className="flex items-center gap-2">
+					<AppLogo withText={false} avatarClassName="h-32 w-32" />
+					<div className="flex flex-col gap-2">
+						<h1 className="text-3xl font-bold">Inicie sesión</h1>
+						<p className="text-secondary font-semibold">
+							Ingrese el correo electrónico asociado a su cuenta
+						</p>
+					</div>
+				</div>
 				{verifyStateAccountError && (
 					<AlertDestructive title={verifyStateAccountError} />
 				)}
