@@ -1,15 +1,11 @@
 "use client"
 import { Button } from "@/src/components/ui/button"
-import { paths } from "@/src/lib/routes/paths"
 import useGoogleSignIn from "@/src/sections/sign-in/form/hooks/use-google-sign-in"
 import { FcGoogle } from "react-icons/fc"
-import { toast } from "react-toastify"
 
 export default function SignInGoogleButton() {
 	const { signInWithGoogle, loading: loadingGoogle } = useGoogleSignIn({
-		onSignInAction: () => {
-			toast.success("Inicio de sesión con Google exitoso")
-		},
+		onSignInAction: () => {},
 	})
 	return (
 		<Button
