@@ -53,16 +53,18 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 						</div>
 					)}
 
-					<NavigationComponent href={paths.perfumes().root}>
-						<Button
-							variant={"secondary"}
-							className="group bg-secondary text-primary text-sm 2xs:text-base sm:text-base font-bold px-1 2xs:px-4 sm:px-4 py-1.5 2xs:py-2.5 sm:py-2.5 h-auto cursor-pointer rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-secondary"
-						>
-							<ShoppingBag className="size-4 2xs:size-4 2xs:mr-3" />
-							Explorar Colección
-							<ArrowRight className="size-4 2xs:size-4 2xs:ml-3 transition-transform group-hover:translate-x-2" />
-						</Button>
-					</NavigationComponent>
+					{homeBanner.buttonText && (
+						<NavigationComponent href={paths.perfumes().root}>
+							<Button
+								variant={"secondary"}
+								className="group bg-secondary text-primary text-sm 2xs:text-base sm:text-base font-bold px-1 2xs:px-4 sm:px-4 py-1.5 2xs:py-2.5 sm:py-2.5 h-auto cursor-pointer rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-secondary"
+							>
+								<ShoppingBag className="size-4 2xs:size-4 2xs:mr-3" />
+								{homeBanner.buttonText}
+								<ArrowRight className="size-4 2xs:size-4 2xs:ml-3 transition-transform group-hover:translate-x-2" />
+							</Button>
+						</NavigationComponent>
+					)}
 
 					{homeBanner.infoTips.length > 0 && (
 						<div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-6 pt-3 2xs:pt-4">
