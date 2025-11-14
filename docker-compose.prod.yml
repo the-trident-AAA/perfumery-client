@@ -18,6 +18,8 @@ services:
             - NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER=${NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER:-56884181}
             - NEXT_PUBLIC_IMAGE_PATH=${NEXT_PUBLIC_IMAGE_PATH:-/perfumery/}
             - NEXT_PUBLIC_IMAGE_PROTOCOL=${NEXT_PUBLIC_IMAGE_PROTOCOL:-http}
+            - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-clientid}
+            - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-secretgoogle}
         restart: unless-stopped
         networks:
             - perfumery-network
