@@ -1,6 +1,7 @@
 "use client"
 import { useCallback, useState } from "react"
 import { signIn as nextAuthSignIn } from "next-auth/react"
+import { paths } from "@/src/lib/routes/paths"
 
 interface Props {
 	onSignInAction: () => void
@@ -16,7 +17,8 @@ export default function useGoogleSignIn({ onSignInAction }: Props) {
 			setError(null)
 
 			const res = await nextAuthSignIn("google", {
-				redirect: false,
+				redirect: true,
+				callbackUrl: paths.home.root,
 			})
 
 			if (res?.error) {
