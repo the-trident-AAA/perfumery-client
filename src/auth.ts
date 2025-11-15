@@ -72,16 +72,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			if (account?.provider === "google") {
 				const googleToken = account.id_token
 				console.log(googleToken)
-				//const res = await loginWithGoogle(googleToken as string)
+				const res = await loginWithGoogle(googleToken as string)
 
-				//if (!res.response || res.error)
-				//return false
+				if (!res.response || res.error)
+					return false
 
-				// Guardamos temporalmente la info en el account
-				//;(account as any).backendUser = res.response
-
-				// Guardamos temporalmente la info en el account
-				//;(account as any).backendUser = {id}
+					//Guardamos temporalmente la info en el account
+				;(account as any).backendUser = res.response
 			}
 
 			return true
