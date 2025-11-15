@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google"
-import { login } from "@/src/lib/services/auth"
+import { login, loginWithGoogle } from "@/src/lib/services/auth"
 import type { JWT } from "next-auth/jwt"
 interface CredentialsType {
 	username: string
@@ -71,8 +71,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		async signIn({ account }) {
 			if (account?.provider === "google") {
 				const googleToken = account.id_token
-				console.log("El google id es")
-				console.log(account.id_token)
+				// Llamar a tu API Nest
+				const res = await loginWithGoogle(googleToken as string)
+
+				if (!res.response || res.error)
+					return false
+
+					// Guardamos temporalmente la info en el account
+				;(account as any).backendUser = res.response
 
 				// Guardamos temporalmente la info en el account
 				//;(account as any).backendUser = {id}
