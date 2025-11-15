@@ -18,6 +18,26 @@ const nextConfig: NextConfig = {
 				hostname: process.env.NEXT_PUBLIC_IMAGE_HOST || "localhost",
 				pathname: process.env.NEXT_PUBLIC_IMAGE_PATH || "/perfumery/**",
 			},
+			{
+				protocol: "https",
+				hostname: "lh3.googleusercontent.com",
+				pathname: "/**",
+			},
+			{
+				protocol: "https",
+				hostname: "lh4.googleusercontent.com",
+				pathname: "/**",
+			},
+			{
+				protocol: "https",
+				hostname: "lh5.googleusercontent.com",
+				pathname: "/**",
+			},
+			{
+				protocol: "https",
+				hostname: "lh6.googleusercontent.com",
+				pathname: "/**",
+			},
 		],
 	},
 }
