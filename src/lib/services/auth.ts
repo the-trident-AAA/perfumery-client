@@ -13,6 +13,25 @@ import { User as UserType } from "@/src/lib/types/users"
 import { User } from "next-auth"
 import { cookies } from "next/headers"
 
+export async function loginWithGoogle(idToken: string) {
+	const cookieStore = await cookies()
+	const sessionId = cookieStore.get("guestSession")?.value
+
+	const res = await fetch(apiRoutes.auth.loginWithGoogle, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify({
+			idToken,
+			sessionId,
+		}),
+	})
+	if (res.ok) cookieStore.delete("guestSession")
+
+	return buildApiResponse<User>(res)
+}
+
 export async function login(credentials: CredentialsDTO) {
 	const cookieStore = await cookies()
 	const sessionId = cookieStore.get("guestSession")?.value
