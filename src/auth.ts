@@ -66,12 +66,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		/**
 		 * ------------------ SIGN IN ------------------
 		 * Aquí obtenemos el id_token de Google
-		 * y llamamos a tu API propia.
+		 * llamamos a la API.
 		 */
 		async signIn({ account }) {
 			if (account?.provider === "google") {
 				const googleToken = account.id_token
-				// Llamar a tu API Nest
+
 				const res = await loginWithGoogle(googleToken as string)
 
 				if (!res.response || res.error)
@@ -116,7 +116,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 		/**
 		 * ------------------ SESSION ------------------
-		 * Lo que devuelvas aquí es visible para tu app cliente.
+		 * Lo que devuelvas aquí es visible la app cliente.
 		 */
 		async session({ session, token }) {
 			const t = token as JWT
@@ -124,7 +124,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			session.accessToken = t.accessToken ?? undefined
 
 			session.user = {
-				...session.user, // <--- FIX AQUÍ
+				...session.user,
 				id: t.id!,
 				username: t.username!,
 				email: t.email!,
