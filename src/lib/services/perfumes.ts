@@ -27,7 +27,7 @@ export async function getBestSellersPerfumes() {
 
 export async function getPerfumesList(params: IQueryable) {
 	const url = new QueryParamsURLFactory(
-		params,
+		{ ...params, isHidden: false },
 		apiRoutes.perfumes.get,
 	).build()
 
