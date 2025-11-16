@@ -13,7 +13,16 @@ interface Props {
 const offerImagePlaceHolder = "/elegant-product-showcase.png"
 
 export default function OfferBanner({
-	offer: { id, name, description, image, offerType, scope, discount },
+	offer: {
+		id,
+		name,
+		description,
+		image,
+		mobileImage,
+		offerType,
+		scope,
+		discount,
+	},
 }: Props) {
 	return (
 		<NavigationComponent
@@ -28,7 +37,15 @@ export default function OfferBanner({
 						height={600}
 						quality={100}
 						alt={`Oferta ${name}: ${description.slice(0, 60)}...`}
-						className="object-cover w-full h-full transition-all duration-700 group-hover:scale-105"
+						className="object-cover w-full h-full hidden sm:flex transition-all duration-700 group-hover:scale-105"
+					/>
+					<Image
+						src={mobileImage || offerImagePlaceHolder}
+						width={500}
+						height={400}
+						quality={100}
+						alt={`Oferta ${name}: ${description.slice(0, 60)}...`}
+						className="object-cover w-full h-full flex sm:hidden transition-all duration-700 group-hover:scale-105"
 					/>
 					<div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-black/70" />
 				</div>
