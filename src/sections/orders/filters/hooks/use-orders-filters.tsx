@@ -22,7 +22,7 @@ export default function useOrdersFilters({
 	urlFilters = false,
 }: Props) {
 	const searchParams = useSearchParams()
-	const { updateFiltersInUrl } = useUrlFilters()
+	const { updateFiltersInUrl } = useUrlFilters({})
 	const [filters, setFilters] = useState<OrdersFilters>(defaultsFilters)
 
 	useEffect(() => {
