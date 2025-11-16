@@ -122,8 +122,8 @@ export default function StandardCarousel<T extends { id: number | string }>({
 											className={cn(
 												"h-1 sm:h-1.5 rounded-full transition-all duration-300",
 												currentIndex === index
-													? "w-6 sm:w-8 bg-white"
-													: "w-1 sm:w-1.5 bg-white/50 hover:bg-white/70",
+													? "w-6 sm:w-8 bg-secondary"
+													: "w-1 sm:w-1.5 bg-secondary/50 hover:bg-secondary/70",
 											)}
 											aria-label={`Ir a la sección ${index + 1}`}
 										/>
