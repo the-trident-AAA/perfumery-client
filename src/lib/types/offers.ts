@@ -5,6 +5,7 @@ export interface Offer {
 	id: string
 	name: string
 	image?: string
+	mobileImage?: string
 	description: string
 	scope: string
 	discount: number
