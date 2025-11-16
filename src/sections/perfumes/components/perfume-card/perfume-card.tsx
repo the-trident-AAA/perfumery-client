@@ -255,11 +255,11 @@ export default function PerfumeCard({ perfume }: Props) {
 									</div>
 									<div className="flex flex-wrap gap-2 md:gap-1.5 lg:gap-1.5">
 										{perfume.scents
-											.slice(0, 3)
+											.slice(0, 1)
 											.map((scent, index) => (
 												<Badge
 													key={index}
-													className="text-xs md:text-[10px] lg:text-[9px] bg-white/20 max-w-[45px] leading-tight truncate text-white border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-200 transform hover:scale-105"
+													className="text-sm md:text-xs lg:text-xs bg-white/20 leading-tight text-white border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-200 transform hover:scale-105 flex-shrink-0 min-w-max px-3 py-1.5"
 													style={{
 														animation: `fadeIn 0.5s ease-out ${index * 100}ms both`,
 													}}
@@ -267,11 +267,6 @@ export default function PerfumeCard({ perfume }: Props) {
 													{scent}
 												</Badge>
 											))}
-										{perfume.scents.length > 3 && (
-											<Badge className="text-xs md:text-[10px] lg:text-[9px] px-1  bg-white/20 text-white border-primary/40 backdrop-blur-sm">
-												+{perfume.scents.length - 3}
-											</Badge>
-										)}
 									</div>
 								</div>
 							</div>
