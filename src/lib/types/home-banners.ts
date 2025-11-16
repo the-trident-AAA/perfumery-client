@@ -11,8 +11,8 @@ export const getTextColorText = (textColor: TextColor) => {
 }
 
 export const getTextColorColor = (textColor: TextColor) => {
-	if (textColor === TextColor.LIGHT) return "text-black"
-	if (textColor === TextColor.DARK) return "text-white"
+	if (textColor === TextColor.LIGHT) return "text-primary"
+	if (textColor === TextColor.DARK) return "text-secondary"
 
 	return "text-black"
 }
