@@ -17,7 +17,15 @@ export default function HomeTapeSection({ tape }: Props) {
 					height={1080}
 					quality={100}
 					alt={`${tape.name}`}
-					className="h-full w-full object-center"
+					className="h-full w-full hidden sm:flex object-center"
+				/>
+				<Image
+					src={tape.mobileImage}
+					width={500}
+					height={400}
+					quality={100}
+					alt={`${tape.name}`}
+					className="h-full w-full flex sm:hidden object-center"
 				/>
 			</div>
 		</div>
