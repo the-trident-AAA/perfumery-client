@@ -63,7 +63,7 @@ export default function OfferBanner({
 							<div className="space-y-1 sm:space-y-2 animate-fade-in-up">
 								<h2
 									className="
-							text-xl 2xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl 
+							text-lg 2xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl 
 							font-black tracking-tight text-balance
 						"
 								>
