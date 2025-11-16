@@ -1,7 +1,11 @@
 import NavigationComponent from "@/src/components/navigation-component/navigation-component"
 import { Button } from "@/src/components/ui/button"
 import { paths } from "@/src/lib/routes/paths"
-import { groupFilters, HomeBanner } from "@/src/lib/types/home-banners"
+import {
+	getTextColorColor,
+	groupFilters,
+	HomeBanner,
+} from "@/src/lib/types/home-banners"
 import { cn } from "@/src/lib/utils/utils"
 import { ArrowRight, ShoppingBag } from "lucide-react"
 import Image from "next/image"
@@ -34,13 +38,15 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 				<div className="absolute inset-0 bg-gradient-to-b" />
 			</div>
 
-			<div className="relative z-10 h-full lg:max-w-6xl 2xl:max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
+			<div
+				className={`relative z-10 h-full ${getTextColorColor(homeBanner.textColor)} lg:max-w-6xl 2xl:max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center`}
+			>
 				<div className="max-w-3xl space-y-3 2xs:space-y-6">
 					<div className="space-y-1 2xs:space-y-2">
-						<h1 className="text-xl 2xs:text-4xl md:text-5xl font-bold text-black">
+						<h1 className="text-xl 2xs:text-4xl md:text-5xl font-bold">
 							{homeBanner.title}
 						</h1>
-						<p className="text-sm 2xs:text-lg md:text-xl text-black/90 leading-relaxed max-w-2xl">
+						<p className="text-sm 2xs:text-lg md:text-xl leading-relaxed max-w-2xl">
 							{homeBanner.description}
 						</p>
 					</div>
@@ -48,7 +54,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 					{homeBanner.statisticalTips.length > 0 && (
 						<div className="grid grid-cols-3 w-full items-center">
 							{homeBanner.statisticalTips.map((tip, i) => (
-								<div key={i} className="text-center text-black">
+								<div key={i} className="text-center">
 									<div className="text-sm 2xs:text-lg">
 										{tip.statistics}
 									</div>
@@ -83,7 +89,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 							{homeBanner.infoTips.map((tip, i) => (
 								<div
 									key={i}
-									className="flex items-center gap-2 text-white"
+									className="flex items-center gap-2"
 								>
 									<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
 									<span className="text-[10px] 2xs:text-xs lg:text-sm">
