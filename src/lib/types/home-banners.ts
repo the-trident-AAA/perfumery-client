@@ -1,9 +1,30 @@
+export enum TextColor {
+	DARK = "oscuro",
+	LIGHT = "claro",
+}
+
+export const getTextColorText = (textColor: TextColor) => {
+	if (textColor === TextColor.LIGHT) return "Claro"
+	if (textColor === TextColor.DARK) return "Oscuro"
+
+	return "Oscuro"
+}
+
+export const getTextColorColor = (textColor: TextColor) => {
+	if (textColor === TextColor.LIGHT) return "text-black"
+	if (textColor === TextColor.DARK) return "text-white"
+
+	return "text-black"
+}
+
 export interface HomeBanner {
 	id: string
 	title: string
 	description: string
 	buttonText: string
+	textColor: TextColor
 	image: string
+	mobileImage: string
 	statisticalTips: {
 		statistics: string
 		info: string
@@ -17,7 +38,9 @@ export interface HomeBannerDetails {
 	title: string
 	description: string
 	buttonText: string
+	textColor: TextColor
 	image: string
+	mobileImage: string
 	statisticalTips: {
 		statistics: string
 		info: string
