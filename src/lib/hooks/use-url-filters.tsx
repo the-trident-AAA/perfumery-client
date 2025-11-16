@@ -3,7 +3,11 @@ import { debounce } from "lodash"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useCallback, useMemo } from "react"
 
-export default function useUrlFilters() {
+interface Props {
+	scroll?: boolean
+}
+
+export default function useUrlFilters({ scroll = false }: Props) {
 	const { replace } = useRouter()
 	const searchParams = useSearchParams()
 	const pathname = usePathname()
@@ -32,10 +36,10 @@ export default function useUrlFilters() {
 					Object.keys(updatedFilters).length > 0
 						? `${pathname}?${searchUrl.toString()}`
 						: pathname,
-					{ scroll: false },
+					{ scroll },
 				)
 			}, 300),
-		[searchParams, pathname, replace],
+		[searchParams, pathname, replace, scroll],
 	)
 
 	const updateFiltersInUrl = useCallback(
