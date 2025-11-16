@@ -29,7 +29,7 @@ export default function useServerPagination({ defaultPagination }: Props) {
 			return prev
 		})
 	}, [defaultPagination?.page, defaultPagination?.limit])
-	const { updateFiltersInUrl } = useUrlFilters()
+	const { updateFiltersInUrl } = useUrlFilters({ scroll: true })
 
 	function serverHandleChangePage(page: number) {
 		const newPagination = {
