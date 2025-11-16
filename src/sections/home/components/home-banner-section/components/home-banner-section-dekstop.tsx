@@ -46,7 +46,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 						<h1 className="text-lg 2xs:text-4xl md:text-5xl font-bold">
 							{homeBanner.title}
 						</h1>
-						<p className="text-sm 2xs:text-lg md:text-xl  max-w-[220px]">
+						<p className="text-sm 2xs:text-lg md:text-xl  max-w-[220px] sm:max-w-full">
 							{homeBanner.description}
 						</p>
 					</div>
