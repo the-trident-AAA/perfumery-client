@@ -21,9 +21,16 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 					height={1080}
 					quality={100}
 					alt={`${homeBanner.title}`}
-					className="h-full w-full object-center"
+					className="h-full w-full hidden sm:flex object-center"
 				/>
-
+				<Image
+					src={homeBanner.mobileImage}
+					width={500}
+					height={400}
+					quality={100}
+					alt={`${homeBanner.title}`}
+					className="h-full w-full flex sm:hidden object-center"
+				/>
 				<div className="absolute inset-0 bg-gradient-to-b" />
 			</div>
 
