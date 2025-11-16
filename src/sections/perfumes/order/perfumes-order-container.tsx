@@ -4,7 +4,7 @@ import useUrlFilters from "@/src/lib/hooks/use-url-filters"
 import React from "react"
 
 export default function PerfumesOrderContainer() {
-	const { updateFiltersInUrl } = useUrlFilters()
+	const { updateFiltersInUrl } = useUrlFilters({})
 	return (
 		<SorterComponent
 			sortOptions={[
