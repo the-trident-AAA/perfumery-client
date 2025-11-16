@@ -21,19 +21,19 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 					height={1080}
 					quality={100}
 					alt={`${homeBanner.title}`}
-					className="h-full w-full object-cover"
+					className="h-full w-full object-center"
 				/>
 
-				<div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+				<div className="absolute inset-0 bg-gradient-to-b" />
 			</div>
 
 			<div className="relative z-10 h-full lg:max-w-6xl 2xl:max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
 				<div className="max-w-3xl space-y-3 2xs:space-y-6">
 					<div className="space-y-1 2xs:space-y-2">
-						<h1 className="text-xl 2xs:text-4xl md:text-5xl font-bold text-white">
+						<h1 className="text-xl 2xs:text-4xl md:text-5xl font-bold text-black">
 							{homeBanner.title}
 						</h1>
-						<p className="text-sm 2xs:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
+						<p className="text-sm 2xs:text-lg md:text-xl text-black/90 leading-relaxed max-w-2xl">
 							{homeBanner.description}
 						</p>
 					</div>
@@ -41,7 +41,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 					{homeBanner.statisticalTips.length > 0 && (
 						<div className="grid grid-cols-3 w-full items-center">
 							{homeBanner.statisticalTips.map((tip, i) => (
-								<div key={i} className="text-center text-white">
+								<div key={i} className="text-center text-black">
 									<div className="text-sm 2xs:text-lg">
 										{tip.statistics}
 									</div>
