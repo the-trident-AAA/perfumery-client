@@ -25,7 +25,7 @@ interface Props {
 }
 
 export default function usePerfumesFilters({ setPagination }: Props) {
-	const { updateFiltersInUrl } = useUrlFilters()
+	const { updateFiltersInUrl } = useUrlFilters({})
 	const searchParams = useSearchParams()
 	const [filters, setFilters] = useState<PerfumesFilters>({
 		priceRange: [0, 300],

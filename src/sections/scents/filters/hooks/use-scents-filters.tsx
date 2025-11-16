@@ -18,7 +18,7 @@ export default function useScentsFilters({
 	setPagination,
 	urlFilters = true,
 }: Props) {
-	const { updateFiltersInUrl } = useUrlFilters()
+	const { updateFiltersInUrl } = useUrlFilters({})
 	const [filters, setFilters] = useState<ScentsFilters>({})
 
 	async function handleChangeFilters(updatedFilters: ScentsFilters) {

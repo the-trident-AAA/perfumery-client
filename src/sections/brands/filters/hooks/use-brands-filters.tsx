@@ -18,7 +18,7 @@ export default function useBrandsFilters({
 	setPagination,
 	urlFilters = true,
 }: Props) {
-	const { updateFiltersInUrl } = useUrlFilters()
+	const { updateFiltersInUrl } = useUrlFilters({})
 	const [filters, setFilters] = useState<BrandsFilters>({})
 
 	async function handleChangeFilters(updatedFilters: BrandsFilters) {

@@ -23,7 +23,7 @@ export default function useOffersFilters({
 	setPagination,
 	urlFilters = true,
 }: Props) {
-	const { updateFiltersInUrl } = useUrlFilters()
+	const { updateFiltersInUrl } = useUrlFilters({})
 	const [filters, setFilters] = useState<OffersFilters>({
 		discount: [0, 100],
 	})
