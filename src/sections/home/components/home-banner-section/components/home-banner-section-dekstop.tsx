@@ -17,7 +17,7 @@ interface HomeBannerProps {
 
 export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 	return (
-		<div className="relative h-full py-6 2xs:py-8 2xl:py-14 w-full overflow-hidden">
+		<div className="relative h-full min-h-[290px] sm:min-h-[400px] py-6 2xs:py-8 2xl:py-14 w-full overflow-hidden">
 			<div className={cn("absolute inset-0")}>
 				<Image
 					src={homeBanner.image}
@@ -35,7 +35,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 					alt={`${homeBanner.title}`}
 					className="h-full w-full flex sm:hidden object-center"
 				/>
-				<div className="absolute inset-0 bg-gradient-to-b" />
+				<div className="absolute inset-0 " />
 			</div>
 
 			<div
@@ -43,10 +43,10 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 			>
 				<div className="max-w-3xl space-y-3 2xs:space-y-6">
 					<div className="space-y-1 2xs:space-y-2">
-						<h1 className="text-xl 2xs:text-4xl md:text-5xl font-bold">
+						<h1 className="text-lg 2xs:text-4xl md:text-5xl font-bold">
 							{homeBanner.title}
 						</h1>
-						<p className="text-sm 2xs:text-lg md:text-xl leading-relaxed max-w-2xl">
+						<p className="text-sm 2xs:text-lg md:text-xl  max-w-[220px]">
 							{homeBanner.description}
 						</p>
 					</div>
@@ -55,10 +55,10 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 						<div className="grid grid-cols-3 w-full items-center">
 							{homeBanner.statisticalTips.map((tip, i) => (
 								<div key={i} className="text-center">
-									<div className="text-sm 2xs:text-lg">
+									<div className="text-xs 2xs:text-lg">
 										{tip.statistics}
 									</div>
-									<div className="text-sm 2xs:text-2xl font-bold">
+									<div className="text-xs 2xs:text-2xl font-bold">
 										{tip.info}
 									</div>
 								</div>
@@ -75,11 +75,11 @@ export function HomeBannerSectionDekstop({ homeBanner }: HomeBannerProps) {
 						>
 							<Button
 								variant={"secondary"}
-								className="group bg-secondary text-primary text-sm 2xs:text-base sm:text-base font-bold px-1 2xs:px-4 sm:px-4 py-1.5 2xs:py-2.5 sm:py-2.5 h-auto cursor-pointer rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-secondary"
+								className="group bg-secondary text-primary text-xs 2xs:text-base sm:text-base font-bold px-1 2xs:px-4 sm:px-4 py-1.5 2xs:py-2.5 sm:py-2.5 h-auto cursor-pointer rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-secondary"
 							>
-								<ShoppingBag className="size-4 2xs:size-4 2xs:mr-3" />
+								<ShoppingBag className="size-3.5 2xs:size-4 2xs:mr-3" />
 								{homeBanner.buttonText}
-								<ArrowRight className="size-4 2xs:size-4 2xs:ml-3 transition-transform group-hover:translate-x-2" />
+								<ArrowRight className="size-3.5 2xs:size-4 2xs:ml-3 transition-transform group-hover:translate-x-2" />
 							</Button>
 						</NavigationComponent>
 					)}
