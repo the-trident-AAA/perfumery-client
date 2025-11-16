@@ -154,14 +154,7 @@ function TargetDiscount({ discount }: { discount: number }) {
 					<Sparkles className="absolute hidden lg:flex bottom-4 left-4 h-4 w-4 text-yellow-400 animate-pulse delay-700" />
 
 					<div className="relative z-10 text-center text-primary-foreground space-y-2 lg:space-y-4">
-						<p className="text-[10px] 2xs:text-xs sm:text-sm lg:text-base font-bold tracking-widest uppercase">
-							En tienda y online
-						</p>
-
 						<div className="space-y-1 sm:space-y-2">
-							<p className="text-xs sm:text-xl lg:text-xl font-black tracking-tight">
-								HASTA
-							</p>
 							<div className="relative">
 								<span
 									className="
