@@ -6,6 +6,7 @@ export interface User {
 	avatar?: string
 	email: string
 	role: string
+	hasPassword: boolean
 }
 
 export interface UserEditDTO {
