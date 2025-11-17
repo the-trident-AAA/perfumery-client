@@ -4,6 +4,7 @@ import { buildApiResponse } from "@/src/lib/api"
 import { apiRoutes } from "@/src/lib/routes/api-routes/api-routes"
 import {
 	ChangePasswordDTO,
+	CreateNewPasswordDTO,
 	CredentialsDTO,
 	ForgotPasswordDTO,
 	RegisterDTO,
@@ -103,6 +104,22 @@ export async function changePasswordUser(changePasswordDTO: ChangePasswordDTO) {
 			body: JSON.stringify(changePasswordDTO),
 		},
 	)
+
+	return await buildApiResponse<User>(res)
+}
+
+export async function createNewPassword(
+	createNewPasswordDTO: CreateNewPasswordDTO,
+) {
+	const session = await auth()
+	const res = await fetch(apiRoutes.auth.createNewPassword, {
+		method: "POST",
+		headers: {
+			Authorization: "Bearer " + session?.accessToken,
+			"content-type": "application/json",
+		},
+		body: JSON.stringify(createNewPasswordDTO),
+	})
 
 	return await buildApiResponse<User>(res)
 }
