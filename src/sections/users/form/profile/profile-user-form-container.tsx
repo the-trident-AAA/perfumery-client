@@ -20,6 +20,7 @@ import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 import { useRouter } from "next/navigation"
 import { useContext } from "react"
 import { ProfileContext } from "@/src/sections/auth/context/profile-context/profile-context"
+import CreateNewPasswordContainer from "@/src/sections/users/form/profile/components/create-new-password/create-new-password-container"
 
 interface Props {
 	user: User
@@ -102,7 +103,11 @@ export default function ProfileUserFormContainer({ user }: Props) {
 						</Card>
 					</form>
 				</Form>
-				<ChangePasswordMode user={user} />
+				{user.hasPassword ? (
+					<ChangePasswordMode user={user} />
+				) : (
+					<CreateNewPasswordContainer />
+				)}
 			</div>
 			<div className="flex gap-2 justify-end">
 				<Button
