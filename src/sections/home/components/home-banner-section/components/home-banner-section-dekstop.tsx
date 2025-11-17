@@ -45,7 +45,7 @@ export function HomeBannerSectionDekstop({ homeBanner, index }: Props) {
 			>
 				<div className="max-w-3xl flex flex-col justify-center sm:items-center space-y-3 pl-8 2xs:space-y-6">
 					<div className="space-y-1 w-full flex flex-col sm:items-center justify-center 2xs:space-y-2">
-						<h1 className="text-xl sm:text-center max-w-[220px] 2xs:text-4xl md:text-5xl font-bold">
+						<h1 className="text-xl sm:text-center max-w-[220px] sm:max-w-full 2xs:text-4xl md:text-5xl font-bold">
 							{homeBanner.title}
 						</h1>
 						<p className="text-xs 2xs:text-lg md:text-xl sm:text-center max-w-[220px] sm:max-w-full">
