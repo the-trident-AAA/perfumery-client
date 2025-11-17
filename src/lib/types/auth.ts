@@ -3,6 +3,7 @@ import { ForgotPassword } from "@/src/sections/forgot-password/form/schemas/forg
 import { Register } from "@/src/sections/registration/form/schemas/register-schema"
 import { Credentials } from "@/src/sections/sign-in/form/schemas/credentials-schema"
 import { ChangePassword } from "@/src/sections/users/form/profile/components/change-password-mode-form/schemas/change-password-schema"
+import { CreateNewPassword } from "@/src/sections/users/form/profile/components/create-new-password/form/schemas/create-new-password-schema"
 
 export interface CredentialsDTO {
 	username: string
@@ -17,6 +18,10 @@ export interface ChangePasswordDTO {
 export interface ForgotPasswordDTO {
 	userId: string
 	otp: string
+	newPassword: string
+}
+
+export interface CreateNewPasswordDTO {
 	newPassword: string
 }
 
@@ -52,6 +57,14 @@ export const convertChangePasswordDTO = (
 ): ChangePasswordDTO => {
 	return {
 		...changePassword,
+	}
+}
+
+export const convertCreateNewPasswordDTO = (
+	createNewPassword: CreateNewPassword,
+): CreateNewPasswordDTO => {
+	return {
+		...createNewPassword,
 	}
 }
 
