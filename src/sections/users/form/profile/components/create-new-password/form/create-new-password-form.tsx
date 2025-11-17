@@ -3,7 +3,7 @@ import React from "react"
 
 export default function CreateNewPasswordForm() {
 	return (
-		<div>
+		<div className="flex flex-col gap-3">
 			<RHFPasswordField
 				name="newPassword"
 				label="Nueva Contraseña"
