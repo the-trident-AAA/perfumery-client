@@ -87,7 +87,7 @@ export function HomeBannerSectionDekstop({ homeBanner, index }: Props) {
 					)}
 
 					{homeBanner.infoTips.length > 0 && (
-						<div className="flex flex-wrap gap-2 sm:gap-4 w-full sm:justify-center sm:items-center">
+						<div className="grid grid-cols-3 sm:flex sm:flex-wrap sm:gap-4 w-full sm:justify-center sm:items-center">
 							{homeBanner.infoTips.map((tip, i) => (
 								<div
 									key={i}
