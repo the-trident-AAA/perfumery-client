@@ -19,7 +19,9 @@ export default function useCreateNewPassword({ onNewPasswordAction }: Props) {
 				setError(null)
 
 				const res = await createNewPasswordService(
-					convertCreateNewPasswordDTO(createNewPassword),
+					convertCreateNewPasswordDTO({
+						newPassword: createNewPassword.newPassword,
+					}),
 				)
 				if (!res.response || res.error)
 					setError(

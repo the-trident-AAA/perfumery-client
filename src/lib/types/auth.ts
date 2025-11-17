@@ -61,7 +61,7 @@ export const convertChangePasswordDTO = (
 }
 
 export const convertCreateNewPasswordDTO = (
-	createNewPassword: CreateNewPassword,
+	createNewPassword: Omit<CreateNewPassword, "confirmPassword">,
 ): CreateNewPasswordDTO => {
 	return {
 		...createNewPassword,
