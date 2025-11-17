@@ -1,14 +1,18 @@
 import CreateNewPasswordFormContainer from "@/src/sections/users/form/profile/components/create-new-password/form/create-new-password-form-container"
 import React from "react"
 
-export default function CreateNewPasswordContainer() {
+interface Props {
+	userId: string
+}
+
+export default function CreateNewPasswordContainer({ userId }: Props) {
 	return (
 		<div className="flex flex-col gap-4">
 			<p>
 				Hola, para mayor seguridad introduzca la que quiera sea su
 				contraseña en este campo:
 			</p>
-			<CreateNewPasswordFormContainer />
+			<CreateNewPasswordFormContainer userId={userId} />
 		</div>
 	)
 }

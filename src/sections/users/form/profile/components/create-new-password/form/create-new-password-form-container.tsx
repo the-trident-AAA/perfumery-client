@@ -12,8 +12,14 @@ import {
 } from "@/src/sections/users/form/profile/components/create-new-password/form/schemas/create-new-password-schema"
 import { AlertDestructive } from "@/src/components/ui/alert-destructive"
 import CreateNewPasswordForm from "@/src/sections/users/form/profile/components/create-new-password/form/create-new-password-form"
+import { revalidateServerTags } from "@/src/lib/cache"
+import { tagsCacheByRoutes } from "@/src/lib/routes/api-routes/api-routes"
 
-export default function CreateNewPasswordFormContainer() {
+interface Props {
+	userId: string
+}
+
+export default function CreateNewPasswordFormContainer({ userId }: Props) {
 	const {
 		loading: submitLoading,
 		createNewPassword,
@@ -21,6 +27,9 @@ export default function CreateNewPasswordFormContainer() {
 	} = useCreateNewPassword({
 		onNewPasswordAction: () => {
 			toast.success("Contraseña creada con éxito")
+			revalidateServerTags(
+				tagsCacheByRoutes.users.singleTag + ": " + userId,
+			)
 		},
 	})
 	const form = useForm<CreateNewPassword>({

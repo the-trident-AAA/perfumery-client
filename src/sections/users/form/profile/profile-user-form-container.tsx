@@ -106,7 +106,7 @@ export default function ProfileUserFormContainer({ user }: Props) {
 				{user.hasPassword ? (
 					<ChangePasswordMode user={user} />
 				) : (
-					<CreateNewPasswordContainer />
+					<CreateNewPasswordContainer userId={user.id} />
 				)}
 			</div>
 			<div className="flex gap-2 justify-end">
