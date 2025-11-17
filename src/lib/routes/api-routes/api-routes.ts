@@ -11,6 +11,7 @@ export const apiRoutes = {
 		resetPassword: `${process.env.NEXT_PUBLIC_API_URL}auth/reset-password`,
 		activateAccount: `${process.env.NEXT_PUBLIC_API_URL}auth/activate-account`,
 		verifyEmail: `${process.env.NEXT_PUBLIC_API_URL}auth/verify-email`,
+		createNewPassword: `${process.env.NEXT_PUBLIC_API_URL}auth/create-new-password`,
 	},
 	perfumes: {
 		get: `${process.env.NEXT_PUBLIC_API_URL}perfume`,
