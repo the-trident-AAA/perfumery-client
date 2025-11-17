@@ -36,6 +36,7 @@ export default function CreateNewPasswordFormContainer({ userId }: Props) {
 		resolver: zodResolver(createNewPasswordSchema),
 		defaultValues: {
 			newPassword: "",
+			confirmPassword: "",
 		},
 	})
 

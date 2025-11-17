@@ -10,6 +10,12 @@ export default function CreateNewPasswordForm() {
 				placeholder="Ingrese la nueva contraseña"
 				fullWidth
 			/>
+			<RHFPasswordField
+				name="confirmPassword"
+				label="Confirmar Contraseña"
+				placeholder="Confirme la contraseña"
+				fullWidth
+			/>
 		</div>
 	)
 }
