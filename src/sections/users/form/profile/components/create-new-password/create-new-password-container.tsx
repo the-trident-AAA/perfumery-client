@@ -16,7 +16,7 @@ export default function CreateNewPasswordContainer({ userId }: Props) {
 	return (
 		<div className="flex flex-col gap-4">
 			<Card className="w-full bg-primary border-0 h-full">
-				<CardHeader className="pb-4">
+				<CardHeader>
 					<CardTitle className="flex items-center gap-2 text-lg">
 						<Lock className="w-5 h-5" />
 						Seguridad
