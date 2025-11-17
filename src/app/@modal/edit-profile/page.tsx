@@ -3,12 +3,7 @@ import ModalWrapper from "@/src/sections/modal-page/components/modal-wrapper/mod
 import ProfileUserFormContainer from "@/src/sections/users/form/profile/profile-user-form-container"
 import React from "react"
 
-type Props = {
-	params: Promise<{ id: string }>
-}
-
-export default async function EditProfilePage({ params }: Props) {
-	const { id } = await params
+export default async function EditProfilePage() {
 	// get the profile
 	const res = await getUserProfile()
 
