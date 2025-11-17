@@ -46,7 +46,7 @@ export default function CreateNewPasswordFormContainer({ userId }: Props) {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="w-full flex flex-1 flex-col justify-between gap-4 h-full"
+				className="w-full flex flex-1 flex-col gap-4 h-full"
 			>
 				{error && <AlertDestructive title={error} />}
 				<CreateNewPasswordForm />
