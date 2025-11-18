@@ -1,6 +1,35 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@layer utilities {
+	@keyframes fadeInUp {
+	  0% { opacity: 0; transform: translateY(20px); }
+	  100% { opacity: 1; transform: translateY(0); }
+	}
+	@keyframes bounceSubtle {
+	  0%, 100% { transform: translateY(0); }
+	  50% { transform: translateY(-5px); }
+	}
+	@keyframes spinSlow {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+	@keyframes slideUp {
+	  0% { opacity: 0; transform: translateY(10px); }
+	  100% { opacity: 1; transform: translateY(0); }
+	}
+	@keyframes fadeIn {
+	  0% { opacity: 0; }
+	  100% { opacity: 1; }
+	}
+  
+	.animate-fadeInUp { animation: fadeInUp 0.7s ease-out forwards; }
+	.animate-bounceSubtle { animation: bounceSubtle 2s infinite; }
+	.animate-spinSlow { animation: spinSlow 3s linear infinite; }
+	.animate-slideUp { animation: slideUp 0.5s ease-out forwards; }
+	.animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
+  }
+
 @theme {
 	--breakpoint-xs: 360px;
 	--breakpoint-2xs: 480px;
