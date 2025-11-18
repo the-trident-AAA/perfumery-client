@@ -1,4 +1,3 @@
-"use client"
 import { Sparkles, Zap, Gift, Eye } from "lucide-react"
 import Image from "next/image"
 import { getGenderColor, type Perfume } from "@/src/lib/types/perfumes"
@@ -23,10 +22,7 @@ export default function PerfumeCard({ perfume }: Props) {
 		name: perfume.name,
 		image: [perfume.image],
 		description: perfume.description,
-		brand: {
-			"@type": "Brand",
-			name: perfume.brand,
-		},
+		brand: { "@type": "Brand", name: perfume.brand },
 		offers: {
 			"@type": "Offer",
 			url: `https://perfumesdelpuro.com/perfumes/${perfume.id}`,
@@ -44,162 +40,54 @@ export default function PerfumeCard({ perfume }: Props) {
 			<Script
 				id={`product-structured-data-${perfume.id}`}
 				type="application/ld+json"
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(jsonLd),
-				}}
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
-			<style jsx>{`
-				@keyframes fadeInUp {
-					from {
-						opacity: 0;
-						transform: translateY(20px);
-					}
-					to {
-						opacity: 1;
-						transform: translateY(0);
-					}
-				}
 
-				@keyframes bounceSubtle {
-					0%,
-					100% {
-						transform: translateY(0);
-					}
-					50% {
-						transform: translateY(-5px);
-					}
-				}
-
-				@keyframes spinSlow {
-					from {
-						transform: rotate(0deg);
-					}
-					to {
-						transform: rotate(360deg);
-					}
-				}
-
-				@keyframes slideUp {
-					from {
-						opacity: 0;
-						transform: translateY(10px);
-					}
-					to {
-						opacity: 1;
-						transform: translateY(0);
-					}
-				}
-
-				@keyframes fadeIn {
-					from {
-						opacity: 0;
-					}
-					to {
-						opacity: 1;
-					}
-				}
-
-				.card {
-					animation: fadeInUp 0.7s ease-out forwards;
-				}
-
-				.floating-circle {
-					transform-origin: center;
-					transition: transform 0.3s ease;
-				}
-
-				.card:hover .floating-circle {
-					transform: scale(1.5);
-				}
-
-				.card:hover .dynamic-gradient {
-					opacity: 1;
-				}
-
-				.card:hover .background-pattern {
-					opacity: 0.1;
-				}
-
-				.card:hover .shine-effect {
-					transform: translateX(100%);
-				}
-
-				.card:hover .image-container img {
-					transform: scale(1.1);
-					filter: brightness(1.1);
-				}
-
-				.card:hover .overlay-content {
-					opacity: 1;
-				}
-
-				.card:hover .divider-line {
-					transform: scaleX(1);
-				}
-
-				.card:hover .internal-stripe {
-					transform: scaleX(1);
-				}
-
-				.card:hover .title {
-					transform: scale(1.05);
-				}
-			`}</style>
-
-			<Card className="group pb-2.5 pt-2 card relative overflow-hidden h-full border-0 bg-primary shadow-lg hover:shadow-xl transition-all duration-700 transform hover:-translate-y-4">
-				{/* Franjas decorativas superiores animadas */}
+			<Card className="group pb-2.5 pt-2 relative overflow-hidden h-full border-0 bg-primary shadow-lg hover:shadow-xl transition-all duration-700 transform hover:-translate-y-4 animate-fadeInUp">
+				{/* Franjas decorativas superiores */}
 				<div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary/60 via-secondary to-secondary/60 z-20" />
 
 				{/* Elementos decorativos flotantes */}
 				<div className="absolute inset-0 pointer-events-none overflow-hidden">
-					{/* Círculos decorativos en posición fija (sin seguimiento de mouse) */}
-					<div className="absolute top-1/2 left-1/2 w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-2xl transition-all duration-300 floating-circle" />
+					<div className="absolute top-1/2 left-1/2 w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-2xl transition-transform duration-300 transform group-hover:scale-150" />
 
-					{/* Partículas flotantes */}
 					<Sparkles className="absolute top-6 right-8 h-4 w-4 md:h-3 md:w-3 lg:h-3 lg:w-3 text-primary/60 animate-pulse" />
 					<Sparkles className="absolute top-16 left-6 h-3 w-3 md:h-2.5 md:w-2.5 lg:h-2.5 lg:w-2.5 text-primary/40 animate-pulse delay-300" />
 					<Sparkles className="absolute bottom-23 left-32 h-5 w-5 md:h-3.5 md:w-3.5 lg:h-3.5 lg:w-3.5 text-primary/50 animate-pulse delay-700" />
 
-					{/* Elementos geométricos */}
 					<div className="absolute top-8 left-8 w-2 h-2 md:w-1.5 md:h-1.5 lg:w-1.5 lg:h-1.5 bg-primary/60 rounded-full animate-bounce" />
 					<div className="absolute top-12 right-16 w-1.5 h-1.5 md:w-1 md:h-1 lg:w-1 lg:h-1 bg-yellow-400/80 rounded-full animate-bounce delay-200" />
 					<div className="absolute bottom-16 left-12 w-2.5 h-2.5 md:w-1.5 md:h-1.5 lg:w-1.5 lg:h-1.5 bg-primary/40 rounded-full animate-bounce delay-500" />
 				</div>
 
 				{/* Background gradient dinámico */}
-				<div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 dynamic-gradient" />
+				<div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
 				{/* Patrón de fondo sutil */}
-				<div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300 background-pattern">
-					<div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent transform -skew-y-12 h-8 top-20" />
-					<div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/15 to-transparent transform -skew-y-12 h-8 top-40" />
+				<div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+					<div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent -skew-y-12 h-8 top-20" />
+					<div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/15 to-transparent -skew-y-12 h-8 top-40" />
 				</div>
 
-				{/* Discount Badge súper mejorado */}
+				{/* Discount Badge */}
 				{perfume.discountOffer && (
 					<div className="absolute top-4 right-4 z-30">
-						<div
-							className="relative"
-							style={{ animation: "bounceSubtle 2s infinite" }}
-						>
-							<Badge className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 py-2 md:px-3 md:py-1.5 lg:px-1 lg:py-1 md:text-xs lg:text-xs shadow-xl border-2 border-white/20">
-								<Zap className="h-3 w-3 md:h-2.5 md:w-2.5 lg:h-2.5 lg:w-2.5 mr-1" />
+						<div className="relative animate-bounceSubtle">
+							<Badge className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 py-2 md:px-3 md:py-1.5 lg:px-1 lg:py-1 md:text-xs lg:text-xs shadow-xl border-2 border-white/20 flex items-center gap-1">
+								<Zap className="h-3 w-3 md:h-2.5 md:w-2.5 lg:h-2.5 lg:w-2.5" />
 								-{perfume.discountOffer * 100}%
 							</Badge>
-							{/* Efecto de brillo */}
-							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded shine-effect" />
-							{/* Punto pulsante */}
+							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded" />
 							<div className="absolute -top-1 -right-1 w-3 h-3 md:w-2 md:h-2 lg:w-2 lg:h-2 bg-yellow-400 rounded-full animate-ping" />
 						</div>
 					</div>
 				)}
 
 				<CardContent className="p-0">
-					{/* Imagen de fondo mejorada */}
 					<NavigationComponent
 						href={paths.perfume({ id: perfume.id }).root}
 					>
-						<div className="relative h-38 2xs:h-54 md:h-38 lg:h-38 2xl:h-44 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 image-container">
+						<div className="relative h-38 2xs:h-54 md:h-38 lg:h-38 2xl:h-44 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
 							<figure className="absolute inset-0 flex items-center justify-center">
 								<Image
 									src={
@@ -209,46 +97,25 @@ export default function PerfumeCard({ perfume }: Props) {
 									height={400}
 									alt={`Perfume ${perfume.name} de ${perfume.brand}`}
 									itemProp="image"
-									className="object-contain w-full h-full max-h-[90%] md:max-w-[90%] md:max-h-[90%] transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+									className="object-contain w-full h-full max-h-[90%] md:max-w-[90%] md:max-h-[90%] transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
 								/>
 								<figcaption className="sr-only">
 									{perfume.name} – {perfume.perfumeType}
 								</figcaption>
 							</figure>
 
-							{/* Partículas flotantes */}
-							<div className="absolute inset-0 pointer-events-none">
-								<Sparkles className="absolute top-8 left-8 h-4 w-4 md:h-3 md:w-3 lg:h-3 lg:w-3 text-primary/60 animate-pulse" />
-								<Sparkles className="absolute top-16 right-12 h-3 w-3 md:h-2.5 md:w-2.5 lg:h-2.5 lg:w-2.5 text-primary/40 animate-pulse delay-500" />
-								<Sparkles className="absolute bottom-20 left-16 h-5 w-5 md:h-3.5 md:w-3.5 lg:h-3.5 lg:w-3.5 text-primary/50 animate-pulse delay-1000" />
-							</div>
-
-							{/* Overlay con gradiente mejorado */}
-							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-							{/* Contenido del overlay */}
-							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-2.5 md:gap-2 lg:gap-2 transition-all duration-500 opacity-0 group-hover:opacity-100 overlay-content">
+							{/* Overlay con gradiente */}
+							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center justify-end gap-2.5 md:gap-2 lg:gap-2 transition-all duration-500 opacity-0 group-hover:opacity-100">
 								<Button
 									className="text-secondary flex gap-2 md:gap-1.5 lg:gap-1.5 items-center cursor-pointer md:text-sm lg:text-sm md:py-1.5 lg:py-1.5 md:px-3 lg:px-3"
-									variant={"default"}
+									variant="default"
 								>
 									<Eye className="md:h-4 md:w-4 lg:h-4 lg:w-4" />
 									Ver Detalles
 								</Button>
-								<div className="p-5 md:p-3 lg:p-3 w-full transform transition-all duration-300 group-hover:-translate-y-1">
-									<div
-										className="flex items-center gap-2 md:gap-1.5 lg:gap-1.5 mb-3 md:mb-2 lg:mb-2"
-										style={{
-											animation: "slideUp 0.5s ease-out",
-										}}
-									>
-										<Sparkles
-											className="h-5 w-5 md:h-4 md:w-4 lg:h-4 lg:w-4 text-yellow-400"
-											style={{
-												animation:
-													"spinSlow 3s linear infinite",
-											}}
-										/>
+								<div className="p-5 md:p-3 lg:p-3 w-full transform transition-transform duration-300 group-hover:-translate-y-1">
+									<div className="flex items-center gap-2 md:gap-1.5 lg:gap-1.5 mb-3 md:mb-2 lg:mb-2 animate-slideUp">
+										<Sparkles className="h-5 w-5 md:h-4 md:w-4 lg:h-4 lg:w-4 text-yellow-400 animate-spinSlow" />
 										<span className="text-sm md:text-xs lg:text-xs font-semibold text-white">
 											Acordes
 										</span>
@@ -259,9 +126,9 @@ export default function PerfumeCard({ perfume }: Props) {
 											.map((scent, index) => (
 												<Badge
 													key={index}
-													className="text-sm md:text-xs lg:text-xs bg-white/20 leading-tight text-white border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-200 transform hover:scale-105 flex-shrink-0 min-w-max px-3 py-1.5"
+													className={`text-sm md:text-xs lg:text-xs bg-white/20 leading-tight text-white border-white/30 backdrop-blur-sm hover:bg-white/30 transition-transform duration-200 transform hover:scale-105 flex-shrink-0 min-w-max px-3 py-1.5 animate-fadeIn`}
 													style={{
-														animation: `fadeIn 0.5s ease-out ${index * 100}ms both`,
+														animationDelay: `${index * 100}ms`,
 													}}
 												>
 													{scent}
@@ -272,35 +139,32 @@ export default function PerfumeCard({ perfume }: Props) {
 							</div>
 
 							{/* Línea divisoria animada */}
-							<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 divider-line" />
+							<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 						</div>
 					</NavigationComponent>
 
-					{/* Content Section mejorada */}
+					{/* Content Section */}
 					<div className="relative bg-gradient-to-br h-full from-secondary via-secondary/90 to-secondary/90">
-						{/* Franja decorativa interna */}
-						<div className="absolute top-0 left-6 right-6 h-0.5 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 internal-stripe" />
+						<div className="absolute top-0 left-6 right-6 h-0.5 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
 						<div className="flex flex-col p-4 pb-2 md:p-3 lg:p-3 gap-1.5 md:gap-1 lg:gap-1 2xl:gap-1.5">
-							{/* Brand and Type mejorados */}
 							<div
-								className="flex items-center justify-between"
-								style={{ animation: "fadeIn 0.5s 100ms both" }}
+								className="flex items-center justify-between animate-fadeIn"
+								style={{ animationDelay: "100ms" }}
 							>
-								<p className="block  max-w-[70px] lg:max-w-[70px] 2xl:max-w-[80px] truncate leading-tight text-muted line-clamp-1 text-[10px] 2xs:text-[11px] 2xl:text-xs">
+								<p className="block max-w-[70px] lg:max-w-[70px] 2xl:max-w-[80px] truncate leading-tight text-muted line-clamp-1 text-[10px] 2xs:text-[11px] 2xl:text-xs">
 									{perfume.brand}
 								</p>
-								<p className="flex  max-w-[70px] truncate leading-tight text-muted truncate leading-tight text-[10px] 2xs:text-[11px] 2xl:text-xs">
+								<p className="flex max-w-[70px] truncate leading-tight text-muted text-[10px] 2xs:text-[11px] 2xl:text-xs">
 									{perfume.perfumeType}
 								</p>
 							</div>
 
-							{/* Title mejorado */}
 							<div
-								className="space-y-1 sm:space-y-1 md:space-y-1 lg:space-y-1 2xl:space-y-2"
-								style={{ animation: "fadeIn 0.5s 200ms both" }}
+								className="space-y-1 sm:space-y-1 md:space-y-1 lg:space-y-1 2xl:space-y-2 animate-fadeIn"
+								style={{ animationDelay: "200ms" }}
 							>
-								<h2 className="font-bold text-sm 2xs:text-lg sm:text-xl md:text-sm lg:text-sm 2xl:text-lg text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300 title">
+								<h2 className="font-bold text-sm 2xs:text-lg sm:text-xl md:text-sm lg:text-sm 2xl:text-lg text-white line-clamp-1 transform group-hover:scale-105 origin-left transition-transform duration-300">
 									{perfume.name}
 								</h2>
 								<p className="text-xs 2xs:text-sm md:text-xs lg:text-xs text-white line-clamp-2 leading-relaxed">
@@ -308,23 +172,20 @@ export default function PerfumeCard({ perfume }: Props) {
 								</p>
 							</div>
 
-							{/* Details mejorados */}
 							<div
-								className="flex items-center justify-between text-sm"
-								style={{ animation: "fadeIn 0.5s 300ms both" }}
+								className="flex items-center justify-between text-sm animate-fadeIn"
+								style={{ animationDelay: "300ms" }}
 							>
 								<div className="flex items-center gap-0.5 xs:gap-1 sm:gap-3 md:gap-1.5 lg:gap-2">
 									<div
-										className={`w-2 h-2 2xs:w-3 2xs:h-3 md:w-2.5 md:h-2.5 lg:w-2 lg:h-2 2xl:w-2.5 2xl:h-2.5 rounded-full bg-gradient-to-r ${getGenderColor(
-											perfume.gender,
-										)} border-2 border-white shadow-lg animate-pulse`}
+										className={`w-2 h-2 2xs:w-3 2xs:h-3 md:w-2.5 md:h-2.5 lg:w-2 lg:h-2 2xl:w-2.5 2xl:h-2.5 rounded-full ${getGenderColor(perfume.gender)} border-2 border-white shadow-lg animate-pulse`}
 									/>
-									<span className="text-white text-[10px] 2xs:text-xs 2xs:text-sm md:text-xs lg:text-[11px] 2xl:text-xs font-semibold">
+									<span className="text-white text-[10px] 2xs:text-xs  md:text-xs lg:text-[11px] 2xl:text-xs font-semibold">
 										{perfume.gender}
 									</span>
 								</div>
 
-								<div className="flex  items-center gap-0.5 lg:gap-1">
+								<div className="flex items-center gap-0.5 lg:gap-1">
 									<Gift className="h-3 w-3 text-primary" />
 									<span className="text-primary text-[10px] 2xs:text-xs sm:text-xs lg:text-[11px] 2xl:text-xs font-bold">
 										{perfume.milliliters}ml
@@ -334,10 +195,9 @@ export default function PerfumeCard({ perfume }: Props) {
 						</div>
 
 						<div className="flex flex-col gap-2 md:gap-1.5 lg:gap-1.5 px-4 md:px-3 lg:px-3">
-							{/* Price Section súper mejorada */}
 							<div
-								className="flex items-center justify-between pt-2 md:pt-3 lg:pt-3 border-t border-border/50"
-								style={{ animation: "fadeIn 0.5s 400ms both" }}
+								className="flex items-center justify-between pt-2 md:pt-3 lg:pt-3 border-t border-border/50 animate-fadeIn"
+								style={{ animationDelay: "400ms" }}
 							>
 								<div className="flex flex-col space-y-1 md:space-y-0.5 lg:space-y-0.5">
 									{perfume.discountOffer ? (
@@ -358,19 +218,13 @@ export default function PerfumeCard({ perfume }: Props) {
 								<AddShopCartPerfumeButton perfume={perfume} />
 							</div>
 
-							{/* Availability indicator mejorado */}
 							<div
-								className="flex items-center justify-between pt-3 md:pt-2 lg:pt-2"
-								style={{ animation: "fadeIn 0.5s 500ms both" }}
+								className="flex items-center justify-between pt-3 md:pt-2 lg:pt-2 animate-fadeIn"
+								style={{ animationDelay: "500ms" }}
 							>
 								<div className="flex items-center gap-1 2xs:gap-2 md:gap-1.5 lg:gap-1.5">
 									<div
-										className={`2xs:w-2.5 2xs:h-2.5 w-1.5 h-1.5 md:w-2 md:h-2 lg:w-2 lg:h-2 rounded-full ${
-											perfume.available &&
-											perfume.cant > 0
-												? "bg-green-500 animate-pulse"
-												: "bg-red-500"
-										} shadow-lg`}
+										className={`2xs:w-2.5 2xs:h-2.5 w-1.5 h-1.5 md:w-2 md:h-2 lg:w-2 lg:h-2 rounded-full ${perfume.available && perfume.cant > 0 ? "bg-green-500 animate-pulse" : "bg-red-500"} shadow-lg`}
 									/>
 									<span className="2xs:text-xs text-[10px] md:text-[10px] lg:text-[10px] font-medium text-primary">
 										{perfume.available && perfume.cant > 0
