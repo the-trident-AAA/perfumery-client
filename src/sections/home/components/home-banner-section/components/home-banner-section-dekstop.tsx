@@ -48,14 +48,16 @@ export function HomeBannerSectionDekstop({ homeBanner, index }: Props) {
 					className={`absolute flex md:hidden inset-0 ${homeBanner.textColor === TextColor.LIGHT ? "bg-transparent" : "bg-primary/60"} rounded-2xl`}
 				/>
 				<div className="max-w-3xl z-20 flex flex-col justify-center items-center space-y-3  sm:space-y-6">
-					<div className="space-y-1 w-full flex flex-col items-center justify-center sm:space-y-2">
-						<h1 className="text-xl text-center max-w-[220px] sm:max-w-full 2xs:text-xl md:text-5xl font-bold">
-							{homeBanner.title}
-						</h1>
-						<p className="text-xs 2xs:text-sm md:text-xl text-center max-w-[220px] sm:max-w-full">
-							{homeBanner.description}
-						</p>
-					</div>
+					{homeBanner.title && homeBanner.description && (
+						<div className="space-y-1 w-full flex flex-col items-center justify-center sm:space-y-2">
+							<h1 className="text-xl text-center max-w-[220px] sm:max-w-full 2xs:text-xl md:text-5xl font-bold">
+								{homeBanner.title}
+							</h1>
+							<p className="text-xs 2xs:text-sm md:text-xl text-center max-w-[220px] sm:max-w-full">
+								{homeBanner.description}
+							</p>
+						</div>
+					)}
 
 					{homeBanner.statisticalTips.length > 0 && (
 						<div className="flex flex-wrap gap-4 w-full justify-center items-center">
