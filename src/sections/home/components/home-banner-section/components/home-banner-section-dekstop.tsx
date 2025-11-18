@@ -42,7 +42,7 @@ export function HomeBannerSectionDekstop({ homeBanner, index }: Props) {
 			</div>
 
 			<div
-				className={`relative max-w-[260px] 2xs:max-w-[365px] md:max-w-[470px] lg:max-w-full z-10 h-full ${getTextColorColor(homeBanner.textColor)} sm:pl-1 md:pl-8 flex flex-col justify-center`}
+				className={`relative max-w-[260px] 2xs:max-w-[365px] md:max-w-[470px] lg:max-w-full z-10 h-full ${getTextColorColor(homeBanner.textColor)} sm:pl-1 md:pl-4 flex flex-col justify-center`}
 			>
 				<div
 					className={`absolute flex md:hidden inset-0 ${homeBanner.textColor === TextColor.LIGHT ? "bg-transparent" : "bg-primary/60"} rounded-2xl`}
