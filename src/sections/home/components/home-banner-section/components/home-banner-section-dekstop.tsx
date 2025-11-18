@@ -13,10 +13,9 @@ import Image from "next/image"
 
 interface Props {
 	homeBanner: HomeBanner
-	index: number
 }
 
-export function HomeBannerSectionDekstop({ homeBanner, index }: Props) {
+export function HomeBannerSectionDekstop({ homeBanner }: Props) {
 	return (
 		<div className="relative h-full min-h-[290px] sm:min-h-[400px] py-6 2xs:py-8 2xl:py-14 w-full overflow-hidden">
 			<div className={cn("absolute inset-0")}>

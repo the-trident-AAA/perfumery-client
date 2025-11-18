@@ -27,10 +27,7 @@ export default async function HomeBannerSectionContainer() {
 			>
 				{homeBanners.map((homeBanner, index) => (
 					<CarouselItem key={index} className={cn("basis-full")}>
-						<HomeBannerSectionDekstop
-							index={index}
-							homeBanner={homeBanner}
-						/>
+						<HomeBannerSectionDekstop homeBanner={homeBanner} />
 					</CarouselItem>
 				))}
 			</StandardCarousel>
