@@ -102,6 +102,9 @@ export default function PerfumeCard({ perfume }: Props) {
 								<figcaption className="sr-only">
 									{perfume.name} – {perfume.perfumeType}
 								</figcaption>
+								<div
+									className={`absolute inset-0 bg-gradient-to-t from-black/14 via-black/4 to-transparent`}
+								/>
 							</figure>
 
 							{/* Overlay con gradiente */}
@@ -178,7 +181,7 @@ export default function PerfumeCard({ perfume }: Props) {
 							>
 								<div className="flex items-center gap-0.5 xs:gap-1 sm:gap-3 md:gap-1.5 lg:gap-2">
 									<div
-										className={`w-2 h-2 2xs:w-3 2xs:h-3 md:w-2.5 md:h-2.5 lg:w-2 lg:h-2 2xl:w-2.5 2xl:h-2.5 rounded-full ${getGenderColor(perfume.gender)} border-2 border-white shadow-lg animate-pulse`}
+										className={`w-2 h-2 2xs:w-3 2xs:h-3 md:w-2.5 md:h-2.5 lg:w-2 lg:h-2 2xl:w-2.5 2xl:h-2.5 rounded-full bg-gradient-to-r ${getGenderColor(perfume.gender)} border-2 border-white shadow-lg animate-pulse`}
 									/>
 									<span className="text-white text-[10px] 2xs:text-xs  md:text-xs lg:text-[11px] 2xl:text-xs font-semibold">
 										{perfume.gender}
