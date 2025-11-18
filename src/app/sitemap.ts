@@ -6,7 +6,7 @@ export const revalidate = 86400
 const baseUrl = "https://perfumesdelpuro.com"
 
 async function getPerfumeUrls() {
-	const res = await getPerfumesList({ limit: 100 })
+	const res = await getPerfumesList({ limit: 500 })
 
 	if (!res.response || res.error) return []
 
