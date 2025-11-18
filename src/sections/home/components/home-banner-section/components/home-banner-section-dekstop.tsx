@@ -5,6 +5,7 @@ import {
 	getTextColorColor,
 	groupFilters,
 	HomeBanner,
+	TextColor,
 } from "@/src/lib/types/home-banners"
 import { cn } from "@/src/lib/utils/utils"
 import { ArrowRight, ShoppingBag } from "lucide-react"
@@ -35,26 +36,29 @@ export function HomeBannerSectionDekstop({ homeBanner, index }: Props) {
 					alt={`${homeBanner.title}`}
 					className="h-full w-full flex sm:hidden object-center"
 				/>
-				{index === 2 && (
-					<div className="absolute inset-0 bg-black/60 " />
-				)}
+				<div
+					className={`absolute inset-0 ${homeBanner.textColor === TextColor.LIGHT ? "bg-black/60" : "bg-transpartent"} rounded-2xl`}
+				/>
 			</div>
 
 			<div
-				className={`relative z-10 h-full ${getTextColorColor(homeBanner.textColor)} flex flex-col justify-center`}
+				className={`relative max-w-[260px] 2xs:max-w-[365px] sm:max-w-full z-10 h-full ${getTextColorColor(homeBanner.textColor)} sm:pl-8 flex flex-col justify-center`}
 			>
-				<div className="max-w-3xl flex flex-col justify-center sm:items-center space-y-3 pl-8 2xs:space-y-6">
-					<div className="space-y-1 w-full flex flex-col sm:items-center justify-center 2xs:space-y-2">
-						<h1 className="text-xl sm:text-center max-w-[220px] sm:max-w-full 2xs:text-4xl md:text-5xl font-bold">
+				<div
+					className={`absolute flex sm:hidden inset-0 ${homeBanner.textColor === TextColor.LIGHT ? "bg-transparent" : "bg-primary/60"} rounded-2xl`}
+				/>
+				<div className="max-w-3xl z-20 flex flex-col justify-center items-center space-y-3  2xs:space-y-6">
+					<div className="space-y-1 w-full flex flex-col items-center justify-center 2xs:space-y-2">
+						<h1 className="text-xl text-center max-w-[220px] sm:max-w-full 2xs:text-4xl md:text-5xl font-bold">
 							{homeBanner.title}
 						</h1>
-						<p className="text-xs 2xs:text-lg md:text-xl sm:text-center max-w-[220px] sm:max-w-full">
+						<p className="text-xs 2xs:text-lg md:text-xl text-center max-w-[220px] sm:max-w-full">
 							{homeBanner.description}
 						</p>
 					</div>
 
 					{homeBanner.statisticalTips.length > 0 && (
-						<div className="flex flex-wrap gap-4 w-full sm:justify-center sm:items-center">
+						<div className="flex flex-wrap gap-4 w-full justify-center items-center">
 							{homeBanner.statisticalTips.map((tip, i) => (
 								<div key={i} className="text-center">
 									<div className="text-xs 2xs:text-lg">
@@ -87,14 +91,14 @@ export function HomeBannerSectionDekstop({ homeBanner, index }: Props) {
 					)}
 
 					{homeBanner.infoTips.length > 0 && (
-						<div className="grid grid-cols-3 sm:flex sm:flex-wrap sm:gap-4 w-full sm:justify-center sm:items-center">
+						<div className="flex flex-wrap pl-8 sm:pl-0 gap-3 sm:gap-4 w-full sm:justify-center sm:items-center">
 							{homeBanner.infoTips.map((tip, i) => (
 								<div
 									key={i}
 									className="flex items-center gap-2"
 								>
 									<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-									<span className="text-[12px] 2xs:text-xs font-semibold lg:text-sm xl:text-base">
+									<span className="text-[10px] 2xs:text-xs font-semibold lg:text-sm xl:text-base">
 										{tip}
 									</span>
 								</div>
