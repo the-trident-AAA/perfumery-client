@@ -14,7 +14,7 @@ export default function HomeOffersListCarousel({ data }: Props) {
 		<div className="w-full px-4 sm:px-12 xl:mx-auto xl:max-w-6xl 2xl:max-w-7xl">
 			<StandardCarousel
 				className="shadow-2xl rounded-3xl"
-				contentClassName="py-0 px-0 "
+				contentClassName="py-0 px-0 md:-ml-4"
 				loop={false}
 				autoPlay
 				autoPlayDelay={10000}
