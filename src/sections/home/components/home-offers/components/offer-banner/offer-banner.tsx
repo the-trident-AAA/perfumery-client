@@ -175,7 +175,7 @@ function TargetDiscount({ discount }: { discount: number }) {
 							<div className="relative">
 								<span
 									className="
-										text-lg 2xs:text-2xl sm:text-2xl lg:text-3xl lg:text-4xl font-black 
+										text-lg 2xs:text-2xl sm:text-2xl lg:text-4xl font-black 
 										bg-primary text-transparent bg-clip-text drop-shadow-lg
 									"
 								>
