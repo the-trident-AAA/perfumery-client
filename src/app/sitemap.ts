@@ -1,7 +1,7 @@
 import { getPerfumesList } from "@/src/lib/services/perfumes"
 import type { MetadataRoute } from "next"
 
-export const revalidate = 0
+export const revalidate = 86400
 
 const baseUrl = "https://perfumesdelpuro.com"
 
@@ -14,7 +14,6 @@ async function getPerfumeUrls() {
 
 	return perfumes.map(p => ({
 		url: `${baseUrl}/perfumes/${p.id}`,
-		lastModified: new Date(),
 		changeFrequency: "monthly" as const,
 		priority: 0.7,
 		images: [p.image],
@@ -25,14 +24,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const staticUrls: MetadataRoute.Sitemap = [
 		{
 			url: baseUrl,
-			lastModified: new Date(),
+			lastModified: new Date("2025-11-18"),
 			changeFrequency: "monthly",
 			priority: 1,
 			images: [`${baseUrl}/images/og-image-home.png`],
 		},
 		{
 			url: `${baseUrl}/perfumes`,
-			lastModified: new Date(),
+			lastModified: new Date("2025-11-18"),
 			changeFrequency: "weekly",
 			priority: 0.9,
 		},
