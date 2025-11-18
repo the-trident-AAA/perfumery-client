@@ -82,7 +82,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 	// Posición de los botones según la variante
 	const navPosition =
 		navVariant === "spaced"
-			? "absolute -left-7 -right-5"
+			? "absolute -left-6.5 -right-5"
 			: navVariant === "default"
 				? "absolute -left-4 -right-4"
 				: "absolute left-3 right-3"
@@ -102,7 +102,7 @@ export default function StandardCarousel<T extends { id: number | string }>({
 				<div className="relative">
 					<CarouselContent
 						className={cn(
-							`${contentVariant === "default" ? "-ml-2 pr-2 pt-6 pb-4 md:-ml-4" : ""}`,
+							`${contentVariant === "default" ? "-ml-2 pr-2 pt-6 pb-4 md:-ml-3" : ""}`,
 							contentClassName,
 						)}
 					>
