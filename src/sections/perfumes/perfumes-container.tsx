@@ -7,7 +7,7 @@ import PerfumesListContainer from "@/src/sections/perfumes/list/perfumes-list-co
 import React, { Suspense } from "react"
 
 interface Props {
-	searchParams: SearchParamsPagination
+	searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export default function PerfumesContainer({ searchParams }: Props) {

@@ -1,11 +1,10 @@
 import { getPerfumesList } from "@/src/lib/services/perfumes"
-import { SearchParamsPagination } from "@/src/lib/types/pagination"
 import PerfumesList from "@/src/sections/perfumes/list/perfumes-list"
 
 import React from "react"
 
 interface Props {
-	searchParams: SearchParamsPagination
+	searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export default async function PerfumesListContainer({ searchParams }: Props) {
@@ -15,5 +14,11 @@ export default async function PerfumesListContainer({ searchParams }: Props) {
 
 	const perfumes = res.response.data
 	const pagination = res.response.paginationMeta
-	return <PerfumesList perfumes={perfumes} apiPagination={pagination} />
+	return (
+		<PerfumesList
+			perfumes={perfumes}
+			apiPagination={pagination}
+			searchParams={searchParams}
+		/>
+	)
 }
