@@ -14,7 +14,7 @@ export default function BrandSection() {
 			</p>
 			<div className="flex space-x-4">
 				<Link
-					href="https://www.instagram.com/perfumes_del_puro/"
+					href="https://www.instagram.com/perfumes_del_puro_/"
 					className="text-secondary"
 					target="_blank"
 					rel="noopener noreferrer"

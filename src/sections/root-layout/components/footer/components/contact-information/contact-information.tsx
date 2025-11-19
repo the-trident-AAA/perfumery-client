@@ -13,7 +13,7 @@ export default function ContactInformation() {
 					<NavigationComponent
 						className="cursor-pointer"
 						inAnotherTab
-						href="https://www.instagram.com/perfumes_del_puro/"
+						href="https://www.instagram.com/perfumes_del_puro_/"
 					>
 						<div className="flex items-center">
 							<Instagram
