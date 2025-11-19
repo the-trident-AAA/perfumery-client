@@ -265,7 +265,7 @@ export default function CustomPaginationSSR({
 
 			{/* Info móvil abajo */}
 			<div className="sm:hidden flex justify-center">
-				<span className="text-xs text-gray-200">
+				<span className="text-xs text-secondary">
 					Página {currentPage} de {totalPages}
 				</span>
 			</div>
