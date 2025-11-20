@@ -16,7 +16,7 @@ export default async function HomeBannerSectionContainer() {
 	return (
 		<section id="home-hero">
 			<StandardCarousel
-				contentClassName="py-0 px-0"
+				contentClassName="py-0 px-0 md:-ml-4"
 				navVariant="banner"
 				dotsVariant="banner"
 				contentVariant="banner"
