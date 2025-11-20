@@ -31,11 +31,11 @@ export default function ThumbnailsImage({ images, altName }: Props) {
 						width={1920}
 						height={1080}
 						quality={100}
-						className="w-full h-full object-contain transition-all duration-300 group-hover:brightness-50"
+						className="w-full h-full object-contain"
 					/>
 
 					{/* Overlay con icono de zoom */}
-					<div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+					<div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:bg-secondary/60">
 						<div className="bg-white/90 rounded-full p-4 backdrop-blur-sm animate-pulse">
 							<ZoomIn
 								className="w-12 h-12 text-secondary"
