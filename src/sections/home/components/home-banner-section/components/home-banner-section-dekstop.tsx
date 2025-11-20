@@ -36,7 +36,7 @@ export function HomeBannerSectionDekstop({ homeBanner }: Props) {
 					className="h-full w-full flex sm:hidden object-center"
 				/>
 				<div
-					className={`absolute inset-0 ${homeBanner.textColor === TextColor.LIGHT ? "bg-black/60" : "bg-transpartent"} rounded-2xl`}
+					className={`absolute inset-0 ${homeBanner.textColor === TextColor.LIGHT ? "bg-black/60" : "bg-transpartent"}`}
 				/>
 			</div>
 
