@@ -72,7 +72,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 							)}
 						</div>
 
-						<div className="grid md:grid-cols-2 items-center justify-center lg:grid-cols-1 xl:grid-cols-[40%_60%] gap-4">
+						<div className="grid md:grid-cols-2 justify-center lg:grid-cols-1 xl:grid-cols-[40%_60%] gap-4">
 							<div className="flex flex-col gap-4">
 								<div className="flex flex-col ">
 									<h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight text-balance">
