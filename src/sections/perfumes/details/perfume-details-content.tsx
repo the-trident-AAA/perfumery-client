@@ -26,7 +26,7 @@ export default function PerfumeDetailsContent({ perfume }: Props) {
 
 			<div className="px-4 md:px-8 pb-12">
 				<div className="flex flex-col lg:flex-row p-4 w-full gap-8">
-					<div className="lg:sticky lg:top-8">
+					<div className="lg:top-8">
 						<ThumbnailsImage
 							altName={perfume.name}
 							images={[perfume.image, ...perfume.images]}
