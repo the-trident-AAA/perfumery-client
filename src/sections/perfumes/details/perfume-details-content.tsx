@@ -1,4 +1,4 @@
-import { Star, Droplets, Palette, Users, Info } from "lucide-react"
+import { Droplets, Palette, Users, Info } from "lucide-react"
 import { Badge } from "@/src/components/ui/badge"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { Separator } from "@/src/components/ui/separator"
