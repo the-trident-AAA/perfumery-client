@@ -24,7 +24,7 @@ export default function PerfumeInfoCard({ info, title, icon }: Props) {
 			/>
 
 			{/* Content */}
-			<div className="text-center rounded-0 flex flex-col justify-center items-center gap-1 h-full relative z-10">
+			<div className="text-center rounded-0 flex flex-col justify-center items-center gap-1 h-full relative">
 				<div className="flex items-center gap-2">
 					<div
 						className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mb-1 border-2 border-primary shadow-sm 
