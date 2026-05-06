@@ -1,5 +1,5 @@
 "use client"
-import { motion } from "framer-motion"
+import { motion, easeOut, cubicBezier } from "framer-motion"
 import { SearchX } from "lucide-react"
 
 interface Props {
@@ -18,7 +18,7 @@ export default function EmptyContent({
 			opacity: 1,
 			transition: {
 				duration: 0.5,
-				ease: "easeOut",
+				ease: easeOut, // ✔ válido
 			},
 		},
 	}
@@ -30,7 +30,7 @@ export default function EmptyContent({
 			transition: {
 				duration: 4,
 				repeat: Infinity,
-				ease: "easeInOut",
+				ease: cubicBezier(0.42, 0, 0.58, 1), // ✔ válido en FM12
 			},
 		},
 	}
@@ -51,6 +51,7 @@ export default function EmptyContent({
 					<SearchX className="h-12 w-12 text-primary" />
 				</motion.div>
 			</motion.div>
+
 			<motion.h3
 				className="mt-4 text-secondary text-lg sm:text-3xl font-bold"
 				initial={{ opacity: 0, y: 10 }}
@@ -59,6 +60,7 @@ export default function EmptyContent({
 			>
 				{title}
 			</motion.h3>
+
 			<motion.p
 				className="mt-6 text-sm sm:text-xl text-secondary"
 				initial={{ opacity: 0, y: 10 }}

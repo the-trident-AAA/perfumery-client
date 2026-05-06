@@ -16,19 +16,17 @@ export default function useGoogleSignIn({ onSignInAction }: Props) {
 			setLoading(true)
 			setError(null)
 
-			const res = await nextAuthSignIn("google", {
+			// NextAuth v5: signIn NO devuelve res, solo redirige
+			await nextAuthSignIn("google", {
 				redirect: true,
 				callbackUrl: paths.home.root,
 			})
 
-			if (res?.error) {
-				setError("No se pudo iniciar sesión con Google")
-			} else {
-				onSignInAction()
-			}
-		} catch (error) {
-			console.error(error)
-			setError("Ocurrió un error inesperado")
+			// Si por alguna razón no redirige (caso raro en dev)
+			onSignInAction()
+		} catch (err) {
+			console.error(err)
+			setError("No se pudo iniciar sesión con Google")
 		} finally {
 			setLoading(false)
 		}
