@@ -12,42 +12,44 @@ import {
 } from "@/src/lib/types/auth"
 import { User as UserType } from "@/src/lib/types/users"
 import { User } from "next-auth"
-import { cookies } from "next/headers"
+import { getOrCreateGuestSession } from "./guest-session"
 
 export async function loginWithGoogle(idToken: string) {
-	const cookieStore = await cookies()
-	const sessionId = cookieStore.get("guestSession")?.value
+	const sessionId = await getOrCreateGuestSession()
+	console.log("Session ID para loginWithGoogle:", sessionId)
+
+	const body = {
+		idToken,
+		sessionId,
+	}
+	console.log("Body enviado a loginWithGoogle:", body)
 
 	const res = await fetch(apiRoutes.auth.loginWithGoogle, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
 		},
-		body: JSON.stringify({
-			idToken,
-			sessionId,
-		}),
+		body: JSON.stringify(body),
 	})
-	if (res.ok) cookieStore.delete("guestSession")
 
-	return buildApiResponse<User>(res)
+	console.log("Response status:", res.status)
+	console.log("Response ok:", res.ok)
+
+	const result = await buildApiResponse<User>(res)
+	console.log("BuildApiResponse result:", result)
+
+	return result
 }
 
 export async function login(credentials: CredentialsDTO) {
-	const cookieStore = await cookies()
-	const sessionId = cookieStore.get("guestSession")?.value
-
+	// Login normal sin sessionId - solo para usuarios existentes
 	const res = await fetch(apiRoutes.auth.login, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
 		},
-		body: JSON.stringify({
-			...credentials,
-			sessionId,
-		}),
+		body: JSON.stringify(credentials),
 	})
-	if (res.ok) cookieStore.delete("guestSession")
 
 	return buildApiResponse<User>(res)
 }

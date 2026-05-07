@@ -3,6 +3,7 @@ import { z } from "zod"
 export interface Credentials {
 	firstCredential: string
 	password: string
+	isAutoLogin?: boolean
 }
 
 export const credentialsSchema = z.object({

@@ -26,7 +26,7 @@ export default function RegistrationFormContainer() {
 		error: registerPasswordError,
 	} = useRegister({
 		onRegisterAction: async (userId: string) => {
-			toast.success("Registro completado con éxito")
+			toast.success("Cuenta creada. Por favor verifica tu email")
 			await sendOtp(userId)
 			router.push(
 				paths.verificationCode({ id: userId, objective: "activate" })

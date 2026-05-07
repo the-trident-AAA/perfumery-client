@@ -40,19 +40,111 @@ export default function VerfificationCodeFormContainer({
 		error: activateAccountError,
 	} = useActivateAccount({
 		onActivateAccountAction: async () => {
-			toast.success("Verificación realizada con éxito")
-			const temporalToken = localStorage.getItem("temporalToken")
-			const credentials = (await verifyToken(
-				JSON.parse(temporalToken as string).data,
-			)) as {
-				username: string
-				password: string
+			try {
+				toast.success("Verificación realizada con éxito")
+				const temporalToken = localStorage.getItem("temporalToken")
+
+				if (!temporalToken) {
+					console.error("No se encontró el token temporal")
+					toast.error("Error en la autenticación automática")
+					return
+				}
+
+				const credentials = (await verifyToken(
+					JSON.parse(temporalToken).data,
+				)) as {
+					email: string
+					password: string
+				}
+
+				console.log("Credenciales recuperadas:", credentials)
+				console.log("Email:", credentials.email)
+				console.log("Password length:", credentials.password.length)
+
+				// Intentar hacer login automático primero
+				console.log("Iniciando login automático...")
+				const signInResult = await signIn({
+					firstCredential: credentials.email,
+					password: credentials.password,
+					isAutoLogin: true,
+				})
+
+				console.log("Resultado del login automático:", signInResult)
+
+				// Solo limpiar el token temporal si el login fue exitoso
+				if (signInResult.success) {
+					console.log(
+						"Login automático exitoso, limpiando token temporal",
+					)
+					localStorage.removeItem("temporalToken")
+					toast.success(
+						"¡Bienvenido! Tu cuenta ha sido verificada y has iniciado sesión automáticamente",
+					)
+				} else {
+					console.log(
+						"Login automático falló, intentando con credenciales frescas",
+					)
+					// Si el login automático falla, intentar recuperar credenciales nuevamente
+					try {
+						const freshCredentials = (await verifyToken(
+							JSON.parse(temporalToken).data,
+						)) as {
+							email: string
+							password: string
+						}
+
+						console.log(
+							"Intentando login con credenciales frescas:",
+							freshCredentials.email,
+						)
+
+						const retryResult = await signIn({
+							firstCredential: freshCredentials.email,
+							password: freshCredentials.password,
+							isAutoLogin: true,
+						})
+
+						if (retryResult.success) {
+							console.log(
+								"Login con credenciales frescas exitoso",
+							)
+							localStorage.removeItem("temporalToken")
+							toast.success(
+								"¡Bienvenido! Tu cuenta ha sido verificada y has iniciado sesión automáticamente",
+							)
+						} else {
+							console.log(
+								"Ambos intentos de login automático fallaron",
+							)
+							toast.error(
+								"La verificación fue exitosa pero no pudimos iniciar sesión automáticamente. Por favor inicia sesión manualmente.",
+							)
+							setTimeout(() => {
+								router.push(paths.sign_in().root)
+							}, 2000)
+						}
+					} catch (retryError) {
+						console.error(
+							"Error en reintento de login:",
+							retryError,
+						)
+						toast.error(
+							"La verificación fue exitosa pero no pudimos iniciar sesión automáticamente. Por favor inicia sesión manualmente.",
+						)
+						setTimeout(() => {
+							router.push(paths.sign_in().root)
+						}, 2000)
+					}
+				}
+			} catch (error) {
+				console.error("Error en la activación:", error)
+				toast.error(
+					"Error en la autenticación automática. Por favor inicia sesión manualmente",
+				)
+				setTimeout(() => {
+					router.push(paths.sign_in().root)
+				}, 2000)
 			}
-			console.log(credentials)
-			signIn({
-				firstCredential: credentials.username,
-				password: credentials.password,
-			})
 		},
 	})
 	const {

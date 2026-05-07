@@ -11,7 +11,7 @@ import {
 	ShopCartPerfumeCreateDTO,
 	ShopCartPerfumeEditDTO,
 } from "@/src/lib/types/shop-cart-perfumes"
-import { cookies } from "next/headers"
+import { getOrCreateGuestSession } from "./guest-session"
 
 export async function getShopCartPerfumeById(id: string) {
 	const res = await fetch(
@@ -29,8 +29,7 @@ export async function createShopCartPerfume(
 	shopCartCreateDTO: ShopCartPerfumeCreateDTO,
 ) {
 	const session = await auth()
-	const cookieStore = await cookies()
-	const sessionId = cookieStore.get("guestSession")?.value
+	const sessionId = session ? undefined : await getOrCreateGuestSession()
 
 	const res = await fetch(apiRoutes.shopCartPerfumes.get, {
 		method: "POST",
@@ -50,15 +49,6 @@ export async function createShopCartPerfume(
 		data: ShopCartPerfume
 		sessionId?: string
 	}
-
-	if (shopCartPerfumeData.sessionId)
-		cookieStore.set("guestSession", shopCartPerfumeData.sessionId, {
-			maxAge: 30 * 24 * 60 * 60,
-			httpOnly: true,
-			secure: false, // temporary
-			sameSite: "lax",
-			path: "/",
-		})
 
 	return await buildApiResponse<ShopCartPerfume>(
 		res,

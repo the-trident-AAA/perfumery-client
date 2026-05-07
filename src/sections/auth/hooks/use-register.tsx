@@ -29,10 +29,10 @@ export default function useRegister({ onRegisterAction }: Props) {
 				else {
 					// save the credentials in temporal token
 					const temporalTokenWithCredentials = await generateToken<{
-						username: string
+						email: string
 						password: string
 					}>({
-						username: registerSchema.username,
+						email: registerSchema.email,
 						password: registerSchema.password,
 					})
 					localStorage.setItem(
