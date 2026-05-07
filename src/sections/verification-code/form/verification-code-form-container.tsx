@@ -153,7 +153,9 @@ export default function VerfificationCodeFormContainer({
 		error: checkOtpError,
 	} = useCheckOtp({
 		onCheckOtpAction: (otp: string) => {
-			router.push(paths.forgotPassword({ id: userId, otp }).root)
+			// Forzar redirección directa al ForgotPasswordContainer
+			console.log("Redirigiendo directamente a ForgotPasswordContainer")
+			window.location.replace(`/forgot-password/${userId}/${otp}`)
 		},
 	})
 

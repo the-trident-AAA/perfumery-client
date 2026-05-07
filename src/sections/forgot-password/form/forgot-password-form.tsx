@@ -4,7 +4,7 @@ import React from "react"
 
 export default function ForgotPasswordForm() {
 	return (
-		<div className="flex flex-col gap-4 p-4 bg-primary rounded-2xl">
+		<div className="flex flex-col gap-4">
 			<RHFPasswordField
 				name="newPassword"
 				label="Nueva Contraseña"

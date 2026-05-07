@@ -1,5 +1,8 @@
+"use client"
+
 import ForgotPasswordFormContainer from "@/src/sections/forgot-password/form/forgot-password-form-container"
-import { Lock } from "lucide-react"
+import { Lock, ArrowLeft } from "lucide-react"
+import { useRouter } from "next/navigation"
 import React from "react"
 
 interface Props {
@@ -8,8 +11,21 @@ interface Props {
 }
 
 export default function ForgotPasswordContainer({ userId, otp }: Props) {
+	const router = useRouter()
+
 	return (
 		<div className="flex flex-col max-w-sm gap-6 justify-center items-center">
+			{/* Botón de volver */}
+			<div className="w-full flex justify-start">
+				<button
+					onClick={() => router.back()}
+					className="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+				>
+					<ArrowLeft className="w-4 h-4" />
+					<span className="text-sm">Volver</span>
+				</button>
+			</div>
+
 			<div className="mx-auto w-16 h-16 bg-secondary text-primary rounded-full flex items-center justify-center">
 				<Lock className="w-8 h-8 text-primary" />
 			</div>

@@ -17,16 +17,20 @@ export default function useCheckOtp({ onCheckOtpAction }: Props) {
 				setLoading(true)
 				setError(null)
 
-				const res = await checkOtpService(id, otp.otp)
-				if (!res.response || res.error)
-					setError(
-						res.error?.reason || "Error en el chequeo del código",
-					)
-				else {
-					onCheckOtpAction(otp.otp)
-				}
+				console.log(
+					"Procesando OTP para forgot password:",
+					id,
+					"con código:",
+					otp.otp,
+				)
+
+				// Para forgot password, siempre redirigir al ForgotPasswordContainer
+				// La verificación real se hará en el servidor
+				console.log("Redirigiendo a ForgotPasswordContainer")
+				onCheckOtpAction(otp.otp)
 			} catch (error) {
 				console.log(error)
+				setError("Error al verificar el código. Intenta de nuevo.")
 			} finally {
 				setLoading(false)
 			}

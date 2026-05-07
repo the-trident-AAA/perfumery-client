@@ -5,11 +5,11 @@ import { Button } from "@/src/components/ui/button"
 import { Form } from "@/src/components/ui/form"
 import { paths } from "@/src/lib/routes/paths"
 import useResetPassword from "@/src/sections/auth/hooks/use-reset-password"
-import ForgotPasswordForm from "@/src/sections/forgot-password/form/forgot-password-form"
+import ForgotPasswordForm from "./forgot-password-form"
 import {
 	ForgotPassword,
 	forgotPasswordSchema,
-} from "@/src/sections/forgot-password/form/schemas/forgot-password-schema"
+} from "./schemas/forgot-password-schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import React from "react"
 import { useForm } from "react-hook-form"
@@ -27,8 +27,10 @@ export default function ForgotPasswordFormContainer({ userId, otp }: Props) {
 		error: resetPasswordError,
 	} = useResetPassword({
 		onResetPasswordAction: () => {
-			toast.success("Cambio de contraseña realizado con éxito")
-			window.location.href = paths.home.root
+			toast.success(
+				"Contraseña cambiada con éxito. Por favor inicia sesión.",
+			)
+			window.location.href = paths.sign_in().root
 		},
 	})
 	const form = useForm<ForgotPassword>({
