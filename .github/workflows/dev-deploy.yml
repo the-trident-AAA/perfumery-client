@@ -1,51 +1,57 @@
 name: Deploy to VPS
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ "develop" ]
+    workflow_dispatch:
+    push:
+        branches: ["develop"]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    deploy:
+        runs-on: ubuntu-latest
+        environment: dev
 
-      - name: Generate GitHub App token
-        id: generate_token
-        uses: tibdex/github-app-token@v2
-        with:
-          app_id: ${{ secrets.GH_APP_ID }}
-          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-          installation_id: ${{ secrets.GH_INSTALLATION_ID }}
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Add SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.VPS_SSH_KEY }}
-          known_hosts: "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl"
+            - name: Generate GitHub App token
+              id: generate_token
+              uses: tibdex/github-app-token@v2
+              with:
+                  app_id: ${{ secrets.GH_APP_ID }}
+                  private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 
-      - name: Execute Deploy Script
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} "
-            cd /home/deployer/projects/perfumery &&
-            rm -rf perfumery-client &&
-            git clone https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/the-trident-AAA/perfumery-client.git || true &&
-            cd perfumery-client &&
-            rm -f .env &&
-            echo 'NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}' > .env &&
-            echo 'AUTH_SECRET=${{ secrets.AUTH_SECRET }}' >> .env &&
-            echo 'AUTH_MODE=${{ secrets.AUTH_MODE }}' >> .env &&
-            echo 'NEXT_PUBLIC_IMAGE_HOST=${{ secrets.NEXT_PUBLIC_IMAGE_HOST }}' >> .env &&
-            echo 'NEXT_PUBLIC_IMAGE_PORT=${{ secrets.NEXT_PUBLIC_IMAGE_PORT }}' >> .env &&
-            echo 'NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER=${{ secrets.NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER }}' >> .env &&
-            echo 'NEXT_PUBLIC_IMAGE_PATH=${{ secrets.NEXT_PUBLIC_IMAGE_PATH }}' >> .env &&
-            echo 'NEXT_PUBLIC_IMAGE_PROTOCOL=${{ secrets.NEXT_PUBLIC_IMAGE_PROTOCOL }}' >> .env &&
-            git checkout develop &&
-            git pull origin develop &&
-            docker-compose -f docker-compose.dev.yml pull &&
-            docker-compose -f docker-compose.dev.yml build --no-cache &&
-            docker-compose -f docker-compose.dev.yml up -d
-          "
+            - name: Add SSH Key
+              uses: shimataro/ssh-key-action@v2
+              with:
+                  key: ${{ secrets.VPS_SSH_KEY }}
+                  known_hosts: "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl"
+
+            - name: Execute Deploy Script
+              run: |
+                  ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} "
+                    set -e
+                    cd /home/deployer/projects/perfumery || mkdir -p /home/deployer/projects/perfumery && cd /home/deployer/projects/perfumery
+
+                    # Clonación ligera con depth=1 para evitar packs pesados
+                    rm -rf perfumery-client
+                    git clone --depth=1 https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/the-trident-AAA/perfumery-client.git
+                    cd perfumery-client
+
+                    # Generar .env
+                    cat <<EOF > .env
+                    NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
+                    AUTH_SECRET=${{ secrets.AUTH_SECRET }}
+                    AUTH_MODE=${{ secrets.AUTH_MODE }}
+                    NEXT_PUBLIC_IMAGE_HOST=${{ secrets.NEXT_PUBLIC_IMAGE_HOST }}
+                    NEXT_PUBLIC_IMAGE_PORT=${{ secrets.NEXT_PUBLIC_IMAGE_PORT }}
+                    NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER=${{ secrets.NEXT_PUBLIC_WHATS_APP_PHONE_NUMBER }}
+                    NEXT_PUBLIC_IMAGE_PATH=${{ secrets.NEXT_PUBLIC_IMAGE_PATH }}
+                    NEXT_PUBLIC_IMAGE_PROTOCOL=${{ secrets.NEXT_PUBLIC_IMAGE_PROTOCOL }}
+                    EOF
+
+                    # Pull de imágenes y build con cache habilitado
+                    docker-compose -f docker-compose.dev.yml pull
+                    docker-compose -f docker-compose.dev.yml build
+                    docker-compose -f docker-compose.dev.yml up -d --remove-orphans
+                  "
