@@ -1,47 +1,36 @@
+# Imagen base Node 24
 FROM node:24-alpine AS base
 
+# Etapa de dependencias
 FROM base AS deps
-
+WORKDIR /app
 RUN apk add --no-cache libc6-compat
-
-WORKDIR /app
-
 COPY package.json package-lock.json ./
+RUN npm ci --prefer-offline --no-audit --progress=false
 
-RUN  npm ci
-
+# Etapa de build
 FROM base AS builder
-
 WORKDIR /app
-
 COPY --from=deps /app/node_modules ./node_modules
-
 COPY . .
-
 RUN npm run build
 
+# Etapa final (runner)
 FROM base AS runner
-
 WORKDIR /app
-
 ENV NODE_ENV=production
 
-RUN addgroup -g 1001 -S nodejs
+# Crear usuario no root
+RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
 
-RUN adduser -S nextjs -u 1001
-
+# Copiar solo lo necesario
 COPY --from=builder /app/public ./public
-
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
-
 EXPOSE 4002
-
-ENV PORT 4002
-
-ENV HOSTNAME 0.0.0.0
+ENV PORT=4002
+ENV HOSTNAME=0.0.0.0
 
 CMD ["node", "server.js"]
