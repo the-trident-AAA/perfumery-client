@@ -6,7 +6,7 @@ FROM base AS deps
 WORKDIR /app
 RUN apk add --no-cache libc6-compat
 COPY package.json package-lock.json ./
-RUN npm ci --prefer-offline --no-audit --progress=false --omit=dev
+RUN npm ci --prefer-offline --no-audit --progress=false
 
 # Etapa de build
 FROM base AS builder
