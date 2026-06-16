@@ -13,45 +13,107 @@ import {
 import { User as UserType } from "@/src/lib/types/users"
 import { User } from "next-auth"
 import { cookies } from "next/headers"
+
 export async function loginWithGoogle(idToken: string) {
 	const cookieStore = await cookies()
 	const sessionId = cookieStore.get("guestSession")?.value
 	console.log("Session ID desde cookie para loginWithGoogle:", sessionId)
+
+	const body: Record<string, string | undefined> = { idToken }
+	if (sessionId) body.sessionId = sessionId
 
 	const res = await fetch(apiRoutes.auth.loginWithGoogle, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
 		},
-		body: JSON.stringify({ idToken, sessionId }),
+		body: JSON.stringify(body),
 	})
+
+	const resText = await res.text()
+	let isCartError = false
+	try {
+		const data = JSON.parse(resText)
+		const msg = String(data.message ?? data.reason ?? "").toLowerCase()
+		isCartError = msg.includes("carrito")
+	} catch {
+		// No es JSON válido, ignorar
+	}
+	const reusableRes = new Response(resText, {
+		status: res.status,
+		statusText: res.statusText,
+		headers: res.headers,
+	})
+
+	if (res.status === 400 && sessionId && isCartError) {
+		console.log("El carrito anónimo no existe, reintentando sin sessionId")
+		const retryRes = await fetch(apiRoutes.auth.loginWithGoogle, {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify({ idToken }),
+		})
+		if (retryRes.ok) cookieStore.delete("guestSession")
+		return await buildApiResponse<User>(retryRes)
+	}
 
 	console.log("Response status:", res.status)
 	console.log("Response ok:", res.ok)
 
 	if (res.ok && sessionId) cookieStore.delete("guestSession")
 
-	return await buildApiResponse<User>(res)
+	return await buildApiResponse<User>(reusableRes)
 }
 
 export async function login(credentials: CredentialsDTO) {
 	const cookieStore = await cookies()
 	const sessionId = cookieStore.get("guestSession")?.value
 
+	const body: Record<string, string | undefined> = {
+		...credentials,
+	}
+	if (sessionId) body.sessionId = sessionId
+
 	const res = await fetch(apiRoutes.auth.login, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
 		},
-		body: JSON.stringify({
-			...credentials,
-			sessionId,
-		}),
+		body: JSON.stringify(body),
 	})
+
+	const resText = await res.text()
+	let isCartError = false
+	try {
+		const data = JSON.parse(resText)
+		const msg = String(data.message ?? data.reason ?? "").toLowerCase()
+		isCartError = msg.includes("carrito")
+	} catch {
+		// No es JSON válido, ignorar
+	}
+	const reusableRes = new Response(resText, {
+		status: res.status,
+		statusText: res.statusText,
+		headers: res.headers,
+	})
+
+	if (res.status === 400 && sessionId && isCartError) {
+		console.log("El carrito anónimo no existe, reintentando sin sessionId")
+		const retryRes = await fetch(apiRoutes.auth.login, {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(credentials),
+		})
+		if (retryRes.ok && sessionId) cookieStore.delete("guestSession")
+		return buildApiResponse<User>(retryRes)
+	}
 
 	if (res.ok && sessionId) cookieStore.delete("guestSession")
 
-	return buildApiResponse<User>(res)
+	return buildApiResponse<User>(reusableRes)
 }
 
 export async function signIn(credentials: CredentialsDTO) {
