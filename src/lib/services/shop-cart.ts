@@ -35,25 +35,34 @@ export async function getShopCart(): Promise<ApiResponse<ShopCart>> {
 			})
 
 	// Si el backend devuelve 400 indicando que no existe el carrito, devolver un carrito vacío
-	if (res.status === 400) {
-		const errorData = await res.json().catch(() => ({}))
-		if (
-			errorData.message?.includes("No existe un carrito") ||
-			errorData.message?.includes("carrito con ese identificador")
-		) {
-			return {
-				response: {
-					id: session?.user.shopCartId || sessionId || "anonymous",
-					totalMount: 0,
-					totalItems: 0,
-					shopCartPerfumes: [],
-				},
-				status: 200,
-			}
+	const resText = await res.text()
+	let isCartNotFound = false
+	try {
+		const data = JSON.parse(resText)
+		const msg = String(data.message ?? data.reason ?? "").toLowerCase()
+		isCartNotFound = msg.includes("carrito")
+	} catch {
+		// No es JSON válido, ignorar
+	}
+	const reusableRes = new Response(resText, {
+		status: res.status,
+		statusText: res.statusText,
+		headers: res.headers,
+	})
+
+	if (res.status === 400 && isCartNotFound) {
+		return {
+			response: {
+				id: session?.user.shopCartId || sessionId || "anonymous",
+				totalMount: 0,
+				totalItems: 0,
+				shopCartPerfumes: [],
+			},
+			status: 200,
 		}
 	}
 
-	return await buildApiResponse<ShopCart>(res)
+	return await buildApiResponse<ShopCart>(reusableRes)
 }
 
 export async function getShopCartTotalItems() {
@@ -83,20 +92,29 @@ export async function getShopCartTotalItems() {
 			})
 
 	// Si el backend devuelve 400 indicando que no existe el carrito, devolver 0 items
-	if (res.status === 400) {
-		const errorData = await res.json().catch(() => ({}))
-		if (
-			errorData.message?.includes("No existe un carrito") ||
-			errorData.message?.includes("carrito con ese identificador")
-		) {
-			return {
-				response: {
-					totalItems: 0,
-				},
-				status: 200,
-			}
+	const resText = await res.text()
+	let isCartNotFound = false
+	try {
+		const data = JSON.parse(resText)
+		const msg = String(data.message ?? data.reason ?? "").toLowerCase()
+		isCartNotFound = msg.includes("carrito")
+	} catch {
+		// No es JSON válido, ignorar
+	}
+	const reusableRes = new Response(resText, {
+		status: res.status,
+		statusText: res.statusText,
+		headers: res.headers,
+	})
+
+	if (res.status === 400 && isCartNotFound) {
+		return {
+			response: {
+				totalItems: 0,
+			},
+			status: 200,
 		}
 	}
 
-	return await buildApiResponse<ShopCartTotalItems>(res)
+	return await buildApiResponse<ShopCartTotalItems>(reusableRes)
 }
